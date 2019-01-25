@@ -1031,10 +1031,10 @@ int main( int argc , char *argv[] ){
 
   //create view
       QGraphicsView *view = new QGraphicsView(scene);
-      view->setWindowTitle("Elektronisches Stellwerk Modelleisenbahn");
+      view->setWindowTitle("Electronic Signalling Control Center - Model Railway");
       //view->showMaximized();
       w->setCentralWidget(view);//add view to mainwindow
-      w->setWindowTitle("Elektronisches Stellwerk Modelleisenbahn");
+      w->setWindowTitle("Electronic Signalling Control Center - Model Railway");
       w->showMaximized();
       //SetViewport(new QGLWidget)
   return a.exec();

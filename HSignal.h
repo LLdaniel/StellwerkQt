@@ -91,23 +91,3 @@ public slots:
   void darkenSpeicher( int position );//löschen des Speichers für das Einwählen einer gespeicherten FS: betrifft hier den Start-Speicher-Punkt
 };
 #endif
-
-//Anmerkungen: std::strings in VSignal+WSignal hat den Hintergrund: Ringschluss von #include: HS braucht VS und VS braucht HS =(  -->sollte aber so genauso laufen )
-//Anmerkungen2: keine Verriegelung von BÜs, da es sonst etwas mehr Überlegungen bei deleteFS bräuchte, und man trotzdem manuell BU::setFreigabe() aufrufen könnte
-//Anmerkungen3: keine Verriegelung von VS, da trotzdem immer manuell mit VSignal::setV_status() eingegriffen werden könnte
-//Anmerkungen4: Connections überprüfen und zunächst einmal herstellen! --> vllt gibt es ja auch eine Möglichkeit der Automatisierung
-//Anmerkungen5: auch bei HS setFahrt(WSignal*) wird am Ende der Funktion emit ... für connection zu Stellwerkstechnik ausgelöst. Allerdings zeigt darin(=stellwerkstec) dann das Signal normal Fahrt, statt
-//            weiß, aber ist das eig wichtig? -->mal testen
-//Anmerkungen6: bei deleteFS [nur HS Part] wird auch der Speicher gelöscht, sowie speicheritems, allerdings wird hier kurze Zeit nochmal getZiel aufgerufen
-//              obwohl offiziell kein Speicher mehr da ist. Ist hoffentlich sicher...
-//Anmerkungen7: release Speicher und process Speicher: da das programm normalerweise zuerst dem emit folgt, musste der Einwählen Teil des SPeichers von evaluateFreigabe in setB_status direkt
-//              gesetzt werden, dazu war es nötig, ein bool Rückgabewert von evaluate Freigabe hinzuzufügen (vorher war emit release Speicher in evaluateFreigabe counter == 2 --> das führte dazu
-//              dass der status=neuer status part noch nicht ausgeführt war, das programm zum einwählen des speichers über processSpeicher gefolgt ist und somit der vorblock nie entriegelt/
-//              unbesetzt vermerkt wurde...
-//T O  D O
-//- Weichen müssen anders entriegelt werden, hardwaretechnische Ansprüche sind nicht möglich... -> vllt wie bei Signalen und zugpassiert?
-//- Speicher: noch das Problem, dass jetzt zwar der Vorblock genommen wird, allerdings gibt es manchmal früherer Speicherfreigaben zB beim Abknicken einer FS --> das sollte noch intelligenter
-//  gestaltet werden. Womöglich könnte man sich überlegen controlspeicher komplett zu streichen und immer releaseSpeicher ausführen. Später wird ja in processSpeicher eh nochmal geprüft, ob
-//  überhaupt ein Speicher gesetzt ist, dann kann es ja immer noch verworfen werden. Dazu müssten aber dann mehr Blöcke als controlspeicher markiert werden
-//- bei delete FS oder zugpassiert den speicher miteinbeziehen
-//- könnte noch Optionen übergeben lassen wie -verbose --> DEBUG mode mit einer global flag, oder -version etc...
