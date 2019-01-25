@@ -21,7 +21,7 @@ The program has different sub-classes giving the chance to simulate a signalling
 ### cross compiling
 Crosscompiling was tested with Qt 5.8.0, Raspbian Jessie on RaspberryPi 3B and Debian Jessie on the host computer.
 For cross compiling with **qmake** do:  
-`~/rpi/qt5/bin/qmake`  
+`~/rpi/qt5/bin/qmake -r`  
 `make`  
 `make install`  
 
