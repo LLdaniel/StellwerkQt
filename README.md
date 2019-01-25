@@ -27,3 +27,7 @@ For cross compiling with **qmake** do:
 
 Then deploy the new files to the RaspberryPi3B:  
 `rsync -avz qt5pi pi@raspberrypi.local:/usr/local`  
+
+### repository on host PC for RaspberryPi deplyoment
+Find instructions at:
+https://wiki.qt.io/RaspberryPi2EGLFS
