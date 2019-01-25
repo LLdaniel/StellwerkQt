@@ -32,7 +32,7 @@ Then deploy the new files to the RaspberryPi3B:
 Find instructions at:
 https://wiki.qt.io/RaspberryPi2EGLFS
 
-### to do
+### insider notes
 1. std::strings in VSignal+WSignal: circle of \#includes HS needs VS and VS needs HS =(  -->should work with this workaround 
 2. No locking for BÜs: would require more sofisticated implementation for deleteFS, at the same time BU::setFreigabe() has to be set manually
 3. No locking for VS, because of VSignal:setV_status(): one can change this either when using this method manually
