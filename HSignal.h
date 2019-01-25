@@ -1,0 +1,113 @@
+//*************************************************************************
+//Hauptsignal des Stellwerks  [- HSIGNAL.H -]
+//*************************************************************************
+#ifndef HSIGNAL_H
+#define HSIGNAL_H
+#include <QObject>
+#include "Block.h"
+#include "Weiche.h"
+#include <vector>
+#include <string>
+#include "VSignal.h"
+#include <QLabel>
+#include <QPushButton>
+#include "WSignal.h"
+class HSignal : public QObject{
+    Q_OBJECT
+ public:
+  HSignal( int name);
+  void setS_id( int name );
+  std::string getS_id(){ return s_id; }
+  void setFahrt( HSignal *toZiel );
+  void setFahrt( WSignal *toZiel );
+  bool getS_status(){ return s_status; }
+  std::string getZiel(){ return ziel; }
+  void addWeichenstatus( HSignal *toZiel , std::vector<std::pair<Weiche* , bool>> weichenpair );
+  void showWeichenstatusALL();//-->gesamte Liste wird geprintet
+  void showWeichenstatus( HSignal *whichZiel );//mit speziellem Ziel zum printen des betreffenden Weichenstatus
+  void addWeichenstatusZuRangier( WSignal *toZiel , std::vector<std::pair<Weiche* , bool>> weichenpair );
+  void addBlock( HSignal *toZiel , std::vector<Block*> inputBlock );
+  void showBlock( HSignal *whichZiel );
+  void showBlockALL();
+  void addBlockZuRangier( WSignal *toZiel , std::vector<Block*> inputBlock );
+  void deleteNachbar( HSignal *todelete );//Nachbar todelete wird in Block und Weichenstatus gelöscht
+  void addVSignal( VSignal *vs , std::string param );
+  void showVSignalR();
+  void showVSignalV();
+  void addWSignal( WSignal *wsig, std::string param );
+  void showWSignalR();
+  void showWSignalV();
+  void deleteVS( VSignal *todelete , std::string param );
+  void deleteWS( WSignal *todelete , std::string param );
+  void setSpeicher( bool sp ){ speicher = sp; }
+  HSignal* getSpeicherziel(){ return speicherziel; }
+  bool getSpeicher(){ return speicher; }
+  void setZiel( std::string zziel );//Setzt das ziel, je nach dem, ob es ein W oder S ist
+  void setfromHS( HSignal* from ){ fromHS = from; }
+  void deleteFS();//löscht die FS, falls nicht schon was belegt ist
+  bool isNachbar(HSignal *toZiel);//testet, ob das Zielsignal ein Nachbarsignal ist -->toZiel sollte natürlich das von SetFahrt sein
+  bool isNachbar(WSignal *toZiel);//testet, ob das Zielsignal ein Nachbarsignal ist -->toZiel sollte natürlich das von SetFahrt sein
+  //
+  //+++GUI+++
+  void addHSignalitem(QGraphicsRectItem *schirm , QGraphicsRectItem *trag , QLabel *la, QPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront);
+  void moveLabel( int x , int y ){ beschriftung->move(x,y); }
+  void moveButton( int x, int y ){ push->move(x,y); }
+
+ signals:
+  void refreshStellwerkstechnik( std::string sig , bool stat );
+  void listened( HSignal *clickedHS);
+  void illuminateSpeicher(bool sp, std::string str);
+public slots:
+  void zugpassiert();//Wenn der Zug das HSignal überfahren hat, fällt es auf Halt + entriegeln der VS + entriegeln der WS ------------------------------------muss noch
+  void listenToFS(); //es wird nach click events Ausschau gehalten --> Umwandlung als setFahrt Befehl
+  void recieveSpeicher(bool sp, std::string str);
+  void processSpeicher();
+ protected:
+  std::string s_id;//ID des Hauptsignals zB. S002, S511
+  bool s_status = false;//Status des Signals: true:=Fahrt false:=Halt
+  std::string ziel;//Hier wird das Zielsignal der aktuellen FS gespeichert
+  bool hasHSZiel = false;
+  bool hasWSZiel = false;
+  std::vector<std::pair<std::string , std::vector<std::pair<Weiche* , bool>> > > weichenstatus;//Weichenstatus gespeichert über eine Liste von Signalen mit einer Liste von Weichen-Status-Paaren: <Ziel <Weiche,bool>>
+  std::vector<std::pair<std::string, std::vector<Block*>> > block;//Hier werden die in einer FS involvierten Blöcke in der Form Zielsignal Blockliste gespeichert
+  std::vector<VSignal*> vorsignalR;//involvierten Vorsignale werden hier gespeichert-->rückwärts gesehen!
+  std::vector<VSignal*> vorsignalV;//involvierten Vorsignale werden hier gespeichert-->vorwärts gesehen!
+  std::vector<WSignal*> wsignaleV;//involvierten WSignale im Modus als VS [vor]
+  std::vector<WSignal*> wsignaleR;//involvierten WSignale im Modus als VS [rück]
+  std::vector<std::pair<std::string , std::vector<std::pair<Weiche* , bool>> > > weichenstatusZuRangier;//Weichenstatus gespeichert für Übergang zur Rangierfahrt
+  std::vector<std::pair<std::string, std::vector<Block*>> > blockZuRangier;//Blöcke für den Übergang zur Rangierfahrt
+
+  bool speicher = false;//true:= Speicher gesetzt false:= Speicher nicht gesetzt
+  HSignal* speicherziel;//Was ist das Ziel des FS Speicher --> das kann nur ein HSignal sein
+  HSignal* fromHS;//hier wird vermerkt, was für ein Startsignal auf das Signal hier eine FS gestellt hat --> benötigt für Speicher auflösen
+  bool zuRangier = false;//Falls ein Übergang zur Rangierfahrt erfolgt, wird das hier vermerkt true = rangier
+  //
+  //+++GUI+++
+  QList<QGraphicsRectItem*> hsignalitems;//Hier weden alle QGraphicsRectItems des Signals gesammelt
+  std::pair<QGraphicsRectItem*,QGraphicsRectItem*> speicheritems;//Die hellen Punkte zur Anzeige, dass Speicher aktiv ist
+  QLabel *beschriftung = new QLabel();//Beschriftung
+  QPushButton *push = new QPushButton();
+  void changeColor();//verändert die Farbe der Hauptsignalitems
+  void darkenSpeicher( int position );//löschen des Speichers für das Einwählen einer gespeicherten FS: betrifft hier den Start-Speicher-Punkt
+};
+#endif
+
+//Anmerkungen: std::strings in VSignal+WSignal hat den Hintergrund: Ringschluss von #include: HS braucht VS und VS braucht HS =(  -->sollte aber so genauso laufen )
+//Anmerkungen2: keine Verriegelung von BÜs, da es sonst etwas mehr Überlegungen bei deleteFS bräuchte, und man trotzdem manuell BU::setFreigabe() aufrufen könnte
+//Anmerkungen3: keine Verriegelung von VS, da trotzdem immer manuell mit VSignal::setV_status() eingegriffen werden könnte
+//Anmerkungen4: Connections überprüfen und zunächst einmal herstellen! --> vllt gibt es ja auch eine Möglichkeit der Automatisierung
+//Anmerkungen5: auch bei HS setFahrt(WSignal*) wird am Ende der Funktion emit ... für connection zu Stellwerkstechnik ausgelöst. Allerdings zeigt darin(=stellwerkstec) dann das Signal normal Fahrt, statt
+//            weiß, aber ist das eig wichtig? -->mal testen
+//Anmerkungen6: bei deleteFS [nur HS Part] wird auch der Speicher gelöscht, sowie speicheritems, allerdings wird hier kurze Zeit nochmal getZiel aufgerufen
+//              obwohl offiziell kein Speicher mehr da ist. Ist hoffentlich sicher...
+//Anmerkungen7: release Speicher und process Speicher: da das programm normalerweise zuerst dem emit folgt, musste der Einwählen Teil des SPeichers von evaluateFreigabe in setB_status direkt
+//              gesetzt werden, dazu war es nötig, ein bool Rückgabewert von evaluate Freigabe hinzuzufügen (vorher war emit release Speicher in evaluateFreigabe counter == 2 --> das führte dazu
+//              dass der status=neuer status part noch nicht ausgeführt war, das programm zum einwählen des speichers über processSpeicher gefolgt ist und somit der vorblock nie entriegelt/
+//              unbesetzt vermerkt wurde...
+//T O  D O
+//- Weichen müssen anders entriegelt werden, hardwaretechnische Ansprüche sind nicht möglich... -> vllt wie bei Signalen und zugpassiert?
+//- Speicher: noch das Problem, dass jetzt zwar der Vorblock genommen wird, allerdings gibt es manchmal früherer Speicherfreigaben zB beim Abknicken einer FS --> das sollte noch intelligenter
+//  gestaltet werden. Womöglich könnte man sich überlegen controlspeicher komplett zu streichen und immer releaseSpeicher ausführen. Später wird ja in processSpeicher eh nochmal geprüft, ob
+//  überhaupt ein Speicher gesetzt ist, dann kann es ja immer noch verworfen werden. Dazu müssten aber dann mehr Blöcke als controlspeicher markiert werden
+//- bei delete FS oder zugpassiert den speicher miteinbeziehen
+//- könnte noch Optionen übergeben lassen wie -verbose --> DEBUG mode mit einer global flag, oder -version etc...
