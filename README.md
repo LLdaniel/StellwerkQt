@@ -31,3 +31,12 @@ Then deploy the new files to the RaspberryPi3B:
 ### repository on host PC for RaspberryPi deplyoment
 Find instructions at:
 https://wiki.qt.io/RaspberryPi2EGLFS
+
+### to do
+1. std::strings in VSignal+WSignal: circle of \#includes HS needs VS and VS needs HS =(  -->should work with this workaround 
+2. No locking for BÜs: would require more sofisticated implementation for deleteFS, at the same time BU::setFreigabe() has to be set manually
+3. No locking for VS, because of VSignal:setV_status(): one can change this either when using this method manually
+4. check signal-slot connections and create them properly --> maybe there is a chance to do this automatically
+5. the emit function is called at the end of HS::setFahrt(WSignal*): that is for the connection to Stellwerkstechnik, but (=stellwerkstec) signals the main signal as permitted route instead of signalling as a shunting signal, maybe this is not important, but check it again
+6. deleteFS [only HS part] deletes the route memory, memory items, but after a short time getZiel is called again although there is no existing memory anymore --> it is hopefully save
+7. release Speicher and process Speicher: normally the programm follws the emit command and setting the route memory to the current route required in evaluateFreigabe in setB_status directly a boolean return value of (before; emit release Speicher in evaluateFreigabe counter == 2 --> status=new status part was not executed and the programm followed processSpeicher and setting the memory route as current route resulted in a not unlocked segment
