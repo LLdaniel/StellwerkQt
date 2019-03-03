@@ -12,6 +12,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <iostream>
+#include <thread>
 #include "Block.h"
 #include "Weiche.h"
 #include "HSignal.h"
@@ -21,7 +22,8 @@
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
 #include <QMouseEvent>
-#include <clickmanager.h>
+#include "clickmanager.h"
+#include "util.cpp"
 #ifdef __cplusplus
 extern "C"{
 #endif
@@ -89,6 +91,7 @@ int main( int argc , char *argv[] ){
   std::cout<<"***15) ZugpassiertTest -> wegen Neuerungen wie WS->WS...  ***"<<std::endl;
   std::cout<<"***16) HS->WS: was VS macht [nicht TestPlan anwendbar ]   ***"<<std::endl;
   std::cout<<"***17) Beweis, dass deleteFS auch bei HS/WS->WS/HS klappt ***"<<std::endl;
+  std::cout<<"***18) ThreadTest: userInput + Statusänderungen+ Speicher ***"<<std::endl;
   std::cout<<"*************************************************************"<<std::endl;
   int menue;
   std::cin>>menue;
@@ -1030,7 +1033,12 @@ int main( int argc , char *argv[] ){
       ww2.setFahrt("S002");
       ww2.deleteFS();
   }
-
+  if(menue == 18){//Thread Test
+      std::thread blockthread( actrandomly );
+      std::thread userthread ( user );
+      userthread.join();
+      blockthread.join();
+  }
   //create view
       QGraphicsView *view = new QGraphicsView(scene);
       view->setWindowTitle("Electronic Signalling Control Center - Model Railway");
@@ -1042,5 +1050,3 @@ int main( int argc , char *argv[] ){
   return a.exec();
 
 }
-
-

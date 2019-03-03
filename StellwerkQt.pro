@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     BU.cpp \
     Block.cpp \
     Stellwerkstechnik.cpp \
-    clickmanager.cpp
+    clickmanager.cpp \
+    util.cpp
 
 HEADERS  += mainwindow.h \
     VSignal.h \

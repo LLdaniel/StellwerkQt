@@ -647,10 +647,12 @@ void HSignal::deleteFS(){
           }
         }
         //jetzt soll auch der komplette Speicher gelöscht werden:
+        if(speicher){
         speicher = false;
         speicheritems.first->setBrush(Qt::darkBlue);
         getSpeicherziel()->speicheritems.second->setBrush(Qt::darkBlue);
         emit illuminateSpeicher(false,getZiel());
+        }
         //////
       }
   }
@@ -741,7 +743,7 @@ void HSignal::recieveSpeicher(bool sp, std::string str){
         std::cout<<"bin drin in recieve speicher if"<<std::endl;
         if(sp){//falls es sich um einen neuen Speicher handelt
             speicheritems.second->setBrush(Qt::yellow);
-            //fromHS->speicheritems.first->setBrush(Qt::yellow); wird an geeigneter Stelle oben/unten erledigt
+            //fromHS()->speicheritems.first->setBrush(Qt::yellow); //wird an geeigneter Stelle oben/unten erledigt, suche nach illuminate
         }
         if(!sp){//falls es sich um eine Auflösung vom Speicher handelt
             std::cout<<"darken speicheritems"<<std::endl;
