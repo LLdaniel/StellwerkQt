@@ -34,7 +34,7 @@ https://wiki.qt.io/RaspberryPi2EGLFS
 
 ### notes on threads
 For a arbitrary class myClass with methods ::hello and ::act one can execute the methods in separate threads shown below:
-`#include <iostream>
+`#include <iostream>`
 `#include <thread>`
 `#include <vector>`
 `#include "myclass.h"`
