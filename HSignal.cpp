@@ -649,6 +649,7 @@ void HSignal::deleteFS(){
         //jetzt soll auch der komplette Speicher gelöscht werden:
         speicher = false;
         speicheritems.first->setBrush(Qt::darkBlue);
+        getSpeicherziel()->speicheritems.second->setBrush(Qt::darkBlue);
         emit illuminateSpeicher(false,getZiel());
         //////
       }
@@ -740,16 +741,18 @@ void HSignal::recieveSpeicher(bool sp, std::string str){
         std::cout<<"bin drin in recieve speicher if"<<std::endl;
         if(sp){//falls es sich um einen neuen Speicher handelt
             speicheritems.second->setBrush(Qt::yellow);
+            //fromHS->speicheritems.first->setBrush(Qt::yellow); wird an geeigneter Stelle oben/unten erledigt
         }
         if(!sp){//falls es sich um eine Auflösung vom Speicher handelt
             std::cout<<"darken speicheritems"<<std::endl;
             speicheritems.second->setBrush(Qt::darkBlue);
+            fromHS->speicheritems.first->setBrush(Qt::darkBlue);
         }
     }
 
 }
 
-void HSignal::processSpeicher(){
+/*void HSignal::processSpeicher(){
     //der Vorblock von diesem Signal hier ist auf belegstatus frei gegangen: woher kam die FS (welches Startsignal) und ist das in einem Speicher verwickelt?
     std::cout<<"PROCESS SPEICHER"<<std::endl;
     if( fromHS->getSpeicher() ){//ist das Startsignal mit Speicher versehen?
@@ -766,7 +769,7 @@ void HSignal::processSpeicher(){
         fromHS->setFahrt(fromHS->getSpeicherziel());
     }
 
-}
+}*/
 
 void HSignal::darkenSpeicher( int position ){
     if( position == 1){

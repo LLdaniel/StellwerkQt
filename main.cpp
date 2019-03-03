@@ -951,22 +951,24 @@ int main( int argc , char *argv[] ){
 
   }
   if(menue == 13){
-        QObject::connect(&ac,SIGNAL(releaseSpeicher()),&s2,SLOT(processSpeicher()) );//in eine zeile drunter verpacken, dann ist es auch schon wieder weniger arbeit
-        ac.addcontrolspeicher(true);
+        //QObject::connect(&ac,SIGNAL(releaseSpeicher()),&s2,SLOT(processSpeicher()) );//in eine zeile drunter verpacken, dann ist es auch schon wieder weniger arbeit
+        //ac.addcontrolspeicher(true);
         s1.setFahrt(s2ptr);
         s1.setFahrt(s2ptr);
         aa.setB_status(false);
         w1.setBelegung(false);
-        s3.zugpassiert();
+        s1.zugpassiert();
         ac.setB_status(false);
         aa.setB_status(true);
         w1.setBelegung(true);
         ww1.zugpassiert();
-        //w2.zugpassiert();
+        ww2.zugpassiert();
         ac.setB_status(true);
         std::cout<<"aa "<<aa.getB_status()<<std::endl;
         std::cout<<"ac "<<ac.getB_status()<<std::endl;
         //s3.showBlockALL();
+        s1.setSpeicher(false);
+        s1.setFahrt(s2ptr);
   }
   if(menue == 14){//Testing wiringPi in the program (wahrscheinlich linken, dann auf den Pi und da ausführbar testen, denn hier hat man ja keine gpio...)
         wiringPiSetupGpio();

@@ -39,7 +39,7 @@ class HSignal : public QObject{
   void showWSignalV();
   void deleteVS( VSignal *todelete , std::string param );
   void deleteWS( WSignal *todelete , std::string param );
-  void setSpeicher( bool sp ){ speicher = sp; }
+  void setSpeicher( bool sp ){ speicher = sp; emit illuminateSpeicher(sp, this->getSpeicherziel()->getS_id() );}
   HSignal* getSpeicherziel(){ return speicherziel; }
   bool getSpeicher(){ return speicher; }
   void setZiel( std::string zziel );//Setzt das ziel, je nach dem, ob es ein W oder S ist
@@ -61,7 +61,7 @@ public slots:
   void zugpassiert();//Wenn der Zug das HSignal überfahren hat, fällt es auf Halt + entriegeln der VS + entriegeln der WS ------------------------------------muss noch
   void listenToFS(); //es wird nach click events Ausschau gehalten --> Umwandlung als setFahrt Befehl
   void recieveSpeicher(bool sp, std::string str);
-  void processSpeicher();
+  //void processSpeicher();
  protected:
   std::string s_id;//ID des Hauptsignals zB. S002, S511
   bool s_status = false;//Status des Signals: true:=Fahrt false:=Halt
