@@ -50,7 +50,8 @@ int main( int argc , char *argv[] ){
   q.push("command1");
   std::cout<<q.front()<<std::endl;
   return 0;
-}```
+}
+```
 
 ### insider notes
 1. std::strings in VSignal+WSignal: circle of \#includes HS needs VS and VS needs HS =(  -->should work with this workaround 
