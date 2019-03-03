@@ -32,6 +32,27 @@ Then deploy the new files to the RaspberryPi3B:
 Find instructions at:
 https://wiki.qt.io/RaspberryPi2EGLFS
 
+### notes on threads
+For a arbitrary class myClass with methods ::hello and ::act one can execute the methods in separate threads shown below:
+```#include <iostream>
+#include <thread>
+#include <vector>
+#include "myclass.h"
+#include <queue>
+int main( int argc , char *argv[] ){
+  myclass c;//initialize object
+  std::thread t( &myclass::hello , &c);//create thread which executes the hello function
+  std::thread t2( &myclass::act , &c);//create thread which executes the act function
+  t.join();//add it, that it can be executed at the same time
+  t2.join();
+  //now the queue test:
+  std::queue<std::string> q;
+  q.push("command1");
+  std::cout<<q.front()<<std::endl;
+  return 0;
+}
+```
+
 ### insider notes
 1. std::strings in VSignal+WSignal: circle of \#includes HS needs VS and VS needs HS =(  -->should work with this workaround 
 2. No locking for BÜs: would require more sofisticated implementation for deleteFS, at the same time BU::setFreigabe() has to be set manually
