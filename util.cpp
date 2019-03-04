@@ -1,6 +1,5 @@
 #include <ctime>
-int msleep(unsigned long milisec)
-{
+int msleep(unsigned long milisec){
     struct timespec req={0};
     time_t sec=(int)(milisec/1000);
     milisec=milisec-(sec*1000);
@@ -24,8 +23,8 @@ void actrandomly(){
       }
       for(int k = 0 ; k<1000 ; k++){
         std::cout<<array[k]<<std::endl;
-      }
-    }
+   }
+}
 
     void user(){
       int input;

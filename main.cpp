@@ -13,6 +13,7 @@
 #include <QApplication>
 #include <iostream>
 #include <thread>
+#include "myqueue.h"
 #include "Block.h"
 #include "Weiche.h"
 #include "HSignal.h"
@@ -92,6 +93,7 @@ int main( int argc , char *argv[] ){
   std::cout<<"***16) HS->WS: was VS macht [nicht TestPlan anwendbar ]   ***"<<std::endl;
   std::cout<<"***17) Beweis, dass deleteFS auch bei HS/WS->WS/HS klappt ***"<<std::endl;
   std::cout<<"***18) ThreadTest: userInput + Statusänderungen+ Speicher ***"<<std::endl;
+  std::cout<<"***19) QueueTest                                          ***"<<std::endl;
   std::cout<<"*************************************************************"<<std::endl;
   int menue;
   std::cin>>menue;
@@ -1038,6 +1040,15 @@ int main( int argc , char *argv[] ){
       std::thread userthread ( user );
       userthread.join();
       blockthread.join();
+  }
+  if(menue == 19){//Queue Test
+
+      myqueue *q1 = new myqueue();
+      q1->add(s1ptr,s2ptr);
+      q1->add(s1ptr,s3ptr);
+      q1->start();
+      //q1->terminate();
+
   }
   //create view
       QGraphicsView *view = new QGraphicsView(scene);

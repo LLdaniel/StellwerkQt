@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     Block.cpp \
     Stellwerkstechnik.cpp \
     clickmanager.cpp \
-    util.cpp
+    util.cpp \
+    myqueue.cpp
 
 HEADERS  += mainwindow.h \
     VSignal.h \
@@ -44,7 +45,8 @@ HEADERS  += mainwindow.h \
     HSignal.h \
     BU.h \
     Block.h \
-    clickmanager.h
+    clickmanager.h \
+    myqueue.h
 
     FORMS    += mainwindow.ui
 # wiringPi
