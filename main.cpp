@@ -1042,13 +1042,12 @@ int main( int argc , char *argv[] ){
       blockthread.join();
   }
   if(menue == 19){//Queue Test
-
+      qRegisterMetaType < std::string >("std::string");//connected to signal and slots in threads...
       myqueue *q1 = new myqueue();
       q1->add(s1ptr,s2ptr);
-      q1->add(s1ptr,s3ptr);
+      q1->add(s2ptr,s5ptr);
       q1->start();
       //q1->terminate();
-
   }
   //create view
       QGraphicsView *view = new QGraphicsView(scene);
