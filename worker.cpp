@@ -31,7 +31,7 @@ void worker::addPinList( int morePins ){
 void worker::showPins(){
   std::cout<<"************************************************************"<<std::endl;
   std::cout<<"*** Dies sind alle Input-Pins                            ***"<<std::endl;
-  for( unsigned int i = 0 ; i < pins.size() ; i++ ){//Durchläuft alle update Blocks
+  for( unsigned int i = 0 ; i < pins.size() ; i++ ){//Durchläuft alle pins
     std::cout<<"***   "<<pins.at(i)<<"                                               ***"<<std::endl;
   }
   std::cout<<"************************************************************"<<std::endl;
@@ -40,7 +40,6 @@ void worker::showPins(){
 
 void worker::quit(){
   update = false;
-  //~worker();
 }
 
 void worker::updateBelegt(){

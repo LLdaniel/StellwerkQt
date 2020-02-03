@@ -975,7 +975,7 @@ int main( int argc , char *argv[] ){
         s1.setSpeicher(false);
         s1.setFahrt(s2ptr);
   }
-  if(menue == 14){//Testing wiringPi in the program (wahrscheinlich linken, dann auf den Pi und da ausführbar testen, denn hier hat man ja keine gpio...)
+  if(menue == 14){//Testing wiringPi in the program 
         wiringPiSetupGpio();
         //output test
         //int led = 27;//set the right pin
@@ -984,8 +984,8 @@ int main( int argc , char *argv[] ){
         //delay(5000);//[ms]
         //digitalWrite(led,LOW);
         //input test
-        pinMode(in,INPUT);//set input pin here
-        wiringPiISR(in,INT_EDGE_RISING,*interrupt);
+        //pinMode(in,INPUT);//set input pin here
+        //wiringPiISR(in,INT_EDGE_RISING,*interrupt);
 
         //Notes ....
         ////////////////////////////////////////////////////////////////
