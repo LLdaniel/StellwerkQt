@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <QGraphicsRectItem>
+#include <QGraphicsSvgItem>
 #include <QObject>
 //
 class VSignal {
@@ -27,8 +28,8 @@ class VSignal {
   void zugpassiert();//VS fällt auf Halt erwarten und inFS wird auf false gesetzt-->kann neu verwendet werden
   //
   //+++GUI+++
-  void addVSignalitems(QGraphicsRectItem *rect ){ vsignalitems << rect; changeColor(); }//add new rect items
- protected:
+  void addVSignalitems(QGraphicsSvgItem *signalbild1, QGraphicsSvgItem *signalbild2){fahrt = signalbild1; halt = signalbild2;}
+protected:
   std::string v_id;//Name des VS: V001, V068
   bool v_status = false;//false::= Halt erwarten, true:= Fahrt erwarten
   bool inFS = false;//zeigt an, ob in einer FS involviert
@@ -36,7 +37,8 @@ class VSignal {
   std::vector<std::pair<std::string, std::string> > richtung;//Hier wird Start, Ziel HSignal gespeichert-->wo kann VSignal involviert sein
   //
   //+++GUI+++
-  QList<QGraphicsRectItem*> vsignalitems;//Hier weden alle QGraphicsRectItems des Blocks gesammelt
+  QGraphicsSvgItem *fahrt;//Signalbild 1 wird hier gespeichert
+  QGraphicsSvgItem *halt;//Signalbild 2 wird hier gespeichert
   void changeColor();//verändert die Farbe der VSignalitems
 };
 #endif

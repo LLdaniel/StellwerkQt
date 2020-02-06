@@ -85,7 +85,7 @@ int main( int argc , char *argv[] ){
   std::cout<<"*** 7) Test für Stellwerkstechnik (vor HS... erstellen)   ***"<<std::endl;
   std::cout<<"*** 8) Test für Farbigkeit der Blöcke und QList_Block     ***"<<std::endl;
   std::cout<<"*** 9) Test für Farbigkeit der Weichen                    ***"<<std::endl;
-  std::cout<<"***10) Test für Farbigkeit der VorSignale                 ***"<<std::endl;
+  std::cout<<"***10) normale Initialisierung                            ***"<<std::endl;
   std::cout<<"***11) Test für zugpassiert durch eine Fahrt (s. 2))      ***"<<std::endl;
   std::cout<<"***12) Weichentest                                        ***"<<std::endl;
   std::cout<<"***13) Test: Einwählen des Speichers nach freier FS       ***"<<std::endl;
@@ -95,7 +95,7 @@ int main( int argc , char *argv[] ){
   std::cout<<"***17) Beweis, dass deleteFS auch bei HS/WS->WS/HS klappt ***"<<std::endl;
   std::cout<<"***18) ThreadTest: userInput + Statusänderungen+ Speicher ***"<<std::endl;
   std::cout<<"***19) QueueTest                                          ***"<<std::endl;
-  std::cout<<"***20) Simple svg item test                               ***"<<std::endl;
+  std::cout<<"***20) leer                                               ***"<<std::endl;
   std::cout<<"*************************************************************"<<std::endl;
   int menue;
   std::cin>>menue;
@@ -125,10 +125,9 @@ int main( int argc , char *argv[] ){
   VSignal v1(1);
   VSignal *v1ptr = &v1;
   VSignal v2(2);
-  VSignal *v2ptr = &v2;  VSignal v3(3);
+  VSignal *v2ptr = &v2;
+  VSignal v3(3);
   VSignal *v3ptr = &v3;
-  VSignal v4(4);
-  VSignal *v4ptr = &v4;
   v1.setRichtung("S001","S002");
   v1.setRichtung("S001","S003");
   v2.setRichtung("S002","S005");
@@ -161,11 +160,17 @@ int main( int argc , char *argv[] ){
   s1.addWSignal(ww1ptr,"v");
   s3.addWSignal(ww1ptr,"r");
   //
-  QGraphicsRectItem *ww1rect2 = new QGraphicsRectItem();
-  ww1rect2->setRect(0,0,20,20);
-  ww1rect2->setPos(QPointF(-270,-20));
-  ww1.addVSignalitems(ww1rect2);
-  scene->addItem(ww1rect2);
+  QGraphicsSvgItem *item3 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *item4 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(item3);
+  scene->addItem(item4);
+  item3->setPos(QPointF(-280,0));
+  item4->setPos(QPointF(-280,0));
+  item3->setRotation(-90);
+  item4->setRotation(-90);
+  item3->setScale(0.05);
+  item4->setScale(0.05);
+  ww1ptr->addVSignalitems(item3, item4);
   QLabel *ww1label = new QLabel();
   scene->addWidget(ww1label);
   //
@@ -178,11 +183,17 @@ int main( int argc , char *argv[] ){
   s1.addWSignal(ww2ptr,"v");
   s2.addWSignal(ww2ptr,"r");
   //
-  QGraphicsRectItem *ww2rect2 = new QGraphicsRectItem();
-  ww2rect2->setRect(0,0,20,20);
-  ww2rect2->setPos(QPointF(-605,30));
-  ww2.addVSignalitems(ww2rect2);
-  scene->addItem(ww2rect2);
+  QGraphicsSvgItem *item5 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *item6 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(item5);
+  scene->addItem(item6);
+  item5->setPos(QPointF(-615,50));
+  item6->setPos(QPointF(-615,50));
+  item5->setRotation(-90);
+  item6->setRotation(-90);
+  item5->setScale(0.05);
+  item6->setScale(0.05);
+  ww2ptr->addVSignalitems(item5, item6);
   QLabel *ww2label = new QLabel();
   scene->addWidget(ww2label);
   std::pair<Weiche*, bool> s1tos2w1(w1ptr,false);
@@ -361,50 +372,41 @@ int main( int argc , char *argv[] ){
   ag.addBlockitems(agrect);
   scene->addItem(agrect);
   //
-  QGraphicsRectItem *v1rect2 = new QGraphicsRectItem();
-  v1rect2->setRect(0,0,10,20);
-  v1rect2->setPos(QPointF(-300,-20));
-  v1rect2->setBrush(QColor(79,79,79));
-  v1rect2->setRotation(90);
-  v1.addVSignalitems(v1rect2);
-  scene->addItem(v1rect2);
-  QGraphicsRectItem *v1rect = new QGraphicsRectItem();
-  v1rect->setRect(0,0,30,40);
-  v1rect->setPos(QPointF(-320,-50));
-  v1rect->setBrush(QColor(79,79,79));
-  v1rect->setRotation(45);
-  v1.addVSignalitems(v1rect);
-  scene->addItem(v1rect);
+  QGraphicsSvgItem *item1 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *item2 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(item1);
+  scene->addItem(item2);
+  item1->setPos(QPointF(-340,0));
+  item2->setPos(QPointF(-340,0));
+  item1->setScale(0.1);
+  item2->setScale(0.1);
+  item1->setRotation(-90);
+  item2->setRotation(-90);
+  v1ptr->addVSignalitems(item1, item2);
   //
-  QGraphicsRectItem *v3rect2 = new QGraphicsRectItem();
-  v3rect2->setRect(0,0,10,20);
-  v3rect2->setPos(QPointF(-1085,-20));
-  v3rect2->setBrush(QColor(79,79,79));
-  v3rect2->setRotation(90);
-  v3.addVSignalitems(v3rect2);
-  scene->addItem(v3rect2);
-  QGraphicsRectItem *v3rect = new QGraphicsRectItem();
-  v3rect->setRect(0,0,30,40);
-  v3rect->setPos(QPointF(-1105,-50));
-  v3rect->setBrush(QColor(79,79,79));
-  v3rect->setRotation(45);
-  v3.addVSignalitems(v3rect);
-  scene->addItem(v3rect);
+  QGraphicsSvgItem *item7 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *item8 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(item7);
+  scene->addItem(item8);
+  item7->setPos(QPointF(-1150,0));
+  item8->setPos(QPointF(-1150,0));
+  item7->setScale(0.1);
+  item8->setScale(0.1);
+  item7->setRotation(-90);
+  item8->setRotation(-90);
+  v3ptr->addVSignalitems(item7, item8);
   //
-  QGraphicsRectItem *v2rect2 = new QGraphicsRectItem();
-  v2rect2->setRect(0,0,10,20);
-  v2rect2->setPos(QPointF(-1085,30));
-  v2rect2->setBrush(QColor(79,79,79));
-  v2rect2->setRotation(90);
-  v2.addVSignalitems(v2rect2);
-  scene->addItem(v2rect2);
-  QGraphicsRectItem *v2rect = new QGraphicsRectItem();
-  v2rect->setRect(0,0,30,40);
-  v2rect->setPos(QPointF(-1105,0));
-  v2rect->setBrush(QColor(79,79,79));
-  v2rect->setRotation(45);
-  v2.addVSignalitems(v2rect);
-  scene->addItem(v2rect);
+  QGraphicsSvgItem *item9 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *item10 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(item9);
+  scene->addItem(item10);
+  item9->setPos(QPointF(-1150,50));
+  item10->setPos(QPointF(-1150,50));
+  item9->setScale(0.1);
+  item10->setScale(0.1);
+  item9->setRotation(-90);
+  item10->setRotation(-90);
+  v2ptr->addVSignalitems(item9, item10);
   //
   QGraphicsRectItem *s1rect2 = new QGraphicsRectItem();
   s1rect2->setRect(0,0,10,20);
@@ -807,22 +809,7 @@ int main( int argc , char *argv[] ){
   }
 
   if( menue == 10 ){
-      //Nr 5
-      QGraphicsRectItem *r5 = new QGraphicsRectItem();
-      r5->setRect(0,0,10,20);
-      r5->setPos(QPointF(-1323,-696));
-      r5->setRotation(45);
-      r5->setBrush(Qt::darkGray);
-      scene->addItem(r5);
-      //Nr 6
-      QGraphicsRectItem *r6 = new QGraphicsRectItem();
-      r6->setRect(0,0,5,10);
-      r6->setPos(QPointF(-1328,-680));
-      r6->setBrush(Qt::gray);
-      scene->addItem(r6);
-      v4ptr->addVSignalitems(r5);
-      v4ptr->addVSignalitems(r6);
-      v4ptr->setV_status(false);
+    
   }
   if( menue == 11){//Fahrt Simulation mit zugpassiert
     std::cout<<"FS von S001->S002->S005"<<std::endl;
@@ -1050,15 +1037,6 @@ int main( int argc , char *argv[] ){
       q1->add(s2ptr,s5ptr);
       q1->start();
       //q1->terminate();
-  }
-  if(menue == 20){
-    QGraphicsSvgItem *item = new QGraphicsSvgItem(":/resources/HSVSfahrtfahrt.svg");
-    QGraphicsSvgItem *item2 = new QGraphicsSvgItem(":/resources/HSVSfahrthalt.svg");
-    scene->addItem(item);
-    scene->addItem(item2);
-    //item2->setVisible(false);//damit kann man eines verstecken, einfach alle laden und dann bestimmte verstecken
-    item->setPos(QPointF(-350,0));
-    item->setRotation(90);
   }
   //create view
       QGraphicsView *view = new QGraphicsView(scene);

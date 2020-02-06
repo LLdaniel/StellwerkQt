@@ -481,8 +481,6 @@ void WSignal::addButtonAndLabel(QLabel *lab, QPushButton *but){
     but->setFixedHeight(10);
     but->setFixedWidth(10);
     but->setStyleSheet("background-color: blue");
-    //initialisierung, dass alle Farben stimmen
-    changeColor();
     QObject::connect(push,SIGNAL(clicked()),this,SLOT(listenToFS()) );//Verknüpfung von PushButton und seinem Signal (für clickmanager)
 }
 

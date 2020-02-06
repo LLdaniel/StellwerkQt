@@ -91,23 +91,13 @@ void VSignal::zugpassiert(){
 }
 
 void VSignal::changeColor(){
-    //WSignal erbt von VSignal, will aber unterschiedliche Farben haben, deswegen wird hier gefragt, ob es ein W oder V ist und entsprechend die Farbe angepasst
-    QColor colorgruen;
-    QColor colorrot;
-    if(v_id.at(0) == 'W'){
-        colorgruen = Qt::white;
-        colorrot = Qt::red;
-    }
-    if(v_id.at(0) == 'V'){
-        colorgruen = Qt::green;
-        colorrot = QColor(255,140,0);//orange
-    }
-    for( int i = 0 ; i < vsignalitems.size() ; i++ ){
-        if(v_status){//wenn VS Fahrt erwarten zeigt
-           vsignalitems.at(i)->setBrush(colorgruen);
-        }
-        if(!v_status){//wenn VS Halt erwarten zeigt
-           vsignalitems.at(i)->setBrush(colorrot);
-        }
-    }
+    //WSignal erbt von VSignal, will aber unterschiedliche Farben haben
+  if(v_status){//wenn VS Fahrt erwarten zeigt
+    halt->setVisible(false);
+    fahrt->setVisible(true);
+  }
+  if(!v_status){//wenn VS Halt erwarten zeigt
+    halt->setVisible(true);
+    fahrt->setVisible(false);
+  }
 }
