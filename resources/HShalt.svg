@@ -77,7 +77,7 @@
      cy="20.739351"
      cx="15.780709"
      id="path4751"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078">
     <title
        id="title4913">HSFahrtLED</title>
   </circle>
@@ -104,7 +104,7 @@
      cy="97.468521"
      cx="15.875203"
      id="path4751-7"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078">
     <title
        id="title4923">HSFahrt</title>
   </circle>
@@ -113,7 +113,7 @@
      cy="83.01091"
      cx="15.875203"
      id="path4751-0"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.1741561">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.1741561">
     <title
        id="title4921">HSVerschubUnten</title>
   </circle>
@@ -122,7 +122,7 @@
      cy="61.371803"
      cx="37.514339"
      id="path4751-0-9"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.1741561">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.1741561">
     <title
        id="title4919">HSVerschubOben</title>
   </circle>

@@ -27,9 +27,9 @@
      inkscape:window-height="1016"
      id="namedview1011"
      showgrid="false"
-     inkscape:zoom="2.078763"
-     inkscape:cx="258.26951"
-     inkscape:cy="508.9911"
+     inkscape:zoom="0.51969075"
+     inkscape:cx="525.84581"
+     inkscape:cy="429.16542"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -77,7 +77,7 @@
      cy="20.739351"
      cx="31.798475"
      id="path4751"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078">
     <title
        id="title4913">HSFahrtLED</title>
   </circle>
@@ -104,7 +104,7 @@
      cy="97.468521"
      cx="31.892969"
      id="path4751-7"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078">
     <title
        id="title4923">HSFahrt</title>
   </circle>
@@ -113,7 +113,7 @@
      cy="83.01091"
      cx="31.892969"
      id="path4751-0"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.1741561">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.1741561">
     <title
        id="title4921">HSVerschubUnten</title>
   </circle>
@@ -122,7 +122,7 @@
      cy="61.371803"
      cx="53.532108"
      id="path4751-0-9"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.1741561">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.1741561">
     <title
        id="title4919">HSVerschubOben</title>
   </circle>
@@ -154,7 +154,7 @@
      cy="175.6909"
      cx="29.582258"
      id="path4751-3-6"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078">
     <title
        id="title4931">VSGruenUnten</title>
   </circle>
@@ -172,7 +172,7 @@
      cy="132.60161"
      cx="73.04953"
      id="path4751-3-6-6"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078">
     <title
        id="title4929">VSGruenOben</title>
   </circle>

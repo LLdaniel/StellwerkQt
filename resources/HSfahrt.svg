@@ -54,7 +54,7 @@
      height="88.733482"
      width="4.8108525"
      id="rect3800"
-     style="fill:#4d4d4d;stroke-width:0.27293187;image-rendering:auto">
+     style="fill:#333333;stroke-width:0.27293187;image-rendering:auto">
     <title
        id="title4945">HSSchaft2</title>
   </rect>
@@ -86,7 +86,7 @@
      cy="42.378494"
      cx="15.875207"
      id="path4751-1"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078">
     <title
        id="title4915">HSHaltLED1</title>
   </circle>
@@ -95,7 +95,7 @@
      cy="42.378494"
      cx="37.608833"
      id="path4751-2"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078">
     <title
        id="title4917">HSHaltLED2</title>
   </circle>
@@ -104,7 +104,7 @@
      cy="97.468521"
      cx="15.875203"
      id="path4751-7"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078">
     <title
        id="title4923">HSFahrt</title>
   </circle>
@@ -113,7 +113,7 @@
      cy="83.01091"
      cx="15.875203"
      id="path4751-0"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.1741561">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.1741561">
     <title
        id="title4921">HSVerschubUnten</title>
   </circle>
@@ -122,7 +122,7 @@
      cy="61.371803"
      cx="37.514339"
      id="path4751-0-9"
-     style="fill:#999999;fill-opacity:1;stroke-width:0.1741561">
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.1741561">
     <title
        id="title4919">HSVerschubOben</title>
   </circle>

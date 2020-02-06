@@ -27,9 +27,9 @@
      inkscape:window-height="1016"
      id="namedview37"
      showgrid="false"
-     inkscape:zoom="2.3786088"
-     inkscape:cx="152.58302"
-     inkscape:cy="373.7778"
+     inkscape:zoom="0.84096521"
+     inkscape:cx="265.72259"
+     inkscape:cy="622.96579"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -74,7 +74,7 @@
      id="path4749"
      inkscape:connector-curvature="0" />
   <circle
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078"
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078"
      id="path4751"
      cx="31.798475"
      cy="20.739351"
@@ -83,7 +83,7 @@
        id="title4913">HSFahrtLED</title>
   </circle>
   <circle
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078"
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078"
      id="path4751-1"
      cx="31.892973"
      cy="42.378494"
@@ -92,7 +92,7 @@
        id="title4915">HSHaltLED1</title>
   </circle>
   <circle
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078"
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078"
      id="path4751-2"
      cx="53.626602"
      cy="42.378494"
@@ -101,7 +101,7 @@
        id="title4917">HSHaltLED2</title>
   </circle>
   <circle
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078"
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078"
      id="path4751-7"
      cx="31.892969"
      cy="97.468521"
@@ -110,7 +110,7 @@
        id="title4923">HSFahrt</title>
   </circle>
   <circle
-     style="fill:#999999;fill-opacity:1;stroke-width:0.1741561"
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.1741561"
      id="path4751-0"
      cx="31.892969"
      cy="83.01091"
@@ -119,7 +119,7 @@
        id="title4921">HSVerschubUnten</title>
   </circle>
   <circle
-     style="fill:#999999;fill-opacity:1;stroke-width:0.1741561"
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.1741561"
      id="path4751-0-9"
      cx="53.532108"
      cy="61.371803"
@@ -143,7 +143,7 @@
      id="path4813"
      inkscape:connector-curvature="0" />
   <circle
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078"
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078"
      id="path4751-3"
      cx="13.329281"
      cy="175.6909"
@@ -152,7 +152,7 @@
        id="title4933">VSOrangeUnten</title>
   </circle>
   <circle
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078"
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078"
      id="path4751-3-6"
      cx="29.582258"
      cy="175.6909"
@@ -161,7 +161,7 @@
        id="title4931">VSGruenUnten</title>
   </circle>
   <circle
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078"
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078"
      id="path4751-3-0"
      cx="56.796551"
      cy="132.60161"
@@ -170,7 +170,7 @@
        id="title4927">VSOrangeOben</title>
   </circle>
   <circle
-     style="fill:#999999;fill-opacity:1;stroke-width:0.27463078"
+     style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.27463078"
      id="path4751-3-6-6"
      cx="73.04953"
      cy="132.60161"
