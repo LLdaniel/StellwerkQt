@@ -408,18 +408,22 @@ int main( int argc , char *argv[] ){
   item10->setRotation(-90);
   v2ptr->addVSignalitems(item9, item10);
   //
-  QGraphicsRectItem *s1rect2 = new QGraphicsRectItem();
-  s1rect2->setRect(0,0,10,20);
-  s1rect2->setPos(QPointF(20,-20));
-  s1rect2->setBrush(Qt::blue);
-  s1rect2->setRotation(90);
-  scene->addItem(s1rect2);
-  QGraphicsRectItem *s1rect = new QGraphicsRectItem();
-  s1rect->setRect(0,0,30,40);
-  s1rect->setPos(QPointF(0,-30));
-  s1rect->setBrush(Qt::blue);
-  s1rect->setRotation(90);
-  scene->addItem(s1rect);
+  QGraphicsSvgItem *s1item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s1item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s1item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s1item1);
+  scene->addItem(s1item3);
+  scene->addItem(s1item2);
+  s1item1->setPos(QPointF(-30,0));
+  s1item2->setPos(QPointF(-30,0));
+  s1item3->setPos(QPointF(-30,0));
+  s1item1->setScale(0.1);
+  s1item2->setScale(0.1);
+  s1item3->setScale(0.1);
+  s1item1->setRotation(-90);
+  s1item2->setRotation(-90);
+  s1item3->setRotation(-90);
+  
   QPushButton *s1push = new QPushButton();
   scene->addWidget(s1push);
   QLabel *s1label = new QLabel();
@@ -435,26 +439,29 @@ int main( int argc , char *argv[] ){
   spweg->setPos(QPointF(20,-20));
   scene->addItem(spweg);
   scene->addItem(sphin);
-  s1.addHSignalitem(s1rect,s1rect2,s1label,s1push,spweg,sphin);
+  s1.addHSignalitem(s1item1, s1item2, s1item3, s1label,s1push,spweg,sphin);
   s1.moveLabel(10,0);
   //
-  QGraphicsRectItem *s3rect2 = new QGraphicsRectItem();
-  s3rect2->setRect(0,0,10,20);
-  s3rect2->setPos(QPointF(-740,-20));
-  s3rect2->setBrush(Qt::blue);
-  s3rect2->setRotation(90);
-  scene->addItem(s3rect2);
-  QGraphicsRectItem *s3rect = new QGraphicsRectItem();
-  s3rect->setRect(0,0,30,40);
-  s3rect->setPos(QPointF(-760,-30));
-  s3rect->setBrush(Qt::blue);
-  s3rect->setRotation(90);
-  scene->addItem(s3rect);
+  QGraphicsSvgItem *s3item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s3item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s3item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s3item1);
+  scene->addItem(s3item3);
+  scene->addItem(s3item2);
+  s3item1->setPos(QPointF(-790,0));
+  s3item2->setPos(QPointF(-790,0));
+  s3item3->setPos(QPointF(-790,0));
+  s3item1->setScale(0.1);
+  s3item2->setScale(0.1);
+  s3item3->setScale(0.1);
+  s3item1->setRotation(-90);
+  s3item2->setRotation(-90);
+  s3item3->setRotation(-90);
+  
   QPushButton *s3push = new QPushButton();
   scene->addWidget(s3push);
   QLabel *s3label = new QLabel();
   scene->addWidget(s3label);
-
   //
   //speicher GUIs
   QGraphicsRectItem *sphin3 = new QGraphicsRectItem();
@@ -468,22 +475,26 @@ int main( int argc , char *argv[] ){
   scene->addItem(spweg3);
   scene->addItem(sphin3);
 
-  s3.addHSignalitem(s3rect,s3rect2,s3label,s3push,sphin3,spweg3);
+  s3.addHSignalitem(s3item1, s3item2, s3item3, s3label,s3push,sphin3,spweg3);
   s3.moveLabel(-760,0);
   s3.moveButton(-775,0);
   //
-  QGraphicsRectItem *s4rect2 = new QGraphicsRectItem();
-  s4rect2->setRect(0,0,10,20);
-  s4rect2->setPos(QPointF(-1410,-20));
-  s4rect2->setBrush(Qt::blue);
-  s4rect2->setRotation(90);
-  scene->addItem(s4rect2);
-  QGraphicsRectItem *s4rect = new QGraphicsRectItem();
-  s4rect->setRect(0,0,30,40);
-  s4rect->setPos(QPointF(-1430,-30));
-  s4rect->setBrush(Qt::blue);
-  s4rect->setRotation(90);
-  scene->addItem(s4rect);
+  QGraphicsSvgItem *s4item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s4item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s4item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s4item1);
+  scene->addItem(s4item3);
+  scene->addItem(s4item2);
+  s4item1->setPos(QPointF(-1460,0));
+  s4item2->setPos(QPointF(-1460,0));
+  s4item3->setPos(QPointF(-1460,0));
+  s4item1->setScale(0.1);
+  s4item2->setScale(0.1);
+  s4item3->setScale(0.1);
+  s4item1->setRotation(-90);
+  s4item2->setRotation(-90);
+  s4item3->setRotation(-90);
+  
   QPushButton *s4push = new QPushButton();
   scene->addWidget(s4push);
   QLabel *s4label = new QLabel();
@@ -499,22 +510,26 @@ int main( int argc , char *argv[] ){
   spweg4->setPos(QPointF(-1410,-20));
   scene->addItem(spweg4);
   scene->addItem(sphin4);
-  s4.addHSignalitem(s4rect,s4rect2,s4label,s4push,spweg4,sphin4);
+  s4.addHSignalitem(s4item1,s4item2, s4item3, s4label,s4push,spweg4,sphin4);
   s4.moveLabel(-1410,0);
   s4.moveButton(-1420,0);
   //
-  QGraphicsRectItem *s2rect2 = new QGraphicsRectItem();
-  s2rect2->setRect(0,0,10,20);
-  s2rect2->setPos(QPointF(-740,30));
-  s2rect2->setBrush(Qt::blue);
-  s2rect2->setRotation(90);
-  scene->addItem(s2rect2);
-  QGraphicsRectItem *s2rect = new QGraphicsRectItem();
-  s2rect->setRect(0,0,30,40);
-  s2rect->setPos(QPointF(-760,20));
-  s2rect->setBrush(Qt::blue);
-  s2rect->setRotation(90);
-  scene->addItem(s2rect);
+  QGraphicsSvgItem *s2item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s2item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s2item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s2item1);
+  scene->addItem(s2item3);
+  scene->addItem(s2item2);
+  s2item1->setPos(QPointF(-790,50));
+  s2item2->setPos(QPointF(-790,50));
+  s2item3->setPos(QPointF(-790,50));
+  s2item1->setScale(0.1);
+  s2item2->setScale(0.1);
+  s2item3->setScale(0.1);
+  s2item1->setRotation(-90);
+  s2item2->setRotation(-90);
+  s2item3->setRotation(-90);
+  
   QPushButton *s2push = new QPushButton();
   scene->addWidget(s2push);
   QLabel *s2label = new QLabel();
@@ -530,22 +545,26 @@ int main( int argc , char *argv[] ){
   spweg2->setPos(QPointF(-740,30));
   scene->addItem(spweg2);
   scene->addItem(sphin2);
-  s2.addHSignalitem(s2rect,s2rect2,s2label,s2push,spweg2,sphin2);
+  s2.addHSignalitem(s2item1, s2item2, s2item3, s2label,s2push,spweg2,sphin2);
   s2.moveLabel(-760,50);
   s2.moveButton(-775,50);
   //
-  QGraphicsRectItem *s5rect2 = new QGraphicsRectItem();
-  s5rect2->setRect(0,0,10,20);
-  s5rect2->setPos(QPointF(-1410,30));
-  s5rect2->setBrush(Qt::blue);
-  s5rect2->setRotation(90);
-  scene->addItem(s5rect2);
-  QGraphicsRectItem *s5rect = new QGraphicsRectItem();
-  s5rect->setRect(0,0,30,40);
-  s5rect->setPos(QPointF(-1430,20));
-  s5rect->setBrush(Qt::blue);
-  s5rect->setRotation(90);
-  scene->addItem(s5rect);
+  QGraphicsSvgItem *s5item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s5item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s5item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s5item1);
+  scene->addItem(s5item3);
+  scene->addItem(s5item2);
+  s5item1->setPos(QPointF(-1460,50));
+  s5item2->setPos(QPointF(-1460,50));
+  s5item3->setPos(QPointF(-1460,50));
+  s5item1->setScale(0.1);
+  s5item2->setScale(0.1);
+  s5item3->setScale(0.1);
+  s5item1->setRotation(-90);
+  s5item2->setRotation(-90);
+  s5item3->setRotation(-90);
+  
   QPushButton *s5push = new QPushButton();
   scene->addWidget(s5push);
   QLabel *s5label = new QLabel();
@@ -561,7 +580,7 @@ int main( int argc , char *argv[] ){
   spweg5->setPos(QPointF(-1410,30));
   scene->addItem(spweg5);
   scene->addItem(sphin5);
-  s5.addHSignalitem(s5rect,s5rect2,s5label,s5push,spweg5,sphin5);
+  s5.addHSignalitem(s5item1, s5item2, s5item3, s5label,s5push,spweg5,sphin5);
   s5.moveLabel(-1410,50);
   s5.moveButton(-1420,50);
 

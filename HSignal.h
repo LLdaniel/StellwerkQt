@@ -10,6 +10,7 @@
 #include <string>
 #include "VSignal.h"
 #include <QLabel>
+#include <QGraphicsSvgItem>
 #include <QPushButton>
 #include "WSignal.h"
 class HSignal : public QObject{
@@ -49,7 +50,7 @@ class HSignal : public QObject{
   bool isNachbar(WSignal *toZiel);//testet, ob das Zielsignal ein Nachbarsignal ist -->toZiel sollte natürlich das von SetFahrt sein
   //
   //+++GUI+++
-  void addHSignalitem(QGraphicsRectItem *schirm , QGraphicsRectItem *trag , QLabel *la, QPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront);
+  void addHSignalitem(QGraphicsSvgItem *itemfahrt , QGraphicsSvgItem *itemhalt , QGraphicsSvgItem *itemrangier, QLabel *la, QPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront);
   void moveLabel( int x , int y ){ beschriftung->move(x,y); }
   void moveButton( int x, int y ){ push->move(x,y); }
 
@@ -83,7 +84,9 @@ public slots:
   bool zuRangier = false;//Falls ein Übergang zur Rangierfahrt erfolgt, wird das hier vermerkt true = rangier
   //
   //+++GUI+++
-  QList<QGraphicsRectItem*> hsignalitems;//Hier weden alle QGraphicsRectItems des Signals gesammelt
+  QGraphicsSvgItem *fahrt;//zeigt signalbild fahrt
+  QGraphicsSvgItem *halt;//zeigt signalbild halt
+  QGraphicsSvgItem *rangier;//zeigt signalbild verschub
   std::pair<QGraphicsRectItem*,QGraphicsRectItem*> speicheritems;//Die hellen Punkte zur Anzeige, dass Speicher aktiv ist
   QLabel *beschriftung = new QLabel();//Beschriftung
   QPushButton *push = new QPushButton();

@@ -5,10 +5,14 @@
     <file>resources/VS.svg</file>
     <file>resources/HSfahrt.svg</file>
     <file>resources/HShalt.svg</file>
+    <file>resources/HSrangier.svg</file>
     <file>resources/VSfahrt.svg</file>
     <file>resources/VShalt.svg</file>
     <file>resources/HSVShalthalt.svg</file>
     <file>resources/HSVSfahrthalt.svg</file>
     <file>resources/HSVSfahrtfahrt.svg</file>
+    <file>resources/WS.svg</file>
+    <file>resources/WShalt.svg</file>
+    <file>resources/WSfahrt.svg</file>
 </qresource>
 </RCC>

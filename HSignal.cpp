@@ -526,21 +526,25 @@ void HSignal::zugpassiert(){
 }
 
 void HSignal::changeColor(){
-    for( int i = 0 ; i < hsignalitems.size() ; i++ ){
         if( getS_status() ){//Fahrt
-            if(!zuRangier){//normale Haupt FS
-                hsignalitems.at(i)->setBrush(Qt::green);
-            }
-            if(zuRangier){//Übergang zu Rangierfahrt
-                hsignalitems.at(i)->setBrush(Qt::white);
-            }
+	  if(!zuRangier){//normale Haupt FS
+	    halt->setVisible(false);
+	    rangier->setVisible(false);
+	    fahrt->setVisible(true);
+	  }
+	  if(zuRangier){//Übergang zu Rangierfahrt
+	    halt->setVisible(false);
+	    rangier->setVisible(true);
+	    fahrt->setVisible(false);
+	  }
         }
         if( !getS_status() ){//Halt
-           hsignalitems.at(i)->setBrush(Qt::red);
+	  halt->setVisible(true);
+	  rangier->setVisible(false);
+	  fahrt->setVisible(false);
         }
     }
     //Hier entsteht der Rangiersignalbereich mit Qt::white
-}
 
 void HSignal::deleteFS(){
   //bool zur Kontrolle, ob FS gelöscht werden darf (alles muss verriegelt und unbelegt sein)
@@ -782,10 +786,11 @@ void HSignal::darkenSpeicher( int position ){
     }
 }
 
-void HSignal::addHSignalitem(QGraphicsRectItem *schirm, QGraphicsRectItem *trag, QLabel *la, QPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront){
+void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *itemhalt, QGraphicsSvgItem *itemrangier, QLabel *la, QPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront){
     //schirm und Träger zufügen
-    hsignalitems << schirm;
-    hsignalitems << trag;
+    fahrt = itemfahrt;
+    halt = itemhalt;
+    rangier = itemrangier;
     //Label
     beschriftung = la;
     QString qname = QString::fromStdString( s_id );//cast from std::string to QString
@@ -797,8 +802,6 @@ void HSignal::addHSignalitem(QGraphicsRectItem *schirm, QGraphicsRectItem *trag,
     but->setFixedHeight(10);
     but->setFixedWidth(10);
     but->setStyleSheet("background-color: blue");
-    //initialisierung, dass alle Farben stimmen
-    changeColor();
     QObject::connect(push,SIGNAL(clicked()),this,SLOT(listenToFS()) );//Verknüpfung von PushButton und seinem Signal (für clickmanager)
     //Speicher Anzeiger
     speicherback->setBrush(Qt::darkBlue);
