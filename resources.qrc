@@ -1,0 +1,14 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+    <file>resources/HSVS.svg</file>
+    <file>resources/HS.svg</file>
+    <file>resources/VS.svg</file>
+    <file>resources/HSfahrt.svg</file>
+    <file>resources/HShalt.svg</file>
+    <file>resources/VSfahrt.svg</file>
+    <file>resources/VShalt.svg</file>
+    <file>resources/HSVShalthalt.svg</file>
+    <file>resources/HSVSfahrthalt.svg</file>
+    <file>resources/HSVSfahrtfahrt.svg</file>
+</qresource>
+</RCC>

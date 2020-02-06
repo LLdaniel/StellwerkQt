@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-
+QT       +=svg
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = StellwerkQt
@@ -51,6 +51,7 @@ HEADERS  += mainwindow.h \
     worker.h
 
     FORMS    += mainwindow.ui
+    RESOURCES+=resources.qrc
 # wiringPi
 LIBS+=-L/home/daniel/Documents/Stellwerk/StellwerkQt/wiringPi/ -lwiringPi
 # pigpio

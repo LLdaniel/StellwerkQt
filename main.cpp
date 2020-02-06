@@ -23,6 +23,7 @@
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
 #include <QMouseEvent>
+#include <QtSvg>
 #include "clickmanager.h"
 #include "util.cpp"
 #ifdef __cplusplus
@@ -94,6 +95,7 @@ int main( int argc , char *argv[] ){
   std::cout<<"***17) Beweis, dass deleteFS auch bei HS/WS->WS/HS klappt ***"<<std::endl;
   std::cout<<"***18) ThreadTest: userInput + Statusänderungen+ Speicher ***"<<std::endl;
   std::cout<<"***19) QueueTest                                          ***"<<std::endl;
+  std::cout<<"***20) Simple svg item test                               ***"<<std::endl;
   std::cout<<"*************************************************************"<<std::endl;
   int menue;
   std::cin>>menue;
@@ -1048,6 +1050,15 @@ int main( int argc , char *argv[] ){
       q1->add(s2ptr,s5ptr);
       q1->start();
       //q1->terminate();
+  }
+  if(menue == 20){
+    QGraphicsSvgItem *item = new QGraphicsSvgItem(":/resources/HSVSfahrtfahrt.svg");
+    QGraphicsSvgItem *item2 = new QGraphicsSvgItem(":/resources/HSVSfahrthalt.svg");
+    scene->addItem(item);
+    scene->addItem(item2);
+    //item2->setVisible(false);//damit kann man eines verstecken, einfach alle laden und dann bestimmte verstecken
+    item->setPos(QPointF(-350,0));
+    item->setRotation(90);
   }
   //create view
       QGraphicsView *view = new QGraphicsView(scene);
