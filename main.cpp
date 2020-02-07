@@ -24,6 +24,9 @@
 #include <QGraphicsView>
 #include <QMouseEvent>
 #include <QtSvg>
+#include <QMenu>
+#include <QAction>
+#include <QMenuBar>
 #include "clickmanager.h"
 #include "util.cpp"
 #ifdef __cplusplus
@@ -72,7 +75,8 @@ int main( int argc , char *argv[] ){
     //create scene
     QGraphicsScene *scene = new QGraphicsScene(w);
     scene->setBackgroundBrush(Qt::black);
-    //w.show();
+    
+       
   std::cout<<""<<std::endl;
   std::cout<<"*************************************************************"<<std::endl;
   std::cout<<"***                Testmenü des Stellwerks                ***"<<std::endl;
