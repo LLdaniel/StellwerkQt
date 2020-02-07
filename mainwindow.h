@@ -15,7 +15,6 @@ public:
     ~MainWindow();
     void mousePressEvent(QMouseEvent *event);
     void keyPressEvent(QKeyEvent *event);
-
 private:
     Ui::MainWindow *ui;
 };
