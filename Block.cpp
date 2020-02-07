@@ -120,8 +120,10 @@ bool Block::evaluateFreigabe(){
         if( technik->getS_pass_status( passiert.at(i).first ) && !passiert.at(i).second->getB_status() ){//falls Signal grün(get Methode auf Stellwerkstechnik) && vorheriger Block belegt
             //eigentlich sollte hier noch 2s gewartet werden
             std::cout<<"                                                                        Emitting zugpassiert in Block "<<getName()<<std::endl;
+	    std::cout<<"       ###############"<<passiert.at(i).first.at(0)<<"mit size"<<passiert.size()<<std::endl;
             if(passiert.at(i).first.at(0) == 'S'){//je nach dem, ob es ein WSignal oder HSignal ist, wird das entsprechende zugpassiert des jeweiligen Objekts aufgerufen
-                emit zugpassiert();//löse zugpassiert aus (hier erst mal Block::zugpassiert, was dann auf HSignal::zugpassiert geht
+	      std::cout<<"                  __BLOCK::__ zugpassiert für HS"<<std::endl;
+	      emit zugpassiert();//löse zugpassiert aus (hier erst mal Block::zugpassiert, was dann auf HSignal::zugpassiert geht
             }
             if(passiert.at(i).first.at(0) == 'W'){//je nach dem, ob es ein WSignal oder HSignal ist, wird das entsprechende zugpassiert des jeweiligen Objekts aufgerufen
                 emit zugpassiertW();//löse zugpassiert aus (hier erst mal Block::zugpassiert, was dann auf WSignal::zugpassiertW geht

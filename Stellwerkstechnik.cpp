@@ -81,23 +81,27 @@ bool Stellwerkstechnik::getS_pass_status( std::string statusvonSignal ){
   //gebe den status des Signals zurück
   //zunächst den String in int gemäß HSignal/WSignal Benennung umwandeln
     int converted = stoi( statusvonSignal.substr(1,3) );
+    std::cout<<"CONVERTED: "<<converted<<std::endl;
     bool feedback;
       if( HSorWS(statusvonSignal).compare("HS") == 0 ){
         for( unsigned int i = 0 ; i < hsignale.size() ; i++){//Suchen des betreffenden HSignals und Ausgabe des bool
             if( converted == hsignale.at(i).first ){
             feedback = hsignale.at(i).second;
+	    std::cout<<"TEC_FEEDBACK_HSPfad"<<feedback<<std::endl;
             break;
             }
         }
       }
-      if(HSorWS(statusvonSignal).compare("HS") == 0){
+      if(HSorWS(statusvonSignal).compare("WS") == 0){
         for( unsigned int i = 0 ; i < wsignale.size() ; i++){//Suchen des betreffenden WSignals und Ausgabe des bool
             if( converted == wsignale.at(i).first ){
             feedback = wsignale.at(i).second;
-            break;
+	    std::cout<<"TEC_FEEDBACK_WSPfad"<<feedback<<std::endl;
+	    break;
             }
         }
       }
+      std::cout<<"TEC_FEEDBACK:"<<feedback<<std::endl;
   return feedback;
 }
 
