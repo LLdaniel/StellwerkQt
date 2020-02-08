@@ -988,7 +988,7 @@ int main( int argc , char *argv[] ){
         s1.setFahrt(s2ptr);
   }
   if(menue == 14){//Testing wiringPi in the program 
-        wiringPiSetupGpio();
+    wiringPiSetupGpio();//BCM numbering
         //output test
         //int led = 27;//set the right pin
         //pinMode(led,OUTPUT);
