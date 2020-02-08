@@ -186,6 +186,7 @@ int main( int argc , char *argv[] ){
   ww2.addBlockZuH("S002",ww2tos2b);
   s1.addWSignal(ww2ptr,"v");
   s2.addWSignal(ww2ptr,"r");
+  s2.addWSignal(ww1ptr,"r");
   //
   QGraphicsSvgItem *item5 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
   QGraphicsSvgItem *item6 = new QGraphicsSvgItem(":/resources/WShalt.svg");

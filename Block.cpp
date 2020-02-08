@@ -126,7 +126,8 @@ bool Block::evaluateFreigabe(){
 	      emit zugpassiert();//löse zugpassiert aus (hier erst mal Block::zugpassiert, was dann auf HSignal::zugpassiert geht
             }
             if(passiert.at(i).first.at(0) == 'W'){//je nach dem, ob es ein WSignal oder HSignal ist, wird das entsprechende zugpassiert des jeweiligen Objekts aufgerufen
-                emit zugpassiertW();//löse zugpassiert aus (hier erst mal Block::zugpassiert, was dann auf WSignal::zugpassiertW geht
+	      std::cout<<"                  __BLOCK::__ zugpassiert für WS"<<std::endl;
+	      emit zugpassiertW();//löse zugpassiert aus (hier erst mal Block::zugpassiert, was dann auf WSignal::zugpassiertW geht
             }
         }
       }

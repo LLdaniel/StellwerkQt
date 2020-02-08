@@ -104,7 +104,7 @@ void WSignal::setFahrt( WSignal *toZiel ){
   }
 }
 
-void WSignal::setFahrt(std::string toZiel)
+void WSignal::setFahrt(std::string toZiel) // WS to HS
 {
     //bool zur Kontrolle, ob FS freigegeben werden darf
     bool blockfreigabe = true;//verriegelt wäre false-->suche solange es entriegelte Blöcke gibt
@@ -176,11 +176,11 @@ void WSignal::setFahrt(std::string toZiel)
         //Die Schleife für die Namensuche läuft noch fertig
       }
       //WSIGNAL-Status wird jetzt auf Fahrt gesetzt
-      //setZiel( toZiel );
       v_status = true;
       setZiel(toZiel);
       hasHSZiel = true;
       changeColor();
+      std::cout<<"---->emitting refresh stellwerkstec in WSignal"<<std::endl;
       emit refreshStellwerkstechnikW(getV_id(),true);
       //////
      }
