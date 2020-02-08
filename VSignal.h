@@ -26,6 +26,7 @@ class VSignal {
   void showRichtung();
   void deleteRichtung( std::string todeleteStart, std::string todeleteZiel );
   void zugpassiert();//VS fällt auf Halt erwarten und inFS wird auf false gesetzt-->kann neu verwendet werden
+  ~VSignal();
   //
   //+++GUI+++
   void addVSignalitems(QGraphicsSvgItem *signalbild1, QGraphicsSvgItem *signalbild2){fahrt = signalbild1; halt = signalbild2;}

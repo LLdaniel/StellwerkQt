@@ -29,6 +29,7 @@ public:
   //void addcontrolspeicher( bool hs ){ controlspeicher = hs; }
   void deletepassiert();//markiert haspassiert als false und löscht alle passiert Einträge
   bool getHaspassiert(){ return haspassiert; }
+  ~Block();
   //+++GUI+++
   //
   void addBlockitems( QGraphicsRectItem *rect ){ blockitems << rect; }

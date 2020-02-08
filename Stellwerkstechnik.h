@@ -14,6 +14,7 @@ class Stellwerkstechnik : public QObject{
   void show_Signal();
   bool getS_pass_status( std::string statusvonSignal );//gibt S_status von HS zurück
   std::string HSorWS(std::string zutesten);//testet, ob es sich um ein W oder S handelt
+  ~Stellwerkstechnik(){};
 public slots:
   void add_Signal(std::string strid , bool status );
  private:

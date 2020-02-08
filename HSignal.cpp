@@ -810,3 +810,11 @@ void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *item
     speicheritems.second = speicherback;
 
 }
+
+HSignal::~HSignal(){
+  delete fahrt;
+  delete halt;
+  delete rangier;
+  delete beschriftung;
+  delete push;
+}

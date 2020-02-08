@@ -30,6 +30,7 @@ public:
   void deleteFS();//löscht die FS, falls nicht schon was belegt ist
   bool isNachbar(WSignal *toZiel);//testet, ob das Zielsignal ein Nachbarsignal ist -->toZiel sollte natürlich das von SetFahrt sein
   bool isNachbar(std::string toZiel);//testet, ob das Zielsignal ein Nachbarsignal ist -->toZiel sollte natürlich das von SetFahrt sein
+  ~WSignal();
   //+++GUI+++
   void addButtonAndLabel(QLabel *lab, QPushButton *but);
   void moveLabel( int x , int y ){ beschriftung->move(x,y); }

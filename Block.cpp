@@ -87,8 +87,7 @@ void Block::setB_status( bool status ){
     counter = 0;
   }
   counter++;//jede statusänderung wird registriert und entsprechend hochgezählt
-  bool test;
-  test = evaluateFreigabe();//Die Freigeabe (evtl) wird errechnet
+  bool test = evaluateFreigabe();//Die Freigeabe (evtl) wird errechnet
   b_status = status;//Jetzt erst wird der Status gesetzt
   //if(test && controlspeicher){std::cout<<"<--TEST VAR"<<std::endl; emit releaseSpeicher(); }//siehe Anmerkung in Anmerkungsliste HSignal
   changeColor();
@@ -203,3 +202,6 @@ void Block::changeColor(){
 
 }
 
+Block::~Block(){
+  delete technik;
+}

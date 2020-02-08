@@ -19,6 +19,7 @@ class BU{
   //+++GUI+++
   void addBUrect(QGraphicsRectItem *item){ burect = item; }
   void changeColor();
+  ~BU();
  private:
   std::string buname;//Benennung der BÜs mit BU01, BU56
   bool bu_status = true;//true:=offen ; false:=geschlossen

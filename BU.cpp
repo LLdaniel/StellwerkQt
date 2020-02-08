@@ -40,6 +40,10 @@ void BU::changeColor(){
     }
 }
 
+BU::~BU(){
+  delete burect;
+}
+
 //void BU::setFreigabe( bool free ){ --- wird nicht mehr verwendet
   // freigabe = free;
   //}

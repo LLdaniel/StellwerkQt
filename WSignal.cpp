@@ -508,3 +508,8 @@ void WSignal::setZiel(std::string zziel){
         ziel = zziel;
     }
 }
+
+WSignal::~WSignal(){
+  delete beschriftung;
+  delete push;
+}

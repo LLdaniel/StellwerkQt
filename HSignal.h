@@ -48,6 +48,7 @@ class HSignal : public QObject{
   void deleteFS();//löscht die FS, falls nicht schon was belegt ist
   bool isNachbar(HSignal *toZiel);//testet, ob das Zielsignal ein Nachbarsignal ist -->toZiel sollte natürlich das von SetFahrt sein
   bool isNachbar(WSignal *toZiel);//testet, ob das Zielsignal ein Nachbarsignal ist -->toZiel sollte natürlich das von SetFahrt sein
+  ~HSignal();
   //
   //+++GUI+++
   void addHSignalitem(QGraphicsSvgItem *itemfahrt , QGraphicsSvgItem *itemhalt , QGraphicsSvgItem *itemrangier, QLabel *la, QPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront);

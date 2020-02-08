@@ -64,31 +64,34 @@ void Weiche::evaluateVerriegelung(){
 }
 
 void Weiche::changeColor(){
-    if( w_status ){//immer die Stellung mit gelb anzeigen --> hier geradeaus
-        gerade->setBrush(QColor(238,201,0));
-        if(!belegung){
-            abknickend->setBrush(Qt::red);
-        }
-        if(belegung && verriegelung){
-            abknickend->setBrush(Qt::white);
-        }
-        if(belegung && !verriegelung){
-            abknickend->setBrush(QColor(79,79,79));
-        }
+  if( w_status ){//immer die Stellung mit gelb anzeigen --> hier geradeaus
+    gerade->setBrush(QColor(238,201,0));
+    if(!belegung){
+      abknickend->setBrush(Qt::red);
     }
-    if( !w_status ){//immer die Stellung mit gelb anzeigen --> hier abknickend
-        abknickend->setBrush(QColor(238,201,0));
-        if(!belegung){
-            gerade->setBrush(Qt::red);
-        }
-        if(belegung && verriegelung){
-            gerade->setBrush(Qt::white);
-        }
-        if(belegung && !verriegelung){
-            gerade->setBrush(QColor(79,79,79));
-        }
+    if(belegung && verriegelung){
+      abknickend->setBrush(Qt::white);
     }
+    if(belegung && !verriegelung){
+      abknickend->setBrush(QColor(79,79,79));
+    }
+  }
+  if( !w_status ){//immer die Stellung mit gelb anzeigen --> hier abknickend
+    abknickend->setBrush(QColor(238,201,0));
+    if(!belegung){
+      gerade->setBrush(Qt::red);
+    }
+    if(belegung && verriegelung){
+      gerade->setBrush(Qt::white);
+    }
+    if(belegung && !verriegelung){
+      gerade->setBrush(QColor(79,79,79));
+    }
+  }
 }
 
-
-
+Weiche::~Weiche(){
+  delete abknickend;
+  delete gerade;
+  delete beschriftung;
+}

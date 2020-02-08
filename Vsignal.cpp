@@ -101,3 +101,8 @@ void VSignal::changeColor(){
     fahrt->setVisible(false);
   }
 }
+
+VSignal::~VSignal(){
+  delete fahrt;
+  delete halt;
+}
