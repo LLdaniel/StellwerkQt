@@ -666,6 +666,7 @@ int main( int argc , char *argv[] ){
     s1.setFahrt(s3ptr);
     std::cout<<"Richtung §§§ "<<ww1.getRichtung("S001","S003")<<std::endl;
     std::cout<<ww1.isAktFS("S003")<<std::endl;
+    stellwerkstec.show_Signal();
     aa.setB_status(false);
     ab.setB_status(false);
     aa.setB_status(true);
@@ -1044,6 +1045,7 @@ int main( int argc , char *argv[] ){
   }
   if( menue == 17){//HS/WS->WS/HS deleteFS
       s1.setFahrt(ww1ptr);
+      stellwerkstec.show_Signal();
       s1.deleteFS();
       ww2.setFahrt("S002");
       ww2.deleteFS();
