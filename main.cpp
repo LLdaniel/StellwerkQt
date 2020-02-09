@@ -599,23 +599,18 @@ int main( int argc , char *argv[] ){
       QThread* thread = new QThread;
       worker* wrkr = new worker();
       wrkr->moveToThread(thread);
-      //connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
       QObject::connect(thread, SIGNAL(started()), wrkr, SLOT(updateBelegt()));
       QObject::connect(wrkr, SIGNAL(finished()), thread, SLOT(quit()));
-      //connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
-      //connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
       thread->start();
       //thread endet theoretisch auch über wrkr.quit() -> updateBelegt() -> emit finished -> oberer slot
       
       QThread* thread2 = new QThread;
       Spmemory* mem = new Spmemory();
       mem->moveToThread(thread2);
-      //connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
       QObject::connect(thread2, SIGNAL(started()), mem, SLOT(processSpeicher()));
       QObject::connect(mem, SIGNAL(finished()), thread2, SLOT(quit()));
-      //connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
-      //connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
       thread2->start();
+      //mem->quit(); // zu testzwecken
       //thread endet theoretisch auch über mem.quit() -> processSpeicher() -> emit finished -> oberer slot
       
   ///////////////////////////////////////////////////////////////////////////////////////
