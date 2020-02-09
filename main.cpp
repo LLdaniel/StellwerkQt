@@ -99,7 +99,7 @@ int main( int argc , char *argv[] ){
   std::cout<<"***17) Beweis, dass deleteFS auch bei HS/WS->WS/HS klappt ***"<<std::endl;
   std::cout<<"***18) ThreadTest: userInput + Statusänderungen+ Speicher ***"<<std::endl;
   std::cout<<"***19) QueueTest                                          ***"<<std::endl;
-  std::cout<<"***20) leer                                               ***"<<std::endl;
+  std::cout<<"***20) Test für Stellwerkstechnik und WSignale            ***"<<std::endl;
   std::cout<<"*************************************************************"<<std::endl;
   int menue;
   std::cin>>menue;
@@ -1063,6 +1063,15 @@ int main( int argc , char *argv[] ){
       q1->add(s2ptr,s5ptr);
       q1->start();
       //q1->terminate();
+  }
+  if( menue == 20){
+    ww1ptr->setFahrt(ww2ptr);
+    stellwerkstec.show_Signal();
+    aa.setB_status(false);
+    ac.setB_status(false);    
+    //ww1ptr->deleteFS();
+    stellwerkstec.show_Signal();
+    
   }
   //create view
       QGraphicsView *view = new QGraphicsView(scene);
