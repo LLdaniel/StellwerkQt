@@ -44,9 +44,10 @@ void worker::quit(){
 
 void worker::updateBelegt(){
   unsigned int i = 0;
+  int aktuell = -1;
   while( update ){
     //genaue Zuordung muss noch geklärt werden!! hier wäre es aktuell so, dass die pin und blockreihenfolge die zugehörige map ist... at(i) pin --> at(i) block
-    int aktuell = digitalRead(pins.at(i));
+    aktuell = digitalRead(pins.at(i));
     if( aktuell == 0 ){ //read pins false = belegt || true = frei dagegen ist 0 = LOW , 1 = HIGH
       blocklist.at(i)->setB_status(true);
     }
@@ -54,7 +55,7 @@ void worker::updateBelegt(){
       blocklist.at(i)->setB_status(false);
     }
     //gehe weiter in der Liste der Blöcke, und teste die, ansonsten von vorne -- vllt eher mit interrupt
-    if( i < pins.size() or i < blocklist.size() ){
+    if( i < pins.size() ){
       i++;
     }
     else i = 0; //ansonsten: reset

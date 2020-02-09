@@ -79,8 +79,19 @@ int main( int argc , char *argv[] ){
     scene->setBackgroundBrush(Qt::black);
 
     //initialisiere pins als in/out-put + speichere in worker eine Liste von pins
-    // ...
-       
+    // ...    
+    /*
+      QThread* blockthread = new QThread;
+      worker* wrkr = new worker();
+      wrkr->moveToThread(blockthread);
+      //connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
+      connect(blockthread, SIGNAL(started()), worker, SLOT(updateBelegt()));
+      connect(wrkr, SIGNAL(finished()), thread, SLOT(quit()));
+      //connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+      //connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+      thread->start();
+      
+    */
   std::cout<<""<<std::endl;
   std::cout<<"*************************************************************"<<std::endl;
   std::cout<<"***                Testmenü des Stellwerks                ***"<<std::endl;
