@@ -1,5 +1,5 @@
 //*************************************************************************
-//Weiche des Stellwerks  [- SPMEMORY.H -]
+//Weiche des Stellwerks  [- MEMORY.H -]
 //*************************************************************************
 #ifndef SPMEMORY_H
 #define SPMEMORY_H

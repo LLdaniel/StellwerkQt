@@ -20,6 +20,7 @@
 #include "VSignal.h"
 #include "WSignal.h"
 #include "worker.h"
+#include "Spmemory.h"
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
@@ -605,6 +606,18 @@ int main( int argc , char *argv[] ){
       //connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
       thread->start();
       //thread endet theoretisch auch über wrkr.quit() -> updateBelegt() -> emit finished -> oberer slot
+      
+      QThread* thread2 = new QThread;
+      Spmemory* mem = new Spmemory();
+      mem->moveToThread(thread2);
+      //connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
+      QObject::connect(thread2, SIGNAL(started()), mem, SLOT(processSpeicher()));
+      QObject::connect(mem, SIGNAL(finished()), thread2, SLOT(quit()));
+      //connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+      //connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+      thread2->start();
+      //thread endet theoretisch auch über mem.quit() -> processSpeicher() -> emit finished -> oberer slot
+      
   ///////////////////////////////////////////////////////////////////////////////////////
   if(menue == 1){//1) Initialisierungen und grundlegende Methodentests
     s1.showWeichenstatusALL();

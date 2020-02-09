@@ -21,11 +21,13 @@ void memory::quit(){
 
 memory::processSpeicher(){ //versuche ständig die FS zu stellen, irgendwann geht sie ja wieder rein: 1) speicherlist abhandeln 2)evtl Vermerke löschen 3) buffer mitaufnehmen 4) neue Tour 
   unsigned int i = 0;
+  bool success = false;
   while(trySP){
     if( i < speicherlist.size() ){ //1)
-      speicherlist.at(i).first->setFahrt(speicherlist.at(i).second); // Rückgabewert wird notwendig für das stellen...
-      if( true ){ // bei erfolgreichem stellen, merke man sich die position
+      speicherlist.at(i).first->setFahrt(speicherlist.at(i).second); // Rückgabewert wird notwendig für das stellen... success = true
+      if( success ){ // bei erfolgreichem stellen, merke man sich die position
 	deleter.push_back(i);
+	success = false;
       }
     }
     if( i < maxindex ){ //solange noch nicht alle SP der FS erledigt, fahre fort
