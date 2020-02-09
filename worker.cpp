@@ -83,7 +83,7 @@ void worker::updateBelegt(){
     if( i < maxindex ){
       i++;
     }
-    else i = 0; //ansonsten: reset
+    if( i == maxindex) i = 0; //ansonsten: reset
   }
   //falls die schleife zu Ende kommt (entweder keine Einträge, oder quit Aufruf, dann beende den Worker)
   std::cout<<"                           F E R T I S C H "<<std::endl;
