@@ -36,7 +36,8 @@ SOURCES += main.cpp\
     clickmanager.cpp \
     util.cpp \
     myqueue.cpp \
-    worker.cpp
+    worker.cpp \
+    Spmemory.cpp
 
 HEADERS  += mainwindow.h \
     VSignal.h \
@@ -48,7 +49,8 @@ HEADERS  += mainwindow.h \
     Block.h \
     clickmanager.h \
     myqueue.h \
-    worker.h
+    worker.h \
+    Spmemory.h
 
     FORMS    += mainwindow.ui
     RESOURCES+=resources.qrc
