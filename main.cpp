@@ -19,6 +19,7 @@
 #include "HSignal.h"
 #include "VSignal.h"
 #include "WSignal.h"
+#include "worker.h"
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
@@ -27,6 +28,7 @@
 #include <QMenu>
 #include <QAction>
 #include <QMenuBar>
+#include <QThread>
 #include "clickmanager.h"
 #include "util.cpp"
 #ifdef __cplusplus
@@ -38,26 +40,13 @@ extern "C"{
 }
 #endif
 
-//------------------------------------------------------ alte Idee, mal noch nicht verwerfen
-//all pin definitions here
-/*int in=24;
+
 //Stellwerkstechnik+Block as basis
 Stellwerkstechnik stellwerkstec;
 Stellwerkstechnik *stellwerkstecptr = &stellwerkstec;
 Block aa("aa", stellwerkstecptr);
 Block *aaptr = &aa;
-//interrupt definitions each for one pin
-static void interrupt(){//helper Funktion für Interrupts, wegen wiringPiISR()
-    std::cout<<"do interrupt"<<std::endl;
-    bool status;
-    if(digitalRead(in) == HIGH){status = false;}//false = belegt -|- true = frei
-    if(digitalRead(in) == LOW){status = true;}
-    aa.setB_status(status);
-    //muss halt dann vorher definiert werden:
-    //pins, Blöcke und einzelne interrupts
-    }*/
-//etc... meherere interrupts für die einzelnen pins
-//------------------------------------------------------------------------------------------
+
 
 int main( int argc , char *argv[] ){
     //parameter Übergabe
@@ -78,20 +67,7 @@ int main( int argc , char *argv[] ){
     QGraphicsScene *scene = new QGraphicsScene(w);
     scene->setBackgroundBrush(Qt::black);
 
-    //initialisiere pins als in/out-put + speichere in worker eine Liste von pins
-    // ...    
-    /*
-      QThread* blockthread = new QThread;
-      worker* wrkr = new worker();
-      wrkr->moveToThread(blockthread);
-      //connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
-      connect(blockthread, SIGNAL(started()), worker, SLOT(updateBelegt()));
-      connect(wrkr, SIGNAL(finished()), thread, SLOT(quit()));
-      //connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
-      //connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
-      thread->start();
-      
-    */
+    
   std::cout<<""<<std::endl;
   std::cout<<"*************************************************************"<<std::endl;
   std::cout<<"***                Testmenü des Stellwerks                ***"<<std::endl;
@@ -615,6 +591,20 @@ int main( int argc , char *argv[] ){
   QObject::connect(ww1ptr,SIGNAL(listened(WSignal*)),c1,SLOT(recieveFS(WSignal*)) );
   QObject::connect(ww2ptr,SIGNAL(listened(WSignal*)),c1,SLOT(recieveFS(WSignal*)) );
   //:::::::::
+
+
+  /////// Thread start
+  //initialisiere pins als in/out-put + speichere in worker eine Liste von pins
+      QThread* thread = new QThread;
+      worker* wrkr = new worker();
+      wrkr->moveToThread(thread);
+      //connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
+      QObject::connect(thread, SIGNAL(started()), wrkr, SLOT(updateBelegt()));
+      QObject::connect(wrkr, SIGNAL(finished()), thread, SLOT(quit()));
+      //connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+      //connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+      thread->start();
+      //thread endet theoretisch auch über wrkr.quit() -> updateBelegt() -> emit finished -> oberer slot
   ///////////////////////////////////////////////////////////////////////////////////////
   if(menue == 1){//1) Initialisierungen und grundlegende Methodentests
     s1.showWeichenstatusALL();
