@@ -24,6 +24,10 @@ Weiche( int name );//Name wird als int übergeben und später zum string umgebas
   //+++GUI+++
   void addWeichenitem(QGraphicsRectItem *ab , QGraphicsRectItem *ge , QLabel *la);
   void moveLabel( int x , int y ){ beschriftung->move(x,y); }
+  //+++GPIO+++
+  int getGpio( bool linksrechts ); //0 gerade || 1 abknickend
+  void setGpio( int pinGerade, int pinAbknickend );
+  void switchWeiche(bool linksrechts);
 private:
   std::string w_id;//dreistellige Ziffernfolge der Form 068
   bool w_status = true;//true:=gerade ; false:=abknickend
@@ -39,6 +43,9 @@ bool belegung = true;//true:=frei ; false:=belegt
   QLabel *beschriftung = new QLabel();//Beschriftung
   //
   void changeColor();//ändert je nach status, belegung und verriegelung die farbe
+  //+++GPIO+++
+  int pin0 = -1; //initialisiert als -1, wenn also keine Pins zugeordnet sind, funktioniert das programm trotzdem
+  int pin1 = -1;
 };
 #endif
 //Weiche muss umgeschrieben werden: Hardwaretechnisch ist keine Belegtanzeige möglich auf der Weiche (Massebrücke)

@@ -4,6 +4,14 @@
 #include "Weiche.h"
 #include <iostream>
 #include <QFont>
+#ifdef __cplusplus
+extern "C"{
+#endif
+#include <wiringPi.h>
+#include <sr595.h>
+#ifdef __cplusplus
+}
+#endif
 //
 Weiche::Weiche (int name){
   setW_id( name );
@@ -36,6 +44,7 @@ void Weiche::setW_status( bool status ){
   }
   else{//ok, dann ist stellen erlaubt
     w_status = status;
+    switchWeiche(status);
     changeColor();
   }
 }
@@ -94,4 +103,39 @@ Weiche::~Weiche(){
   delete abknickend;
   delete gerade;
   delete beschriftung;
+}
+
+
+int Weiche::getGpio( bool linksrechts ){
+  int aktuellerPin = -1;
+  if(linksrechts){
+    aktuellerPin = pin0;
+  }
+  if(!linksrechts){
+    aktuellerPin = pin1;
+  }
+  return aktuellerPin;
+}
+
+void Weiche::setGpio(int pinGerade, int pinAbknickend){
+  pin0 = pinGerade;
+  pin1 = pinAbknickend;
+}
+
+void Weiche::switchWeiche(bool linksrechts){
+  if(pin0 > 0 and pin1 > 0){//nur wenn beide pins initialisiert sind, soll auch gestellt werden
+    if(linksrechts){
+      digitalWrite(pin0, HIGH);
+      delay(25);//[ms]
+      digitalWrite(pin0, LOW);
+    }
+    if(!linksrechts){
+      digitalWrite(pin1, HIGH);
+      delay(25);//[ms]
+      digitalWrite(pin1, LOW);
+    }
+  }
+  else{
+    std::cout<<"Weiche mit Kennung "<<getW_id()<<" ist nicht als pin initialisiert"<<std::endl;
+  }
 }

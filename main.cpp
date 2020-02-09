@@ -38,8 +38,9 @@ extern "C"{
 }
 #endif
 
+//------------------------------------------------------ alte Idee, mal noch nicht verwerfen
 //all pin definitions here
-int in=24;
+/*int in=24;
 //Stellwerkstechnik+Block as basis
 Stellwerkstechnik stellwerkstec;
 Stellwerkstechnik *stellwerkstecptr = &stellwerkstec;
@@ -54,8 +55,9 @@ static void interrupt(){//helper Funktion für Interrupts, wegen wiringPiISR()
     aa.setB_status(status);
     //muss halt dann vorher definiert werden:
     //pins, Blöcke und einzelne interrupts
-}
+    }*/
 //etc... meherere interrupts für die einzelnen pins
+//------------------------------------------------------------------------------------------
 
 int main( int argc , char *argv[] ){
     //parameter Übergabe
@@ -75,7 +77,9 @@ int main( int argc , char *argv[] ){
     //create scene
     QGraphicsScene *scene = new QGraphicsScene(w);
     scene->setBackgroundBrush(Qt::black);
-    
+
+    //initialisiere pins als in/out-put + speichere in worker eine Liste von pins
+    // ...
        
   std::cout<<""<<std::endl;
   std::cout<<"*************************************************************"<<std::endl;
