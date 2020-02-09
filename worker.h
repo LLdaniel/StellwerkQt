@@ -7,6 +7,7 @@ class worker : public QObject{// Vorbild nach https://mayaposch.wordpress.com/20
   Q_OBJECT
 public:
   worker( std::vector<std::pair<int,Block*>> allBlocks, std::vector<std::pair<int,Weiche*>> allWeichen );
+  worker(){}
   ~worker();
   void addBlockList( int morePins, Block* moreBlocks );
   void showBlocks();
