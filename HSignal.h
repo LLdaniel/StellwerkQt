@@ -19,7 +19,7 @@ class HSignal : public QObject{
   HSignal( int name);
   void setS_id( int name );
   std::string getS_id(){ return s_id; }
-  void setFahrt( HSignal *toZiel );
+  bool setFahrt( HSignal *toZiel );  //Sonderstatus Rückgabewert: HS->HS kann gespeichert werden, zum löschen des Spmemory ist es wichtig zu wissen, ob es geklappt hat
   void setFahrt( WSignal *toZiel );
   bool getS_status(){ return s_status; }
   std::string getZiel(){ return ziel; }
@@ -43,6 +43,7 @@ class HSignal : public QObject{
   void setSpeicher( bool sp ){ speicher = sp; emit illuminateSpeicher(sp, this->getSpeicherziel()->getS_id() );}
   HSignal* getSpeicherziel(){ return speicherziel; }
   bool getSpeicher(){ return speicher; }
+  std::pair<QGraphicsRectItem*,QGraphicsRectItem*> getspeicheritems() { return speicheritems; }
   void setZiel( std::string zziel );//Setzt das ziel, je nach dem, ob es ein W oder S ist
   void setfromHS( HSignal* from ){ fromHS = from; }
   void deleteFS();//löscht die FS, falls nicht schon was belegt ist
@@ -59,6 +60,7 @@ class HSignal : public QObject{
   void refreshStellwerkstechnik( std::string sig , bool stat );
   void listened( HSignal *clickedHS);
   void illuminateSpeicher(bool sp, std::string str);
+  void callspmemory(HSignal *s1, HSignal *s2); // connect to spmemory object slot						   
 public slots:
   void zugpassiert();//Wenn der Zug das HSignal überfahren hat, fällt es auf Halt + entriegeln der VS + entriegeln der WS ------------------------------------muss noch
   void listenToFS(); //es wird nach click events Ausschau gehalten --> Umwandlung als setFahrt Befehl

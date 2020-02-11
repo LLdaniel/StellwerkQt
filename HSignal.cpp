@@ -4,7 +4,7 @@
 #include "HSignal.h"
 #include <iostream>
 
-HSignal::HSignal(int name ){
+HSignal::HSignal(int name){
   setS_id( name );
 }
 
@@ -306,118 +306,123 @@ bool HSignal::isNachbar(WSignal *toZiel){
 }
 
 
-void HSignal::setFahrt( HSignal *toZiel ){
+bool HSignal::setFahrt( HSignal *toZiel ){
+  bool erfolg = false; //Rückgabewert vorbereiten
   //bool zur Kontrolle, ob FS freigegeben werden darf
   bool blockfreigabe = true;//verriegelt wäre false-->suche solange es entriegelte Blöcke gibt
   bool blockkontrolle = true;//belegt wäre false-->suche solange es freie Blöcke gibt
   bool weichenverr = false;//verriegelt wäre true-->suche solange es entriegelte Weichen gibt
   bool weichenkontrolle = true;//belegt wäre false-->suche solange es freie Blöcke gibt
   if( getS_id().compare(toZiel->getS_id() ) != 0 && isNachbar(toZiel) ){//prüfe, ob Zielsignal Nachbar ist und ob Zielsignal nicht das selbe Signal ist wie das Startsignal
-  //::::Blockgeschichte ==========================
-  for( unsigned int i = 0 ; i < block.size() ; i++ ){//durchlaufe den Blockstatus
-    if( block.at(i).first.compare( toZiel->getS_id() ) == 0 ){//Wenn das Zielsignal im Blockstatus gefunden ist
-      for( unsigned int j = 0 ; j < block.at(i).second.size() ; j++ ){//durchlaufe alle relevanten blöcke
-    if( !block.at(i).second.at(j)->getB_status() ){//betrachte alle Belegtstatus [falls belegt]
-      blockkontrolle = false;//flag auf false setzten
-      std::cout<<"öööööö::Folgender Block ist noch belegt"<<block.at(i).second.at(j)->getName()<<std::endl;
-      break;
-    }
-    if( !block.at(i).second.at(j)->getFreigabe() ){//betrachte alle Belegtstatus [falls verriegelt]
-      blockfreigabe = false;//flag auf false setzen
-      break;
-    }
-    //wenn die Schleife komplett durchlaufen wird, dann stehen blockfreigabe und blockkontrolle auf = true -->also nichts belegt oder verriegelt
+    //::::Blockgeschichte ==========================
+    for( unsigned int i = 0 ; i < block.size() ; i++ ){//durchlaufe den Blockstatus
+      if( block.at(i).first.compare( toZiel->getS_id() ) == 0 ){//Wenn das Zielsignal im Blockstatus gefunden ist
+	for( unsigned int j = 0 ; j < block.at(i).second.size() ; j++ ){//durchlaufe alle relevanten blöcke
+	  if( !block.at(i).second.at(j)->getB_status() ){//betrachte alle Belegtstatus [falls belegt]
+	    blockkontrolle = false;//flag auf false setzten
+	    std::cout<<"öööööö::Folgender Block ist noch belegt"<<block.at(i).second.at(j)->getName()<<std::endl;
+	    break;
+	  }
+	  if( !block.at(i).second.at(j)->getFreigabe() ){//betrachte alle Belegtstatus [falls verriegelt]
+	    blockfreigabe = false;//flag auf false setzen
+	    break;
+	  }
+	  //wenn die Schleife komplett durchlaufen wird, dann stehen blockfreigabe und blockkontrolle auf = true -->also nichts belegt oder verriegelt
+	}
       }
+      //Die Schleife für die Namensuche läuft noch fertig
+      //else blockkontrolle = false;//Sicherung, dass nicht das Signal sich selbst als Ziel hat
     }
-    //Die Schleife für die Namensuche läuft noch fertig
-    //else blockkontrolle = false;//Sicherung, dass nicht das Signal sich selbst als Ziel hat
-  }
-  //::::Weichengeschichte ========================
-  for( unsigned int k = 0 ; k < weichenstatus.size() ; k++ ){//durchlaufe weichenstatus
-    if( weichenstatus.at(k).first.compare( toZiel->getS_id() ) == 0 ){//Wenn das Zielsignal im Weichenstatus gefunden ist
-      for( unsigned int l = 0 ; l < weichenstatus.at(k).second.size() ; l++ ){//durchlaufe alle relevanten Weichen
-    if( !weichenstatus.at(k).second.at(l).first->getBelegung() ){//betrachte alle Belegtstatus [falls belegt]
-      weichenkontrolle = false;//flag auf false setzen
-      break;
-    }
-    if( weichenstatus.at(k).second.at(l).first->getVerriegelung() ){//betrachte Verriegelung [falls verriegelt = true]
-      weichenverr = true;//flag auf true setzen-->hier ist was verriegeltes
-      break;
-    }
-      }
-      //wenn Loop komplett durchlaufen, dann stehen die Weichnfreigabe und weichenverr so, dass eine FS gestellt werden darf
-    }
-    //Die Schleife für die Namensuche läuft noch fertig
-  }
-  //::::Erlaubnisabgleich =======================
-  bool blockgeschichte = false;//komplette Freigabe Block möglich?
-  bool weichengeschichte = false;//komplett Freigabe Weichen möglich?
-  blockgeschichte = blockkontrolle && blockfreigabe;//blockgeschichte = true --> Erlaubnis
-  weichengeschichte = weichenkontrolle && !weichenverr;//weichengeschichte = true --> erlaubnis
-  //::::Das eigentliche Stellen =================
-  std::cout<<"___::INFO::___ HSignal::Erlaubnis von SetFahrt: blockkontrolle und weichenkontrolle "<<blockgeschichte<<" | "<<weichengeschichte<<" = blockkontr & blockfreig"<<blockkontrolle<<" "<<blockfreigabe<<std::endl;
-  if( blockgeschichte && weichengeschichte ){//Erlaubnis ist gegeben-->Stellen
-    //BLOCK
-    for( unsigned int m = 0 ; m < block.size() ; m++ ){//durchlaufe den Blockstatus
-      if( block.at(m).first.compare( toZiel->getS_id() ) == 0 ){//Wenn das Zielsignal im Blockstatus gefunden ist
-    for( unsigned int n = 0 ; n < block.at(m).second.size() ; n++ ){//durchlaufe alle relevanten blöcke
-      block.at(m).second.at(n)->setFreigabe( false );//Verriegeln des Blocks
-      //jetzt sind alle Blöcke der FS reserviert
-    }
+    //::::Weichengeschichte ========================
+    for( unsigned int k = 0 ; k < weichenstatus.size() ; k++ ){//durchlaufe weichenstatus
+      if( weichenstatus.at(k).first.compare( toZiel->getS_id() ) == 0 ){//Wenn das Zielsignal im Weichenstatus gefunden ist
+	for( unsigned int l = 0 ; l < weichenstatus.at(k).second.size() ; l++ ){//durchlaufe alle relevanten Weichen
+	  if( !weichenstatus.at(k).second.at(l).first->getBelegung() ){//betrachte alle Belegtstatus [falls belegt]
+	    weichenkontrolle = false;//flag auf false setzen
+	    break;
+	  }
+	  if( weichenstatus.at(k).second.at(l).first->getVerriegelung() ){//betrachte Verriegelung [falls verriegelt = true]
+	    weichenverr = true;//flag auf true setzen-->hier ist was verriegeltes
+	    break;
+	  }
+	}
+	//wenn Loop komplett durchlaufen, dann stehen die Weichnfreigabe und weichenverr so, dass eine FS gestellt werden darf
       }
       //Die Schleife für die Namensuche läuft noch fertig
     }
-    //WEICHEN
-    for( unsigned int o = 0 ; o < weichenstatus.size() ; o++ ){//durchlaufe weichenstatus
-      if( weichenstatus.at(o).first.compare( toZiel->getS_id() ) == 0 ){//Wenn das Zielsignal im Weichenstatus gefunden ist
-    for( unsigned int p = 0 ; p < weichenstatus.at(o).second.size() ; p++ ){//durchlaufe alle relevanten Weichen
-      weichenstatus.at(o).second.at(p).first->setW_status(weichenstatus.at(o).second.at(p).second);//setze die Weiche für die betreffende FS auf den Sollwert
-      weichenstatus.at(o).second.at(p).first->setVerriegelung( true );//und setzen der Verriegelung, weil nun die FS besteht
-    }
-    //jetzt sind auch die Weichen gestellt und reserviert
+    //::::Erlaubnisabgleich =======================
+    bool blockgeschichte = false;//komplette Freigabe Block möglich?
+    bool weichengeschichte = false;//komplett Freigabe Weichen möglich?
+    blockgeschichte = blockkontrolle && blockfreigabe;//blockgeschichte = true --> Erlaubnis
+    weichengeschichte = weichenkontrolle && !weichenverr;//weichengeschichte = true --> erlaubnis
+    //::::Das eigentliche Stellen =================
+    std::cout<<"___::INFO::___ HSignal::Erlaubnis von SetFahrt: blockkontrolle und weichenkontrolle "<<blockgeschichte<<" | "<<weichengeschichte<<" = blockkontr & blockfreig"<<blockkontrolle<<" "<<blockfreigabe<<std::endl;
+    if( blockgeschichte && weichengeschichte ){//Erlaubnis ist gegeben-->Stellen
+      //BLOCK
+      for( unsigned int m = 0 ; m < block.size() ; m++ ){//durchlaufe den Blockstatus
+	if( block.at(m).first.compare( toZiel->getS_id() ) == 0 ){//Wenn das Zielsignal im Blockstatus gefunden ist
+	  for( unsigned int n = 0 ; n < block.at(m).second.size() ; n++ ){//durchlaufe alle relevanten blöcke
+	    block.at(m).second.at(n)->setFreigabe( false );//Verriegeln des Blocks
+	    //jetzt sind alle Blöcke der FS reserviert
+	  }
+	}
+	//Die Schleife für die Namensuche läuft noch fertig
       }
-      //Die Schleife für die Namensuche läuft noch fertig
-    }
-    //WSIGNALE - alle bis zum nächsten Ziel werden auf Fahrt gestellt [vor]
-    for( unsigned int z = 0; z < wsignaleV.size(); z++){
-        if( wsignaleV.at(z)->getRichtung( getS_id(), toZiel->getS_id() ) >= 0 ){//wenn es genau diese Richtung gibt, involviere es in die FS stelle es auf Fahrt
-          wsignaleV.at(z)->setinFS( true , getS_id() , toZiel->getS_id() );
-          wsignaleV.at(z)->setV_status( true );
-        }
-    }
-    //VSIGNALE - alle vorwärts VS als inFS markieren und schon mal Ziel Signal vorsignalisieren!
-    for( unsigned int i = 0 ; i < vorsignalV.size() ; i++ ){//durchlaufe alle möglich involvierten VS
-      if( vorsignalV.at(i)->getRichtung( getS_id(), toZiel->getS_id() ) >= 0 ){//wenn es genau diese Richtung gibt, involviere es in die FS und signalisiere den aktuellen Stand des Zielsignals
-        vorsignalV.at(i)->setinFS( true , getS_id() , toZiel->getS_id() );
-        vorsignalV.at(i)->setV_status( toZiel->getS_status() );
+      //WEICHEN
+      for( unsigned int o = 0 ; o < weichenstatus.size() ; o++ ){//durchlaufe weichenstatus
+	if( weichenstatus.at(o).first.compare( toZiel->getS_id() ) == 0 ){//Wenn das Zielsignal im Weichenstatus gefunden ist
+	  for( unsigned int p = 0 ; p < weichenstatus.at(o).second.size() ; p++ ){//durchlaufe alle relevanten Weichen
+	    weichenstatus.at(o).second.at(p).first->setW_status(weichenstatus.at(o).second.at(p).second);//setze die Weiche für die betreffende FS auf den Sollwert
+	    weichenstatus.at(o).second.at(p).first->setVerriegelung( true );//und setzen der Verriegelung, weil nun die FS besteht
+	  }
+	  //jetzt sind auch die Weichen gestellt und reserviert
+	}
+	//Die Schleife für die Namensuche läuft noch fertig
       }
-    }
-    //HSIGNAL-Status wird jetzt auf Fahrt gesetzt
-    setZiel( toZiel->getS_id() );
-    toZiel->setfromHS(this);
-    s_status = true;
-    hasHSZiel = true;
-    changeColor();
-    emit refreshStellwerkstechnik( getS_id() , true );//Liste in Stellwerksim aktualiesieren
-    //VSIGNALE - jetzt kann auch noch evtl VS auf Fahrt erwarten gehen-->rückwirkend
-    for( unsigned int i = 0 ; i < vorsignalR.size() ; i++ ){//durchlaufe alle VS rückwirkend und finde genau das VS, bei dem die aktuelle Richtung vorliegt und inFS true ist -->stelle das entsprechend auf Fahrt erwarten
-      std::cout<<"in v rück for schleife"<<std::endl;
-      if(vorsignalR.at(i)->getinFS() && vorsignalR.at(i)->isAktFS( getS_id() ) ){//finde das richtige VS
-    std::cout<<"setzte VS auf true ..."<<std::endl;
-    vorsignalR.at(i)->setV_status( true );
+      //WSIGNALE - alle bis zum nächsten Ziel werden auf Fahrt gestellt [vor]
+      for( unsigned int z = 0; z < wsignaleV.size(); z++){
+	if( wsignaleV.at(z)->getRichtung( getS_id(), toZiel->getS_id() ) >= 0 ){//wenn es genau diese Richtung gibt, involviere es in die FS stelle es auf Fahrt
+	  wsignaleV.at(z)->setinFS( true , getS_id() , toZiel->getS_id() );
+	  wsignaleV.at(z)->setV_status( true );
+	}
       }
+      //VSIGNALE - alle vorwärts VS als inFS markieren und schon mal Ziel Signal vorsignalisieren!
+      for( unsigned int i = 0 ; i < vorsignalV.size() ; i++ ){//durchlaufe alle möglich involvierten VS
+	if( vorsignalV.at(i)->getRichtung( getS_id(), toZiel->getS_id() ) >= 0 ){//wenn es genau diese Richtung gibt, involviere es in die FS und signalisiere den aktuellen Stand des Zielsignals
+	  vorsignalV.at(i)->setinFS( true , getS_id() , toZiel->getS_id() );
+	  vorsignalV.at(i)->setV_status( toZiel->getS_status() );
+	}
+      }
+      //HSIGNAL-Status wird jetzt auf Fahrt gesetzt
+      setZiel( toZiel->getS_id() );
+      toZiel->setfromHS(this);
+      s_status = true;
+      hasHSZiel = true;
+      changeColor();
+      emit refreshStellwerkstechnik( getS_id() , true );//Liste in Stellwerksim aktualiesieren
+      //VSIGNALE - jetzt kann auch noch evtl VS auf Fahrt erwarten gehen-->rückwirkend
+      for( unsigned int i = 0 ; i < vorsignalR.size() ; i++ ){//durchlaufe alle VS rückwirkend und finde genau das VS, bei dem die aktuelle Richtung vorliegt und inFS true ist -->stelle das entsprechend auf Fahrt erwarten
+	std::cout<<"in v rück for schleife"<<std::endl;
+	if(vorsignalR.at(i)->getinFS() && vorsignalR.at(i)->isAktFS( getS_id() ) ){//finde das richtige VS
+	  std::cout<<"setzte VS auf true ..."<<std::endl;
+	  vorsignalR.at(i)->setV_status( true );
+	}
+      }
+      //////
+      erfolg = true;  // Rückgabe Wert auf erfolgreiches stellen!
     }
-    //////
-  }
-  //else, zwar isNachbar == true, aber keine Erlaubnis -->setSpeicher
-  else{
+    //else, zwar isNachbar == true, aber keine Erlaubnis -->setSpeicher
+    else{
       speicher = true;
       speicherziel = toZiel;
       emit illuminateSpeicher(true,toZiel->getS_id());
       speicheritems.first->setBrush(Qt::yellow);
       std::cout<<"emitting speicher..."<<std::endl;
-      }
+      emit callspmemory(this, toZiel);
+      erfolg = false; //Rückgabe Wert auf erfolgreiches stellen false
+    }
   }
+  return erfolg;
 }
 
 

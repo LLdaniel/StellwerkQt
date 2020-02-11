@@ -12,13 +12,14 @@ class Spmemory : public QObject{
 public:
   Spmemory(){}
   ~Spmemory(){}
-  void addFS( HSignal *SPstart, HSignal *SPziel);
   void showSP();
 public slots:
   void processSpeicher();
   void quit();
 signals:
   void finished();
+public slots:
+  void addFS( HSignal *SPstart, HSignal *SPziel);
 private:
   QList<std::pair<HSignal*,HSignal*>> speicherlist;
   QList<std::pair<HSignal*,HSignal*>> buffer;

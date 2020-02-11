@@ -129,6 +129,7 @@ int main( int argc , char *argv[] ){
   v2.setRichtung("S002","S005");
   v3.setRichtung("S003","S004");
   //:::HS:::
+  Spmemory* mem = new Spmemory();
   HSignal s1(1);
   HSignal *s1ptr = &s1;
   HSignal s2(2);
@@ -266,6 +267,17 @@ int main( int argc , char *argv[] ){
   ae.addpassiert(s2.getS_id(),acptr);
   ae.addpassiert(ww2.getV_id(),acptr);
   ac.addpassiert(ww1.getV_id(),aaptr);
+  //spmemory connection (new QT5 syntax, da non string arguments possible
+  QObject::connect(&s1, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
+  QObject::connect(&s2, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
+  QObject::connect(&s3, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
+  QObject::connect(&s4, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
+  QObject::connect(&s5, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
+  //connect(
+  // sender, &Sender::valueChanged,
+  // receiver, &Receiver::updateValue
+  //);
+
   //
   //GUI Attribute - Testgleisplan
   QGraphicsRectItem *aarect = new QGraphicsRectItem();
@@ -605,7 +617,7 @@ int main( int argc , char *argv[] ){
       //thread endet theoretisch auch über wrkr.quit() -> updateBelegt() -> emit finished -> oberer slot
       
       QThread* thread2 = new QThread;
-      Spmemory* mem = new Spmemory();
+      //Spmemory* mem = new Spmemory(); -->muss viel vorher, also vor der HS initialisierung passieren, sonst kann es das nicht geben (s. weiter oben also)
       mem->moveToThread(thread2);
       QObject::connect(thread2, SIGNAL(started()), mem, SLOT(processSpeicher()));
       QObject::connect(mem, SIGNAL(finished()), thread2, SLOT(quit()));
@@ -986,7 +998,7 @@ int main( int argc , char *argv[] ){
         //QObject::connect(&ac,SIGNAL(releaseSpeicher()),&s2,SLOT(processSpeicher()) );//in eine zeile drunter verpacken, dann ist es auch schon wieder weniger arbeit
         //ac.addcontrolspeicher(true);
         s1.setFahrt(s2ptr);
-        s1.setFahrt(s2ptr);
+        s1.setFahrt(s3ptr);
         aa.setB_status(false);
         w1.setBelegung(false);
         s1.zugpassiert();
@@ -998,9 +1010,12 @@ int main( int argc , char *argv[] ){
         ac.setB_status(true);
         std::cout<<"aa "<<aa.getB_status()<<std::endl;
         std::cout<<"ac "<<ac.getB_status()<<std::endl;
-        //s3.showBlockALL();
-        s1.setSpeicher(false);
-        s1.setFahrt(s2ptr);
+	mem->addFS(s1ptr, s3ptr);
+	//s3.showBlockALL();
+        //s1.setSpeicher(false);
+        //s1.setFahrt(s2ptr);
+	//for (int l = 0; l < 1025861; l++){ l++;}
+	mem->quit();
   }
   if(menue == 14){//Testing wiringPi in the program 
     wiringPiSetupGpio();//BCM numbering
