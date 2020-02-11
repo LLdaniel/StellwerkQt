@@ -25,6 +25,7 @@ void Spmemory::processSpeicher(){ //versuche ständig die FS zu stellen, irgendw
   int i = 0;
   bool delit = false; //true = erfolgreich gestellt, kann aus der Liste gelöscht werden
   while(trySP){
+    //std::cout<<" ich arbeite was..."<<std::endl;
     if( i < speicherlist.size() and !speicherlist.isEmpty() ){ //1)
       delit = speicherlist.at(i).first->setFahrt(speicherlist.at(i).second); // Rückgabewert wird notwendig für das stellen...
       std::cout<<" ich probiere zu stellen"<<std::endl;
@@ -47,11 +48,11 @@ void Spmemory::processSpeicher(){ //versuche ständig die FS zu stellen, irgendw
       deleter.clear(); //resette den deleter für die nächste Tour
       //3) lade buffer
       std::cout<<" vor schritt 3) ende"<<std::endl;
-      QMutex mutex; //erstelle einen mutex, nicht dass in dem Moment der Buffer geändert wird...
-      mutex.lock();                     // ---
+      //QMutex mutex; //erstelle einen mutex, nicht dass in dem Moment der Buffer geändert wird...
+      //mutex.lock();                     // ---
       speicherlist.append(buffer);      //   |  gesichert
       buffer.clear();                   //   |
-      mutex.unlock();                   // ---
+      //mutex.unlock();                   // ---
       std::cout<<" schritt 3) ende"<<std::endl;
     }
   }

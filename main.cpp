@@ -129,7 +129,6 @@ int main( int argc , char *argv[] ){
   v2.setRichtung("S002","S005");
   v3.setRichtung("S003","S004");
   //:::HS:::
-  Spmemory* mem = new Spmemory();
   HSignal s1(1);
   HSignal *s1ptr = &s1;
   HSignal s2(2);
@@ -267,12 +266,6 @@ int main( int argc , char *argv[] ){
   ae.addpassiert(s2.getS_id(),acptr);
   ae.addpassiert(ww2.getV_id(),acptr);
   ac.addpassiert(ww1.getV_id(),aaptr);
-  //spmemory connection (new QT5 syntax, da non string arguments possible
-  QObject::connect(&s1, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
-  QObject::connect(&s2, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
-  QObject::connect(&s3, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
-  QObject::connect(&s4, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
-  QObject::connect(&s5, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
   //connect(
   // sender, &Sender::valueChanged,
   // receiver, &Receiver::updateValue
@@ -608,23 +601,33 @@ int main( int argc , char *argv[] ){
 
   /////// Thread start
   //initialisiere pins als in/out-put + speichere in worker eine Liste von pins
-      QThread* thread = new QThread;
-      worker* wrkr = new worker();
-      wrkr->moveToThread(thread);
-      QObject::connect(thread, SIGNAL(started()), wrkr, SLOT(updateBelegt()));
-      QObject::connect(wrkr, SIGNAL(finished()), thread, SLOT(quit()));
-      thread->start();
-      //thread endet theoretisch auch über wrkr.quit() -> updateBelegt() -> emit finished -> oberer slot
+  QThread* thread = new QThread;
+  worker* wrkr = new worker();
+  wrkr->moveToThread(thread);
+  QObject::connect(thread, SIGNAL(started()), wrkr, SLOT(updateBelegt()));
+  QObject::connect(wrkr, SIGNAL(finished()), thread, SLOT(quit()));
+  thread->start();
+  //thread endet theoretisch auch über wrkr.quit() -> updateBelegt() -> emit finished -> oberer slot
       
-      QThread* thread2 = new QThread;
-      //Spmemory* mem = new Spmemory(); -->muss viel vorher, also vor der HS initialisierung passieren, sonst kann es das nicht geben (s. weiter oben also)
-      mem->moveToThread(thread2);
-      QObject::connect(thread2, SIGNAL(started()), mem, SLOT(processSpeicher()));
-      QObject::connect(mem, SIGNAL(finished()), thread2, SLOT(quit()));
-      thread2->start();
-      //mem->quit(); // zu testzwecken
-      //thread endet theoretisch auch über mem.quit() -> processSpeicher() -> emit finished -> oberer slot
-      
+  QThread* thread2 = new QThread;
+  Spmemory *mem = new Spmemory();
+  //Spmemory* mem = new Spmemory(); -->muss viel vorher, also vor der HS initialisierung passieren, sonst kann es das nicht geben (s. weiter oben also)
+  mem->moveToThread(thread2); //erst thread affinity -> also erst movetothread, dann connections
+  QObject::connect(thread2, SIGNAL(started()), mem, SLOT(processSpeicher()));
+  QObject::connect(mem, SIGNAL(finished()), thread2, SLOT(quit()));
+  //spmemory connection 
+  bool habsgetestet = false;
+  
+  //habsgetestet = QObject::connect(&s1, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ), Qt::AutoConnection);
+  std::cout<<" HABS GETESTET = "<<habsgetestet<<std::endl;
+  //QObject::connect(&s2, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
+  //QObject::connect(&s3, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
+  //QObject::connect(&s4, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
+  //QObject::connect(&s5, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
+  thread2->start();
+  //mem->quit(); // zu testzwecken
+  //thread endet theoretisch auch über mem.quit() -> processSpeicher() -> emit finished -> oberer slot
+  
   ///////////////////////////////////////////////////////////////////////////////////////
   if(menue == 1){//1) Initialisierungen und grundlegende Methodentests
     s1.showWeichenstatusALL();
@@ -1010,12 +1013,12 @@ int main( int argc , char *argv[] ){
         ac.setB_status(true);
         std::cout<<"aa "<<aa.getB_status()<<std::endl;
         std::cout<<"ac "<<ac.getB_status()<<std::endl;
-	mem->addFS(s1ptr, s3ptr);
+	//mem->addFS(s1ptr, s3ptr);
 	//s3.showBlockALL();
         //s1.setSpeicher(false);
         //s1.setFahrt(s2ptr);
-	//for (int l = 0; l < 1025861; l++){ l++;}
-	mem->quit();
+	//for (int l = 0; l < 1025861; l++){ std::cout<<".";}
+	//mem->quit();
   }
   if(menue == 14){//Testing wiringPi in the program 
     wiringPiSetupGpio();//BCM numbering
