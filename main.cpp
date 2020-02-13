@@ -30,6 +30,7 @@
 #include <QAction>
 #include <QMenuBar>
 #include <QThread>
+#include <QtGlobal> // for QOverload
 #include "clickmanager.h"
 #include "util.cpp"
 #ifdef __cplusplus
@@ -250,7 +251,19 @@ int main( int argc , char *argv[] ){
   bu1ptr->addBUrect(bue);
   aa.addBus( bu1ptr );
   //signals and slots
-  QObject::connect(&s1,SIGNAL(refreshStellwerkstechnik(std::string,bool)),&stellwerkstec,SLOT(add_Signal(std::string , bool) ));
+
+  QObject::connect(&s1,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal, Qt::DirectConnection);
+  QObject::connect(&s2,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal, Qt::DirectConnection);
+  QObject::connect(&s3,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal, Qt::DirectConnection);
+  QObject::connect(&s4,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal, Qt::DirectConnection);
+  QObject::connect(&s5,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal, Qt::DirectConnection);
+  QObject::connect(&ww1,&WSignal::refreshStellwerkstechnikW,&stellwerkstec,&Stellwerkstechnik::add_Signal, Qt::DirectConnection);
+  QObject::connect(&ww2,&WSignal::refreshStellwerkstechnikW,&stellwerkstec,&Stellwerkstechnik::add_Signal, Qt::DirectConnection);
+  QObject::connect(&ad,&Block::zugpassiert,&s3,&HSignal::zugpassiert, Qt::DirectConnection);
+  QObject::connect(&ae,&Block::zugpassiert,&s2,&HSignal::zugpassiert, Qt::DirectConnection);
+  QObject::connect(&ae,&Block::zugpassiertW,&ww2,&WSignal::zugpassiertW, Qt::DirectConnection);
+  QObject::connect(&ac,&Block::zugpassiertW,&ww1,&WSignal::zugpassiertW, Qt::DirectConnection);
+  /*QObject::connect(&s1,SIGNAL(refreshStellwerkstechnik(std::string,bool)),&stellwerkstec,SLOT(add_Signal(std::string , bool) ));
   QObject::connect(&s2,SIGNAL(refreshStellwerkstechnik(std::string,bool)),&stellwerkstec,SLOT(add_Signal(std::string , bool) ));
   QObject::connect(&s3,SIGNAL(refreshStellwerkstechnik(std::string,bool)),&stellwerkstec,SLOT(add_Signal(std::string , bool) ));
   QObject::connect(&s4,SIGNAL(refreshStellwerkstechnik(std::string,bool)),&stellwerkstec,SLOT(add_Signal(std::string , bool) ));
@@ -261,6 +274,7 @@ int main( int argc , char *argv[] ){
   QObject::connect(&ae,SIGNAL(zugpassiert()),&s2,SLOT(zugpassiert()) );
   QObject::connect(&ae,SIGNAL(zugpassiertW()),&ww2,SLOT(zugpassiertW()) );
   QObject::connect(&ac,SIGNAL(zugpassiertW()),&ww1,SLOT(zugpassiertW()) );
+  */
   //Hier wird das Grenzsignal übergeben
   ad.addpassiert(s3.getS_id(),abptr);
   ae.addpassiert(s2.getS_id(),acptr);
@@ -588,14 +602,14 @@ int main( int argc , char *argv[] ){
 
   //QPushButtonPart
   clickmanager *c1 = new clickmanager;
-  QObject::connect(s1ptr,SIGNAL(listened(HSignal*)),c1,SLOT(recieveFS(HSignal*)) );
-  QObject::connect(s2ptr,SIGNAL(listened(HSignal*)),c1,SLOT(recieveFS(HSignal*)) );
-  QObject::connect(s3ptr,SIGNAL(listened(HSignal*)),c1,SLOT(recieveFS(HSignal*)) );
-  QObject::connect(s4ptr,SIGNAL(listened(HSignal*)),c1,SLOT(recieveFS(HSignal*)) );
-  QObject::connect(s5ptr,SIGNAL(listened(HSignal*)),c1,SLOT(recieveFS(HSignal*)) );
+  QObject::connect(&s1,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS), Qt::DirectConnection ); //QOverload wegen zeideutigkeit von recieveFS; C++11, C++14 qOverload<>
+  QObject::connect(&s2,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS), Qt::DirectConnection );
+  QObject::connect(&s3,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS), Qt::DirectConnection );
+  QObject::connect(&s4,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS), Qt::DirectConnection );
+  QObject::connect(&s5,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS), Qt::DirectConnection );
   //ebenfalls für WSignal
-  QObject::connect(ww1ptr,SIGNAL(listened(WSignal*)),c1,SLOT(recieveFS(WSignal*)) );
-  QObject::connect(ww2ptr,SIGNAL(listened(WSignal*)),c1,SLOT(recieveFS(WSignal*)) );
+  QObject::connect(&ww1,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS),Qt::DirectConnection );
+  QObject::connect(&ww2,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS),Qt::DirectConnection );
   //:::::::::
 
 
@@ -604,27 +618,26 @@ int main( int argc , char *argv[] ){
   QThread* thread = new QThread;
   worker* wrkr = new worker();
   wrkr->moveToThread(thread);
-  QObject::connect(thread, SIGNAL(started()), wrkr, SLOT(updateBelegt()));
-  QObject::connect(wrkr, SIGNAL(finished()), thread, SLOT(quit()));
+  QObject::connect(thread, &QThread::started, wrkr, &worker::updateBelegt, Qt::QueuedConnection);
+  QObject::connect(wrkr, &worker::finished, thread, &QThread::quit, Qt::QueuedConnection);
   thread->start();
   //thread endet theoretisch auch über wrkr.quit() -> updateBelegt() -> emit finished -> oberer slot
       
   QThread* thread2 = new QThread;
   Spmemory *mem = new Spmemory();
-  //Spmemory* mem = new Spmemory(); -->muss viel vorher, also vor der HS initialisierung passieren, sonst kann es das nicht geben (s. weiter oben also)
   mem->moveToThread(thread2); //erst thread affinity -> also erst movetothread, dann connections
-  QObject::connect(thread2, SIGNAL(started()), mem, SLOT(processSpeicher()));
-  QObject::connect(mem, SIGNAL(finished()), thread2, SLOT(quit()));
+  QObject::connect(thread2, &QThread::started, mem, &Spmemory::processSpeicher, Qt::QueuedConnection);
+  QObject::connect(mem, &Spmemory::finished, thread2, &QThread::quit, Qt::QueuedConnection);
   //spmemory connection 
   bool habsgetestet = false;
   
   //habsgetestet = QObject::connect(&s1, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ), Qt::AutoConnection);
   std::cout<<" HABS GETESTET = "<<habsgetestet<<std::endl;
-  //QObject::connect(&s2, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
-  //QObject::connect(&s3, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
-  //QObject::connect(&s4, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
-  //QObject::connect(&s5, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ));
-  thread2->start();
+  QObject::connect(&s2, &HSignal::callspmemory,mem, &Spmemory::addFS, Qt::QueuedConnection);
+  QObject::connect(&s3, &HSignal::callspmemory,mem, &Spmemory::addFS, Qt::QueuedConnection);
+  QObject::connect(&s4, &HSignal::callspmemory,mem, &Spmemory::addFS, Qt::QueuedConnection);
+  QObject::connect(&s5, &HSignal::callspmemory,mem, &Spmemory::addFS, Qt::QueuedConnection);
+thread2->start();
   //mem->quit(); // zu testzwecken
   //thread endet theoretisch auch über mem.quit() -> processSpeicher() -> emit finished -> oberer slot
   
@@ -998,8 +1011,6 @@ int main( int argc , char *argv[] ){
 
   }
   if(menue == 13){
-        //QObject::connect(&ac,SIGNAL(releaseSpeicher()),&s2,SLOT(processSpeicher()) );//in eine zeile drunter verpacken, dann ist es auch schon wieder weniger arbeit
-        //ac.addcontrolspeicher(true);
         s1.setFahrt(s2ptr);
         s1.setFahrt(s3ptr);
         aa.setB_status(false);

@@ -67,7 +67,8 @@ void HSignal::addBlock( HSignal *toZiel , std::vector<Block*> inputBlock ){
   std::pair<std::string , std::vector<Block*>> hilfspair(toZiel->getS_id(), inputBlock);
   block.push_back(hilfspair);
   //hier gleich die Verknüpfung der Speicher mit erledigen
-  QObject::connect(this,SIGNAL(illuminateSpeicher(bool,std::string)),toZiel,SLOT(recieveSpeicher(bool,std::string) ));
+  QObject::connect(this,&HSignal::illuminateSpeicher, toZiel, &HSignal::recieveSpeicher, Qt::DirectConnection);
+  //QObject::connect(this,SIGNAL(illuminateSpeicher(bool,std::string)),toZiel,SLOT(recieveSpeicher(bool,std::string) ));
 }
 
 void HSignal::addBlockZuRangier( WSignal *toZiel , std::vector<Block*> inputBlock ){
@@ -807,7 +808,8 @@ void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *item
     but->setFixedHeight(10);
     but->setFixedWidth(10);
     but->setStyleSheet("background-color: blue");
-    QObject::connect(push,SIGNAL(clicked()),this,SLOT(listenToFS()) );//Verknüpfung von PushButton und seinem Signal (für clickmanager)
+    QObject::connect(push, &QPushButton::clicked, this, &HSignal::listenToFS, Qt::DirectConnection);
+    //QObject::connect(push,SIGNAL(clicked()),this,SLOT(listenToFS()) );//Verknüpfung von PushButton und seinem Signal (für clickmanager)
     //Speicher Anzeiger
     speicherback->setBrush(Qt::darkBlue);
     speicherfront->setBrush(Qt::darkBlue);
