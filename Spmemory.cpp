@@ -28,7 +28,7 @@ void Spmemory::processSpeicher(){ //versuche ständig die FS zu stellen, irgendw
     //std::cout<<" ich arbeite was...";
     if( i < speicherlist.size() and !speicherlist.isEmpty() ){ //1)
       delit = speicherlist.at(i).first->setFahrt(speicherlist.at(i).second); // Rückgabewert wird notwendig für das stellen...
-      std::cout<<" ich probiere zu stellen"<<std::endl;
+      std::cout<<" ich probiere zu stellen, dabei ist delit = "<<delit<<std::endl;
       if( delit ){ // bei erfolgreichem stellen, merke man sich die position
 	deleter.push_back(i);
 	std::cout<<" ich lösche"<<std::endl;

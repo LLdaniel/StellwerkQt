@@ -421,6 +421,7 @@ bool HSignal::setFahrt( HSignal *toZiel ){
       std::cout<<"emitting speicher..."<<std::endl;
       emit callspmemory(this, toZiel);
       erfolg = false; //Rückgabe Wert auf erfolgreiches stellen false
+      std::cout<<"Rückgabe bei emitting speicher ist bei = "<<erfolg<<std::endl;
     }
   }
   return erfolg;

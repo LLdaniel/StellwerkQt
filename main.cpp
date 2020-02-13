@@ -1012,23 +1012,23 @@ int main( int argc , char *argv[] ){
   }
   if(menue == 13){
         s1.setFahrt(s2ptr);
-        s1.setFahrt(s3ptr);
-        aa.setB_status(false);
+	s2.setFahrt(s5ptr);
+	s1.setFahrt(s2ptr);
+	aa.setB_status(false);
         w1.setBelegung(false);
         s1.zugpassiert();
         ac.setB_status(false);
         aa.setB_status(true);
         w1.setBelegung(true);
+	ae.setB_status(false);
         ww1.zugpassiert();
         ww2.zugpassiert();
         ac.setB_status(true);
-        std::cout<<"aa "<<aa.getB_status()<<std::endl;
-        std::cout<<"ac "<<ac.getB_status()<<std::endl;
-	mem->addFS(s1ptr, s3ptr);
-	//s3.showBlockALL();
-        //s1.setSpeicher(false);
-        //s1.setFahrt(s2ptr);
-	//for (int l = 0; l < 1025861; l++){ std::cout<<".";}
+	ag.setB_status(false);
+	ae.setB_status(true);
+	ag.setB_status(true);
+	std::cout<<"aa "<<aa.getB_status()<<std::endl;
+        std::cout<<"ac "<<ac.getB_status()<<std::endl;	
 	//mem->quit();
   }
   if(menue == 14){//Testing wiringPi in the program 
