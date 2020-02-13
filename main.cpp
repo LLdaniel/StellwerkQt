@@ -631,13 +631,13 @@ int main( int argc , char *argv[] ){
   //spmemory connection 
   bool habsgetestet = false;
   
-  //habsgetestet = QObject::connect(&s1, SIGNAL(callspmemory(HSignal*, HSignal*)),mem, SLOT(addFS(HSignal*, HSignal*) ), Qt::AutoConnection);
+  habsgetestet = QObject::connect(&s1, &HSignal::callspmemory,mem, &Spmemory::addFS, Qt::QueuedConnection);
   std::cout<<" HABS GETESTET = "<<habsgetestet<<std::endl;
   QObject::connect(&s2, &HSignal::callspmemory,mem, &Spmemory::addFS, Qt::QueuedConnection);
   QObject::connect(&s3, &HSignal::callspmemory,mem, &Spmemory::addFS, Qt::QueuedConnection);
   QObject::connect(&s4, &HSignal::callspmemory,mem, &Spmemory::addFS, Qt::QueuedConnection);
   QObject::connect(&s5, &HSignal::callspmemory,mem, &Spmemory::addFS, Qt::QueuedConnection);
-thread2->start();
+  thread2->start();
   //mem->quit(); // zu testzwecken
   //thread endet theoretisch auch über mem.quit() -> processSpeicher() -> emit finished -> oberer slot
   
@@ -1024,7 +1024,7 @@ thread2->start();
         ac.setB_status(true);
         std::cout<<"aa "<<aa.getB_status()<<std::endl;
         std::cout<<"ac "<<ac.getB_status()<<std::endl;
-	//mem->addFS(s1ptr, s3ptr);
+	mem->addFS(s1ptr, s3ptr);
 	//s3.showBlockALL();
         //s1.setSpeicher(false);
         //s1.setFahrt(s2ptr);
