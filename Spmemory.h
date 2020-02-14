@@ -6,14 +6,15 @@
 #include <QObject>
 #include "HSignal.h"
 #include <QList>
-#include <QMutex>
+#include <QTimer>
 class Spmemory : public QObject{
   Q_OBJECT
 public:
-  Spmemory(){}
-  ~Spmemory(){}
+  Spmemory(){ t->callOnTimeout(this, &Spmemory::processSpeicher); } // connect the timeout with processSpeicher
+  ~Spmemory(){ delete t;}
   void showSP();
 public slots:
+  void timing(); // intermediate step to solve blocked thread: step towards processSpeicher
   void processSpeicher();
   void quit();
 signals:
@@ -25,5 +26,6 @@ private:
   QList<std::pair<HSignal*,HSignal*>> buffer;
   QList<int> deleter;
   bool trySP = true; //control endless loop: Soll immer noch versucht werden, ein Speicher einzuwählen?
+  QTimer *t = new QTimer(this);
 };
 #endif

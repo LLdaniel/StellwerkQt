@@ -21,12 +21,14 @@ void Spmemory::quit(){
   trySP = false;
 }
 
+void Spmemory::timing(){ //this is a trick: thread conncted with processSpeicher directly only executes processSpeicher, but cannot insert updates, therefore timer with 0ms which calls it also repeatedly, but there thread has chance to process event loop and new events see https://github.com/LLdaniel/QThreadExample
+  t->start();
+}
+
 void Spmemory::processSpeicher(){ //versuche ständig die FS zu stellen, irgendwann geht sie ja wieder rein: 1) speicherlist abhandeln 2)evtl Vermerke löschen 3) buffer mitaufnehmen 4) neue Tour 
-  int i = 0;
-  bool delit = false; //true = erfolgreich gestellt, kann aus der Liste gelöscht werden
-  while(trySP){
-    //std::cout<<" ich arbeite was...";
-    if( i < speicherlist.size() and !speicherlist.isEmpty() ){ //1)
+  bool delit = false;
+  if(!speicherlist.isEmpty() ){                        //1) speicherlist abhandeln
+    for( int i = 0; i < speicherlist.size(); i++){
       delit = speicherlist.at(i).first->setFahrt(speicherlist.at(i).second); // Rückgabewert wird notwendig für das stellen...
       std::cout<<" ich probiere zu stellen, dabei ist delit = "<<delit<<std::endl;
       if( delit ){ // bei erfolgreichem stellen, merke man sich die position
@@ -34,26 +36,24 @@ void Spmemory::processSpeicher(){ //versuche ständig die FS zu stellen, irgendw
 	std::cout<<" ich lösche"<<std::endl;
 	//erledige das Löschen der Speicher gui (Markierung)
 	speicherlist.at(i).first->setSpeicher( false );
-	speicherlist.at(i).first->getspeicheritems().first->setBrush(Qt::darkBlue);
+	//speicherlist.at(i).first->getspeicheritems().first->setBrush(Qt::darkBlue); --> vergisst ziel HS Speicheritems --> deshalb mache untere Zeile: ziel Speicheritems löschen, dann zurück auf Start speicheritems
+	speicherlist.at(i).second->recieveSpeicher(false, speicherlist.at(i).second->getS_id());
       }
-      i++;//solange noch nicht alle SP der FS erledigt, fahre fort
-      delit = false; // reset delit für den nächsten durchgang
-      std::cout<<" ich zähle hoch"<<std::endl;
     }
-    if( i == speicherlist.size() and !speicherlist.isEmpty() ){ // 2) lösche alle erfolgreichen Speicher und resette i und 3)
-      i = 0;
-      for( int j = 0; j < deleter.size(); j++){   //lösche alle Vermerke der schon gestellten FS
-	speicherlist.removeAt(deleter.at(j));
-      }
-      deleter.clear(); //resette den deleter für die nächste Tour
+    delit = false; // reset delit für den nächsten durchgang
+    std::cout<<" eine Tour Stellversuch ist durch"<<std::endl;
+    for( int j = 0; j < deleter.size(); j++){   // 2) lösche alle erfolgreichen Speicher
+      speicherlist.removeAt(deleter.at(j));
     }
-    if(!buffer.isEmpty() ){//3) lade buffer
-      std::cout<<" vor schritt 3) ende"<<std::endl;
-      speicherlist.append(buffer);      
-      buffer.clear();               
-      std::cout<<" schritt 3) ende"<<std::endl;
-    }
+    deleter.clear(); //resette den deleter für die nächste Tour
+    
+    // ::::::
   }
-  std::cout<<"                           F E R T I S C H #2 "<<std::endl;
-  emit finished();
+  if(!buffer.isEmpty() ){//3) lade buffer
+    std::cout<<" load buffer ..."<<std::endl;
+    speicherlist.append(buffer);      
+    buffer.clear();               
+    std::cout<<" buffer loaded.schritt 3) ende"<<std::endl;
+  }
+  timing(); // 4)
 }

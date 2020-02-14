@@ -67,7 +67,7 @@ void HSignal::addBlock( HSignal *toZiel , std::vector<Block*> inputBlock ){
   std::pair<std::string , std::vector<Block*>> hilfspair(toZiel->getS_id(), inputBlock);
   block.push_back(hilfspair);
   //hier gleich die Verknüpfung der Speicher mit erledigen
-  QObject::connect(this,&HSignal::illuminateSpeicher, toZiel, &HSignal::recieveSpeicher, Qt::DirectConnection);
+  QObject::connect(this,&HSignal::illuminateSpeicher, toZiel, &HSignal::recieveSpeicher);
   //QObject::connect(this,SIGNAL(illuminateSpeicher(bool,std::string)),toZiel,SLOT(recieveSpeicher(bool,std::string) ));
 }
 
@@ -413,7 +413,7 @@ bool HSignal::setFahrt( HSignal *toZiel ){
       erfolg = true;  // Rückgabe Wert auf erfolgreiches stellen!
     }
     //else, zwar isNachbar == true, aber keine Erlaubnis -->setSpeicher
-    else{
+    if( !speicher and !erfolg ){ //Wenn kein Speicher gestellt ist und kein erfolg, dann setze ihn hiermit (kein Speicher vorher, Fahrt versuch --> kommt in den Speicher)
       speicher = true;
       speicherziel = toZiel;
       emit illuminateSpeicher(true,toZiel->getS_id());
@@ -422,6 +422,9 @@ bool HSignal::setFahrt( HSignal *toZiel ){
       emit callspmemory(this, toZiel);
       erfolg = false; //Rückgabe Wert auf erfolgreiches stellen false
       std::cout<<"Rückgabe bei emitting speicher ist bei = "<<erfolg<<std::endl;
+    }
+    if( speicher and !erfolg){ //kein Stellerfolg, ist aber schon als Speicher vermerkt --> bleibt im Speicher, aber nicht neu einwählen, ist da nämlich schon drin!
+      erfolg = false;
     }
   }
   return erfolg;
@@ -765,25 +768,6 @@ void HSignal::recieveSpeicher(bool sp, std::string str){
 
 }
 
-/*void HSignal::processSpeicher(){
-    //der Vorblock von diesem Signal hier ist auf belegstatus frei gegangen: woher kam die FS (welches Startsignal) und ist das in einem Speicher verwickelt?
-    std::cout<<"PROCESS SPEICHER"<<std::endl;
-    if( fromHS->getSpeicher() ){//ist das Startsignal mit Speicher versehen?
-        //gehe zu Startsignal und lösche Speicher, ändere Farbe, stelle gespeicherte FS
-        fromHS->setSpeicher(false);
-        std::cout<<"hier in process SPeicher"<<std::endl;
-        fromHS->darkenSpeicher(1);
-        //außerdem lösche im speicherziel den Speichervermerk-Punkt
-        fromHS->getSpeicherziel()->darkenSpeicher(2);
-        //die gespeicherte FS einwählen
-        std::cout<<"HHHHHHHH---------------HHHHHHHHHHH"<<std::endl;
-        std::cout<<"#### Speicherstatus und ziel "<<fromHS->getS_id()<<" | "<<fromHS->getSpeicher()<<" | "<<fromHS->getSpeicherziel()->getS_id()<<std::endl;
-        fromHS->showBlockALL();
-        fromHS->setFahrt(fromHS->getSpeicherziel());
-    }
-
-}*/
-
 void HSignal::darkenSpeicher( int position ){
     if( position == 1){
         speicheritems.first->setBrush(Qt::darkBlue);
@@ -809,7 +793,7 @@ void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *item
     but->setFixedHeight(10);
     but->setFixedWidth(10);
     but->setStyleSheet("background-color: blue");
-    QObject::connect(push, &QPushButton::clicked, this, &HSignal::listenToFS, Qt::DirectConnection);
+    QObject::connect(push, &QPushButton::clicked, this, &HSignal::listenToFS);
     //QObject::connect(push,SIGNAL(clicked()),this,SLOT(listenToFS()) );//Verknüpfung von PushButton und seinem Signal (für clickmanager)
     //Speicher Anzeiger
     speicherback->setBrush(Qt::darkBlue);
