@@ -20,12 +20,15 @@ public:
     void keyPressEvent(QKeyEvent *event);
 private slots:
   void shutdown();
+  void reset();
 private:
   void createActions();
   void createMenus();
   Ui::MainWindow *ui;
   QMenu *ccMenu;
+  QMenu *piMenu;
   QAction *shutdownAct;
+  QAction *resetAct;
 };
 
 #endif // MAINWINDOW_H

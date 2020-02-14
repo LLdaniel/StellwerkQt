@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <iostream>
+#include <QKeySequence>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,6 +35,9 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 void MainWindow::createMenus(){
   ccMenu = menuBar()->addMenu(tr("&ControlCenter"));
   ccMenu->addAction(shutdownAct);
+
+  piMenu = menuBar()->addMenu(tr("&RaspberryPi"));
+  piMenu->addAction(resetAct);
 }
 
 void MainWindow::createActions(){
@@ -41,8 +45,17 @@ void MainWindow::createActions(){
   shutdownAct->setShortcuts(QKeySequence::Quit);
   shutdownAct->setStatusTip(tr("Initiate control center shutdown"));
   QObject::connect(shutdownAct, &QAction::triggered, this, &MainWindow::shutdown);
+
+  resetAct = new QAction(tr("&Reset Pins"), this);
+  resetAct->setShortcuts(QKeySequence::Refresh);
+  resetAct->setStatusTip(tr("Sets pi pins as input"));
+  QObject::connect(resetAct, &QAction::triggered, this, &MainWindow::reset);
 }
 
 void MainWindow::shutdown(){
   std::cout<<"shuting down"<<std::endl;
+}
+
+void MainWindow::reset(){
+  std::cout<<"reset menu triggered"<<std::endl;
 }
