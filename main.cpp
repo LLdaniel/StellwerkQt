@@ -1013,7 +1013,6 @@ int main( int argc , char *argv[] ){
         s1.setFahrt(s2ptr);
 	s2.setFahrt(s5ptr);
 	s1.setFahrt(s2ptr);
-	s2.setFahrt(s5ptr);
 	aa.setB_status(false);
         w1.setBelegung(false);
         s1.zugpassiert();
