@@ -52,10 +52,3 @@ void MainWindow::createActions(){
   QObject::connect(resetAct, &QAction::triggered, this, &MainWindow::reset);
 }
 
-void MainWindow::shutdown(){
-  std::cout<<"shuting down"<<std::endl;
-}
-
-void MainWindow::reset(){
-  std::cout<<"reset menu triggered"<<std::endl;
-}

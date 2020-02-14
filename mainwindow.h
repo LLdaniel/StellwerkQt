@@ -18,7 +18,7 @@ public:
     ~MainWindow();
     void mousePressEvent(QMouseEvent *event);
     void keyPressEvent(QKeyEvent *event);
-private slots:
+signals:
   void shutdown();
   void reset();
 private:
