@@ -639,7 +639,6 @@ int main( int argc , char *argv[] ){
   QObject::connect(&s5, &HSignal::callspmemory,mem, &Spmemory::addFS);
   thread2->start();
   //mem->quit(); // zu testzwecken
-  //thread endet theoretisch auch über mem.quit() -> processSpeicher() -> emit finished -> oberer slot
   
   ///////////////////////////////////////////////////////////////////////////////////////
   if(menue == 1){//1) Initialisierungen und grundlegende Methodentests
