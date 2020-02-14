@@ -1113,8 +1113,8 @@ int main( int argc , char *argv[] ){
     //ww1ptr->deleteFS();
     stellwerkstec.show_Signal();
     
-  }
-  //create view
+  } 
+      //create view
       QGraphicsView *view = new QGraphicsView(scene);
       view->setWindowTitle("Electronic Signalling Control Center - Model Railway");
       //view->showMaximized();

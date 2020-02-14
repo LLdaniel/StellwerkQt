@@ -1,13 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <iostream>
-#include <QMouseEvent>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow){
     ui->setupUi(this);
-    
+    createActions();
+    createMenus();
 }
 
 MainWindow::~MainWindow(){
@@ -31,3 +31,18 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 }
 
 
+void MainWindow::createMenus(){
+  ccMenu = menuBar()->addMenu(tr("&ControlCenter"));
+  ccMenu->addAction(shutdownAct);
+}
+
+void MainWindow::createActions(){
+  shutdownAct = new QAction(tr("&Shutdown"), this);
+  shutdownAct->setShortcuts(QKeySequence::Quit);
+  shutdownAct->setStatusTip(tr("Initiate control center shutdown"));
+  QObject::connect(shutdownAct, &QAction::triggered, this, &MainWindow::shutdown);
+}
+
+void MainWindow::shutdown(){
+  std::cout<<"shuting down"<<std::endl;
+}
