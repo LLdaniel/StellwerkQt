@@ -34,8 +34,6 @@ SOURCES += main.cpp\
     Block.cpp \
     Stellwerkstechnik.cpp \
     clickmanager.cpp \
-    util.cpp \
-    myqueue.cpp \
     worker.cpp \
     Spmemory.cpp
 
@@ -48,7 +46,6 @@ HEADERS  += mainwindow.h \
     BU.h \
     Block.h \
     clickmanager.h \
-    myqueue.h \
     worker.h \
     Spmemory.h
 
