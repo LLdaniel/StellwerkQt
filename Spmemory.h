@@ -9,9 +9,10 @@
 #include <QTimer>
 class Spmemory : public QObject{
   Q_OBJECT
+  
 public:
-  Spmemory(){ t->callOnTimeout(this, &Spmemory::processSpeicher); } // connect the timeout with processSpeicher
-  ~Spmemory(){ delete t;}
+  Spmemory(){t->callOnTimeout(this, &Spmemory::processSpeicher);}
+  ~Spmemory(){}
   void showSP();
 public slots:
   void timing(); // intermediate step to solve blocked thread: step towards processSpeicher

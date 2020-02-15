@@ -13,7 +13,6 @@
 #include <QApplication>
 #include <iostream>
 #include <thread>
-#include "myqueue.h"
 #include "Block.h"
 #include "Weiche.h"
 #include "HSignal.h"
@@ -32,7 +31,6 @@
 #include <QThread>
 #include <QtGlobal> // for QOverload
 #include "clickmanager.h"
-#include "util.cpp"
 #ifdef __cplusplus
 extern "C"{
 #endif
@@ -63,13 +61,20 @@ int main( int argc , char *argv[] ){
     }
     //::Eigentlicher Start main
     QApplication a(argc, argv);
-    MainWindow *w = new MainWindow( );
+    MainWindow w;// = new MainWindow();
     //create scene
-    QGraphicsScene *scene = new QGraphicsScene(w);
+    QGraphicsScene *scene = new QGraphicsScene(&w);
     scene->setBackgroundBrush(Qt::black);
     // connect for quiting program
-    QObject::connect(w,&MainWindow::shutdown,&a,QApplication::quit);
+    QObject::connect(&w,&MainWindow::shutdown,&a,QApplication::quit);
 
+    //create view
+    QGraphicsView *view = new QGraphicsView(scene);
+    view->setWindowTitle("Electronic Signalling Control Center - Model Railway");
+    //view->showMaximized();
+    w.setCentralWidget(view);//add view to mainwindow
+    w.setWindowTitle("Electronic Signalling Control Center - Model Railway");
+    
     
   std::cout<<""<<std::endl;
   std::cout<<"*************************************************************"<<std::endl;
@@ -91,8 +96,8 @@ int main( int argc , char *argv[] ){
   std::cout<<"***15) ZugpassiertTest -> wegen Neuerungen wie WS->WS...  ***"<<std::endl;
   std::cout<<"***16) HS->WS: was VS macht [nicht TestPlan anwendbar ]   ***"<<std::endl;
   std::cout<<"***17) Beweis, dass deleteFS auch bei HS/WS->WS/HS klappt ***"<<std::endl;
-  std::cout<<"***18) ThreadTest: userInput + Statusänderungen+ Speicher ***"<<std::endl;
-  std::cout<<"***19) QueueTest                                          ***"<<std::endl;
+  std::cout<<"***18) ---                                                ***"<<std::endl;
+  std::cout<<"***19) ---                                                ***"<<std::endl;
   std::cout<<"***20) Test für Stellwerkstechnik und WSignale            ***"<<std::endl;
   std::cout<<"*************************************************************"<<std::endl;
   int menue;
@@ -264,27 +269,12 @@ int main( int argc , char *argv[] ){
   QObject::connect(&ae,&Block::zugpassiert,&s2,&HSignal::zugpassiert);
   QObject::connect(&ae,&Block::zugpassiertW,&ww2,&WSignal::zugpassiertW);
   QObject::connect(&ac,&Block::zugpassiertW,&ww1,&WSignal::zugpassiertW);
-  /*QObject::connect(&s1,SIGNAL(refreshStellwerkstechnik(std::string,bool)),&stellwerkstec,SLOT(add_Signal(std::string , bool) ));
-  QObject::connect(&s2,SIGNAL(refreshStellwerkstechnik(std::string,bool)),&stellwerkstec,SLOT(add_Signal(std::string , bool) ));
-  QObject::connect(&s3,SIGNAL(refreshStellwerkstechnik(std::string,bool)),&stellwerkstec,SLOT(add_Signal(std::string , bool) ));
-  QObject::connect(&s4,SIGNAL(refreshStellwerkstechnik(std::string,bool)),&stellwerkstec,SLOT(add_Signal(std::string , bool) ));
-  QObject::connect(&s5,SIGNAL(refreshStellwerkstechnik(std::string,bool)),&stellwerkstec,SLOT(add_Signal(std::string , bool) ));
-  QObject::connect(&ww1,SIGNAL(refreshStellwerkstechnikW(std::string,bool)),&stellwerkstec,SLOT(add_Signal(std::string , bool) ));
-  QObject::connect(&ww2,SIGNAL(refreshStellwerkstechnikW(std::string,bool)),&stellwerkstec,SLOT(add_Signal(std::string , bool) ));
-  QObject::connect(&ad,SIGNAL(zugpassiert()),&s3,SLOT(zugpassiert()) );
-  QObject::connect(&ae,SIGNAL(zugpassiert()),&s2,SLOT(zugpassiert()) );
-  QObject::connect(&ae,SIGNAL(zugpassiertW()),&ww2,SLOT(zugpassiertW()) );
-  QObject::connect(&ac,SIGNAL(zugpassiertW()),&ww1,SLOT(zugpassiertW()) );
-  */
+  
   //Hier wird das Grenzsignal übergeben
   ad.addpassiert(s3.getS_id(),abptr);
   ae.addpassiert(s2.getS_id(),acptr);
   ae.addpassiert(ww2.getV_id(),acptr);
   ac.addpassiert(ww1.getV_id(),aaptr);
-  //connect(
-  // sender, &Sender::valueChanged,
-  // receiver, &Receiver::updateValue
-  //);
 
   //
   //GUI Attribute - Testgleisplan
@@ -1093,18 +1083,10 @@ int main( int argc , char *argv[] ){
       ww2.deleteFS();
   }
   if(menue == 18){//Thread Test
-      std::thread blockthread( actrandomly );
-      std::thread userthread ( user );
-      userthread.join();
-      blockthread.join();
+    
   }
   if(menue == 19){//Queue Test
-      qRegisterMetaType < std::string >("std::string");//connected to signal and slots in threads...
-      myqueue *q1 = new myqueue();
-      q1->add(s1ptr,s2ptr);
-      q1->add(s2ptr,s5ptr);
-      q1->start();
-      //q1->terminate();
+    //empty
   }
   if( menue == 20){
     ww1ptr->setFahrt(ww2ptr);
@@ -1114,15 +1096,26 @@ int main( int argc , char *argv[] ){
     //ww1ptr->deleteFS();
     stellwerkstec.show_Signal();
     
-  } 
-      //create view
-      QGraphicsView *view = new QGraphicsView(scene);
-      view->setWindowTitle("Electronic Signalling Control Center - Model Railway");
-      //view->showMaximized();
-      w->setCentralWidget(view);//add view to mainwindow
-      w->setWindowTitle("Electronic Signalling Control Center - Model Railway");
-      w->showMaximized();
-      //SetViewport(new QGLWidget)
-  return a.exec();
+  }
+  w.showMaximized();
+
+      
+  // End of program, now delete all resources... all classes with parents are deleted through this chain, addItem, addWidget takes ownership
+  int eofprogram = a.exec();
+  std::cout<<"endofprogram"<<std::endl;
+  //reverse order
+  mem->quit();
+  delete mem;
+  thread2->quit();
+  delete thread2;
+      
+  wrkr->quit();
+  delete wrkr;
+  thread->quit();
+  delete thread;
+
+  delete c1;
+  
+  return eofprogram;
 
 }
