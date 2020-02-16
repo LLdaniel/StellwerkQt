@@ -1,7 +1,7 @@
 #include "worker.h"
-#include <iostream>
+#include <QDebug>
 #include <wiringPi.h>
-worker::worker( std::vector<std::pair<int,Block*>> allBlocks, std::vector<std::pair<int,Weiche*>> allWeichen ){
+worker::worker( QList<QPair<int,Block*>> allBlocks, QList<QPair<int,Weiche*>> allWeichen ){
   blocklist = allBlocks;
   weichenlist = allWeichen;
 }
@@ -11,32 +11,32 @@ worker::~worker(){
 }
 
 void worker::addBlockList( int morePins, Block* moreBlocks ){
-  std::pair<int,Block*> hilfspair = std::make_pair(morePins,moreBlocks);
+  QPair<int,Block*> hilfspair = qMakePair(morePins,moreBlocks);
   blocklist.push_back( hilfspair );
 }
 
 void worker::showBlocks(){
-  std::cout<<"************************************************************"<<std::endl;
-  std::cout<<"*** Dies sind die Blöcke, die ständig überwacht werden   ***"<<std::endl;
-  for( unsigned int i = 0 ; i < blocklist.size() ; i++ ){//Durchläuft alle update Blocks
-    std::cout<<"***   "<<blocklist.at(i).first<<" -> "<<blocklist.at(i).second->getName()<<"                                           ***"<<std::endl;
+  qDebug()<<"************************************************************";
+  qDebug()<<"*** Dies sind die Blöcke, die ständig überwacht werden   ***";
+  for(  int i = 0 ; i < blocklist.size() ; i++ ){//Durchläuft alle update Blocks
+    qDebug()<<"***   "<<blocklist.at(i).first<<" -> "<<blocklist.at(i).second->getName()<<"                                           ***";
   }
-  std::cout<<"************************************************************"<<std::endl;
-  std::cout<<""<<std::endl;
+  qDebug()<<"************************************************************";
+  qDebug()<<"";
 }
 
 void worker::showWeichen(){
-  std::cout<<"************************************************************"<<std::endl;
-  std::cout<<"*** Dies sind die Blöcke, die ständig überwacht werden   ***"<<std::endl;
-  for( unsigned int i = 0 ; i < blocklist.size() ; i++ ){//Durchläuft alle update Blocks
-    std::cout<<"***   "<<weichenlist.at(i).first<<" -> "<<weichenlist.at(i).second->getW_id()<<"                                           ***"<<std::endl;
+  qDebug()<<"************************************************************";
+  qDebug()<<"*** Dies sind die Blöcke, die ständig überwacht werden   ***";
+  for(  int i = 0 ; i < blocklist.size() ; i++ ){//Durchläuft alle update Blocks
+    qDebug()<<"***   "<<weichenlist.at(i).first<<" -> "<<weichenlist.at(i).second->getW_id()<<"                                           ***";
   }
-  std::cout<<"************************************************************"<<std::endl;
-  std::cout<<""<<std::endl;
+  qDebug()<<"************************************************************";
+  qDebug()<<"";
 }
 
 void worker::addWeichenList( int morePins, Weiche* moreWeichen ){
-  std::pair<int,Weiche*> hilfspair = std::make_pair(morePins,moreWeichen);
+  QPair<int,Weiche*> hilfspair = qMakePair(morePins,moreWeichen);
   weichenlist.push_back( hilfspair );
 }
 
@@ -45,10 +45,10 @@ void worker::quit(){
 }
 
 void worker::updateBelegt(){
-  unsigned int i = 0;
+  int i = 0;
   int aktuellBlock = -1;
   int aktuellWeiche = -1;
-  unsigned int maxindex = 0;
+  int maxindex = 0;
   // welcher vector ist größer?
   if( blocklist.size() >= weichenlist.size() ){
     maxindex = blocklist.size();
@@ -86,6 +86,6 @@ void worker::updateBelegt(){
     if( i == maxindex) i = 0; //ansonsten: reset
   }
   //falls die schleife zu Ende kommt (entweder keine Einträge, oder quit Aufruf, dann beende den Worker)
-  std::cout<<"                           F E R T I S C H "<<std::endl;
+  qDebug()<<"                           F E R T I S C H ";
   emit finished();
 }

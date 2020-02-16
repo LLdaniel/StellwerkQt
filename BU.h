@@ -3,14 +3,14 @@
 //*************************************************************************
 #ifndef BU_H
 #define BU_H
-#include <string>
+#include <QString>
 #include <QGraphicsRectItem>
 class BU{
  public:
   BU( int name );
   //
   void setName( int name );
-  std::string getName(){ return buname; }
+  QString getName(){ return buname; }
   void setBU_status( bool status );
   bool getBU_status(){ return bu_status; }
   //void setFreigabe( bool free );
@@ -21,7 +21,7 @@ class BU{
   void changeColor();
   ~BU();
  private:
-  std::string buname;//Benennung der BÜs mit BU01, BU56
+  QString buname;//Benennung der BÜs mit BU01, BU56
   bool bu_status = true;//true:=offen ; false:=geschlossen
   //+++GUI+++
   QGraphicsRectItem *burect = new QGraphicsRectItem();

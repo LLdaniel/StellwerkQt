@@ -2,7 +2,7 @@
 //Weiche des Stellwerks  [- WEICHE.CXX -]
 //*************************************************************************
 #include "Weiche.h"
-#include <iostream>
+#include <QDebug>
 #include <QFont>
 #ifdef __cplusplus
 extern "C"{
@@ -26,7 +26,7 @@ void Weiche::setBelegung( bool newbelegung ){
 }
 
 void Weiche::setW_id( int name ){
-  std::string suffix = std::to_string( name );//name zu String konvertieren
+  QString suffix = QString::number( name );//name zu String konvertieren
   if( name > 0 && name <10 ){//einstellig
     w_id = "00" + suffix;
   }
@@ -40,7 +40,7 @@ void Weiche::setW_id( int name ){
 
 void Weiche::setW_status( bool status ){
   if( verriegelung || !belegung ){//wenn eine Verriegelung/Belegung besteht; keine Stellerlaubnis
-    std::cout<<"Weiche::Diese Weiche ist verriegelt!"<<std::endl;
+    qDebug()<<"Weiche::Diese Weiche ist verriegelt!";
   }
   else{//ok, dann ist stellen erlaubt
     w_status = status;
@@ -54,7 +54,7 @@ void Weiche::addWeichenitem(QGraphicsRectItem *ab, QGraphicsRectItem *ge, QLabel
     abknickend = ab;
     gerade = ge;
     beschriftung = la;
-    QString qname = QString::fromStdString( w_id );//cast from std::string to QString
+    QString qname = w_id ;
     beschriftung->setText(qname);
     QFont f( "Arial", 5, QFont::Bold);
     beschriftung->setFont(f);
@@ -63,10 +63,10 @@ void Weiche::addWeichenitem(QGraphicsRectItem *ab, QGraphicsRectItem *ge, QLabel
 
 void Weiche::evaluateVerriegelung(){
   if( counter == 1 || counter == 0){//zum debuggen
-    std::cout<<"Weiche::counter = 1|0"<<std::endl;
+    qDebug()<<"Weiche::counter = 1|0";
   }
   if( counter == 2 && !belegung){//hier wird dann die Weiche freigegeben-->ist der richtige Zyklus hier
-    std::cout<<"Weiche::Der counter = 2"<<std::endl;
+    qDebug()<<"Weiche::Der counter = 2";
     verriegelung = false;//konkrete Entriegelung nach Zyklus true-false-true
     changeColor();
   }
@@ -136,6 +136,6 @@ void Weiche::switchWeiche(bool linksrechts){
     }
   }
   else{
-    std::cout<<"Weiche mit Kennung "<<getW_id()<<" ist nicht als pin initialisiert"<<std::endl;
+    qDebug()<<"Weiche mit Kennung "<<getW_id()<<" ist nicht als pin initialisiert";
   }
 }

@@ -11,8 +11,8 @@
 //***********************************************************************
 #include "mainwindow.h"
 #include <QApplication>
+#include <QDebug>
 #include <iostream>
-#include <thread>
 #include "Block.h"
 #include "Weiche.h"
 #include "HSignal.h"
@@ -20,6 +20,9 @@
 #include "WSignal.h"
 #include "worker.h"
 #include "Spmemory.h"
+#include <QString>
+#include <QPair>
+#include <QList>
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
@@ -55,7 +58,7 @@ int main( int argc , char *argv[] ){
         printf("argv[%d]: %s\n", i, argv[i]);
         //-v debug option with different std's
         if( strcmp(argv[i],"-v") == 0 ){
-            std::cout<<"verbose"<<std::endl;
+            qDebug() <<"verbose";
             //debug = true;
         }
     }
@@ -68,46 +71,46 @@ int main( int argc , char *argv[] ){
     // connect for quiting program
     QObject::connect(&w,&MainWindow::shutdown,&a,QApplication::quit);
 
-    //create view
-    QGraphicsView *view = new QGraphicsView(scene);
-    view->setWindowTitle("Electronic Signalling Control Center - Model Railway");
-    //view->showMaximized();
-    w.setCentralWidget(view);//add view to mainwindow
-    w.setWindowTitle("Electronic Signalling Control Center - Model Railway");
+//create view
+QGraphicsView *view = new QGraphicsView(scene);
+view->setWindowTitle("Electronic Signalling Control Center - Model Railway");
+//view->showMaximized();
+w.setCentralWidget(view);//add view to mainwindow
+w.setWindowTitle("Electronic Signalling Control Center - Model Railway");
     
-    qRegisterMetaType<std::string>("std::string");// sonst: QObject::connect: Cannot queue arguments of type 'std::string' ... vielleicht mal alles als QString umbauen
+qRegisterMetaType<std::string>("std::string");// sonst: QObject::connect: Cannot queue arguments of type 'std::string' ... vielleicht mal alles als QString umbauen
     
-  std::cout<<""<<std::endl;
-  std::cout<<"*************************************************************"<<std::endl;
-  std::cout<<"***                Testmenü des Stellwerks                ***"<<std::endl;
-  std::cout<<"*** 1) Initialisierungen und grundlegende Methodentests   ***"<<std::endl;
-  std::cout<<"*** 2) Kleine Simulation einer Fahrt (ohne Zugpassiert)   ***"<<std::endl;
-  std::cout<<"*** 3) WSignal Test; grundsätzliches                      ***"<<std::endl;
-  std::cout<<"*** 4) Bahnübergang Test (inkl. kleiner Blocktest)        ***"<<std::endl;
-  std::cout<<"*** 5) Test für deleteFS() (testet V vor + BÜ)            ***"<<std::endl;
-  std::cout<<"*** 6) Test für deleteFS() (testet V rück)                ***"<<std::endl;
-  std::cout<<"*** 7) Test für Stellwerkstechnik (vor HS... erstellen)   ***"<<std::endl;
-  std::cout<<"*** 8) Test für Farbigkeit der Blöcke und QList_Block     ***"<<std::endl;
-  std::cout<<"*** 9) Test für Farbigkeit der Weichen                    ***"<<std::endl;
-  std::cout<<"***10) normale Initialisierung                            ***"<<std::endl;
-  std::cout<<"***11) Test für zugpassiert durch eine Fahrt (s. 2))      ***"<<std::endl;
-  std::cout<<"***12) Weichentest                                        ***"<<std::endl;
-  std::cout<<"***13) Test: Einwählen des Speichers nach freier FS       ***"<<std::endl;
-  std::cout<<"***14) wiringPi Test                                      ***"<<std::endl;
-  std::cout<<"***15) ZugpassiertTest -> wegen Neuerungen wie WS->WS...  ***"<<std::endl;
-  std::cout<<"***16) HS->WS: was VS macht [nicht TestPlan anwendbar ]   ***"<<std::endl;
-  std::cout<<"***17) Beweis, dass deleteFS auch bei HS/WS->WS/HS klappt ***"<<std::endl;
-  std::cout<<"***18) ---                                                ***"<<std::endl;
-  std::cout<<"***19) ---                                                ***"<<std::endl;
-  std::cout<<"***20) Test für Stellwerkstechnik und WSignale            ***"<<std::endl;
-  std::cout<<"*************************************************************"<<std::endl;
+  qDebug() <<"";
+  qDebug() <<"*************************************************************";
+  qDebug() <<"***                Testmenü des Stellwerks                ***";
+  qDebug() <<"*** 1) Initialisierungen und grundlegende Methodentests   ***";
+  qDebug() <<"*** 2) Kleine Simulation einer Fahrt (ohne Zugpassiert)   ***";
+  qDebug() <<"*** 3) WSignal Test; grundsätzliches                      ***";
+  qDebug() <<"*** 4) Bahnübergang Test (inkl. kleiner Blocktest)        ***";
+  qDebug() <<"*** 5) Test für deleteFS() (testet V vor + BÜ)            ***";
+  qDebug() <<"*** 6) Test für deleteFS() (testet V rück)                ***";
+  qDebug() <<"*** 7) Test für Stellwerkstechnik (vor HS... erstellen)   ***";
+  qDebug() <<"*** 8) Test für Farbigkeit der Blöcke und QList_Block     ***";
+  qDebug() <<"*** 9) Test für Farbigkeit der Weichen                    ***";
+  qDebug() <<"***10) normale Initialisierung                            ***";
+  qDebug() <<"***11) Test für zugpassiert durch eine Fahrt (s. 2))      ***";
+  qDebug() <<"***12) Weichentest                                        ***";
+  qDebug() <<"***13) Test: Einwählen des Speichers nach freier FS       ***";
+  qDebug() <<"***14) wiringPi Test                                      ***";
+  qDebug() <<"***15) ZugpassiertTest -> wegen Neuerungen wie WS->WS...  ***";
+  qDebug() <<"***16) HS->WS: was VS macht [nicht TestPlan anwendbar ]   ***";
+  qDebug() <<"***17) Beweis, dass deleteFS auch bei HS/WS->WS/HS klappt ***";
+  qDebug() <<"***18) ---                                                ***";
+  qDebug() <<"***19) ---                                                ***";
+  qDebug() <<"***20) Test für Stellwerkstechnik und WSignale            ***";
+  qDebug() <<"*************************************************************";
   int menue;
   std::cin>>menue;
-  std::cout<<"                                    Testplan                                            "<<std::endl;
-  std::cout<<"  _S004____af______V003______ad_______S003_____ab_____________V001___WS1__|+|___aa___S001__  "<<std::endl;
-  std::cout<<"                                                            /001          |+|                "<<std::endl;
-  std::cout<<"  _S005____ag______V002______ae_______S002_____ac__________/              |+|BÜ1          "<<std::endl;
-  std::cout<<""<<std::endl;
+  qDebug() <<"                                    Testplan                                            ";
+  qDebug() <<"  _S004____af______V003______ad_______S003_____ab_____________V001___WS1__|+|___aa___S001__  ";
+  qDebug() <<"                                                            /001          |+|                ";
+  qDebug() <<"  _S005____ag______V002______ae_______S002_____ac__________/              |+|BÜ1          ";
+  qDebug() <<"";
   //Initialisierung der Strecke--------------------------------------------------------
   //:::Weichen:::
   Weiche w1(1);
@@ -181,7 +184,7 @@ int main( int argc , char *argv[] ){
   WSignal ww2 (2);
   WSignal *ww2ptr = &ww2;
   ww2.setRichtung("S001","S002");
-  std::vector<Block*> ww2tos2b;
+  QList<Block*> ww2tos2b;
   ww2tos2b.push_back(acptr);
   ww2.addBlockZuH("S002",ww2tos2b);
   s1.addWSignal(ww2ptr,"v");
@@ -201,38 +204,38 @@ int main( int argc , char *argv[] ){
   ww2ptr->addVSignalitems(item5, item6);
   QLabel *ww2label = new QLabel();
   scene->addWidget(ww2label);
-  std::pair<Weiche*, bool> s1tos2w1(w1ptr,false);
-  std::vector<std::pair<Weiche*, bool>> s1tos2;
+  QPair<Weiche*, bool> s1tos2w1(w1ptr,false);
+  QList<QPair<Weiche*, bool>> s1tos2;
   s1tos2.push_back(s1tos2w1);
   s1.addWeichenstatus(s2ptr,s1tos2);
   ww1.addWeichenstatus(ww2ptr,s1tos2);//WSignal inside -->gibt hoffentlich nicht Probleme, den selben Pointe zu verwenden
   //[außerdem stimmt es von den Blöcken nicht ganz...]
   //
-  std::vector<Block*> s1tow1b;
+  QList<Block*> s1tow1b;
   s1tow1b.push_back(aaptr);
   s1.addBlockZuRangier(ww1ptr,s1tow1b);
-  std::pair<Weiche*, bool> s1tos3w1(w1ptr,true);
-  std::vector<std::pair<Weiche*, bool>> s1tos3;
+  QPair<Weiche*, bool> s1tos3w1(w1ptr,true);
+  QList<QPair<Weiche*, bool>> s1tos3;
   s1tos3.push_back(s1tos3w1);
   s1.addWeichenstatus(s3ptr,s1tos3);
   //
-  std::vector<Block*> s1tos2b;
+  QList<Block*> s1tos2b;
   s1tos2b.push_back(aaptr);
   s1tos2b.push_back(acptr);
   s1.addBlock(s2ptr,s1tos2b);
-  std::vector<Block*>w1tow2b;
+  QList<Block*>w1tow2b;
   w1tow2b.push_back(acptr);
   ww1.addBlock(ww2ptr,w1tow2b);//WSignal inside -->gibt hoffentlich nicht Probleme, den selben Pointe zu verwenden
   //[außerdem stimmt es von den Blöcken nicht ganz...]
-  std::vector<Block*> s1tos3b;
+  QList<Block*> s1tos3b;
   s1tos3b.push_back(aaptr);
   s1tos3b.push_back(abptr);
   s1.addBlock(s3ptr,s1tos3b);
-  std::vector<Block*> s2tos5b;
+  QList<Block*> s2tos5b;
   s2tos5b.push_back(aeptr);
   s2tos5b.push_back(agptr);
   s2.addBlock(s5ptr,s2tos5b);
-  std::vector<Block*> s3tos4b;
+  QList<Block*> s3tos4b;
   s3tos4b.push_back(adptr);
   s3tos4b.push_back(afptr);
   s3.addBlock(s4ptr,s3tos4b);
@@ -624,7 +627,7 @@ int main( int argc , char *argv[] ){
   //spmemory connection 
   
   QObject::connect(&s1, &HSignal::callspmemory,mem, &Spmemory::addFS);
-  std::cout<<" HABS GETESTET = "<<habsgetestet<<std::endl;
+  qDebug() <<" HABS GETESTET = "<<habsgetestet;
   QObject::connect(&s2, &HSignal::callspmemory,mem, &Spmemory::addFS);
   QObject::connect(&s3, &HSignal::callspmemory,mem, &Spmemory::addFS);
   QObject::connect(&s4, &HSignal::callspmemory,mem, &Spmemory::addFS);
@@ -636,13 +639,13 @@ int main( int argc , char *argv[] ){
   if(menue == 1){//1) Initialisierungen und grundlegende Methodentests
     s1.showWeichenstatusALL();
     s1.showBlockALL();
-    std::cout<<"zeige Weichenstatus mit Ziel S002"<<std::endl;
+    qDebug() <<"zeige Weichenstatus mit Ziel S002";
     s1.showWeichenstatus(s2ptr);
-    std::cout<<"zeige Blockstatus mit Ziel S003"<<std::endl;
+    qDebug() <<"zeige Blockstatus mit Ziel S003";
     s1.showBlock(s3ptr);
     s5.showVSignalR();
     s1.showVSignalV();
-    std::cout<<"Löschen von Status S003 und V002 führt zu:"<<std::endl;
+    qDebug() <<"Löschen von Status S003 und V002 führt zu:";
     s1.deleteNachbar(s3ptr);
     s1.deleteVS(v2ptr,"r");
     s1.deleteVS(v2ptr,"v");
@@ -652,10 +655,10 @@ int main( int argc , char *argv[] ){
     s1.showBlock(s3ptr);
     s5.showVSignalR();
     s1.showVSignalV();
-    std::cout<<"Show Richtung von Vorsignalen:"<<std::endl;
+    qDebug() <<"Show Richtung von Vorsignalen:";
     v1.showRichtung();
     v2.showRichtung();
-    std::cout<<"Delete Richtung S001 --> S002:"<<std::endl;
+    qDebug() <<"Delete Richtung S001 --> S002:";
     v1.deleteRichtung("S001","S002");
     v2.deleteRichtung(s1.getS_id(),s2.getS_id() );
     v1.showRichtung();
@@ -663,41 +666,41 @@ int main( int argc , char *argv[] ){
   }
   ///////////////////////////////////////////////////////////////////////////////////////////
   if( menue == 2){//Fahrt Simulation
-    std::cout<<"FS von S001->S002->S005"<<std::endl;
+    qDebug() <<"FS von S001->S002->S005";
     s1.setFahrt(s2ptr);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
-    std::pair<std::string,std::string> p;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
+    QPair<QString,QString> p;
     p = v1.getAktFS();
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
-    std::pair<std::string,std::string> q;
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
+    QPair<QString,QString> q;
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"-------------------------------------------------"<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"-------------------------------------------------";
     s2.setFahrt(s5ptr);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
     p = v1.getAktFS();
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"-------------------------------------------------"<<std::endl;
-    std::cout<<"Das ziel von S001: "<<s1.getZiel()<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"-------------------------------------------------";
+    qDebug() <<"Das ziel von S001: "<<s1.getZiel();
     }
   //////////////////////////////////////////////////////////////////////////////////////////////
   if( menue == 3 ){//WSignal Test- grundsätzliches
-    std::cout<<ww1.getV_id()<<std::endl;
-    std::cout<<ww1.getV_status()<<std::endl;
+    qDebug() <<ww1.getV_id();
+    qDebug() <<ww1.getV_status();
     s1.showWSignalV();
     s1.setFahrt(s3ptr);
-    std::cout<<"Richtung §§§ "<<ww1.getRichtung("S001","S003")<<std::endl;
-    std::cout<<ww1.isAktFS("S003")<<std::endl;
+    qDebug() <<"Richtung §§§ "<<ww1.getRichtung("S001","S003");
+    qDebug() <<ww1.isAktFS("S003");
     stellwerkstec.show_Signal();
     aa.setB_status(false);
     ab.setB_status(false);
@@ -711,110 +714,110 @@ int main( int argc , char *argv[] ){
   if( menue == 4 ){//Bahnübergang Test
     aa.showBus();
     s1.setFahrt( s2ptr );
-    std::cout<<"BU status:"<<std::endl;
-    std::cout<<bu1ptr->getBU_status()<<std::endl;
-     std::cout<<"Block aa Freigabe:"<<std::endl;
-    std::cout<<aa.getFreigabe()<<std::endl;
+    qDebug() <<"BU status:";
+    qDebug() <<bu1ptr->getBU_status();
+     qDebug() <<"Block aa Freigabe:";
+    qDebug() <<aa.getFreigabe();
     //wenn man manuell mit Gewalt manipulieren will:
-    //std::cout<<"Aber bei manuellem Öffnen (sollte nicht aufgerufen werden, sondern wid nur intern als Methode wenn dann verwendet):"<<std::endl;
+    //qDebug() <<"Aber bei manuellem Öffnen (sollte nicht aufgerufen werden, sondern wid nur intern als Methode wenn dann verwendet):";
     //bu1ptr->setBU_status(true);
-    //std::cout<<"BU status:"<<std::endl;
-    //std::cout<<bu1ptr->getBU_status()<<std::endl;
-    std::cout<<"setting B_status -->false + true"<<std::endl;
+    //qDebug() <<"BU status:";
+    //qDebug() <<bu1ptr->getBU_status());
+    qDebug() <<"setting B_status -->false + true";
     aa.setB_status( false );
     aa.setB_status( true );
-    std::cout<<"BU status:"<<std::endl;
-    std::cout<<bu1ptr->getBU_status()<<std::endl;
-    std::cout<<"Block aa Freigabe:"<<std::endl;
-    std::cout<<aa.getFreigabe()<<std::endl;
-    std::cout<<"Löschen von Bü1 in Block aa führt zu:"<<std::endl;
+    qDebug() <<"BU status:";
+    qDebug() <<bu1ptr->getBU_status();
+    qDebug() <<"Block aa Freigabe:";
+    qDebug() <<aa.getFreigabe();
+    qDebug() <<"Löschen von Bü1 in Block aa führt zu:";
     aa.deleteBus( bu1ptr );
     aa.showBus();
-    std::cout<<"------------------------mutwillig falsches Freigeben------------------------------------"<<std::endl;
+    qDebug() <<"------------------------mutwillig falsches Freigeben------------------------------------";
 
   }
   ///////////////////////////////////////////////////////////////////////////////////////////
   if( menue == 5 ){//delete FS Test
-    std::cout<<"========================= Normales Stellen, wie sonst auch ==========================================================="<<std::endl;
-    std::cout<<"FS von S001->S002->S005"<<std::endl;
+    qDebug() <<"========================= Normales Stellen, wie sonst auch ===========================================================";
+    qDebug() <<"FS von S001->S002->S005";
     s1.setFahrt(s2ptr);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
-    std::pair<std::string,std::string> p;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
+    QPair<QString,QString> p;
     p = v1.getAktFS();
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
-    std::pair<std::string,std::string> q;
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
+    QPair<QString,QString> q;
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"-----------------yyyyyyyyyyyyyyyyyyy-----yyyyyyyyyyyyyyyyy-yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy--------------------------"<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"-----------------yyyyyyyyyyyyyyyyyyy-----yyyyyyyyyyyyyyyyy-yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy--------------------------";
     s2.setFahrt(s5ptr);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
     p = v1.getAktFS();
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"====================================================================================================================="<<std::endl;
-    std::cout<<"deleting FS S001->S002"<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"=====================================================================================================================";
+    qDebug() <<"deleting FS S001->S002";
     s1.deleteFS();
-    std::cout<<"Status von BÜ1: "<<bu1ptr->getBU_status()<<std::endl;
-    std::cout<<"Status von V001: "<<v1.getV_status()<<std::endl;
-    std::cout<<"Status von S001: "<<s1.getS_status()<<std::endl;
-    std::cout<<"Erneutes Stellen von S001->S002 sollte jetzt wieder möglich sein"<<std::endl;
+    qDebug() <<"Status von BÜ1: "<<bu1ptr->getBU_status();
+    qDebug() <<"Status von V001: "<<v1.getV_status();
+    qDebug() <<"Status von S001: "<<s1.getS_status();
+    qDebug() <<"Erneutes Stellen von S001->S002 sollte jetzt wieder möglich sein";
     s1.setFahrt(s2ptr);
-    std::cout<<"Status von S001: "<<s1.getS_status()<<"| mit V001: "<<v1.getV_status()<<"| und BÜ1: "<<bu1.getBU_status()<<std::endl;
+    qDebug() <<"Status von S001: "<<s1.getS_status()<<"| mit V001: "<<v1.getV_status()<<"| und BÜ1: "<<bu1.getBU_status();
 
   }
   /////////////////////////////////////////////////////////////////////////////////////////////
   if( menue == 6 ){//delete FS test2 [rück]
-    std::cout<<"========================= Normales Stellen, wie sonst auch ==========================================================="<<std::endl;
-    std::cout<<"FS von S001->S002->S005"<<std::endl;
+    qDebug() <<"========================= Normales Stellen, wie sonst auch ===========================================================";
+    qDebug() <<"FS von S001->S002->S005";
     s1.setFahrt(s2ptr);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
-    std::pair<std::string,std::string> p;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
+    QPair<QString,QString> p;
     p = v1.getAktFS();
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
-    std::pair<std::string,std::string> q;
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
+    QPair<QString,QString> q;
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"-------------------------------------------------"<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"-------------------------------------------------";
     s2.setFahrt(s5ptr);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
     p = v1.getAktFS();
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"====================================================================================================================="<<std::endl;
-    std::cout<<"deleting FS S002->S005..."<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"=====================================================================================================================";
+    qDebug() <<"deleting FS S002->S005...";
     s2.deleteFS();
-    std::cout<<"Status von V001: "<<v1.getV_status()<<std::endl;
-    std::cout<<"Status von S002: "<<s2.getS_status()<<std::endl;
-    std::cout<<"Erneutes Stellen von S002->S005 sollte jetzt wieder möglich sein"<<std::endl;
+    qDebug() <<"Status von V001: "<<v1.getV_status();
+    qDebug() <<"Status von S002: "<<s2.getS_status();
+    qDebug() <<"Erneutes Stellen von S002->S005 sollte jetzt wieder möglich sein";
     s2.setFahrt(s5ptr);
-    std::cout<<"Status von S002: "<<s2.getS_status()<<"| mit V001: "<<v1.getV_status()<<std::endl;
+    qDebug() <<"Status von S002: "<<s2.getS_status()<<"| mit V001: "<<v1.getV_status();
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////////77
   if( menue == 7){//Test Stellwerktechnik
     Stellwerkstechnik Signaltechnik;
-    std::cout<<"Filling Stellwerkstechnik with s1ptr and s2ptr..."<<std::endl;
+    qDebug() <<"Filling Stellwerkstechnik with s1ptr and s2ptr...";
     Signaltechnik.add_Signal( s1ptr->getS_id() , s1ptr->getS_status() );
     Signaltechnik.add_Signal( s2ptr->getS_id() , s2ptr->getS_status() );
     Signaltechnik.show_Signal();
-    std::cout<<"deleting s2 from Stellwerkstechnik..."<<std::endl;
+    qDebug() <<"deleting s2 from Stellwerkstechnik...";
     Signaltechnik.delete_HSignal( s2ptr->getS_id() );
     Signaltechnik.show_Signal();
   }
@@ -869,136 +872,136 @@ int main( int argc , char *argv[] ){
     
   }
   if( menue == 11){//Fahrt Simulation mit zugpassiert
-    std::cout<<"FS von S001->S002->S005"<<std::endl;
+    qDebug() <<"FS von S001->S002->S005";
     s1.setFahrt(s2ptr);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
-    std::pair<std::string,std::string> p;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
+    QPair<QString,QString> p;
     p = v1.getAktFS();
-    std::cout<<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<std::endl;
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
-    std::pair<std::string,std::string> q;
+    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
+    QPair<QString,QString> q;
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe()<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
     stellwerkstec.show_Signal();
-    std::cout<<"-------------------------------------------------"<<std::endl;
+    qDebug() <<"-------------------------------------------------";
     s2.setFahrt(s5ptr);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
     p = v1.getAktFS();
-    std::cout<<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<std::endl;
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
+    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe()<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
     stellwerkstec.show_Signal();
-    std::cout<<"-------------------------------------------------"<<std::endl;
-    std::cout<<"Das ziel von S001: "<<s1.getZiel()<<std::endl;
-    std::cout<<"-------------------------------------------------"<<std::endl;
-    std::cout<<"Zug fährt die FS ab, zunächst belegt er Block aa und Weiche 001:"<<std::endl;
+    qDebug() <<"-------------------------------------------------";
+    qDebug() <<"Das ziel von S001: "<<s1.getZiel();
+    qDebug() <<"-------------------------------------------------";
+    qDebug() <<"Zug fährt die FS ab, zunächst belegt er Block aa und Weiche 001:";
     aa.setB_status(false);
     w1.setBelegung(false);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
     p = v1.getAktFS();
-    std::cout<<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<std::endl;
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
+    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe()<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
     stellwerkstec.show_Signal();
-    std::cout<<"-------------------------------------------------"<<std::endl;
-    std::cout<<"Zug fährt die FS ab, nun belegt er auch  Block ac:"<<std::endl;
+    qDebug() <<"-------------------------------------------------";
+    qDebug() <<"Zug fährt die FS ab, nun belegt er auch  Block ac:";
     ac.setB_status(false);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
     p = v1.getAktFS();
-    std::cout<<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<std::endl;
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
+    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe()<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
     stellwerkstec.show_Signal();
-    std::cout<<"-------------------------------------------------"<<std::endl;
-    std::cout<<"Zug fährt die FS ab, nun belegt er auch  Block ae, aa gibt er frei:"<<std::endl;
+    qDebug() <<"-------------------------------------------------";
+    qDebug() <<"Zug fährt die FS ab, nun belegt er auch  Block ae, aa gibt er frei:";
     aa.setB_status(true);
     ae.setB_status(false);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
     p = v1.getAktFS();
-    std::cout<<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<std::endl;
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
+    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe()<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
     stellwerkstec.show_Signal();
-    std::cout<<"-------------------------------------------------"<<std::endl;
-    std::cout<<"Zug fährt die FS ab, nun belegt er auch  Block ag:"<<std::endl;
+    qDebug() <<"-------------------------------------------------";
+    qDebug() <<"Zug fährt die FS ab, nun belegt er auch  Block ag:";
     ag.setB_status(false);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
     p = v1.getAktFS();
-    std::cout<<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<std::endl;
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
+    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe()<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
     stellwerkstec.show_Signal();
-    std::cout<<"-------------------------------------------------"<<std::endl;
-    std::cout<<"Zug fährt die FS ab, nun gibt er auch ac und Weiche 001 frei(eig unreal wegen S005->Hp0) :"<<std::endl;
+    qDebug() <<"-------------------------------------------------";
+    qDebug() <<"Zug fährt die FS ab, nun gibt er auch ac und Weiche 001 frei(eig unreal wegen S005->Hp0) :";
     ac.setB_status(true);
     w1.setBelegung(true);
-    std::cout<<"Status von "<<s1.getS_id()<<": "<<s1.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS()<<std::endl;
+    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
+    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
     p = v1.getAktFS();
-    std::cout<<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<std::endl;
-    std::cout<<"v1 first/second: "<<p.first<<"/"<<p.second<<std::endl;
-    std::cout<<"Status von "<<s2.getS_id()<<": "<<s2.getS_status()<<std::endl;
-    std::cout<<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS()<<std::endl;
+    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
+    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
+    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
+    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
     q = v2.getAktFS();
-    std::cout<<"v2 first/second: "<<q.first<<"/"<<q.second<<std::endl;
-    std::cout<<"Status von "<<s5.getS_id()<<": "<<s5.getS_status()<<std::endl;
-    std::cout<<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe()<<std::endl;
+    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
+    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
+    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
     stellwerkstec.show_Signal();
-    std::cout<<"-------------------------------------------------"<<std::endl;
+    qDebug() <<"-------------------------------------------------";
     }
   if( menue == 12){
-      std::cout<<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung()<<std::endl;
-      std::cout<<"Nach dem Umstellen:"<<std::endl;
+      qDebug() <<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung();
+      qDebug() <<"Nach dem Umstellen:";
       w1.setW_status(false);
-      std::cout<<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung()<<std::endl;
-      std::cout<<"Nach dem Belegen: "<<std::endl;
+      qDebug() <<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung();
+      qDebug() <<"Nach dem Belegen: ";
       w1.setBelegung(false);
-      std::cout<<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung()<<std::endl;
-      std::cout<<"Nach dem Verriegeln: "<<std::endl;
+      qDebug() <<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung();
+      qDebug() <<"Nach dem Verriegeln: ";
       w1.setVerriegelung(true);
-      std::cout<<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung()<<std::endl;
-      std::cout<<"++++++++++++++++++++++++++++++++++RESET+++++++++++++++++++++++++++++++++++++++++++++++ "<<std::endl;
+      qDebug() <<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung();
+      qDebug() <<"++++++++++++++++++++++++++++++++++RESET+++++++++++++++++++++++++++++++++++++++++++++++ ";
       w1.setBelegung(true);
       w1.setVerriegelung(false);
-      std::cout<<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung()<<std::endl;
-      std::cout<<"Nach dem Verriegeln: "<<std::endl;
+      qDebug() <<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung();
+      qDebug() <<"Nach dem Verriegeln: ";
       w1.setVerriegelung(true);
-      std::cout<<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung()<<std::endl;
+      qDebug() <<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung();
 
   }
   if(menue == 13){
@@ -1018,8 +1021,8 @@ int main( int argc , char *argv[] ){
 	ag.setB_status(false);
 	ae.setB_status(true);
 	ag.setB_status(true);
-	std::cout<<"aa "<<aa.getB_status()<<std::endl;
-        std::cout<<"ac "<<ac.getB_status()<<std::endl;	
+	qDebug() <<"aa "<<aa.getB_status();
+        qDebug() <<"ac "<<ac.getB_status();	
 	//mem->quit();
   }
   if(menue == 14){//Testing wiringPi in the program 
@@ -1070,7 +1073,7 @@ int main( int argc , char *argv[] ){
   }
   if(menue == 16){
     WSignal *ww3ptr = new WSignal(3);
-    std::vector<Block*> s2tow3b;
+    QList<Block*> s2tow3b;
     s2tow3b.push_back(aeptr);
     s2ptr->addBlockZuRangier(ww3ptr,s2tow3b);
     s1.setFahrt(s2ptr);
@@ -1103,16 +1106,16 @@ int main( int argc , char *argv[] ){
       
   // End of program, now delete all resources... all classes with parents are deleted through this chain, addItem, addWidget takes ownership
   int eofprogram = a.exec();
-  std::cout<<"endofprogram"<<std::endl;
+  qDebug() <<"endofprogram";
   //reverse order
   mem->quit();
-  delete mem;
   thread2->quit();
+  delete mem;
   delete thread2;
       
   wrkr->quit();
-  delete wrkr;
   thread->quit();
+  delete wrkr;
   delete thread;
 
   delete c1;

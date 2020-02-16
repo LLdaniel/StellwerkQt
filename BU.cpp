@@ -2,8 +2,7 @@
 //Bahnübergang des Stellwerks  [- BU.CXX -]
 //*************************************************************************
 #include "BU.h"
-#include <iostream>
-#include <string>
+#include <QDebug>
 #include <QBrush>
 //
 BU::BU( int name ){
@@ -13,12 +12,12 @@ BU::BU( int name ){
 void BU::setName( int name ){
   if( name > 0 && name < 100){//zweistellig?
     if( name < 10 ){//eine Vor-Null einfügen
-      buname = "BU0" + std::to_string( name );
+      buname = "BU0" + QString::number( name );
     }
-    else buname = "BU" + std::to_string( name );//ansonsten ist keine Vor-Null nötig
+    else buname = "BU" + QString::number( name );//ansonsten ist keine Vor-Null nötig
   }
   else{
-    std::cout<<"BU::Falsche Benennung: Eine zweistellige Zahl ist nötig."<<std::endl;
+    qDebug()<<"BU::Falsche Benennung: Eine zweistellige Zahl ist nötig.";
   }
 }
 
@@ -28,7 +27,7 @@ void BU::setBU_status( bool status ){
   changeColor();
     //}
   //if( !freigabe ){//falls verriegelt: keine Möglichkeit zum öffnen --- wird nicht mehr verwendet
-  //  std::cout<<"Der Bahnübergang ist verriegelt!"<<std::endl;
+  //  qDebug()<<"Der Bahnübergang ist verriegelt!";
   //}
 }
 void BU::changeColor(){
@@ -50,10 +49,10 @@ BU::~BU(){
 
 //void BU::evaluateFreigabe(){ --- wird nicht mehr verwendet
 //  if( counter == 1 || counter == 0){//zum debuggen
-//   std::cout<<"BU::Der Counter =1|0"<<std::endl;
+//   qDebug()<<"BU::Der Counter =1|0";
 // }
 //if(counter == 2 && !bu_status){//Hier wird dann die Freigabe auf true gesetzt
-//  std::cout<<"BU::Der Counter = 2"<<std::endl;
+//  qDebug()<<"BU::Der Counter = 2";
 //  freigabe = true;//hier freigabe = true -->richtige Zyklenfolge
 // }
 //}

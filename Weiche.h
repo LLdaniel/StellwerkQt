@@ -3,7 +3,7 @@
 //*************************************************************************
 #ifndef WEICHE_H
 #define WEICHE_H
-#include <string>
+#include <QString>
 #include <QGraphicsRectItem>
 #include <QLabel>
 class Weiche{
@@ -14,7 +14,7 @@ Weiche( int name );//Name wird als int übergeben und später zum string umgebas
   bool getBelegung(){ return belegung; }
   int getCounter(){ return counter; }
   void setW_id( int name );
-  std::string getW_id(){ return w_id; }
+  QString getW_id(){ return w_id; }
   void setW_status( bool status );
   bool getW_status(){ return w_status; }
   void setVerriegelung ( bool lock ){ verriegelung = lock; changeColor(); }
@@ -29,7 +29,7 @@ Weiche( int name );//Name wird als int übergeben und später zum string umgebas
   void setGpio( int pinGerade, int pinAbknickend );
   void switchWeiche(bool linksrechts);
 private:
-  std::string w_id;//dreistellige Ziffernfolge der Form 068
+  QString w_id;//dreistellige Ziffernfolge der Form 068
   bool w_status = true;//true:=gerade ; false:=abknickend
   bool verriegelung = false;//true:=verriegelt ; false:=entriegelt
 bool belegung = true;//true:=frei ; false:=belegt

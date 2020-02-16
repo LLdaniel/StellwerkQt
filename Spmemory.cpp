@@ -1,20 +1,20 @@
 #include "Spmemory.h"
-#include <iostream>
+#include <QDebug>
 
 void Spmemory::addFS( HSignal *SPstart, HSignal *SPziel){      // erst mal in den buffer schreiben
-  std::pair<HSignal*,HSignal*> hilfspair = std::make_pair(SPstart, SPziel);
+  QPair<HSignal*,HSignal*> hilfspair = qMakePair(SPstart, SPziel);
   buffer.push_back(hilfspair);
-  std::cout<<" AHAAAAAAAAA; DER Buffer wird geladen..."<<std::endl;
+  qDebug()<<" AHAAAAAAAAA; DER Buffer wird geladen...";
 }
 
 void Spmemory::showSP(){
-  std::cout<<"************************************************************"<<std::endl;
-  std::cout<<"*** Dies sind die gespeicherten Fahrstraßen:             ***"<<std::endl;
+  qDebug()<<"************************************************************";
+  qDebug()<<"*** Dies sind die gespeicherten Fahrstraßen:             ***";
   for( int i = 0 ; i < speicherlist.size() ; i++ ){//Durchläuft die gesamte Speicherlist
-    std::cout<<"***   "<<speicherlist.at(i).first->getS_id()<<" -> "<<speicherlist.at(i).second->getS_id()<<"                                           ***"<<std::endl;
+    qDebug()<<"***   "<<speicherlist.at(i).first->getS_id()<<" -> "<<speicherlist.at(i).second->getS_id()<<"                                           ***";
   }
-  std::cout<<"************************************************************"<<std::endl;
-  std::cout<<""<<std::endl;
+  qDebug()<<"************************************************************";
+  qDebug()<<"";
 }
 
 void Spmemory::quit(){
@@ -24,22 +24,22 @@ void Spmemory::quit(){
 void Spmemory::timing(){ //this is a trick: thread conncted with processSpeicher directly only executes processSpeicher, but cannot insert updates, therefore timer with 0ms which calls it also repeatedly, but there thread has chance to process event loop and new events see https://github.com/LLdaniel/QThreadExample
   if( trySP ) t->start();
   if(!trySP ){
-    std::cout<<" F I N I S H E D # 2 "<<std::endl;
     delete t;
+    qDebug()<<" F I N I S H E D # 2 ";
     emit finished();
   }
 }
 
 void Spmemory::processSpeicher(){ //versuche ständig die FS zu stellen, irgendwann geht sie ja wieder rein: 1) speicherlist abhandeln 2)evtl Vermerke löschen 3) buffer mitaufnehmen 4) neue Tour 
-  //std::cout<<".";
+  //qDebug()<<".";
   bool delit = false;
   if(!speicherlist.isEmpty() ){                        //1) speicherlist abhandeln
     for( int i = 0; i < speicherlist.size(); i++){
       delit = speicherlist.at(i).first->setFahrt(speicherlist.at(i).second); // Rückgabewert wird notwendig für das stellen...
-      std::cout<<" ich probiere zu stellen, dabei ist delit = "<<delit<<std::endl;
+      qDebug()<<" ich probiere zu stellen, dabei ist delit = "<<delit;
       if( delit ){ // bei erfolgreichem stellen, merke man sich die position
 	deleter.push_back(i);
-	std::cout<<" ich lösche"<<std::endl;
+	qDebug()<<" ich lösche";
 	//erledige das Löschen der Speicher gui (Markierung)
 	speicherlist.at(i).first->setSpeicher( false );
 	//speicherlist.at(i).first->getspeicheritems().first->setBrush(Qt::darkBlue); --> vergisst ziel HS Speicheritems --> deshalb mache untere Zeile: ziel Speicheritems löschen, dann zurück auf Start speicheritems
@@ -47,7 +47,7 @@ void Spmemory::processSpeicher(){ //versuche ständig die FS zu stellen, irgendw
       }
     }
     delit = false; // reset delit für den nächsten durchgang
-    std::cout<<" eine Tour Stellversuch ist durch"<<std::endl;
+    qDebug()<<" eine Tour Stellversuch ist durch";
     for( int j = 0; j < deleter.size(); j++){   // 2) lösche alle erfolgreichen Speicher
       speicherlist.removeAt(deleter.at(j));
     }
@@ -56,10 +56,10 @@ void Spmemory::processSpeicher(){ //versuche ständig die FS zu stellen, irgendw
     // ::::::
   }
   if(!buffer.isEmpty() ){//3) lade buffer
-    std::cout<<" load buffer ..."<<std::endl;
+    qDebug()<<" load buffer ...";
     speicherlist.append(buffer);      
     buffer.clear();               
-    std::cout<<" buffer loaded.schritt 3) ende"<<std::endl;
+    qDebug()<<" buffer loaded.schritt 3) ende";
   }
   timing(); // 4)
 }
