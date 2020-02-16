@@ -11,7 +11,7 @@ class Spmemory : public QObject{
   Q_OBJECT
   
 public:
-  Spmemory(){t->callOnTimeout(this, &Spmemory::processSpeicher);}
+  Spmemory(){ t->callOnTimeout(this, &Spmemory::processSpeicher); }
   ~Spmemory(){}
   void showSP();
 public slots:

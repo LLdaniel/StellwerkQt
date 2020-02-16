@@ -23,10 +23,15 @@ void Spmemory::quit(){
 
 void Spmemory::timing(){ //this is a trick: thread conncted with processSpeicher directly only executes processSpeicher, but cannot insert updates, therefore timer with 0ms which calls it also repeatedly, but there thread has chance to process event loop and new events see https://github.com/LLdaniel/QThreadExample
   if( trySP ) t->start();
-  else std::cout<<" F I N I S H E D # 2 "<<std::endl; delete t; emit finished();
+  if(!trySP ){
+    std::cout<<" F I N I S H E D # 2 "<<std::endl;
+    delete t;
+    emit finished();
+  }
 }
 
 void Spmemory::processSpeicher(){ //versuche ständig die FS zu stellen, irgendwann geht sie ja wieder rein: 1) speicherlist abhandeln 2)evtl Vermerke löschen 3) buffer mitaufnehmen 4) neue Tour 
+  //std::cout<<".";
   bool delit = false;
   if(!speicherlist.isEmpty() ){                        //1) speicherlist abhandeln
     for( int i = 0; i < speicherlist.size(); i++){

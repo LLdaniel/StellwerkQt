@@ -75,6 +75,7 @@ int main( int argc , char *argv[] ){
     w.setCentralWidget(view);//add view to mainwindow
     w.setWindowTitle("Electronic Signalling Control Center - Model Railway");
     
+    qRegisterMetaType<std::string>("std::string");// sonst: QObject::connect: Cannot queue arguments of type 'std::string' ... vielleicht mal alles als QString umbauen
     
   std::cout<<""<<std::endl;
   std::cout<<"*************************************************************"<<std::endl;
@@ -616,13 +617,13 @@ int main( int argc , char *argv[] ){
       
   QThread* thread2 = new QThread;
   Spmemory *mem = new Spmemory();
-  mem->moveToThread(thread2); //erst thread affinity -> also erst movetothread, dann connections
-  QObject::connect(thread2, &QThread::started, mem, &Spmemory::timing);
+  mem->moveToThread(thread2);
+  bool habsgetestet = false;
+  habsgetestet = QObject::connect(thread2, &QThread::started, mem, &Spmemory::timing);
   QObject::connect(mem, &Spmemory::finished, thread2, &QThread::quit);
   //spmemory connection 
-  bool habsgetestet = false;
   
-  habsgetestet = QObject::connect(&s1, &HSignal::callspmemory,mem, &Spmemory::addFS);
+  QObject::connect(&s1, &HSignal::callspmemory,mem, &Spmemory::addFS);
   std::cout<<" HABS GETESTET = "<<habsgetestet<<std::endl;
   QObject::connect(&s2, &HSignal::callspmemory,mem, &Spmemory::addFS);
   QObject::connect(&s3, &HSignal::callspmemory,mem, &Spmemory::addFS);
