@@ -57,7 +57,7 @@ int main( int argc , char *argv[] ){
     printf("argv[%d]: %s\n", i, argv[i]);
     //-v debug option with different std's
     if( strcmp(argv[i],"-v") == 0 ){
-      qDebug() <<"verbose";
+      qDebug() <<"__MAIN__: verbose output mode";
       //debug = true;
     }
     if(strcmp(argv[i],"--help") == 0 ){
@@ -68,11 +68,11 @@ int main( int argc , char *argv[] ){
       qDebug()<<" ### -platform xcb: use when problems with gl  ###";
       qDebug()<<" ### --help:        show this help             ###";
       qDebug()<<" ### -v:            verbose debug mode         ###";
-      qDebug()<<" ### -menu:         shows test/debug menu      ###";
+      qDebug()<<" ### -d   :         shows test/debug menu      ###";
       qDebug()<<" #################################################";
       return 0;
     }
-    if(strcmp(argv[i],"-menu") == 0 ){
+    if(strcmp(argv[i],"-d") == 0 ){
       
     }
   }
