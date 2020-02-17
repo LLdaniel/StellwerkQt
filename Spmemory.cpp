@@ -26,7 +26,7 @@ void Spmemory::timing(){ //this is a trick: thread conncted with processSpeicher
   if(!trySP ){
     delete t;
     qDebug()<<" F I N I S H E D # 2 ";
-    emit finished();
+    //emit finished();
   }
 }
 

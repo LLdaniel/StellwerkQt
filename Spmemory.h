@@ -19,8 +19,8 @@ public slots:
   void timing(); // intermediate step to solve blocked thread: step towards processSpeicher
   void processSpeicher();
   void quit();
-signals:
-  void finished();
+  //signals:
+  //void finished();
 public slots:
   void addFS( HSignal *SPstart, HSignal *SPziel);
 private:

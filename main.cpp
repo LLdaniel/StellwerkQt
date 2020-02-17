@@ -627,8 +627,10 @@ qRegisterMetaType<std::string>("std::string");// sonst: QObject::connect: Cannot
   QThread* thread = new QThread;
   worker* wrkr = new worker();
   wrkr->moveToThread(thread);
-  QObject::connect(thread, &QThread::started, wrkr, &worker::updateBelegt);
-  QObject::connect(wrkr, &worker::finished, thread, &QThread::quit);
+  QObject::connect(thread, &QThread::started, wrkr, &worker::updateBelegt); ////thread start connection 
+  QObject::connect(wrkr, &worker::finished, thread, &QThread::quit); //if no pin is registered finished
+  QObject::connect(&a, &QApplication::aboutToQuit, wrkr, &worker::quit); // quit updateBelegt on aboutToQuit
+  QObject::connect(&a, &QApplication::aboutToQuit, thread, &QThread::quit); // quit thread on aboutToQuit
   thread->start();
   //thread endet theoretisch auch über wrkr.quit() -> updateBelegt() -> emit finished -> oberer slot
       
@@ -636,8 +638,10 @@ qRegisterMetaType<std::string>("std::string");// sonst: QObject::connect: Cannot
   Spmemory *mem = new Spmemory();
   mem->moveToThread(thread2);
   bool habsgetestet = false;
-  habsgetestet = QObject::connect(thread2, &QThread::started, mem, &Spmemory::timing);
-  QObject::connect(mem, &Spmemory::finished, thread2, &QThread::quit);
+  habsgetestet = QObject::connect(thread2, &QThread::started, mem, &Spmemory::timing); //thread start connection 
+  //  QObject::connect(mem, &Spmemory::finished, thread2, &QThread::quit);
+  QObject::connect(&a, &QApplication::aboutToQuit, mem, &Spmemory::quit); // quit timing on aboutToQuit
+  QObject::connect(&a, &QApplication::aboutToQuit, thread2, &QThread::quit); // quit thread2 on aboutToQuit
   //spmemory connection 
   
   QObject::connect(&s1, &HSignal::callspmemory,mem, &Spmemory::addFS);
@@ -1122,13 +1126,9 @@ qRegisterMetaType<std::string>("std::string");// sonst: QObject::connect: Cannot
   int eofprogram = a.exec();
   qDebug() <<"endofprogram";
   //reverse order
-  mem->quit();
-  thread2->quit();
   delete mem;
   delete thread2;
       
-  wrkr->quit();
-  thread->quit();
   delete wrkr;
   delete thread;
 
