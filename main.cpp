@@ -49,27 +49,41 @@ Stellwerkstechnik *stellwerkstecptr = &stellwerkstec;
 Block aa("aa", stellwerkstecptr);
 Block *aaptr = &aa;
 
-
 int main( int argc , char *argv[] ){
-    //parameter Übergabe
-    //bool debug = false;
-    printf("argc: %d\n", argc);
-    for(int i=0; i < argc; i++) {
-        printf("argv[%d]: %s\n", i, argv[i]);
-        //-v debug option with different std's
-        if( strcmp(argv[i],"-v") == 0 ){
-            qDebug() <<"verbose";
-            //debug = true;
-        }
+  //parameter Übergabe
+  //bool debug = false;
+  printf("argc: %d\n", argc);
+  for(int i=0; i < argc; i++) {
+    printf("argv[%d]: %s\n", i, argv[i]);
+    //-v debug option with different std's
+    if( strcmp(argv[i],"-v") == 0 ){
+      qDebug() <<"verbose";
+      //debug = true;
     }
-    //::Eigentlicher Start main
-    QApplication a(argc, argv);
-    MainWindow w;// = new MainWindow();
-    //create scene
-    QGraphicsScene *scene = new QGraphicsScene(&w);
-    scene->setBackgroundBrush(Qt::black);
-    // connect for quiting program
-    QObject::connect(&w,&MainWindow::shutdown,&a,QApplication::quit);
+    if(strcmp(argv[i],"--help") == 0 ){
+      qDebug()<<" #################################################";
+      qDebug()<<" ###              StellwerkQt Help             ###";
+      qDebug()<<" ### ----------------------------------------- ###";
+      qDebug()<<" ### usage: StellwerkQt -[option]              ###";
+      qDebug()<<" ### -platform xcb: use when problems with gl  ###";
+      qDebug()<<" ### --help:        show this help             ###";
+      qDebug()<<" ### -v:            verbose debug mode         ###";
+      qDebug()<<" ### -menu:         shows test/debug menu      ###";
+      qDebug()<<" #################################################";
+      return 0;
+    }
+    if(strcmp(argv[i],"-menu") == 0 ){
+      
+    }
+  }
+  //::Eigentlicher Start main
+  QApplication a(argc, argv);
+  MainWindow w;// = new MainWindow();
+  //create scene
+  QGraphicsScene *scene = new QGraphicsScene(&w);
+  scene->setBackgroundBrush(Qt::black);
+  // connect for quiting program
+  QObject::connect(&w,&MainWindow::shutdown,&a,QApplication::quit);
 
 //create view
 QGraphicsView *view = new QGraphicsView(scene);
