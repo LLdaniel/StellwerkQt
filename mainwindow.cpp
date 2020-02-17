@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <iostream>
+#include <QDebug>
 #include <QKeySequence>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -19,15 +19,15 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     //registriere Mouse Event, lokalisiere auf was geklickt wurde und wie, rufe Funktion auf, die nochmal einen Klick erwartet (auf Zielsignal), rufe dann setFahrt auf
     if(event->button() == Qt::LeftButton){
-        std::cout<<"Left mouse button was pressed"<<std::endl;
-        std::cout<<"x= "<<event->x()<<" and y="<<event->y()<<std::endl;
+        qDebug()<<"Left mouse button was pressed";
+        qDebug()<<"x= "<<event->x()<<" and y="<<event->y();
     }
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     if(event->key() == Qt::Key_Escape){
-        std::cout<<"ESC was pressed"<<std::endl;
+        qDebug()<<"ESC was pressed";
     }
 }
 
@@ -38,6 +38,12 @@ void MainWindow::createMenus(){
 
   piMenu = menuBar()->addMenu(tr("&RaspberryPi"));
   piMenu->addAction(resetAct);
+
+  aboutMenu = menuBar()->addMenu(tr("&About"));
+  aboutMenu->addAction(aboutAct);
+  aboutBox.setText("<b>About the ControlCenter </b><br>This is an Electronic Signalling Control Center. It is modeled on <i>german 'ESTW'</i> control center of DB.<br><br>It is possible to signal the tracks as well as switching turnouts and processing feedback from monitored track segments.<br><br>For further information please see https://github.com/LLdaniel/StellwerkQt/wiki.");
+  aboutMenu->addAction(helpAct);
+  helpBox.setText("<b>How to control:</b><br>Guide the model trains through complete routes via PushButtons near the signals. Tournouts and distant signals will be automatically set.<br>It is possible to memorize a route from main signal to main signal. This will be indicated as yellow dots.<br><br>For further information please see https://github.com/LLdaniel/StellwerkQt/wiki</a>.");
 }
 
 void MainWindow::createActions(){
@@ -50,5 +56,20 @@ void MainWindow::createActions(){
   resetAct->setShortcuts(QKeySequence::Refresh);
   resetAct->setStatusTip(tr("Sets pi pins as input"));
   QObject::connect(resetAct, &QAction::triggered, this, &MainWindow::reset);
+
+  aboutAct = new QAction(tr("&About ControlCenter..."), this);
+  aboutAct->setStatusTip(tr("More information about ControlCenter"));
+  QObject::connect(aboutAct, &QAction::triggered, this, &MainWindow::showAboutDialog);
+
+  helpAct = new QAction(tr("&Help..."), this);
+  helpAct->setStatusTip(tr("Guide for the ControlCenter"));
+  QObject::connect(helpAct, &QAction::triggered, this, &MainWindow::showHelpDialog);
 }
 
+void MainWindow::showAboutDialog(){
+  aboutBox.exec();
+}
+
+void MainWindow::showHelpDialog(){
+  helpBox.exec();
+}
