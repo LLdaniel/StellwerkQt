@@ -649,7 +649,7 @@ void HSignal::deleteFS(){
         //HSIGNAL-Status wird jetzt gelöscht
         //Ziel ist ab jetzt nicht mehr aktuell
         s_status = false;
-        hasHSZiel = false;
+        //hasHSZiel = false;  //nicht: da FS Speicher bereits in Spmemory --> dann passiert seg fault -> s. auch unten
         changeColor();
         emit refreshStellwerkstechnik( getS_id() , false );//Liste in Stellwerksim aktualiesieren
         //VSIGNALE - jetzt kann auch noch evtl VS auf Halt erwarten gehen-->rückwirkend
@@ -660,13 +660,13 @@ void HSignal::deleteFS(){
         vorsignalR.at(i)->setV_status( false );
           }
         }
-        //jetzt soll auch der komplette Speicher gelöscht werden:
-        if(speicher){
-        speicher = false;
-        speicheritems.first->setBrush(Qt::darkBlue);
-        getSpeicherziel()->speicheritems.second->setBrush(Qt::darkBlue);
-        emit illuminateSpeicher(false,getZiel());
-        }
+        //jetzt soll auch der komplette Speicher gelöscht werden: // soll nicht mehr gelöscht werden, da in Spmemory-> deshalb lieber stellen lassen!
+        //if(speicher){
+	  //speicher = false;
+	  //speicheritems.first->setBrush(Qt::darkBlue);
+	  //getSpeicherziel()->speicheritems.second->setBrush(Qt::darkBlue);
+	  //emit illuminateSpeicher(false,getZiel());
+        //}
         //////
       }
   }
