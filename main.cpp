@@ -43,12 +43,6 @@ extern "C"{
 }
 #endif
 
-//Stellwerkstechnik+Block as basis
-Stellwerkstechnik stellwerkstec;
-Stellwerkstechnik *stellwerkstecptr = &stellwerkstec;
-Block aa("aa", stellwerkstecptr);
-Block *aaptr = &aa;
-
 int main( int argc , char *argv[] ){
   //parameter Übergabe
   //bool debug = false;
@@ -78,21 +72,20 @@ int main( int argc , char *argv[] ){
   }
   //::Eigentlicher Start main
   QApplication a(argc, argv);
-  MainWindow w;// = new MainWindow();
+  MainWindow w;
   //create scene
   QGraphicsScene *scene = new QGraphicsScene(&w);
   scene->setBackgroundBrush(Qt::black);
   // connect for quiting program
   QObject::connect(&w,&MainWindow::shutdown,&a,QApplication::quit);
 
-//create view
-QGraphicsView *view = new QGraphicsView(scene);
-view->setWindowTitle("Electronic Signalling Control Center - Model Railway");
-//view->showMaximized();
-w.setCentralWidget(view);//add view to mainwindow
-w.setWindowTitle("Electronic Signalling Control Center - Model Railway");
+  //create view
+  QGraphicsView *view = new QGraphicsView(scene);
+  view->setWindowTitle("Electronic Signalling Control Center - Model Railway");
+  //view->showMaximized();
+  w.setCentralWidget(view);//add view to mainwindow
+  w.setWindowTitle("Electronic Signalling Control Center - Model Railway");
     
-qRegisterMetaType<std::string>("std::string");// sonst: QObject::connect: Cannot queue arguments of type 'std::string' ... vielleicht mal alles als QString umbauen
     
   qDebug() <<"";
   qDebug() <<"*************************************************************";
@@ -114,9 +107,7 @@ qRegisterMetaType<std::string>("std::string");// sonst: QObject::connect: Cannot
   qDebug() <<"***15) ZugpassiertTest -> wegen Neuerungen wie WS->WS...  ***";
   qDebug() <<"***16) HS->WS: was VS macht [nicht TestPlan anwendbar ]   ***";
   qDebug() <<"***17) Beweis, dass deleteFS auch bei HS/WS->WS/HS klappt ***";
-  qDebug() <<"***18) ---                                                ***";
-  qDebug() <<"***19) ---                                                ***";
-  qDebug() <<"***20) Test für Stellwerkstechnik und WSignale            ***";
+  qDebug() <<"***18) Test für Stellwerkstechnik und WSignale            ***";
   qDebug() <<"*************************************************************";
   int menue;
   std::cin>>menue;
@@ -126,6 +117,11 @@ qRegisterMetaType<std::string>("std::string");// sonst: QObject::connect: Cannot
   qDebug() <<"  _S005____ag______V002______ae_______S002_____ac__________/              |+|BÜ1          ";
   qDebug() <<"";
   //Initialisierung der Strecke--------------------------------------------------------
+  //Stellwerkstechnik+Block as basis
+  Stellwerkstechnik stellwerkstec;
+  Stellwerkstechnik *stellwerkstecptr = &stellwerkstec;
+  Block aa("aa", stellwerkstecptr);
+  Block *aaptr = &aa;
   //:::Weichen:::
   Weiche w1(1);
   Weiche *w1ptr = &w1;
@@ -1104,13 +1100,7 @@ qRegisterMetaType<std::string>("std::string");// sonst: QObject::connect: Cannot
       ww2.setFahrt("S002");
       ww2.deleteFS();
   }
-  if(menue == 18){//Thread Test
-    
-  }
-  if(menue == 19){//Queue Test
-    //empty
-  }
-  if( menue == 20){
+  if( menue == 18){
     ww1ptr->setFahrt(ww2ptr);
     stellwerkstec.show_Signal();
     aa.setB_status(false);
