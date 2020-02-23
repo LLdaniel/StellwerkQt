@@ -85,6 +85,7 @@ int main( int argc , char *argv[] ){
   //view->showMaximized();
   w.setCentralWidget(view);//add view to mainwindow
   w.setWindowTitle("Electronic Signalling Control Center - Model Railway");
+  view->scale(1.0,1.0);
     
     
   qDebug() <<"";
@@ -1109,6 +1110,7 @@ int main( int argc , char *argv[] ){
     stellwerkstec.show_Signal();
     
   }
+  
   w.showMaximized();
 
       

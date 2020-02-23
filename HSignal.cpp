@@ -790,8 +790,8 @@ void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *item
     beschriftung->setFont(f);
     //und PushButton
     push = but;
-    but->setFixedHeight(10);
-    but->setFixedWidth(10);
+    but->setFixedHeight(20);
+    but->setFixedWidth(20);
     but->setStyleSheet("background-color: blue");
     QObject::connect(push, &QPushButton::clicked, this, &HSignal::listenToFS);
     //QObject::connect(push,SIGNAL(clicked()),this,SLOT(listenToFS()) );//Verknüpfung von PushButton und seinem Signal (für clickmanager)
