@@ -87,38 +87,8 @@ int main( int argc , char *argv[] ){
   w.setWindowTitle("Electronic Signalling Control Center - Model Railway");
   view->scale(1.0,1.0);
     
-    
-  qDebug() <<"";
-  qDebug() <<"*************************************************************";
-  qDebug() <<"***                Testmenü des Stellwerks                ***";
-  qDebug() <<"*** 1) Initialisierungen und grundlegende Methodentests   ***";
-  qDebug() <<"*** 2) Kleine Simulation einer Fahrt (ohne Zugpassiert)   ***";
-  qDebug() <<"*** 3) WSignal Test; grundsätzliches                      ***";
-  qDebug() <<"*** 4) Bahnübergang Test (inkl. kleiner Blocktest)        ***";
-  qDebug() <<"*** 5) Test für deleteFS() (testet V vor + BÜ)            ***";
-  qDebug() <<"*** 6) Test für deleteFS() (testet V rück)                ***";
-  qDebug() <<"*** 7) Test für Stellwerkstechnik (vor HS... erstellen)   ***";
-  qDebug() <<"*** 8) Test für Farbigkeit der Blöcke und QList_Block     ***";
-  qDebug() <<"*** 9) Test für Farbigkeit der Weichen                    ***";
-  qDebug() <<"***10) normale Initialisierung                            ***";
-  qDebug() <<"***11) Test für zugpassiert durch eine Fahrt (s. 2))      ***";
-  qDebug() <<"***12) Weichentest                                        ***";
-  qDebug() <<"***13) Test: Einwählen des Speichers nach freier FS       ***";
-  qDebug() <<"***14) wiringPi Test                                      ***";
-  qDebug() <<"***15) ZugpassiertTest -> wegen Neuerungen wie WS->WS...  ***";
-  qDebug() <<"***16) HS->WS: was VS macht [nicht TestPlan anwendbar ]   ***";
-  qDebug() <<"***17) Beweis, dass deleteFS auch bei HS/WS->WS/HS klappt ***";
-  qDebug() <<"***18) Test für Stellwerkstechnik und WSignale            ***";
-  qDebug() <<"*************************************************************";
-  int menue;
-  std::cin>>menue;
-  qDebug() <<"                                    Testplan                                            ";
-  qDebug() <<"  _S004____af______V003______ad_______S003_____ab_____________V001___WS1__|+|___aa___S001__  ";
-  qDebug() <<"                                                            /001          |+|                ";
-  qDebug() <<"  _S005____ag______V002______ae_______S002_____ac__________/              |+|BÜ1          ";
-  qDebug() <<"";
   //Initialisierung der Strecke--------------------------------------------------------
-  //Stellwerkstechnik+Block as basis
+  //Stellwerkstechnik+Block aa as basis
   Stellwerkstechnik stellwerkstec;
   Stellwerkstechnik *stellwerkstecptr = &stellwerkstec;
   Block aa("aa", stellwerkstecptr);
@@ -126,6 +96,24 @@ int main( int argc , char *argv[] ){
   //:::Weichen:::
   Weiche w1(1);
   Weiche *w1ptr = &w1;
+  Weiche w2(2);
+  Weiche *w2ptr = &w2;
+  Weiche w3(3);
+  Weiche *w3ptr = &w3;
+  Weiche w4(4);
+  Weiche *w4ptr = &w4;
+  Weiche w5(5);
+  Weiche *w5ptr = &w5;
+  Weiche w6(6);
+  Weiche *w6ptr = &w6;
+  Weiche w7(7);
+  Weiche *w7ptr = &w7;
+  Weiche w8(8);
+  Weiche *w8ptr = &w8;
+  Weiche w9(9);
+  Weiche *w9ptr = &w9;
+  Weiche w10(10);
+  Weiche *w10ptr = &w10;
   //:::Block:::
   Block ab("ab", stellwerkstecptr);
   Block *abptr = &ab;
@@ -139,6 +127,10 @@ int main( int argc , char *argv[] ){
   Block *afptr = &af;
   Block ag("ag", stellwerkstecptr);
   Block *agptr = &ag;
+  Block ah("ah", stellwerkstecptr);
+  Block *ahptr = &ah;
+  Block ai("ai", stellwerkstecptr);
+  Block *aiptr = &ai;
   //:::VS:::
   VSignal v1(1);
   VSignal *v1ptr = &v1;
@@ -146,10 +138,41 @@ int main( int argc , char *argv[] ){
   VSignal *v2ptr = &v2;
   VSignal v3(3);
   VSignal *v3ptr = &v3;
-  v1.setRichtung("S001","S002");
-  v1.setRichtung("S001","S003");
-  v2.setRichtung("S002","S005");
-  v3.setRichtung("S003","S004");
+  VSignal v4(4);
+  VSignal *v4ptr = &v4;
+  VSignal v5(5);
+  VSignal *v5ptr = &v5;
+  VSignal v6(6);
+  VSignal *v6ptr = &v6;
+  VSignal v7(7);
+  VSignal *v7ptr = &v7;
+  VSignal v8(8);
+  VSignal *v8ptr = &v8;
+  VSignal v9(9);
+  VSignal *v9ptr = &v9;
+  VSignal v10(10);
+  VSignal *v10ptr = &v10;
+  v1.setRichtung("S001","S004");
+  v2.setRichtung("S013","S002");
+  v3.setRichtung("S004","S015");
+  v3.setRichtung("S004","S007");
+  v4.setRichtung("S008","S002");
+  //v4.setRichtung("S0","S002");
+  //v4.setRichtung("S00V","S002");
+  //v4.setRichtung("S00X","S002");
+  //v4.setRichtung("S00Y","S002");
+  v5.setRichtung("S004","S014");
+  v6.setRichtung("S004","S012");
+  v6.setRichtung("S004","S010");
+  v6.setRichtung("S005","S012");
+  v6.setRichtung("S005","S010");
+  v7.setRichtung("S011","S003");
+  v7.setRichtung("S009","S003");
+  v7.setRichtung("S011","S002");
+  v7.setRichtung("S009","S002");
+  //v8.setRichtung("S007","");
+  //v9.setRichtung("S006","");
+  //v10.setRichtung("S00X","S013");
   //:::HS:::
   HSignal s1(1);
   HSignal *s1ptr = &s1;
@@ -161,21 +184,60 @@ int main( int argc , char *argv[] ){
   HSignal *s4ptr = &s4;
   HSignal s5(5);
   HSignal *s5ptr = &s5;
+  HSignal s6(6);
+  HSignal *s6ptr = &s6;
+  HSignal s7(7);
+  HSignal *s7ptr = &s7;
+  HSignal s8(8);
+  HSignal *s8ptr = &s8;
+  HSignal s9(9);
+  HSignal *s9ptr = &s9;
+  HSignal s10(10);
+  HSignal *s10ptr = &s10;
+  HSignal s11(11);
+  HSignal *s11ptr = &s11;
+  HSignal s12(12);
+  HSignal *s12ptr = &s12;
+  HSignal s13(13);
+  HSignal *s13ptr = &s13;
+  HSignal s14(14);
+  HSignal *s14ptr = &s14;
+  HSignal s15(15);
+  HSignal *s15ptr = &s15;
   //:::::::::
   s1.addVSignal(v1ptr,"v");
-  s2.addVSignal(v2ptr,"v");
-  s2.addVSignal(v1ptr,"r");
-  s3.addVSignal(v3ptr,"v");
-  s3.addVSignal(v1ptr,"r");
-  s4.addVSignal(v3ptr,"r");
-  s5.addVSignal(v2ptr,"r");
+  //s2.addVSignal(v2ptr,"v");
+  //s2.addVSignal(v2ptr,"r");
+  //s2.addVSignal(v3ptr,"r");
+  //s3.addVSignal(v3ptr,"v");
+  //s3.addVSignal(v1ptr,"r");
+  s4.addVSignal(v1ptr,"r");
+  s4.addVSignal(v3ptr,"v");
+  s4.addVSignal(v5ptr,"v");
+  //s5.addVSignal(v2ptr,"r");
+  s5.addVSignal(v6ptr,"v");
+  //s6.addVSignal(v3ptr,"v");
+  s6.addVSignal(v4ptr,"r");
+  s7.addVSignal(v3ptr,"r");
+  s8.addVSignal(v3ptr,"v");
+  s8.addVSignal(v4ptr,"v");
+  s9.addVSignal(v7ptr,"v");
+  s10.addVSignal(v6ptr,"r");
+  s11.addVSignal(v7ptr,"v");
+  s12.addVSignal(v6ptr,"r");
+  s13.addVSignal(v2ptr,"v");
+  s13.addVSignal(v10ptr,"r");
   //:::::::::
   //WSignale
   WSignal ww1 (1);
   WSignal *ww1ptr = &ww1;
-  ww1.setRichtung("S001","S003");
-  ww1.setRichtung("S001","S002");
-  s1.addWSignal(ww1ptr,"v");
+  ww1.setRichtung("S009","S002");
+  ww1.setRichtung("S009","S003");
+  ww1.setRichtung("S011","S002");
+  ww1.setRichtung("S011","S003");
+  s9.addWSignal(ww1ptr,"v");
+  s11.addWSignal(ww1ptr,"v");
+  s2.addWSignal(ww1ptr,"r");
   s3.addWSignal(ww1ptr,"r");
   //
   QGraphicsSvgItem *item3 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
@@ -194,13 +256,14 @@ int main( int argc , char *argv[] ){
   //
   WSignal ww2 (2);
   WSignal *ww2ptr = &ww2;
-  ww2.setRichtung("S001","S002");
-  QList<Block*> ww2tos2b;
-  ww2tos2b.push_back(acptr);
-  ww2.addBlockZuH("S002",ww2tos2b);
-  s1.addWSignal(ww2ptr,"v");
-  s2.addWSignal(ww2ptr,"r");
-  s2.addWSignal(ww1ptr,"r");
+  ww2.setRichtung("S004","S012");
+  ww2.setRichtung("S004","S010");
+  ww2.setRichtung("S005","S012");
+  ww2.setRichtung("S005","S010");
+  s4.addWSignal(ww2ptr,"v");
+  s5.addWSignal(ww2ptr,"v");
+  s10.addWSignal(ww2ptr,"r");
+  s12.addWSignal(ww2ptr,"r");
   //
   QGraphicsSvgItem *item5 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
   QGraphicsSvgItem *item6 = new QGraphicsSvgItem(":/resources/WShalt.svg");
@@ -215,185 +278,551 @@ int main( int argc , char *argv[] ){
   ww2ptr->addVSignalitems(item5, item6);
   QLabel *ww2label = new QLabel();
   scene->addWidget(ww2label);
-  QPair<Weiche*, bool> s1tos2w1(w1ptr,false);
-  QList<QPair<Weiche*, bool>> s1tos2;
-  s1tos2.push_back(s1tos2w1);
-  s1.addWeichenstatus(s2ptr,s1tos2);
-  ww1.addWeichenstatus(ww2ptr,s1tos2);//WSignal inside -->gibt hoffentlich nicht Probleme, den selben Pointe zu verwenden
-  //[außerdem stimmt es von den Blöcken nicht ganz...]
-  //
-  QList<Block*> s1tow1b;
-  s1tow1b.push_back(aaptr);
-  s1.addBlockZuRangier(ww1ptr,s1tow1b);
-  QPair<Weiche*, bool> s1tos3w1(w1ptr,true);
-  QList<QPair<Weiche*, bool>> s1tos3;
-  s1tos3.push_back(s1tos3w1);
-  s1.addWeichenstatus(s3ptr,s1tos3);
-  //
-  QList<Block*> s1tos2b;
-  s1tos2b.push_back(aaptr);
-  s1tos2b.push_back(acptr);
-  s1.addBlock(s2ptr,s1tos2b);
-  QList<Block*>w1tow2b;
-  w1tow2b.push_back(acptr);
-  ww1.addBlock(ww2ptr,w1tow2b);//WSignal inside -->gibt hoffentlich nicht Probleme, den selben Pointe zu verwenden
-  //[außerdem stimmt es von den Blöcken nicht ganz...]
-  QList<Block*> s1tos3b;
-  s1tos3b.push_back(aaptr);
-  s1tos3b.push_back(abptr);
-  s1.addBlock(s3ptr,s1tos3b);
-  QList<Block*> s2tos5b;
-  s2tos5b.push_back(aeptr);
-  s2tos5b.push_back(agptr);
-  s2.addBlock(s5ptr,s2tos5b);
-  QList<Block*> s3tos4b;
-  s3tos4b.push_back(adptr);
-  s3tos4b.push_back(afptr);
-  s3.addBlock(s4ptr,s3tos4b);
-  //Am Anfang muss die Liste in Stellwerkstechnik zum ersten mal initialisiert werden, sonst steht am Anfang nichts drin------------------------------------------muss noch geändert werden?
+
+  //Weichenstatus ---------------------------------------------------
+  QPair<Weiche*, bool> s1tos4w1(w2ptr,true);
+  QList<QPair<Weiche*, bool>> s1tos4;
+  s1tos4.push_back(s1tos4w1);
+  s1.addWeichenstatus(s4ptr,s1tos4);
+
+  QPair<Weiche*, bool> s4tos7w3(w3ptr,true);
+  QPair<Weiche*, bool> s4tos7w5(w5ptr,false);
+  QPair<Weiche*, bool> s4tos7w6(w6ptr,true);
+  QPair<Weiche*, bool> s4tos7w7(w7ptr,false);
+  QList<QPair<Weiche*, bool>> s4tos7;
+  s4tos7.push_back(s4tos7w3);
+  s4tos7.push_back(s4tos7w5);
+  s4tos7.push_back(s4tos7w6);
+  s4tos7.push_back(s4tos7w7);
+  s4.addWeichenstatus(s7ptr,s4tos7);
+
+  QPair<Weiche*, bool> s4tos15w3(w3ptr,true);
+  QPair<Weiche*, bool> s4tos15w5(w5ptr,false);
+  QPair<Weiche*, bool> s4tos15w6(w6ptr,true);
+  QPair<Weiche*, bool> s4tos15w7(w7ptr,true);
+  QList<QPair<Weiche*, bool>> s4tos15;
+  s4tos15.push_back(s4tos15w3);
+  s4tos15.push_back(s4tos15w5);
+  s4tos15.push_back(s4tos15w6);
+  s4tos15.push_back(s4tos15w7);
+  s4.addWeichenstatus(s15ptr,s4tos15);
+
+  QPair<Weiche*, bool> s4tos14w3(w3ptr,true);
+  QPair<Weiche*, bool> s4tos14w5(w5ptr,true);
+  QList<QPair<Weiche*, bool>> s4tos14;
+  s4tos14.push_back(s4tos14w3);
+  s4tos14.push_back(s4tos14w5);
+  s4.addWeichenstatus(s14ptr,s4tos14);
+
+  QPair<Weiche*, bool> s4tos10w3(w3ptr,false);
+  QPair<Weiche*, bool> s4tos10w4(w4ptr,false);
+  QPair<Weiche*, bool> s4tos10w9(w9ptr,false);
+  QList<QPair<Weiche*, bool>> s4tos10;
+  s4tos10.push_back(s4tos10w3);
+  s4tos10.push_back(s4tos10w4);
+  s4tos10.push_back(s4tos10w9);
+  s4.addWeichenstatus(s10ptr,s4tos10);
+
+  QPair<Weiche*, bool> s4tos12w3(w3ptr,false);
+  QPair<Weiche*, bool> s4tos12w4(w4ptr,false);
+  QPair<Weiche*, bool> s4tos12w9(w9ptr,true);
+  QList<QPair<Weiche*, bool>> s4tos12;
+  s4tos12.push_back(s4tos12w3);
+  s4tos12.push_back(s4tos12w4);
+  s4tos12.push_back(s4tos12w9);
+  s4.addWeichenstatus(s12ptr,s4tos12);
+
+
+  QPair<Weiche*, bool> s5tos10w4(w4ptr,true);
+  QPair<Weiche*, bool> s5tos10w9(w9ptr,false);
+  QList<QPair<Weiche*, bool>> s5tos10;
+  s5tos10.push_back(s5tos10w4);
+  s5tos10.push_back(s5tos10w9);
+  s5.addWeichenstatus(s10ptr,s5tos10);
+
+  QPair<Weiche*, bool> s5tos12w4(w4ptr,true);
+  QPair<Weiche*, bool> s5tos12w9(w9ptr,true);
+  QList<QPair<Weiche*, bool>> s5tos12;
+  s5tos12.push_back(s5tos12w4);
+  s5tos12.push_back(s5tos12w9);
+  s5.addWeichenstatus(s12ptr,s5tos12);
+
+  QPair<Weiche*, bool> s13tos2w5(w5ptr,true);
+  QPair<Weiche*, bool> s13tos2w3(w3ptr,true);
+  QList<QPair<Weiche*, bool>> s13tos2;
+  s13tos2.push_back(s13tos2w5);
+  s13tos2.push_back(s13tos2w3);
+  s13.addWeichenstatus(s2ptr,s13tos2);
+
+  QPair<Weiche*, bool> s9tos3w4(w4ptr,true);
+  QPair<Weiche*, bool> s9tos3w9(w9ptr,false);
+  QList<QPair<Weiche*, bool>> s9tos3;
+  s9tos3.push_back(s9tos3w4);
+  s9tos3.push_back(s9tos3w9);
+  s9.addWeichenstatus(s3ptr,s9tos3);
+
+  QPair<Weiche*, bool> s11tos3w4(w4ptr,true);
+  QPair<Weiche*, bool> s11tos3w9(w9ptr,true);
+  QList<QPair<Weiche*, bool>> s11tos3;
+  s11tos3.push_back(s11tos3w4);
+  s11tos3.push_back(s11tos3w9);
+  s11.addWeichenstatus(s3ptr,s11tos3);
+
+  QPair<Weiche*, bool> s9tos2w4(w4ptr,false);
+  QPair<Weiche*, bool> s9tos2w3(w3ptr,false);
+  QPair<Weiche*, bool> s9tos2w9(w9ptr,false);
+  QList<QPair<Weiche*, bool>> s9tos2;
+  s9tos2.push_back(s9tos2w4);
+  s9tos2.push_back(s9tos2w3);
+  s9tos2.push_back(s9tos2w9);
+  s9.addWeichenstatus(s2ptr,s9tos2);
+
+  QPair<Weiche*, bool> s11tos2w4(w4ptr,false);
+  QPair<Weiche*, bool> s11tos2w3(w3ptr,false);
+  QPair<Weiche*, bool> s11tos2w9(w9ptr,true);
+  QList<QPair<Weiche*, bool>> s11tos2;
+  s11tos2.push_back(s11tos2w4);
+  s11tos2.push_back(s11tos2w3);
+  s11tos2.push_back(s11tos2w9);
+  s11.addWeichenstatus(s2ptr,s11tos2);
+
+  QPair<Weiche*, bool> ww1tos2w4(w4ptr,false);
+  QPair<Weiche*, bool> ww1tos2w3(w4ptr,false);
+  QList<QPair<Weiche*, bool>> ww1tos2;
+  ww1tos2.push_back(ww1tos2w4);
+  ww1tos2.push_back(ww1tos2w3);
+  ww1.addWeichenstatusZuH(s2ptr->getS_id(),ww1tos2);
+
+  QPair<Weiche*, bool> ww1tos3w4(w4ptr,true);
+  QList<QPair<Weiche*, bool>> ww1tos3;
+  ww1tos3.push_back(ww1tos3w4);
+  ww1.addWeichenstatusZuH(s3ptr->getS_id(),ww1tos3);
+
+  QPair<Weiche*, bool> ww2tos12w9(w9ptr,true);
+  QList<QPair<Weiche*, bool>> ww2tos12;
+  ww2tos12.push_back(ww2tos12w9);
+  ww2.addWeichenstatusZuH(s12ptr->getS_id(),ww2tos12);
+
+  QPair<Weiche*, bool> ww2tos10w9(w9ptr,false);
+  QList<QPair<Weiche*, bool>> ww2tos10;
+  ww2tos10.push_back(ww2tos10w9);
+  ww2.addWeichenstatusZuH(s10ptr->getS_id(),ww2tos10);
+
+  QPair<Weiche*, bool> s9toww1w9(w9ptr,false);
+  QList<QPair<Weiche*, bool>> s9toww1;
+  s9toww1.push_back(s9toww1w9);
+  s9.addWeichenstatusZuRangier(ww1ptr,s9toww1);
+
+  QPair<Weiche*, bool> s11toww1w9(w9ptr,true);
+  QList<QPair<Weiche*, bool>> s11toww1;
+  s11toww1.push_back(s11toww1w9);
+  s11.addWeichenstatusZuRangier(ww1ptr,s11toww1);
+  
+  //Blockstatus -----------------------------------------------
+  QList<Block*> s1tos4b;
+  s1tos4b.push_back(aaptr);
+  s1.addBlock(s4ptr,s1tos4b);
+
+  QList<Block*> s13tos2b;
+  s13tos2b.push_back(aaptr);
+  s13.addBlock(s2ptr,s13tos2b);
+
+  QList<Block*> s4tos7b;
+  s4tos7b.push_back(afptr);
+  s4.addBlock(s7ptr,s4tos7b);
+  QList<Block*> s4tos14b;
+  s4tos14b.push_back(acptr);
+  s4.addBlock(s14ptr,s4tos14b);
+  QList<Block*> s4tos15b;
+  s4tos15b.push_back(aeptr);
+  s4.addBlock(s15ptr,s4tos15b);
+  QList<Block*> s4tos10b;
+  s4tos10b.push_back(adptr);
+  s4tos10b.push_back(ahptr);
+  s4.addBlock(s10ptr,s4tos10b);
+  QList<Block*> s4tos12b;
+  s4tos12b.push_back(adptr);
+  s4tos12b.push_back(aiptr);
+  s4.addBlock(s12ptr,s4tos12b);
+
+  QList<Block*> s5tos10b;
+  s5tos10b.push_back(adptr);
+  s5tos10b.push_back(ahptr);
+  s5.addBlock(s10ptr,s5tos10b);
+  QList<Block*> s5tos12b;
+  s5tos12b.push_back(adptr);
+  s5tos12b.push_back(aiptr);
+  s5.addBlock(s12ptr,s5tos12b);
+
+  QList<Block*> s9tos3b;
+  s9tos3b.push_back(adptr);
+  s9tos3b.push_back(abptr);
+  s9.addBlock(s3ptr,s9tos3b);
+  QList<Block*> s9tos2b;
+  s9tos2b.push_back(adptr);
+  s9tos2b.push_back(aaptr);
+  s9.addBlock(s2ptr,s9tos2b);
+
+  QList<Block*> s11tos3b;
+  s11tos3b.push_back(adptr);
+  s11tos3b.push_back(abptr);
+  s11.addBlock(s3ptr,s11tos3b);
+  QList<Block*> s11tos2b;
+  s11tos2b.push_back(adptr);
+  s11tos2b.push_back(aaptr);
+  s11.addBlock(s2ptr,s11tos2b); 
+
+  QList<Block*> ww2tos10b;
+  ww2tos10b.push_back(ahptr);
+  ww2.addBlockZuH(s10ptr->getS_id(),ww2tos10b);
+  QList<Block*> ww2tos12b;
+  ww2tos12b.push_back(aiptr);
+  ww2.addBlockZuH(s12ptr->getS_id(),ww2tos12b);
+
+  QList<Block*> ww1tos2b;
+  ww1tos2b.push_back(aaptr);
+  ww1.addBlockZuH(s2ptr->getS_id(),ww1tos2b);
+  QList<Block*> ww1tos3b;
+  ww1tos3b.push_back(abptr);
+  ww1.addBlockZuH(s3ptr->getS_id(),ww1tos3b);
+
+  QList<Block*> s9toww1b;
+  s9toww1b.push_back(adptr);
+  s9.addBlockZuRangier(ww1ptr,s9toww1b);
+  QList<Block*> s11toww1b;
+  s11toww1b.push_back(adptr);
+  s11.addBlockZuRangier(ww1ptr,s11toww1b);
+
+  // ++++++++++++++++++++++++ muss als erstes mal initialisiert werden...!
   stellwerkstec.add_Signal(s1.getS_id(),false);
   stellwerkstec.add_Signal(s2.getS_id(),false);
   stellwerkstec.add_Signal(s3.getS_id(),false);
   stellwerkstec.add_Signal(s4.getS_id(),false);
   stellwerkstec.add_Signal(s5.getS_id(),false);
+  stellwerkstec.add_Signal(s6.getS_id(),false);
+  stellwerkstec.add_Signal(s7.getS_id(),false);
+  stellwerkstec.add_Signal(s8.getS_id(),false);
+  stellwerkstec.add_Signal(s9.getS_id(),false);
+  stellwerkstec.add_Signal(s10.getS_id(),false);
+  stellwerkstec.add_Signal(s11.getS_id(),false);
+  stellwerkstec.add_Signal(s12.getS_id(),false);
+  stellwerkstec.add_Signal(s13.getS_id(),false);
+  stellwerkstec.add_Signal(s14.getS_id(),false);
+  stellwerkstec.add_Signal(s15.getS_id(),false);
   stellwerkstec.add_Signal(ww1.getV_id(),false);
   stellwerkstec.add_Signal(ww2.getV_id(),false);
+
+
   //BÜs
-  BU bu1(1);
-  BU *bu1ptr = &bu1;
+  //BU bu1(1);
+  //BU *bu1ptr = &bu1;
 
   //GUI
-  QGraphicsRectItem *bue = new QGraphicsRectItem();
-  bue->setRect(0,0,50,25);
-  bue->setPos(QPointF(-100,-20));
-  bue->setBrush(QColor(QColor(153,50,204)));//lila
-  bue->setRotation(90);
-  scene->addItem(bue);
-  bu1ptr->addBUrect(bue);
-  aa.addBus( bu1ptr );
-  //signals and slots
+  //QGraphicsRectItem *bue = new QGraphicsRectItem();
+  //bue->setRect(0,0,50,25);
+  //bue->setPos(QPointF(-100,-20));
+  //bue->setBrush(QColor(QColor(153,50,204)));//lila
+  //bue->setRotation(90);
+  //scene->addItem(bue);
+  //bu1ptr->addBUrect(bue);
+  //aa.addBus( bu1ptr );
 
+  
+  //signals and slots
   QObject::connect(&s1,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
   QObject::connect(&s2,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
   QObject::connect(&s3,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
   QObject::connect(&s4,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
   QObject::connect(&s5,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
+  QObject::connect(&s6,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
+  QObject::connect(&s7,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
+  QObject::connect(&s8,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
+  QObject::connect(&s9,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
+  QObject::connect(&s10,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
+  QObject::connect(&s11,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
+  QObject::connect(&s12,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
+  QObject::connect(&s13,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
+  QObject::connect(&s14,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
+  QObject::connect(&s15,&HSignal::refreshStellwerkstechnik,&stellwerkstec,&Stellwerkstechnik::add_Signal);
   QObject::connect(&ww1,&WSignal::refreshStellwerkstechnikW,&stellwerkstec,&Stellwerkstechnik::add_Signal);
   QObject::connect(&ww2,&WSignal::refreshStellwerkstechnikW,&stellwerkstec,&Stellwerkstechnik::add_Signal);
-  QObject::connect(&ad,&Block::zugpassiert,&s3,&HSignal::zugpassiert);
-  QObject::connect(&ae,&Block::zugpassiert,&s2,&HSignal::zugpassiert);
-  QObject::connect(&ae,&Block::zugpassiertW,&ww2,&WSignal::zugpassiertW);
-  QObject::connect(&ac,&Block::zugpassiertW,&ww1,&WSignal::zugpassiertW);
+  QObject::connect(&aa,&Block::zugpassiert,&s1,&HSignal::zugpassiert);
+  QObject::connect(&aa,&Block::zugpassiert,&s13,&HSignal::zugpassiert);
+  QObject::connect(&ac,&Block::zugpassiert,&s4,&HSignal::zugpassiert);
+  QObject::connect(&ae,&Block::zugpassiert,&s4,&HSignal::zugpassiert);
+  QObject::connect(&af,&Block::zugpassiert,&s4,&HSignal::zugpassiert);
+  QObject::connect(&ad,&Block::zugpassiert,&s5,&HSignal::zugpassiert);
+  QObject::connect(&ad,&Block::zugpassiert,&s9,&HSignal::zugpassiert);
+  QObject::connect(&ad,&Block::zugpassiert,&s11,&HSignal::zugpassiert);
+  QObject::connect(&af,&Block::zugpassiert,&s8,&HSignal::zugpassiert);
+  
+  QObject::connect(&ai,&Block::zugpassiertW,&ww2,&WSignal::zugpassiertW);
+  QObject::connect(&ah,&Block::zugpassiertW,&ww2,&WSignal::zugpassiertW);
+  QObject::connect(&aa,&Block::zugpassiertW,&ww1,&WSignal::zugpassiertW);
+  QObject::connect(&ab,&Block::zugpassiertW,&ww1,&WSignal::zugpassiertW);
   
   //Hier wird das Grenzsignal übergeben
-  ad.addpassiert(s3.getS_id(),abptr);
-  ae.addpassiert(s2.getS_id(),acptr);
-  ae.addpassiert(ww2.getV_id(),acptr);
-  ac.addpassiert(ww1.getV_id(),aaptr);
+  aa.addpassiert(s13.getS_id(),acptr);
+  ac.addpassiert(s4.getS_id(),aaptr);
+  ae.addpassiert(s4.getS_id(),aaptr);
+  af.addpassiert(s4.getS_id(),aaptr);
+  ad.addpassiert(s4.getS_id(),aaptr);
+  ad.addpassiert(s5.getS_id(),abptr);
+  ad.addpassiert(s9.getS_id(),ahptr);
+  ad.addpassiert(s11.getS_id(),aiptr);
+  
+  ah.addpassiert(ww2.getV_id(),adptr);
+  ai.addpassiert(ww2.getV_id(),adptr);
+  aa.addpassiert(ww1.getV_id(),adptr);
+  ab.addpassiert(ww1.getV_id(),adptr);
 
   //
-  //GUI Attribute - Testgleisplan
-  QGraphicsRectItem *aarect = new QGraphicsRectItem();
-  aarect->setRect(0,0,10,350);
-  aarect->setPos(QPointF(0,0));
-  aarect->setBrush(QColor(79,79,79));
-  aarect->setRotation(90);
-  aa.addBlockitems(aarect);
-  scene->addItem(aarect);
-  //
+  //GUI Attribute
   QGraphicsRectItem *w1rectge = new QGraphicsRectItem();
   w1rectge->setRect(0,0,10,75);
-  w1rectge->setPos(QPointF(-350,0));
+  w1rectge->setPos(QPointF(500,800));
   w1rectge->setBrush(QColor(79,79,79));
   w1rectge->setRotation(90);
   scene->addItem(w1rectge);
   QGraphicsRectItem *w1rectab = new QGraphicsRectItem();
-  w1rectab->setRect(0,0,10,40);
-  w1rectab->setPos(QPointF(-350,0));
+  w1rectab->setRect(0,0,10,50);
+  w1rectab->setPos(QPointF(500,800));
   w1rectab->setBrush(QColor(79,79,79));
-  w1rectab->setRotation(45);
+  w1rectab->setRotation(135);
   scene->addItem(w1rectab);
   QLabel *w1label = new QLabel();
   scene->addWidget(w1label);
   w1.addWeichenitem(w1rectab,w1rectge,w1label);
-  w1.moveLabel(-350,-10);
-  //
+  w1.moveLabel(480,810);
+  
   QGraphicsRectItem *abrect = new QGraphicsRectItem();
-  abrect->setRect(0,0,10,350);
-  abrect->setPos(QPointF(-425,0));
+  abrect->setRect(0,0,10,1200);
+  abrect->setPos(QPointF(425,800));
   abrect->setBrush(QColor(79,79,79));
   abrect->setRotation(90);
   ab.addBlockitems(abrect);
   scene->addItem(abrect);
   //
-  QGraphicsRectItem *adrect = new QGraphicsRectItem();
-  adrect->setRect(0,0,10,350);
-  adrect->setPos(QPointF(-775,0));
-  adrect->setBrush(QColor(79,79,79));
-  adrect->setRotation(90);
-  ad.addBlockitems(adrect);
-  scene->addItem(adrect);
-  //
-  QGraphicsRectItem *afrect = new QGraphicsRectItem();
-  afrect->setRect(0,0,10,350);
-  afrect->setPos(QPointF(-1125,0));
-  afrect->setBrush(QColor(79,79,79));
-  afrect->setRotation(90);
-  af.addBlockitems(afrect);
-  scene->addItem(afrect);
-  //
+  QGraphicsRectItem *w2rectge = new QGraphicsRectItem();
+  w2rectge->setRect(0,0,10,75);
+  w2rectge->setPos(QPointF(500,730));
+  w2rectge->setBrush(QColor(79,79,79));
+  w2rectge->setRotation(90);
+  scene->addItem(w2rectge);
+  QGraphicsRectItem *w2rectab = new QGraphicsRectItem();
+  w2rectab->setRect(0,0,10,50);
+  w2rectab->setPos(QPointF(420,735));
+  w2rectab->setBrush(QColor(79,79,79));
+  w2rectab->setRotation(315);
+  scene->addItem(w2rectab);
+  QLabel *w2label = new QLabel();
+  scene->addWidget(w2label);
+  w2.addWeichenitem(w2rectab,w2rectge,w2label);
+  w2.moveLabel(420,715);
+
+  QGraphicsRectItem *aarect = new QGraphicsRectItem();
+  aarect->setRect(0,0,10,1200);
+  aarect->setPos(QPointF(425,730));
+  aarect->setBrush(QColor(79,79,79));
+  aarect->setRotation(90);
+  aa.addBlockitems(aarect);
+  scene->addItem(aarect);
+
+  QGraphicsRectItem *w4rectge = new QGraphicsRectItem();
+  w4rectge->setRect(0,0,10,75);
+  w4rectge->setPos(QPointF(-775,800));
+  w4rectge->setBrush(QColor(79,79,79));
+  w4rectge->setRotation(90);
+  scene->addItem(w4rectge);
+  QGraphicsRectItem *w4rectab = new QGraphicsRectItem();
+  w4rectab->setRect(0,0,10,50);
+  w4rectab->setPos(QPointF(-845,810));
+  w4rectab->setBrush(QColor(79,79,79));
+  w4rectab->setRotation(-135);
+  scene->addItem(w4rectab);
+  QLabel *w4label = new QLabel();
+  scene->addWidget(w4label);
+  w4.addWeichenitem(w4rectab,w4rectge,w4label);
+  w4.moveLabel(-845,810);
+
+  QGraphicsRectItem *w3rectge = new QGraphicsRectItem();
+  w3rectge->setRect(0,0,10,75);
+  w3rectge->setPos(QPointF(-775,730));
+  w3rectge->setBrush(QColor(79,79,79));
+  w3rectge->setRotation(90);
+  scene->addItem(w3rectge);
+  QGraphicsRectItem *w3rectab = new QGraphicsRectItem();
+  w3rectab->setRect(0,0,10,50);
+  w3rectab->setPos(QPointF(-785,735));
+  w3rectab->setBrush(QColor(79,79,79));
+  w3rectab->setRotation(45);
+  scene->addItem(w3rectab);
+  QLabel *w3label = new QLabel();
+  scene->addWidget(w3label);
+  w3.addWeichenitem(w3rectab,w3rectge,w3label);
+  w3.moveLabel(-795,715);
+
+  QGraphicsRectItem *w5rectge = new QGraphicsRectItem();
+  w5rectge->setRect(0,0,10,75);
+  w5rectge->setPos(QPointF(-850,730));
+  w5rectge->setBrush(QColor(79,79,79));
+  w5rectge->setRotation(90);
+  scene->addItem(w5rectge);
+  QGraphicsRectItem *w5rectab = new QGraphicsRectItem();
+  w5rectab->setRect(0,0,10,80);
+  w5rectab->setPos(QPointF(-850,735));
+  w5rectab->setBrush(QColor(79,79,79));
+  w5rectab->setRotation(135);
+  scene->addItem(w5rectab);
+  QLabel *w5label = new QLabel();
+  scene->addWidget(w5label);
+  w5.addWeichenitem(w5rectab,w5rectge,w5label);
+  w5.moveLabel(-855,715);
+
+  QGraphicsRectItem *w6rectge = new QGraphicsRectItem();
+  w6rectge->setRect(0,0,10,100);
+  w6rectge->setPos(QPointF(-918,575));
+  w6rectge->setBrush(QColor(79,79,79));
+  //w6rectge->setRotation(90);
+  scene->addItem(w6rectge);
+  QGraphicsRectItem *w6rectab = new QGraphicsRectItem();
+  w6rectab->setRect(0,0,10,50);
+  w6rectab->setPos(QPointF(-918,580));
+  w6rectab->setBrush(QColor(79,79,79));
+  w6rectab->setRotation(-45);
+  scene->addItem(w6rectab);
+  QLabel *w6label = new QLabel();
+  scene->addWidget(w6label);
+  w6.addWeichenitem(w6rectab,w6rectge,w6label);
+  w6.moveLabel(-938,578);
+
+  QGraphicsRectItem *w7rectge = new QGraphicsRectItem();
+  w7rectge->setRect(0,0,10,150);
+  w7rectge->setPos(QPointF(-918,425));
+  w7rectge->setBrush(QColor(79,79,79));
+  scene->addItem(w7rectge);
+  QGraphicsRectItem *w7rectab = new QGraphicsRectItem();
+  w7rectab->setRect(0,0,10,50);
+  w7rectab->setPos(QPointF(-910,530));
+  w7rectab->setBrush(QColor(79,79,79));
+  w7rectab->setRotation(-135);
+  scene->addItem(w7rectab);
+  QLabel *w7label = new QLabel();
+  scene->addWidget(w7label);
+  w7.addWeichenitem(w7rectab,w7rectge,w7label);
+  w7.moveLabel(-938,508);
+
+  QGraphicsRectItem *aerect = new QGraphicsRectItem();
+  aerect->setRect(0,0,10,70);
+  aerect->setPos(QPointF(-918,375));
+  aerect->setBrush(QColor(79,79,79));
+  ae.addBlockitems(aerect);
+  scene->addItem(aerect);
+  QGraphicsRectItem *aerect2 = new QGraphicsRectItem();
+  aerect2->setRect(0,0,10,305);
+  aerect2->setPos(QPointF(-918,375));
+  aerect2->setBrush(QColor(79,79,79));
+  aerect2->setRotation(-90);
+  ae.addBlockitems(aerect2);
+  scene->addItem(aerect2);
+
   QGraphicsRectItem *acrect = new QGraphicsRectItem();
-  acrect->setRect(0,0,10,350);
-  acrect->setPos(QPointF(-425,50));
+  acrect->setRect(0,0,10,70);
+  acrect->setPos(QPointF(-925,730));
   acrect->setBrush(QColor(79,79,79));
   acrect->setRotation(90);
   ac.addBlockitems(acrect);
   scene->addItem(acrect);
   QGraphicsRectItem *acrect2 = new QGraphicsRectItem();
-  acrect2->setRect(0,0,10,40);
-  acrect2->setPos(QPointF(-375,25));
+  acrect2->setRect(0,0,10,450);
+  acrect2->setPos(QPointF(-995,290));
   acrect2->setBrush(QColor(79,79,79));
-  acrect2->setRotation(45);
   ac.addBlockitems(acrect2);
   scene->addItem(acrect2);
   QGraphicsRectItem *acrect3 = new QGraphicsRectItem();
-  acrect3->setRect(0,0,10,30);
-  acrect3->setPos(QPointF(-395,50));
+  acrect3->setRect(0,0,10,380);
+  acrect3->setPos(QPointF(-995,290));
   acrect3->setBrush(QColor(79,79,79));
-  acrect3->setRotation(90);
+  acrect3->setRotation(-90);
   ac.addBlockitems(acrect3);
   scene->addItem(acrect3);
+
+  QGraphicsRectItem *adrect = new QGraphicsRectItem();
+  adrect->setRect(0,0,10,225);
+  adrect->setPos(QPointF(-850,800));
+  adrect->setBrush(QColor(79,79,79));
+  adrect->setRotation(90);
+  ad.addBlockitems(adrect);
+  scene->addItem(adrect);
+  QGraphicsRectItem *adrect2 = new QGraphicsRectItem();
+  adrect2->setRect(0,0,10,600);
+  adrect2->setPos(QPointF(-1075,200));
+  adrect2->setBrush(QColor(79,79,79));
+  ad.addBlockitems(adrect2);
+  scene->addItem(adrect2);
+  QGraphicsRectItem *adrect3 = new QGraphicsRectItem();
+  adrect3->setRect(0,0,10,140);
+  adrect3->setPos(QPointF(-1075,200));
+  adrect3->setBrush(QColor(79,79,79));
+  adrect3->setRotation(-90);
+  ad.addBlockitems(adrect3);
+  scene->addItem(adrect3);
+
+  QGraphicsRectItem *w9rectge = new QGraphicsRectItem();
+  w9rectge->setRect(0,0,10,75);
+  w9rectge->setPos(QPointF(-935,200));
+  w9rectge->setBrush(QColor(79,79,79));
+  w9rectge->setRotation(-90);
+  scene->addItem(w9rectge);
+  QGraphicsRectItem *w9rectab = new QGraphicsRectItem();
+  w9rectab->setRect(0,0,10,50);
+  w9rectab->setPos(QPointF(-935,200));
+  w9rectab->setBrush(QColor(79,79,79));
+  w9rectab->setRotation(-135);
+  scene->addItem(w9rectab);
+  QLabel *w9label = new QLabel();
+  scene->addWidget(w9label);
+  w9.addWeichenitem(w9rectab,w9rectge,w9label);
+  w9.moveLabel(-935,200);
+
+  QGraphicsRectItem *airect = new QGraphicsRectItem();
+  airect->setRect(0,0,10,1000);
+  airect->setPos(QPointF(-860,200));
+  airect->setBrush(QColor(79,79,79));
+  airect->setRotation(-90);
+  ai.addBlockitems(airect);
+  scene->addItem(airect);
+
+  QGraphicsRectItem *ahrect = new QGraphicsRectItem();
+  ahrect->setRect(0,0,10,55);
+  ahrect->setPos(QPointF(-867,120));
+  ahrect->setBrush(QColor(79,79,79));
+  ahrect->setRotation(45);
+  ah.addBlockitems(ahrect);
+  scene->addItem(ahrect);
+  QGraphicsRectItem *ahrect2 = new QGraphicsRectItem();
+  ahrect2->setRect(0,0,10,925);
+  ahrect2->setPos(QPointF(-862,130));
+  ahrect2->setBrush(QColor(79,79,79));
+  ahrect2->setRotation(-90);
+  ah.addBlockitems(ahrect2);
+  scene->addItem(ahrect2);
   //
   /////////////NOCH VON WSIGNAL
-//soll on top of scene sein...
+  //soll on top of scene sein...
   QPushButton *ww1push = new QPushButton();
-    scene->addWidget(ww1push);
-    ww1.addButtonAndLabel(ww1label,ww1push);
-    ww1.moveButton(-264,0);
-    ww1.moveLabel(-249,-20);
-    // und NR 2 W
-    QPushButton *ww2push = new QPushButton();
-      scene->addWidget(ww2push);
-      ww2.addButtonAndLabel(ww2label,ww2push);
-      ww2.moveButton(-600,50);
-      ww2.moveLabel(-585,30);
+  scene->addWidget(ww1push);
+  ww1.addButtonAndLabel(ww1label,ww1push);
+  ww1.moveButton(-264,0);
+  ww1.moveLabel(-249,-20);
+  // und NR 2 W
+  QPushButton *ww2push = new QPushButton();
+  scene->addWidget(ww2push);
+  ww2.addButtonAndLabel(ww2label,ww2push);
+  ww2.moveButton(-600,50);
+  ww2.moveLabel(-585,30);
   ///////////////////////////
-  QGraphicsRectItem *aerect = new QGraphicsRectItem();
-  aerect->setRect(0,0,10,350);
-  aerect->setPos(QPointF(-775,50));
-  aerect->setBrush(QColor(79,79,79));
-  aerect->setRotation(90);
-  ae.addBlockitems(aerect);
-  scene->addItem(aerect);
-  //
-  QGraphicsRectItem *agrect = new QGraphicsRectItem();
-  agrect->setRect(0,0,10,350);
-  agrect->setPos(QPointF(-1125,50));
-  agrect->setBrush(QColor(79,79,79));
-  agrect->setRotation(90);
-  ag.addBlockitems(agrect);
-  scene->addItem(agrect);
-  //
+  
   QGraphicsSvgItem *item1 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
   QGraphicsSvgItem *item2 = new QGraphicsSvgItem(":/resources/VShalt.svg");
   scene->addItem(item1);
@@ -405,102 +834,7 @@ int main( int argc , char *argv[] ){
   item1->setRotation(-90);
   item2->setRotation(-90);
   v1ptr->addVSignalitems(item1, item2);
-  //
-  QGraphicsSvgItem *item7 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *item8 = new QGraphicsSvgItem(":/resources/VShalt.svg");
-  scene->addItem(item7);
-  scene->addItem(item8);
-  item7->setPos(QPointF(-1150,0));
-  item8->setPos(QPointF(-1150,0));
-  item7->setScale(0.1);
-  item8->setScale(0.1);
-  item7->setRotation(-90);
-  item8->setRotation(-90);
-  v3ptr->addVSignalitems(item7, item8);
-  //
-  QGraphicsSvgItem *item9 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *item10 = new QGraphicsSvgItem(":/resources/VShalt.svg");
-  scene->addItem(item9);
-  scene->addItem(item10);
-  item9->setPos(QPointF(-1150,50));
-  item10->setPos(QPointF(-1150,50));
-  item9->setScale(0.1);
-  item10->setScale(0.1);
-  item9->setRotation(-90);
-  item10->setRotation(-90);
-  v2ptr->addVSignalitems(item9, item10);
-  //
-  QGraphicsSvgItem *s1item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s1item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s1item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
-  scene->addItem(s1item1);
-  scene->addItem(s1item3);
-  scene->addItem(s1item2);
-  s1item1->setPos(QPointF(-30,0));
-  s1item2->setPos(QPointF(-30,0));
-  s1item3->setPos(QPointF(-30,0));
-  s1item1->setScale(0.1);
-  s1item2->setScale(0.1);
-  s1item3->setScale(0.1);
-  s1item1->setRotation(-90);
-  s1item2->setRotation(-90);
-  s1item3->setRotation(-90);
-  
-  QPushButton *s1push = new QPushButton();
-  scene->addWidget(s1push);
-  QLabel *s1label = new QLabel();
-  scene->addWidget(s1label);
-  //speicher GUIs
-  QGraphicsRectItem *sphin = new QGraphicsRectItem();
-  sphin->setRect(0,0,10,10);
-  sphin->setBrush(Qt::yellow);
-  sphin->setPos(QPointF(20,-10));
-  QGraphicsRectItem *spweg = new QGraphicsRectItem();
-  spweg->setRect(0,0,10,10);
-  spweg->setBrush(Qt::yellow);
-  spweg->setPos(QPointF(20,-20));
-  scene->addItem(spweg);
-  scene->addItem(sphin);
-  s1.addHSignalitem(s1item1, s1item2, s1item3, s1label,s1push,spweg,sphin);
-  s1.moveLabel(10,0);
-  //
-  QGraphicsSvgItem *s3item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s3item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s3item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
-  scene->addItem(s3item1);
-  scene->addItem(s3item3);
-  scene->addItem(s3item2);
-  s3item1->setPos(QPointF(-790,0));
-  s3item2->setPos(QPointF(-790,0));
-  s3item3->setPos(QPointF(-790,0));
-  s3item1->setScale(0.1);
-  s3item2->setScale(0.1);
-  s3item3->setScale(0.1);
-  s3item1->setRotation(-90);
-  s3item2->setRotation(-90);
-  s3item3->setRotation(-90);
-  
-  QPushButton *s3push = new QPushButton();
-  scene->addWidget(s3push);
-  QLabel *s3label = new QLabel();
-  scene->addWidget(s3label);
-  //
-  //speicher GUIs
-  QGraphicsRectItem *sphin3 = new QGraphicsRectItem();
-  sphin3->setRect(0,0,10,10);
-  sphin3->setBrush(Qt::yellow);
-  sphin3->setPos(QPointF(-740,-20));
-  QGraphicsRectItem *spweg3 = new QGraphicsRectItem();
-  spweg3->setRect(0,0,10,10);
-  spweg3->setBrush(Qt::yellow);
-  spweg3->setPos(QPointF(-740,-10));
-  scene->addItem(spweg3);
-  scene->addItem(sphin3);
-
-  s3.addHSignalitem(s3item1, s3item2, s3item3, s3label,s3push,sphin3,spweg3);
-  s3.moveLabel(-760,0);
-  s3.moveButton(-775,0);
-  //
+  //  
   QGraphicsSvgItem *s4item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
   QGraphicsSvgItem *s4item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
   QGraphicsSvgItem *s4item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
@@ -535,77 +869,8 @@ int main( int argc , char *argv[] ){
   s4.addHSignalitem(s4item1,s4item2, s4item3, s4label,s4push,spweg4,sphin4);
   s4.moveLabel(-1410,0);
   s4.moveButton(-1420,0);
-  //
-  QGraphicsSvgItem *s2item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s2item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s2item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
-  scene->addItem(s2item1);
-  scene->addItem(s2item3);
-  scene->addItem(s2item2);
-  s2item1->setPos(QPointF(-790,50));
-  s2item2->setPos(QPointF(-790,50));
-  s2item3->setPos(QPointF(-790,50));
-  s2item1->setScale(0.1);
-  s2item2->setScale(0.1);
-  s2item3->setScale(0.1);
-  s2item1->setRotation(-90);
-  s2item2->setRotation(-90);
-  s2item3->setRotation(-90);
-  
-  QPushButton *s2push = new QPushButton();
-  scene->addWidget(s2push);
-  QLabel *s2label = new QLabel();
-  scene->addWidget(s2label);
-  //speicher GUIs
-  QGraphicsRectItem *sphin2 = new QGraphicsRectItem();
-  sphin2->setRect(0,0,10,10);
-  sphin2->setBrush(Qt::yellow);
-  sphin2->setPos(QPointF(-740,40));
-  QGraphicsRectItem *spweg2 = new QGraphicsRectItem();
-  spweg2->setRect(0,0,10,10);
-  spweg2->setBrush(Qt::yellow);
-  spweg2->setPos(QPointF(-740,30));
-  scene->addItem(spweg2);
-  scene->addItem(sphin2);
-  s2.addHSignalitem(s2item1, s2item2, s2item3, s2label,s2push,spweg2,sphin2);
-  s2.moveLabel(-760,50);
-  s2.moveButton(-775,50);
-  //
-  QGraphicsSvgItem *s5item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s5item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s5item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
-  scene->addItem(s5item1);
-  scene->addItem(s5item3);
-  scene->addItem(s5item2);
-  s5item1->setPos(QPointF(-1460,50));
-  s5item2->setPos(QPointF(-1460,50));
-  s5item3->setPos(QPointF(-1460,50));
-  s5item1->setScale(0.1);
-  s5item2->setScale(0.1);
-  s5item3->setScale(0.1);
-  s5item1->setRotation(-90);
-  s5item2->setRotation(-90);
-  s5item3->setRotation(-90);
-  
-  QPushButton *s5push = new QPushButton();
-  scene->addWidget(s5push);
-  QLabel *s5label = new QLabel();
-  scene->addWidget(s5label);
-  //speicher GUIs
-  QGraphicsRectItem *sphin5 = new QGraphicsRectItem();
-  sphin5->setRect(0,0,10,10);
-  sphin5->setBrush(Qt::yellow);
-  sphin5->setPos(QPointF(-1410,40));
-  QGraphicsRectItem *spweg5 = new QGraphicsRectItem();
-  spweg5->setRect(0,0,10,10);
-  spweg5->setBrush(Qt::yellow);
-  spweg5->setPos(QPointF(-1410,30));
-  scene->addItem(spweg5);
-  scene->addItem(sphin5);
-  s5.addHSignalitem(s5item1, s5item2, s5item3, s5label,s5push,spweg5,sphin5);
-  s5.moveLabel(-1410,50);
-  s5.moveButton(-1420,50);
 
+  
   //QPushButtonPart
   clickmanager *c1 = new clickmanager;
   QObject::connect(&s1,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) ); //QOverload wegen zeideutigkeit von recieveFS; C++11, C++14 qOverload<>
@@ -634,483 +899,19 @@ int main( int argc , char *argv[] ){
   QThread* thread2 = new QThread;
   Spmemory *mem = new Spmemory();
   mem->moveToThread(thread2);
-  bool habsgetestet = false;
-  habsgetestet = QObject::connect(thread2, &QThread::started, mem, &Spmemory::timing); //thread start connection 
+  QObject::connect(thread2, &QThread::started, mem, &Spmemory::timing); //thread start connection 
   //  QObject::connect(mem, &Spmemory::finished, thread2, &QThread::quit);
   QObject::connect(&a, &QApplication::aboutToQuit, mem, &Spmemory::quit); // quit timing on aboutToQuit
   QObject::connect(&a, &QApplication::aboutToQuit, thread2, &QThread::quit); // quit thread2 on aboutToQuit
   //spmemory connection 
   
   QObject::connect(&s1, &HSignal::callspmemory,mem, &Spmemory::addFS);
-  qDebug() <<" HABS GETESTET = "<<habsgetestet;
   QObject::connect(&s2, &HSignal::callspmemory,mem, &Spmemory::addFS);
   QObject::connect(&s3, &HSignal::callspmemory,mem, &Spmemory::addFS);
   QObject::connect(&s4, &HSignal::callspmemory,mem, &Spmemory::addFS);
   QObject::connect(&s5, &HSignal::callspmemory,mem, &Spmemory::addFS);
   thread2->start();
-  //mem->quit(); // zu testzwecken
-  
-  ///////////////////////////////////////////////////////////////////////////////////////
-  if(menue == 1){//1) Initialisierungen und grundlegende Methodentests
-    s1.showWeichenstatusALL();
-    s1.showBlockALL();
-    qDebug() <<"zeige Weichenstatus mit Ziel S002";
-    s1.showWeichenstatus(s2ptr);
-    qDebug() <<"zeige Blockstatus mit Ziel S003";
-    s1.showBlock(s3ptr);
-    s5.showVSignalR();
-    s1.showVSignalV();
-    qDebug() <<"Löschen von Status S003 und V002 führt zu:";
-    s1.deleteNachbar(s3ptr);
-    s1.deleteVS(v2ptr,"r");
-    s1.deleteVS(v2ptr,"v");
-    s1.showWeichenstatusALL();
-    s1.showBlockALL();
-    s1.showWeichenstatus(s2ptr);
-    s1.showBlock(s3ptr);
-    s5.showVSignalR();
-    s1.showVSignalV();
-    qDebug() <<"Show Richtung von Vorsignalen:";
-    v1.showRichtung();
-    v2.showRichtung();
-    qDebug() <<"Delete Richtung S001 --> S002:";
-    v1.deleteRichtung("S001","S002");
-    v2.deleteRichtung(s1.getS_id(),s2.getS_id() );
-    v1.showRichtung();
-    v2.showRichtung();
-  }
-  ///////////////////////////////////////////////////////////////////////////////////////////
-  if( menue == 2){//Fahrt Simulation
-    qDebug() <<"FS von S001->S002->S005";
-    s1.setFahrt(s2ptr);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    QPair<QString,QString> p;
-    p = v1.getAktFS();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    QPair<QString,QString> q;
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"-------------------------------------------------";
-    s2.setFahrt(s5ptr);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    p = v1.getAktFS();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"-------------------------------------------------";
-    qDebug() <<"Das ziel von S001: "<<s1.getZiel();
-    }
-  //////////////////////////////////////////////////////////////////////////////////////////////
-  if( menue == 3 ){//WSignal Test- grundsätzliches
-    qDebug() <<ww1.getV_id();
-    qDebug() <<ww1.getV_status();
-    s1.showWSignalV();
-    s1.setFahrt(s3ptr);
-    qDebug() <<"Richtung §§§ "<<ww1.getRichtung("S001","S003");
-    qDebug() <<ww1.isAktFS("S003");
-    stellwerkstec.show_Signal();
-    aa.setB_status(false);
-    ab.setB_status(false);
-    aa.setB_status(true);
-    s1.zugpassiert();
-    s3.setFahrt(s5ptr);
-    ab.setB_status(true);
-    s3.zugpassiert();
-  }
-  /////////////////////////////////////////////////////////////////////////////////////////////
-  if( menue == 4 ){//Bahnübergang Test
-    aa.showBus();
-    s1.setFahrt( s2ptr );
-    qDebug() <<"BU status:";
-    qDebug() <<bu1ptr->getBU_status();
-     qDebug() <<"Block aa Freigabe:";
-    qDebug() <<aa.getFreigabe();
-    //wenn man manuell mit Gewalt manipulieren will:
-    //qDebug() <<"Aber bei manuellem Öffnen (sollte nicht aufgerufen werden, sondern wid nur intern als Methode wenn dann verwendet):";
-    //bu1ptr->setBU_status(true);
-    //qDebug() <<"BU status:";
-    //qDebug() <<bu1ptr->getBU_status());
-    qDebug() <<"setting B_status -->false + true";
-    aa.setB_status( false );
-    aa.setB_status( true );
-    qDebug() <<"BU status:";
-    qDebug() <<bu1ptr->getBU_status();
-    qDebug() <<"Block aa Freigabe:";
-    qDebug() <<aa.getFreigabe();
-    qDebug() <<"Löschen von Bü1 in Block aa führt zu:";
-    aa.deleteBus( bu1ptr );
-    aa.showBus();
-    qDebug() <<"------------------------mutwillig falsches Freigeben------------------------------------";
-
-  }
-  ///////////////////////////////////////////////////////////////////////////////////////////
-  if( menue == 5 ){//delete FS Test
-    qDebug() <<"========================= Normales Stellen, wie sonst auch ===========================================================";
-    qDebug() <<"FS von S001->S002->S005";
-    s1.setFahrt(s2ptr);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    QPair<QString,QString> p;
-    p = v1.getAktFS();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    QPair<QString,QString> q;
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"-----------------yyyyyyyyyyyyyyyyyyy-----yyyyyyyyyyyyyyyyy-yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy--------------------------";
-    s2.setFahrt(s5ptr);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    p = v1.getAktFS();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"=====================================================================================================================";
-    qDebug() <<"deleting FS S001->S002";
-    s1.deleteFS();
-    qDebug() <<"Status von BÜ1: "<<bu1ptr->getBU_status();
-    qDebug() <<"Status von V001: "<<v1.getV_status();
-    qDebug() <<"Status von S001: "<<s1.getS_status();
-    qDebug() <<"Erneutes Stellen von S001->S002 sollte jetzt wieder möglich sein";
-    s1.setFahrt(s2ptr);
-    qDebug() <<"Status von S001: "<<s1.getS_status()<<"| mit V001: "<<v1.getV_status()<<"| und BÜ1: "<<bu1.getBU_status();
-
-  }
-  /////////////////////////////////////////////////////////////////////////////////////////////
-  if( menue == 6 ){//delete FS test2 [rück]
-    qDebug() <<"========================= Normales Stellen, wie sonst auch ===========================================================";
-    qDebug() <<"FS von S001->S002->S005";
-    s1.setFahrt(s2ptr);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    QPair<QString,QString> p;
-    p = v1.getAktFS();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    QPair<QString,QString> q;
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"-------------------------------------------------";
-    s2.setFahrt(s5ptr);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    p = v1.getAktFS();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"=====================================================================================================================";
-    qDebug() <<"deleting FS S002->S005...";
-    s2.deleteFS();
-    qDebug() <<"Status von V001: "<<v1.getV_status();
-    qDebug() <<"Status von S002: "<<s2.getS_status();
-    qDebug() <<"Erneutes Stellen von S002->S005 sollte jetzt wieder möglich sein";
-    s2.setFahrt(s5ptr);
-    qDebug() <<"Status von S002: "<<s2.getS_status()<<"| mit V001: "<<v1.getV_status();
-  }
-  /////////////////////////////////////////////////////////////////////////////////////////////////////77
-  if( menue == 7){//Test Stellwerktechnik
-    Stellwerkstechnik Signaltechnik;
-    qDebug() <<"Filling Stellwerkstechnik with s1ptr and s2ptr...";
-    Signaltechnik.add_Signal( s1ptr->getS_id() , s1ptr->getS_status() );
-    Signaltechnik.add_Signal( s2ptr->getS_id() , s2ptr->getS_status() );
-    Signaltechnik.show_Signal();
-    qDebug() <<"deleting s2 from Stellwerkstechnik...";
-    Signaltechnik.delete_HSignal( s2ptr->getS_id() );
-    Signaltechnik.show_Signal();
-  }
-  if(menue == 8){
-        //Nr 1
-        QGraphicsRectItem *r1 = new QGraphicsRectItem();
-        r1->setRect(0,0,5,100);
-        r1->setPos(QPointF(-1123,-696));
-        r1->setRotation(-45);
-        r1->setBrush(Qt::darkGray);
-        scene->addItem(r1);
-        //Nr 2
-        QGraphicsRectItem *r2 = new QGraphicsRectItem();
-        r2->setRect(0,0,5,100);
-        r2->setPos(QPointF(-1223,-696));
-        r2->setBrush(Qt::darkGray);
-        scene->addItem(r2);
-        //adding to Block "aa" QList
-        aa.addBlockitems(r1);
-        ab.addBlockitems(r2);
-        aaptr->setB_status(true);
-        abptr->setFreigabe(false);
-
-
-
-  }
-  if(menue == 9){
-    //Nr 3
-    QGraphicsRectItem *r3 = new QGraphicsRectItem();
-    r3->setRect(0,0,5,40);
-    r3->setPos(QPointF(-1323,-696));
-    r3->setRotation(-45);
-    r3->setBrush(Qt::darkGray);
-    scene->addItem(r3);
-    //Nr 4
-    QGraphicsRectItem *r4 = new QGraphicsRectItem();
-    r4->setRect(0,0,5,100);
-    r4->setPos(QPointF(-1323,-696));
-    r4->setBrush(Qt::gray);
-    scene->addItem(r4);
-    QLabel *label = new QLabel();
-    scene->addWidget(label);
-    //adding to Weiche "W001":
-    w1ptr->addWeichenitem(r3,r4,label);
-    w1ptr->moveLabel(-1323,-726);
-    w1ptr->setW_status(false);
-    //w1ptr->setBelegung(false);
-    w1ptr->setVerriegelung(true);
-  }
-
-  if( menue == 10 ){
-    
-  }
-  if( menue == 11){//Fahrt Simulation mit zugpassiert
-    qDebug() <<"FS von S001->S002->S005";
-    s1.setFahrt(s2ptr);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    QPair<QString,QString> p;
-    p = v1.getAktFS();
-    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    QPair<QString,QString> q;
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
-    stellwerkstec.show_Signal();
-    qDebug() <<"-------------------------------------------------";
-    s2.setFahrt(s5ptr);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    p = v1.getAktFS();
-    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
-    stellwerkstec.show_Signal();
-    qDebug() <<"-------------------------------------------------";
-    qDebug() <<"Das ziel von S001: "<<s1.getZiel();
-    qDebug() <<"-------------------------------------------------";
-    qDebug() <<"Zug fährt die FS ab, zunächst belegt er Block aa und Weiche 001:";
-    aa.setB_status(false);
-    w1.setBelegung(false);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    p = v1.getAktFS();
-    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
-    stellwerkstec.show_Signal();
-    qDebug() <<"-------------------------------------------------";
-    qDebug() <<"Zug fährt die FS ab, nun belegt er auch  Block ac:";
-    ac.setB_status(false);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    p = v1.getAktFS();
-    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
-    stellwerkstec.show_Signal();
-    qDebug() <<"-------------------------------------------------";
-    qDebug() <<"Zug fährt die FS ab, nun belegt er auch  Block ae, aa gibt er frei:";
-    aa.setB_status(true);
-    ae.setB_status(false);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    p = v1.getAktFS();
-    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
-    stellwerkstec.show_Signal();
-    qDebug() <<"-------------------------------------------------";
-    qDebug() <<"Zug fährt die FS ab, nun belegt er auch  Block ag:";
-    ag.setB_status(false);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    p = v1.getAktFS();
-    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
-    stellwerkstec.show_Signal();
-    qDebug() <<"-------------------------------------------------";
-    qDebug() <<"Zug fährt die FS ab, nun gibt er auch ac und Weiche 001 frei(eig unreal wegen S005->Hp0) :";
-    ac.setB_status(true);
-    w1.setBelegung(true);
-    qDebug() <<"Status von "<<s1.getS_id()<<": "<<s1.getS_status();
-    qDebug() <<"Status von "<<v1.getV_id()<<": "<<v1.getV_status()<<" mit getinFS: "<<v1.getinFS();
-    p = v1.getAktFS();
-    qDebug() <<"Status/Verriegelung von Weiche"<<w1.getW_id()<<" ist: "<<w1.getW_status()<<"/"<<w1.getVerriegelung();
-    qDebug() <<"v1 first/second: "<<p.first<<"/"<<p.second;
-    qDebug() <<"Status von "<<s2.getS_id()<<": "<<s2.getS_status();
-    qDebug() <<"Status von "<<v2.getV_id()<<": "<<v2.getV_status()<<" mit getinFS: "<<v2.getinFS();
-    q = v2.getAktFS();
-    qDebug() <<"v2 first/second: "<<q.first<<"/"<<q.second;
-    qDebug() <<"Status von "<<s5.getS_id()<<": "<<s5.getS_status();
-    qDebug() <<"Status/Freigabe von Blöcken aa = "<<aa.getB_status()<<"/"<<aa.getFreigabe()<<"|ab= "<<ab.getB_status()<<"/"<<ab.getFreigabe()<<"|ac= "<<ac.getB_status()<<"/"<<ac.getFreigabe()<<"|ad= "<<ad.getB_status()<<"/"<<ad.getFreigabe()<<"|ae= "<<ae.getB_status()<<"/"<<ae.getFreigabe()<<"|af= "<<af.getB_status()<<"/"<<af.getFreigabe()<<"|ag= "<<ag.getB_status()<<"/"<<ag.getFreigabe();
-    stellwerkstec.show_Signal();
-    qDebug() <<"-------------------------------------------------";
-    }
-  if( menue == 12){
-      qDebug() <<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung();
-      qDebug() <<"Nach dem Umstellen:";
-      w1.setW_status(false);
-      qDebug() <<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung();
-      qDebug() <<"Nach dem Belegen: ";
-      w1.setBelegung(false);
-      qDebug() <<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung();
-      qDebug() <<"Nach dem Verriegeln: ";
-      w1.setVerriegelung(true);
-      qDebug() <<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung();
-      qDebug() <<"++++++++++++++++++++++++++++++++++RESET+++++++++++++++++++++++++++++++++++++++++++++++ ";
-      w1.setBelegung(true);
-      w1.setVerriegelung(false);
-      qDebug() <<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung();
-      qDebug() <<"Nach dem Verriegeln: ";
-      w1.setVerriegelung(true);
-      qDebug() <<"Status/Verriegelung/Belegung von Weiche "<<w1.getW_id()<<" = "<<w1.getW_status()<<"/"<<w1.getVerriegelung()<<"/"<<w1.getBelegung();
-
-  }
-  if(menue == 13){
-        s1.setFahrt(s2ptr);
-	s2.setFahrt(s5ptr);
-	s1.setFahrt(s2ptr);
-	aa.setB_status(false);
-        w1.setBelegung(false);
-        s1.zugpassiert();
-        ac.setB_status(false);
-        aa.setB_status(true);
-        w1.setBelegung(true);
-	ae.setB_status(false);
-        ww1.zugpassiert();
-        ww2.zugpassiert();
-        ac.setB_status(true);
-	ag.setB_status(false);
-	ae.setB_status(true);
-	ag.setB_status(true);
-	qDebug() <<"aa "<<aa.getB_status();
-        qDebug() <<"ac "<<ac.getB_status();	
-	//mem->quit();
-  }
-  if(menue == 14){//Testing wiringPi in the program 
-    wiringPiSetupGpio();//BCM numbering
-        //output test
-        //int led = 27;//set the right pin
-        //pinMode(led,OUTPUT);
-        //digitalWrite(led,HIGH);
-        //delay(5000);//[ms]
-        //digitalWrite(led,LOW);
-        //input test
-        //pinMode(in,INPUT);//set input pin here
-        //wiringPiISR(in,INT_EDGE_RISING,*interrupt);
-
-        //Notes ....
-        ////////////////////////////////////////////////////////////////
-        //von der Pi Seite betrachtet:
-      //INPUT = sich ständig ändernder Blockstatus
-      //OUTPUT= Weichen; Signale, Vorsignale, BÜs, Verriegelungen usw
-      // --> Lösung über stellwerkstechnik, in der alle Block-Status ebenfalls zusammenlaufen und den entsprechenden Blöcken als Änderung (SLOT) aufgerufen wird.
-
-      //wiringpiisr nutzen
-      /*int wiringPiISR (int pin, int edgeType,  void (*function)(void)) ;
-      Trigger trigger;
-      void interrupt()
-      {
-          emit trigger.triggered();
-      }
-      wiringPiISR(0, INT_EDGE_BOTH, *interrupt);
-      // ----------------------------------------------------------------------
-      As Paul said, Interrupts must be defined just in the begin of the program.
-      Example:
-      wiringPiISR (pinx, INT_EDGE_BOTH, &my_intr_function);
-
-      Then, in the my_intr_function you can read pinx as normal GPIO to find its rising or falling.
-      Example:
-      if ( digitalRead(pinx) == 1) rising_edge_Interrupt_function(); else falling_edge_Interrupt_function();*/
-      //interrupt();//see beginning of main...
-      //eher int gpioSetAlertFunc(unsigned user_gpio, gpioAlertFunc_t f) pigpio lib
-
-  }
-
-  if(menue == 15){
-    //zugpassiert Test WS->WS
-      ww1.setFahrt(ww1ptr);
-      aa.setB_status(false);
-      ac.setB_status(false);
-  }
-  if(menue == 16){
-    WSignal *ww3ptr = new WSignal(3);
-    QList<Block*> s2tow3b;
-    s2tow3b.push_back(aeptr);
-    s2ptr->addBlockZuRangier(ww3ptr,s2tow3b);
-    s1.setFahrt(s2ptr);
-    s2.setFahrt(ww3ptr);
-  }
-  if( menue == 17){//HS/WS->WS/HS deleteFS
-      s1.setFahrt(ww1ptr);
-      stellwerkstec.show_Signal();
-      s1.deleteFS();
-      ww2.setFahrt("S002");
-      ww2.deleteFS();
-  }
-  if( menue == 18){
-    ww1ptr->setFahrt(ww2ptr);
-    stellwerkstec.show_Signal();
-    aa.setB_status(false);
-    ac.setB_status(false);    
-    //ww1ptr->deleteFS();
-    stellwerkstec.show_Signal();
-    
-  }
-  
+ 
   w.showMaximized();
 
       

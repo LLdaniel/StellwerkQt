@@ -56,7 +56,7 @@ void Weiche::addWeichenitem(QGraphicsRectItem *ab, QGraphicsRectItem *ge, QLabel
     beschriftung = la;
     QString qname = w_id ;
     beschriftung->setText(qname);
-    QFont f( "Arial", 5, QFont::Bold);
+    QFont f( "Arial", 10, QFont::Bold);
     beschriftung->setFont(f);
     changeColor();
 }
