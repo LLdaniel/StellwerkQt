@@ -63,10 +63,10 @@ void Weiche::addWeichenitem(QGraphicsRectItem *ab, QGraphicsRectItem *ge, QLabel
 
 void Weiche::evaluateVerriegelung(){
   if( counter == 1 || counter == 0){//zum debuggen
-    qDebug()<<"Weiche::counter = 1|0";
+    //qDebug()<<"Weiche::counter = 1|0";
   }
   if( counter == 2 && !belegung){//hier wird dann die Weiche freigegeben-->ist der richtige Zyklus hier
-    qDebug()<<"Weiche::Der counter = 2";
+    //qDebug()<<"Weiche::Der counter = 2";
     verriegelung = false;//konkrete Entriegelung nach Zyklus true-false-true
     changeColor();
   }

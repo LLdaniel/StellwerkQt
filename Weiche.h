@@ -52,4 +52,4 @@ bool belegung = true;//true:=frei ; false:=belegt
 //Deshalb ist die Alternatividee: bei jeder FS wird vermerkt, was der Block vor der Weiche ist:
 //Wenn dieser von belegt auf frei geht, ist der Zug drüber weg und es kann nach 1-2s die Weiche entriegelt werden
 //Sonderfall ist, wenn der Zug schon auf dem vorderen Block steht: dann muss
-//Schweierigkeiten außerdem bei: Weichen die eine Weiche davor haben
+//Schweierigkeiten außerdem bei: Weichen die eine Weiche davor haben - vielleicht geht es aber doch

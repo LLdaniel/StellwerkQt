@@ -1,5 +1,5 @@
 //*************************************************************************
-//Bahnübergang des Stellwerks  [- BU.CXX -]
+// railroad crossing of control center [- BU.CXX -]
 //*************************************************************************
 #include "BU.h"
 #include <QDebug>
@@ -10,11 +10,11 @@ BU::BU( int name ){
 }
 
 void BU::setName( int name ){
-  if( name > 0 && name < 100){//zweistellig?
-    if( name < 10 ){//eine Vor-Null einfügen
+  if( name > 0 && name < 100){//two digit?
+    if( name < 10 ){//insert 0 before
       buname = "BU0" + QString::number( name );
     }
-    else buname = "BU" + QString::number( name );//ansonsten ist keine Vor-Null nötig
+    else buname = "BU" + QString::number( name );//eles no 0 is needed before
   }
   else{
     qDebug()<<"BU::Falsche Benennung: Eine zweistellige Zahl ist nötig.";
@@ -22,38 +22,19 @@ void BU::setName( int name ){
 }
 
 void BU::setBU_status( bool status ){
-  //if( freigabe ){//falls nicht verriegelt-->freigabe --- wird nicht mehr verwendet
-  bu_status = status;//Jetzt erst wird der Status gesetzt
+  bu_status = status;//change state
   changeColor();
-    //}
-  //if( !freigabe ){//falls verriegelt: keine Möglichkeit zum öffnen --- wird nicht mehr verwendet
-  //  qDebug()<<"Der Bahnübergang ist verriegelt!";
-  //}
 }
 void BU::changeColor(){
     if(bu_status){
         burect->setBrush(QColor(153,50,204));//lila
     }
     if(!bu_status){
-        burect->setBrush(QColor(255,64,64));//sehr helles rot
+        burect->setBrush(QColor(255,64,64));//light red
     }
 }
 
 BU::~BU(){
   delete burect;
 }
-
-//void BU::setFreigabe( bool free ){ --- wird nicht mehr verwendet
-  // freigabe = free;
-  //}
-
-//void BU::evaluateFreigabe(){ --- wird nicht mehr verwendet
-//  if( counter == 1 || counter == 0){//zum debuggen
-//   qDebug()<<"BU::Der Counter =1|0";
-// }
-//if(counter == 2 && !bu_status){//Hier wird dann die Freigabe auf true gesetzt
-//  qDebug()<<"BU::Der Counter = 2";
-//  freigabe = true;//hier freigabe = true -->richtige Zyklenfolge
-// }
-//}
 
