@@ -11,7 +11,7 @@ void WSignal::setV_id( int name ){
     if( name < 10 ){//zwei Vornullen werden erzeugt
       v_id = "W00" + suffix;//std::to_string( name );
     }
-    if( name < 100 && name > 10){//eine Vornull wird erzeugt
+    if( name < 100 && name > 9){//eine Vornull wird erzeugt
       v_id = "W0" + suffix;//std::to_string( name );
     }
     if( name < 1000 && name > 100){//keine Vornull mehr nötig
@@ -473,7 +473,7 @@ void WSignal::addButtonAndLabel(QLabel *lab, QPushButton *but){
   beschriftung = lab;
   QString qname = v_id;
   beschriftung->setText(qname);
-  QFont f( "Arial", 5, QFont::Bold);
+  QFont f( "Arial", 10, QFont::Bold);
   beschriftung->setFont(f);
   //und PushButton
   push = but;

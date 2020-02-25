@@ -777,7 +777,7 @@ void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *item
   beschriftung = la;
   QString qname = s_id;
   beschriftung->setText(qname);
-  QFont f( "Arial", 5, QFont::Bold);
+  QFont f( "Arial", 10, QFont::Bold);
   beschriftung->setFont(f);
   //und PushButton
   push = but;

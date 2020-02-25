@@ -244,10 +244,10 @@ int main( int argc , char *argv[] ){
   QGraphicsSvgItem *item4 = new QGraphicsSvgItem(":/resources/WShalt.svg");
   scene->addItem(item3);
   scene->addItem(item4);
-  item3->setPos(QPointF(-280,0));
-  item4->setPos(QPointF(-280,0));
-  item3->setRotation(-90);
-  item4->setRotation(-90);
+  item3->setPos(QPointF(-870,815));
+  item4->setPos(QPointF(-870,815));
+  item3->setRotation(90);
+  item4->setRotation(90);
   item3->setScale(0.05);
   item4->setScale(0.05);
   ww1ptr->addVSignalitems(item3, item4);
@@ -269,10 +269,10 @@ int main( int argc , char *argv[] ){
   QGraphicsSvgItem *item6 = new QGraphicsSvgItem(":/resources/WShalt.svg");
   scene->addItem(item5);
   scene->addItem(item6);
-  item5->setPos(QPointF(-615,50));
-  item6->setPos(QPointF(-615,50));
-  item5->setRotation(-90);
-  item6->setRotation(-90);
+  item5->setPos(QPointF(-950,205));
+  item6->setPos(QPointF(-950,205));
+  item5->setRotation(90);
+  item6->setRotation(90);
   item5->setScale(0.05);
   item6->setScale(0.05);
   ww2ptr->addVSignalitems(item5, item6);
@@ -387,7 +387,7 @@ int main( int argc , char *argv[] ){
   s11.addWeichenstatus(s2ptr,s11tos2);
 
   QPair<Weiche*, bool> ww1tos2w4(w4ptr,false);
-  QPair<Weiche*, bool> ww1tos2w3(w4ptr,false);
+  QPair<Weiche*, bool> ww1tos2w3(w3ptr,false);
   QList<QPair<Weiche*, bool>> ww1tos2;
   ww1tos2.push_back(ww1tos2w4);
   ww1tos2.push_back(ww1tos2w3);
@@ -795,62 +795,98 @@ int main( int argc , char *argv[] ){
 
   QGraphicsRectItem *ahrect = new QGraphicsRectItem();
   ahrect->setRect(0,0,10,55);
-  ahrect->setPos(QPointF(-867,120));
+  ahrect->setPos(QPointF(-868,120));
   ahrect->setBrush(QColor(79,79,79));
   ahrect->setRotation(45);
   ah.addBlockitems(ahrect);
   scene->addItem(ahrect);
   QGraphicsRectItem *ahrect2 = new QGraphicsRectItem();
-  ahrect2->setRect(0,0,10,925);
-  ahrect2->setPos(QPointF(-862,130));
+  ahrect2->setRect(0,0,10,1003);
+  ahrect2->setPos(QPointF(-863,130));
   ahrect2->setBrush(QColor(79,79,79));
   ahrect2->setRotation(-90);
   ah.addBlockitems(ahrect2);
   scene->addItem(ahrect2);
-  //
-  /////////////NOCH VON WSIGNAL
-  //soll on top of scene sein...
-  QPushButton *ww1push = new QPushButton();
-  scene->addWidget(ww1push);
-  ww1.addButtonAndLabel(ww1label,ww1push);
-  ww1.moveButton(-264,0);
-  ww1.moveLabel(-249,-20);
-  // und NR 2 W
-  QPushButton *ww2push = new QPushButton();
-  scene->addWidget(ww2push);
-  ww2.addButtonAndLabel(ww2label,ww2push);
-  ww2.moveButton(-600,50);
-  ww2.moveLabel(-585,30);
-  ///////////////////////////
-  
-  QGraphicsSvgItem *item1 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *item2 = new QGraphicsSvgItem(":/resources/VShalt.svg");
-  scene->addItem(item1);
-  scene->addItem(item2);
-  item1->setPos(QPointF(-340,0));
-  item2->setPos(QPointF(-340,0));
-  item1->setScale(0.1);
-  item2->setScale(0.1);
-  item1->setRotation(-90);
-  item2->setRotation(-90);
-  v1ptr->addVSignalitems(item1, item2);
-  //  
+  QGraphicsRectItem *ahrect3 = new QGraphicsRectItem();
+  ahrect3->setRect(0,0,10,55);
+  ahrect3->setPos(QPointF(140,130));
+  ahrect3->setBrush(QColor(79,79,79));
+  ahrect3->setRotation(-45);
+  ah.addBlockitems(ahrect3);
+  scene->addItem(ahrect3);
+
+  QGraphicsRectItem *w10rectge = new QGraphicsRectItem();
+  w10rectge->setRect(0,0,10,75);
+  w10rectge->setPos(QPointF(215,190));
+  w10rectge->setBrush(QColor(79,79,79));
+  w10rectge->setRotation(90);
+  scene->addItem(w10rectge);
+  QGraphicsRectItem *w10rectab = new QGraphicsRectItem();
+  w10rectab->setRect(0,0,10,50);
+  w10rectab->setPos(QPointF(215,190));
+  w10rectab->setBrush(QColor(79,79,79));
+  w10rectab->setRotation(135);
+  scene->addItem(w10rectab);
+  QLabel *w10label = new QLabel();
+  scene->addWidget(w10label);
+  w10.addWeichenitem(w10rectab,w10rectge,w10label);
+  w10.moveLabel(200,200);
+
+  QGraphicsRectItem *afrect = new QGraphicsRectItem();
+  afrect->setRect(0,0,10,675);
+  afrect->setPos(QPointF(-875,495));
+  afrect->setBrush(QColor(79,79,79));
+  afrect->setRotation(-90);
+  af.addBlockitems(afrect);
+  scene->addItem(afrect);
+
+  QGraphicsRectItem *agrect = new QGraphicsRectItem();
+  agrect->setRect(0,0,10,630);
+  agrect->setPos(QPointF(-875,615));
+  agrect->setBrush(QColor(79,79,79));
+  agrect->setRotation(-90);
+  ag.addBlockitems(agrect);
+  scene->addItem(agrect);
+  QGraphicsRectItem *agrect2 = new QGraphicsRectItem();
+  agrect2->setRect(0,0,10,125);
+  agrect2->setPos(QPointF(-160,520));
+  agrect2->setBrush(QColor(79,79,79));
+  agrect2->setRotation(45);
+  ag.addBlockitems(agrect2);
+  scene->addItem(agrect2);
+
+  QGraphicsRectItem *w8rectge = new QGraphicsRectItem();
+  w8rectge->setRect(0,0,10,75);
+  w8rectge->setPos(QPointF(-125,485));
+  w8rectge->setBrush(QColor(79,79,79));
+  w8rectge->setRotation(90);
+  scene->addItem(w8rectge);
+  QGraphicsRectItem *w8rectab = new QGraphicsRectItem();
+  w8rectab->setRect(0,0,10,50);
+  w8rectab->setPos(QPointF(-125,485));
+  w8rectab->setBrush(QColor(79,79,79));
+  w8rectab->setRotation(45);
+  scene->addItem(w8rectab);
+  QLabel *w8label = new QLabel();
+  scene->addWidget(w8label);
+  w8.addWeichenitem(w8rectab,w8rectge,w8label);
+  w8.moveLabel(-140,475);
+
   QGraphicsSvgItem *s4item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
   QGraphicsSvgItem *s4item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
   QGraphicsSvgItem *s4item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
   scene->addItem(s4item1);
   scene->addItem(s4item3);
   scene->addItem(s4item2);
-  s4item1->setPos(QPointF(-1460,0));
-  s4item2->setPos(QPointF(-1460,0));
-  s4item3->setPos(QPointF(-1460,0));
+  s4item1->setPos(QPointF(-775,720));
+  s4item2->setPos(QPointF(-775,720));
+  s4item3->setPos(QPointF(-775,720));
   s4item1->setScale(0.1);
   s4item2->setScale(0.1);
   s4item3->setScale(0.1);
   s4item1->setRotation(-90);
   s4item2->setRotation(-90);
   s4item3->setRotation(-90);
-  
   QPushButton *s4push = new QPushButton();
   scene->addWidget(s4push);
   QLabel *s4label = new QLabel();
@@ -859,16 +895,180 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin4 = new QGraphicsRectItem();
   sphin4->setRect(0,0,10,10);
   sphin4->setBrush(Qt::yellow);
-  sphin4->setPos(QPointF(-1410,-10));
+  sphin4->setPos(QPointF(-715,700));
   QGraphicsRectItem *spweg4 = new QGraphicsRectItem();
   spweg4->setRect(0,0,10,10);
   spweg4->setBrush(Qt::yellow);
-  spweg4->setPos(QPointF(-1410,-20));
+  spweg4->setPos(QPointF(-715,710));
   scene->addItem(spweg4);
   scene->addItem(sphin4);
   s4.addHSignalitem(s4item1,s4item2, s4item3, s4label,s4push,spweg4,sphin4);
-  s4.moveLabel(-1410,0);
-  s4.moveButton(-1420,0);
+  s4.moveButton(-755,725);
+  s4.moveLabel(-700,705);
+
+  QGraphicsSvgItem *s5item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s5item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s5item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s5item1);
+  scene->addItem(s5item3);
+  scene->addItem(s5item2);
+  s5item1->setPos(QPointF(-775,790));
+  s5item2->setPos(QPointF(-775,790));
+  s5item3->setPos(QPointF(-775,790));
+  s5item1->setScale(0.1);
+  s5item2->setScale(0.1);
+  s5item3->setScale(0.1);
+  s5item1->setRotation(-90);
+  s5item2->setRotation(-90);
+  s5item3->setRotation(-90);
+  QPushButton *s5push = new QPushButton();
+  scene->addWidget(s5push);
+  QLabel *s5label = new QLabel();
+  scene->addWidget(s5label);
+  //speicher GUIs
+  QGraphicsRectItem *sphin5 = new QGraphicsRectItem();
+  sphin5->setRect(0,0,10,10);
+  sphin5->setBrush(Qt::yellow);
+  sphin5->setPos(QPointF(-715,770));
+  QGraphicsRectItem *spweg5 = new QGraphicsRectItem();
+  spweg5->setRect(0,0,10,10);
+  spweg5->setBrush(Qt::yellow);
+  spweg5->setPos(QPointF(-715,780));
+  scene->addItem(spweg5);
+  scene->addItem(sphin5);
+  s5.addHSignalitem(s5item1,s5item2, s5item3, s5label,s5push,spweg5,sphin5);
+  s5.moveButton(-755,795);
+  s5.moveLabel(-700,775);
+
+  QGraphicsSvgItem *s2item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s2item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s2item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s2item1);
+  scene->addItem(s2item3);
+  scene->addItem(s2item2);
+  s2item1->setPos(QPointF(425,750));
+  s2item2->setPos(QPointF(425,750));
+  s2item3->setPos(QPointF(425,750));
+  s2item1->setScale(0.1);
+  s2item2->setScale(0.1);
+  s2item3->setScale(0.1);
+  s2item1->setRotation(90);
+  s2item2->setRotation(90);
+  s2item3->setRotation(90);
+  QPushButton *s2push = new QPushButton();
+  scene->addWidget(s2push);
+  QLabel *s2label = new QLabel();
+  scene->addWidget(s2label);
+  //speicher GUIs
+  QGraphicsRectItem *sphin2 = new QGraphicsRectItem();
+  sphin2->setRect(0,0,10,10);
+  sphin2->setBrush(Qt::yellow);
+  sphin2->setPos(QPointF(356,749));
+  QGraphicsRectItem *spweg2 = new QGraphicsRectItem();
+  spweg2->setRect(0,0,10,10);
+  spweg2->setBrush(Qt::yellow);
+  spweg2->setPos(QPointF(356,759));
+  scene->addItem(spweg2);
+  scene->addItem(sphin2);
+  s2.addHSignalitem(s2item1,s2item2, s2item3, s2label,s2push,spweg2,sphin2);
+  s2.moveButton(385,725);
+  s2.moveLabel(318,750);
+
+  QGraphicsSvgItem *s3item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s3item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s3item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s3item1);
+  scene->addItem(s3item3);
+  scene->addItem(s3item2);
+  s3item1->setPos(QPointF(425,820));
+  s3item2->setPos(QPointF(425,820));
+  s3item3->setPos(QPointF(425,820));
+  s3item1->setScale(0.1);
+  s3item2->setScale(0.1);
+  s3item3->setScale(0.1);
+  s3item1->setRotation(90);
+  s3item2->setRotation(90);
+  s3item3->setRotation(90);
+  QPushButton *s3push = new QPushButton();
+  scene->addWidget(s3push);
+  QLabel *s3label = new QLabel();
+  scene->addWidget(s3label);
+  //speicher GUIs
+  QGraphicsRectItem *sphin3 = new QGraphicsRectItem();
+  sphin3->setRect(0,0,10,10);
+  sphin3->setBrush(Qt::yellow);
+  sphin3->setPos(QPointF(356,819));
+  QGraphicsRectItem *spweg3 = new QGraphicsRectItem();
+  spweg3->setRect(0,0,10,10);
+  spweg3->setBrush(Qt::yellow);
+  spweg3->setPos(QPointF(356,829));
+  scene->addItem(spweg3);
+  scene->addItem(sphin3);
+  s3.addHSignalitem(s3item1,s3item2, s3item3, s3label,s3push,spweg3,sphin3);
+  s3.moveButton(385,795);
+  s3.moveLabel(318,820);
+
+  QGraphicsSvgItem *item1 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *item2 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(item1);
+  scene->addItem(item2);
+  item1->setPos(QPointF(-965,745));
+  item2->setPos(QPointF(-965,745));
+  item1->setScale(0.1);
+  item2->setScale(0.1);
+  item1->setRotation(90);
+  item2->setRotation(90);
+  v2ptr->addVSignalitems(item1, item2);
+  
+  QGraphicsSvgItem *s13item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s13item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s13item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s13item1);
+  scene->addItem(s13item3);
+  scene->addItem(s13item2);
+  s13item1->setPos(QPointF(-925,750));
+  s13item2->setPos(QPointF(-925,750));
+  s13item3->setPos(QPointF(-925,750));
+  s13item1->setScale(0.1);
+  s13item2->setScale(0.1);
+  s13item3->setScale(0.1);
+  s13item1->setRotation(90);
+  s13item2->setRotation(90);
+  s13item3->setRotation(90);
+  QPushButton *s13push = new QPushButton();
+  scene->addWidget(s13push);
+  QLabel *s13label = new QLabel();
+  scene->addWidget(s13label);
+  //speicher GUIs
+  QGraphicsRectItem *sphin13 = new QGraphicsRectItem();
+  sphin13->setRect(0,0,10,10);
+  sphin13->setBrush(Qt::yellow);
+  sphin13->setPos(QPointF(-1004,749));
+  QGraphicsRectItem *spweg13 = new QGraphicsRectItem();
+  spweg13->setRect(0,0,10,10);
+  spweg13->setBrush(Qt::yellow);
+  spweg13->setPos(QPointF(-1004,759));
+  scene->addItem(spweg13);
+  scene->addItem(sphin13);
+  s13.addHSignalitem(s13item1,s13item2, s13item3, s13label,s13push,spweg13,sphin13);
+  s13.moveButton(-965,725);
+  s13.moveLabel(-1037,750);
+
+  /////////////NOCH VON WSIGNAL
+  //soll on top of scene sein...
+  QPushButton *ww1push = new QPushButton();
+  scene->addWidget(ww1push);
+  ww1.addButtonAndLabel(ww1label,ww1push);
+  ww1.moveButton(-900,795);
+  ww1.moveLabel(-940,820);
+  // und NR 2 W
+  QPushButton *ww2push = new QPushButton();
+  scene->addWidget(ww2push);
+  ww2.addButtonAndLabel(ww2label,ww2push);
+  ww2.moveButton(-980,185);
+  ww2.moveLabel(-1015,205);
+  ///////////////////////////
+  
 
   
   //QPushButtonPart
@@ -878,6 +1078,16 @@ int main( int argc , char *argv[] ){
   QObject::connect(&s3,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(&s4,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(&s5,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(&s6,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(&s7,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(&s8,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(&s9,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(&s10,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(&s11,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(&s12,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(&s13,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(&s14,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(&s15,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
   //ebenfalls für WSignal
   QObject::connect(&ww1,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(&ww2,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
