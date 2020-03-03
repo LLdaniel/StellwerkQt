@@ -98,5 +98,5 @@ void MainWindow::upscale(){
 }
 
 void MainWindow::downscale(){
-  ((QGraphicsView*)this->centralWidget())->scale(1.5,1.5);
+  ((QGraphicsView*)this->centralWidget())->scale(2.0,2.0);
 }
