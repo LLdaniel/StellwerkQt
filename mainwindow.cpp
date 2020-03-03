@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QKeySequence>
+#include <QGraphicsView>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -24,8 +25,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     }
 }
 
-void MainWindow::keyPressEvent(QKeyEvent *event)
-{
+void MainWindow::keyPressEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_Escape){
         qDebug()<<"ESC was pressed";
     }
@@ -38,6 +38,10 @@ void MainWindow::createMenus(){
 
   piMenu = menuBar()->addMenu(tr("&RaspberryPi"));
   piMenu->addAction(resetAct);
+
+  viewMenu = menuBar()->addMenu(tr("&View"));
+  viewMenu->addAction(upscaleAct);
+  viewMenu->addAction(downscaleAct);
 
   aboutMenu = menuBar()->addMenu(tr("&About"));
   aboutMenu->addAction(aboutAct);
@@ -57,6 +61,21 @@ void MainWindow::createActions(){
   resetAct->setStatusTip(tr("Sets pi pins as input"));
   QObject::connect(resetAct, &QAction::triggered, this, &MainWindow::reset);
 
+  upscaleAct = new QAction(tr("&ZoomOut"), this);
+  QKeySequence u(Qt::ControlModifier + Qt::Key_Minus);
+  QList<QKeySequence> upSeq;
+  upSeq.append(u);
+  upscaleAct->setShortcuts(upSeq);
+  upscaleAct->setStatusTip(tr("up-scales view"));
+  QObject::connect(upscaleAct, &QAction::triggered, this, &MainWindow::upscale);
+  downscaleAct = new QAction(tr("&ZoomIn"), this);
+  QKeySequence d(Qt::ControlModifier + Qt::Key_Plus);
+  QList<QKeySequence> downSeq;
+  downSeq.append(d);
+  downscaleAct->setShortcuts(downSeq);
+  downscaleAct->setStatusTip(tr("down-scales view"));
+  QObject::connect(downscaleAct, &QAction::triggered, this, &MainWindow::downscale);
+  
   aboutAct = new QAction(tr("&About ControlCenter..."), this);
   aboutAct->setStatusTip(tr("More information about ControlCenter"));
   QObject::connect(aboutAct, &QAction::triggered, this, &MainWindow::showAboutDialog);
@@ -72,4 +91,12 @@ void MainWindow::showAboutDialog(){
 
 void MainWindow::showHelpDialog(){
   helpBox.exec();
+}
+
+void MainWindow::upscale(){
+  ((QGraphicsView*)this->centralWidget())->scale(0.5,0.5);
+}
+
+void MainWindow::downscale(){
+  ((QGraphicsView*)this->centralWidget())->scale(1.5,1.5);
 }

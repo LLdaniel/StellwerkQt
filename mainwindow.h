@@ -26,16 +26,21 @@ signals:
 private slots:
   void showAboutDialog();
   void showHelpDialog();
+  void upscale();
+  void downscale();
 private:
   void createActions();
   void createMenus();
   Ui::MainWindow *ui;
   QMenu *ccMenu;
   QMenu *piMenu;
+  QMenu *viewMenu;
   QMenu *aboutMenu;
   QAction *shutdownAct;
   QAction *resetAct;
   QAction *aboutAct;
+  QAction *upscaleAct;
+  QAction *downscaleAct;
   QMessageBox aboutBox;
   QAction *helpAct;
   QMessageBox helpBox;

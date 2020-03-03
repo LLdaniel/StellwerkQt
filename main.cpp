@@ -85,7 +85,6 @@ int main( int argc , char *argv[] ){
   //view->showMaximized();
   w.setCentralWidget(view);//add view to mainwindow
   w.setWindowTitle("Electronic Signalling Control Center - Model Railway");
-  view->scale(0.50,0.50);
     
   //Initialisierung der Strecke--------------------------------------------------------
   //Stellwerkstechnik+Block aa as basis
