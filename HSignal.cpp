@@ -14,7 +14,7 @@ void HSignal::setS_id( int name ){
     if( name < 10 ){//zwei Vornullen werden erzeugt
       s_id = "S00" + suffix;//QString::number( name );
     }
-    if( name < 100 && name > 10){//eine Vornull wird erzeugt
+    if( name < 100 && name > 9){//eine Vornull wird erzeugt
       s_id = "S0" + suffix;//QString::number( name );
     }
     if( name < 1000 && name > 100){//keine Vornull mehr nötig
