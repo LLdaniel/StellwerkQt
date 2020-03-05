@@ -133,8 +133,10 @@ int main( int argc , char *argv[] ){
   Block *aqptr = new Block("aq", stellwerkstecptr);
   Block *arptr = new Block("ar", stellwerkstecptr);
   Block *asptr = new Block("as", stellwerkstecptr);
-  //Block *atptr = new Block("at", stellwerkstecptr);
+  Block *atptr = new Block("at", stellwerkstecptr);
   Block *auptr = new Block("au", stellwerkstecptr);
+  Block *avptr = new Block("av", stellwerkstecptr);
+  Block *awptr = new Block("aw", stellwerkstecptr);
   //..
   Block *bmptr = new Block("bm", stellwerkstecptr);
   Block *bnptr = new Block("bn", stellwerkstecptr);
@@ -3107,7 +3109,59 @@ int main( int argc , char *argv[] ){
   ww3ptr->addButtonAndLabel(ww3label,ww3push);
   ww3ptr->moveButton(240,185);
   ww3ptr->moveLabel(270,170);
+
+  //neue Bahn ---------------------------------------------------------------------------------------------------
+  QGraphicsRectItem *asrect2 = new QGraphicsRectItem();
+  asrect2->setRect(0,0,10,300);
+  asrect2->setPos(QPointF(600,90));
+  asrect2->setBrush(QColor(79,79,79));
+  asptr->addBlockitems(asrect2);
+  scene->addItem(asrect2);
   
+  QGraphicsRectItem *atrect = new QGraphicsRectItem();
+  atrect->setRect(0,0,10,700);
+  atrect->setPos(QPointF(600,-610));
+  atrect->setBrush(QColor(79,79,79));
+  atptr->addBlockitems(atrect);
+  scene->addItem(atrect);
+
+  QGraphicsRectItem *aurect2 = new QGraphicsRectItem();
+  aurect2->setRect(0,0,10,150);
+  aurect2->setPos(QPointF(670,240));
+  aurect2->setBrush(QColor(79,79,79));
+  auptr->addBlockitems(aurect2);
+  scene->addItem(aurect2);
+  
+  QGraphicsRectItem *avrect = new QGraphicsRectItem();
+  avrect->setRect(0,0,10,780);
+  avrect->setPos(QPointF(670,-540));
+  avrect->setBrush(QColor(79,79,79));
+  avptr->addBlockitems(avrect);
+  scene->addItem(avrect);
+
+  QGraphicsRectItem *atrect2 = new QGraphicsRectItem();
+  atrect2->setRect(0,0,10,250);
+  atrect2->setPos(QPointF(850,-610));
+  atrect2->setBrush(QColor(79,79,79));
+  atrect2->setRotation(90);
+  atptr->addBlockitems(atrect2);
+  scene->addItem(atrect2);
+
+  QGraphicsRectItem *avrect2 = new QGraphicsRectItem();
+  avrect2->setRect(0,0,10,180);
+  avrect2->setPos(QPointF(850,-540));
+  avrect2->setBrush(QColor(79,79,79));
+  avrect2->setRotation(90);
+  avptr->addBlockitems(avrect2);
+  scene->addItem(avrect2);
+
+  QGraphicsRectItem *awrect = new QGraphicsRectItem();
+  awrect->setRect(0,0,10,1810);
+  awrect->setPos(QPointF(2730,-610));
+  awrect->setBrush(QColor(79,79,79));
+  awrect->setRotation(90);
+  awptr->addBlockitems(awrect);
+  scene->addItem(awrect);
   
   //QPushButtonPart
   clickmanager *c1 = new clickmanager;
@@ -3211,7 +3265,7 @@ int main( int argc , char *argv[] ){
   delete c1;
    
   delete stellwerkstecptr;
-  delete aaptr; delete abptr; delete acptr; delete adptr; delete aeptr; delete afptr; delete agptr; delete ahptr; delete aiptr; delete ajptr; delete akptr; delete alptr; delete amptr; delete anptr; delete aoptr; delete apptr; delete aqptr; delete arptr; delete asptr; delete bmptr; delete bnptr;
+  delete aaptr; delete abptr; delete acptr; delete adptr; delete aeptr; delete afptr; delete agptr; delete ahptr; delete aiptr; delete ajptr; delete akptr; delete alptr; delete amptr; delete anptr; delete aoptr; delete apptr; delete aqptr; delete arptr; delete asptr; delete atptr; delete avptr; delete awptr; delete bmptr; delete bnptr;
   delete ww1ptr; delete ww2ptr; delete ww3ptr; delete ww4ptr; delete ww5ptr; delete ww6ptr; delete ww7ptr; delete ww8ptr; delete ww9ptr; delete ww10ptr; delete ww11ptr;
   delete v1ptr; delete v2ptr; delete v3ptr; delete v4ptr; delete v5ptr; delete v6ptr; delete v7ptr; delete v8ptr; delete v9ptr; delete v10ptr; delete v11ptr; delete v12ptr; delete v13ptr; delete v14ptr; delete v15ptr; delete v16ptr;
   delete w1ptr; delete w2ptr; delete w3ptr; delete w4ptr; delete w5ptr; delete w6ptr; delete w7ptr; delete w8ptr; delete w9ptr; delete w10ptr; delete w11ptr; delete w12ptr; delete w13ptr; delete w14ptr; delete w15ptr; delete w16ptr; delete w17ptr; delete w18ptr; delete w19ptr;
