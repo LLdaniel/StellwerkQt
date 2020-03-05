@@ -132,6 +132,12 @@ int main( int argc , char *argv[] ){
   Block *apptr = new Block("ap", stellwerkstecptr);
   Block *aqptr = new Block("aq", stellwerkstecptr);
   Block *arptr = new Block("ar", stellwerkstecptr);
+  Block *asptr = new Block("as", stellwerkstecptr);
+  //Block *atptr = new Block("at", stellwerkstecptr);
+  Block *auptr = new Block("au", stellwerkstecptr);
+  //..
+  Block *bmptr = new Block("bm", stellwerkstecptr);
+  Block *bnptr = new Block("bn", stellwerkstecptr);
   //:::VS:::
   VSignal *v1ptr = new VSignal(1);
   VSignal *v2ptr = new VSignal(2);
@@ -313,6 +319,26 @@ int main( int argc , char *argv[] ){
   scene->addWidget(ww2label);
 
   WSignal *ww3ptr = new WSignal(3);
+  ww3ptr->setRichtung("S025","S011");
+  ww3ptr->setRichtung("S025","S009");
+  //s25ptr->addWSignal(ww3ptr,"v");
+  s9ptr->addWSignal(ww3ptr,"r");
+  s11ptr->addWSignal(ww3ptr,"r");
+  //
+  QGraphicsSvgItem *itemw3 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw32 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw3);
+  scene->addItem(itemw32);
+  itemw3->setPos(QPointF(240,185));
+  itemw32->setPos(QPointF(240,185));
+  itemw3->setRotation(-90);
+  itemw32->setRotation(-90);
+  itemw3->setScale(0.05);
+  itemw32->setScale(0.05);
+  ww3ptr->addVSignalitems(itemw3, itemw32);
+  QLabel *ww3label = new QLabel();
+  scene->addWidget(ww3label);
+  
   
   WSignal *ww4ptr = new WSignal(4);
   ww4ptr->setRichtung("S016","S013");
@@ -474,6 +500,15 @@ int main( int argc , char *argv[] ){
   s1tos4.push_back(s1tos4w1);
   s1ptr->addWeichenstatus(s4ptr,s1tos4);
 
+  QPair<Weiche*, bool> ww3tos9w10(w10ptr,false);
+  QList<QPair<Weiche*, bool>> ww3tos9;
+  ww3tos9.push_back(ww3tos9w10);
+  ww3ptr->addWeichenstatusZuH(s9ptr->getS_id(),ww3tos9);
+  QPair<Weiche*, bool> ww3tos11w10(w10ptr,true);
+  QList<QPair<Weiche*, bool>> ww3tos11;
+  ww3tos11.push_back(ww3tos11w10);
+  ww3ptr->addWeichenstatusZuH(s11ptr->getS_id(),ww3tos11);
+  
   QPair<Weiche*, bool> s4tos7w3(w3ptr,true);
   QPair<Weiche*, bool> s4tos7w5(w5ptr,false);
   QPair<Weiche*, bool> s4tos7w6(w6ptr,true);
@@ -993,7 +1028,14 @@ int main( int argc , char *argv[] ){
   QList<Block*> s1tos4b;
   s1tos4b.push_back(aaptr);
   s1ptr->addBlock(s4ptr,s1tos4b);
-
+  
+  QList<Block*> ww3tos9b;
+  ww3tos9b.push_back(ahptr);
+  ww3ptr->addBlockZuH(s9ptr->getS_id(),ww3tos9b);
+  QList<Block*> ww3tos11b;
+  ww3tos11b.push_back(aiptr);
+  ww3ptr->addBlockZuH(s11ptr->getS_id(),ww3tos11b);
+  
   QList<Block*> s13tos2b;
   s13tos2b.push_back(aaptr);
   s13ptr->addBlock(s2ptr,s13tos2b);
@@ -1452,6 +1494,22 @@ int main( int argc , char *argv[] ){
   aaptr->addBlockitems(aarect);
   scene->addItem(aarect);
 
+  QGraphicsRectItem *bmrect = new QGraphicsRectItem();
+  bmrect->setRect(0,0,10,150);
+  bmrect->setPos(QPointF(650,730));
+  bmrect->setBrush(QColor(79,79,79));
+  bmrect->setRotation(90);
+  bmptr->addBlockitems(bmrect);
+  scene->addItem(bmrect);
+
+  QGraphicsRectItem *bnrect = new QGraphicsRectItem();
+  bnrect->setRect(0,0,10,150);
+  bnrect->setPos(QPointF(650,800));
+  bnrect->setBrush(QColor(79,79,79));
+  bnrect->setRotation(90);
+  bnptr->addBlockitems(bnrect);
+  scene->addItem(bnrect);
+
   QGraphicsRectItem *w4rectge = new QGraphicsRectItem();
   w4rectge->setRect(0,0,10,75);
   w4rectge->setPos(QPointF(-775,800));
@@ -1638,6 +1696,14 @@ int main( int argc , char *argv[] ){
   ahptr->addBlockitems(ahrect3);
   scene->addItem(ahrect3);
 
+  QGraphicsRectItem *asrect = new QGraphicsRectItem();
+  asrect->setRect(0,0,10,200);
+  asrect->setPos(QPointF(215,200));
+  asrect->setBrush(QColor(79,79,79));
+  asrect->setRotation(-90);
+  asptr->addBlockitems(asrect);
+  scene->addItem(asrect);
+
   QGraphicsRectItem *w10rectge = new QGraphicsRectItem();
   w10rectge->setRect(0,0,10,75);
   w10rectge->setPos(QPointF(215,190));
@@ -1662,6 +1728,14 @@ int main( int argc , char *argv[] ){
   afrect->setRotation(-90);
   afptr->addBlockitems(afrect);
   scene->addItem(afrect);
+
+  QGraphicsRectItem *aurect = new QGraphicsRectItem();
+  aurect->setRect(0,0,10,500);
+  aurect->setPos(QPointF(-125,495));
+  aurect->setBrush(QColor(79,79,79));
+  aurect->setRotation(-90);
+  auptr->addBlockitems(aurect);
+  scene->addItem(aurect);
 
   QGraphicsRectItem *agrect = new QGraphicsRectItem();
   agrect->setRect(0,0,10,630);
@@ -3027,6 +3101,12 @@ int main( int argc , char *argv[] ){
   ww8ptr->addButtonAndLabel(ww8label,ww8push);
   ww8ptr->moveButton(190,-205);
   ww8ptr->moveLabel(135,-210);
+
+  QPushButton *ww3push = new QPushButton();
+  scene->addWidget(ww3push);
+  ww3ptr->addButtonAndLabel(ww3label,ww3push);
+  ww3ptr->moveButton(240,185);
+  ww3ptr->moveLabel(270,170);
   
   
   //QPushButtonPart
@@ -3131,12 +3211,12 @@ int main( int argc , char *argv[] ){
   delete c1;
    
   delete stellwerkstecptr;
-  delete aaptr; delete abptr; delete acptr; delete adptr; delete aeptr; delete afptr; delete agptr; delete ahptr; delete aiptr; delete ajptr; delete akptr; delete alptr; delete amptr; delete anptr; delete aoptr; delete apptr; delete aqptr; delete arptr; 
-  delete ww1ptr; delete ww2ptr; /*delete ww3ptr; delete ww4ptr; delete ww5ptr; delete ww6ptr; delete ww7ptr; delete ww8ptr; delete ww9ptr; delete ww10ptr; delete ww11ptr;
+  delete aaptr; delete abptr; delete acptr; delete adptr; delete aeptr; delete afptr; delete agptr; delete ahptr; delete aiptr; delete ajptr; delete akptr; delete alptr; delete amptr; delete anptr; delete aoptr; delete apptr; delete aqptr; delete arptr; delete asptr; delete bmptr; delete bnptr;
+  delete ww1ptr; delete ww2ptr; delete ww3ptr; delete ww4ptr; delete ww5ptr; delete ww6ptr; delete ww7ptr; delete ww8ptr; delete ww9ptr; delete ww10ptr; delete ww11ptr;
   delete v1ptr; delete v2ptr; delete v3ptr; delete v4ptr; delete v5ptr; delete v6ptr; delete v7ptr; delete v8ptr; delete v9ptr; delete v10ptr; delete v11ptr; delete v12ptr; delete v13ptr; delete v14ptr; delete v15ptr; delete v16ptr;
   delete w1ptr; delete w2ptr; delete w3ptr; delete w4ptr; delete w5ptr; delete w6ptr; delete w7ptr; delete w8ptr; delete w9ptr; delete w10ptr; delete w11ptr; delete w12ptr; delete w13ptr; delete w14ptr; delete w15ptr; delete w16ptr; delete w17ptr; delete w18ptr; delete w19ptr;
   delete s1ptr; delete s2ptr; delete s3ptr; delete s4ptr; delete s5ptr; delete s6ptr; delete s7ptr; delete s8ptr; delete s9ptr; delete s10ptr; delete s11ptr; delete s12ptr; delete s13ptr; delete s14ptr; delete s15ptr; delete s16ptr; delete s17ptr; delete s18ptr; delete s19ptr; delete s20ptr; delete s21ptr; delete s22ptr; delete s23ptr;
-  segfaulting...*/
+  
   return eofprogram;
 
 }
