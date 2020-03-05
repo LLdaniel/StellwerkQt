@@ -966,7 +966,14 @@ int main( int argc , char *argv[] ){
   ww8toww4.push_back(ww8toww4w14);
   ww8toww4.push_back(ww8toww4w15);
   ww8ptr->addWeichenstatus(ww4ptr,ww8toww4);
-
+  QPair<Weiche*, bool> ww8toww7w14(w14ptr,false);
+  QPair<Weiche*, bool> ww8toww7w15(w15ptr,false);
+  QList<QPair<Weiche*, bool>> ww8toww7;
+  ww8toww7.push_back(ww8toww7w14);
+  ww8toww7.push_back(ww8toww7w15);
+  ww8ptr->addWeichenstatus(ww7ptr,ww8toww7);
+  
+  
   QPair<Weiche*, bool> ww10tos16w17(w17ptr,false);
   QPair<Weiche*, bool> ww10tos16w18(w18ptr,true);
   QPair<Weiche*, bool> ww10tos16w19(w19ptr,false);
@@ -1224,6 +1231,10 @@ int main( int argc , char *argv[] ){
   ww8toww4b.push_back(alptr);
   ww8toww4b.push_back(ajptr);
   ww8ptr->addBlock(ww4ptr,ww8toww4b);
+  QList<Block*> ww8toww7b;
+  ww8toww7b.push_back(aoptr);
+  ww8ptr->addBlock(ww7ptr,ww8toww7b);
+
 
   QList<Block*> ww10tos16b;
   ww10tos16b.push_back(akptr);
