@@ -137,6 +137,8 @@ int main( int argc , char *argv[] ){
   Block *auptr = new Block("au", stellwerkstecptr);
   Block *avptr = new Block("av", stellwerkstecptr);
   Block *awptr = new Block("aw", stellwerkstecptr);
+  Block *axptr = new Block("ax", stellwerkstecptr);
+  Block *ayptr = new Block("ay", stellwerkstecptr);
   //..
   Block *bmptr = new Block("bm", stellwerkstecptr);
   Block *bnptr = new Block("bn", stellwerkstecptr);
@@ -3156,12 +3158,20 @@ int main( int argc , char *argv[] ){
   scene->addItem(avrect2);
 
   QGraphicsRectItem *awrect = new QGraphicsRectItem();
-  awrect->setRect(0,0,10,1810);
-  awrect->setPos(QPointF(2730,-610));
+  awrect->setRect(0,0,10,1660);
+  awrect->setPos(QPointF(2580,-610));
   awrect->setBrush(QColor(79,79,79));
   awrect->setRotation(90);
   awptr->addBlockitems(awrect);
   scene->addItem(awrect);
+
+  QGraphicsRectItem *ayrect = new QGraphicsRectItem();
+  ayrect->setRect(0,0,10,150);
+  ayrect->setPos(QPointF(2730,-610));
+  ayrect->setBrush(QColor(79,79,79));
+  ayrect->setRotation(90);
+  ayptr->addBlockitems(ayrect);
+  scene->addItem(ayrect);
   
   //QPushButtonPart
   clickmanager *c1 = new clickmanager;
@@ -3265,7 +3275,7 @@ int main( int argc , char *argv[] ){
   delete c1;
    
   delete stellwerkstecptr;
-  delete aaptr; delete abptr; delete acptr; delete adptr; delete aeptr; delete afptr; delete agptr; delete ahptr; delete aiptr; delete ajptr; delete akptr; delete alptr; delete amptr; delete anptr; delete aoptr; delete apptr; delete aqptr; delete arptr; delete asptr; delete atptr; delete avptr; delete awptr; delete bmptr; delete bnptr;
+  delete aaptr; delete abptr; delete acptr; delete adptr; delete aeptr; delete afptr; delete agptr; delete ahptr; delete aiptr; delete ajptr; delete akptr; delete alptr; delete amptr; delete anptr; delete aoptr; delete apptr; delete aqptr; delete arptr; delete asptr; delete atptr; delete avptr; delete awptr; delete axptr; delete ayptr; delete bmptr; delete bnptr;
   delete ww1ptr; delete ww2ptr; delete ww3ptr; delete ww4ptr; delete ww5ptr; delete ww6ptr; delete ww7ptr; delete ww8ptr; delete ww9ptr; delete ww10ptr; delete ww11ptr;
   delete v1ptr; delete v2ptr; delete v3ptr; delete v4ptr; delete v5ptr; delete v6ptr; delete v7ptr; delete v8ptr; delete v9ptr; delete v10ptr; delete v11ptr; delete v12ptr; delete v13ptr; delete v14ptr; delete v15ptr; delete v16ptr;
   delete w1ptr; delete w2ptr; delete w3ptr; delete w4ptr; delete w5ptr; delete w6ptr; delete w7ptr; delete w8ptr; delete w9ptr; delete w10ptr; delete w11ptr; delete w12ptr; delete w13ptr; delete w14ptr; delete w15ptr; delete w16ptr; delete w17ptr; delete w18ptr; delete w19ptr;
