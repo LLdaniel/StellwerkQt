@@ -17,7 +17,7 @@ void HSignal::setS_id( int name ){
     if( name < 100 && name > 9){//eine Vornull wird erzeugt
       s_id = "S0" + suffix;//QString::number( name );
     }
-    if( name < 1000 && name > 100){//keine Vornull mehr nötig
+    if( name < 1000 && name > 99){//keine Vornull mehr nötig
       s_id = "S" + suffix;//QString::number( name );
     }
   }
@@ -145,7 +145,7 @@ void HSignal::addVSignal( VSignal *vs , QString param){
     //qDebug()<<"II";//DEBUG
   }
   if( param.compare("v")!=0 && param.compare("r")!=0  ){
-    qDebug()<<"Die Parameterübergabe ist ungültig: V/v oder R/r erwünscht!";
+    //qDebug()<<"Die Parameterübergabe ist ungültig: V/v oder R/r erwünscht!";
     //qDebug()<<"IV";//DEBUG
   }
 }
@@ -216,7 +216,7 @@ void HSignal::deleteVS( VSignal *todelete , QString param){
       }
     }
     if(remember >= 0 ){
-      //qDebug()<<"löscht vs v";DEBUG
+      //qDebug()<<"löscht vs v";//DEBUG
       vorsignalV.erase(vorsignalV.begin() + remember);//hier wird es gelöscht
       //qDebug()<<"vs v gelöscht";//DEBUG
     }
@@ -251,7 +251,7 @@ void HSignal::deleteWS( WSignal *todelete , QString param){
       }
     }
     if(remember >= 0 ){
-      //qDebug()<<"löscht vs v";DEBUG
+      //qDebug()<<"löscht vs v";//DEBUG
       wsignaleV.erase(wsignaleV.begin() + remember);//hier wird es gelöscht
       //qDebug()<<"vs v gelöscht";//DEBUG
     }
@@ -359,6 +359,7 @@ bool HSignal::setFahrt( HSignal *toZiel ){
     //qDebug()<<"___::INFO::___ HSignal::Erlaubnis von SetFahrt: blockkontrolle und weichenkontrolle "<<blockgeschichte<<" | "<<weichengeschichte<<" = blockkontr & blockfreig"<<blockkontrolle<<" "<<blockfreigabe;
     if( blockgeschichte && weichengeschichte ){//Erlaubnis ist gegeben-->Stellen
       //BLOCK
+      //qDebug()<<"durchlaufe blockstatus";//DEBUG
       for(  int m = 0 ; m < block.size() ; m++ ){//durchlaufe den Blockstatus
 	if( block.at(m).first.compare( toZiel->getS_id() ) == 0 ){//Wenn das Zielsignal im Blockstatus gefunden ist
 	  for(  int n = 0 ; n < block.at(m).second.size() ; n++ ){//durchlaufe alle relevanten blöcke
@@ -369,6 +370,7 @@ bool HSignal::setFahrt( HSignal *toZiel ){
 	//Die Schleife für die Namensuche läuft noch fertig
       }
       //WEICHEN
+      //qDebug()<<"durchlaufe weichenstatus";//DEBUG
       for(  int o = 0 ; o < weichenstatus.size() ; o++ ){//durchlaufe weichenstatus
 	if( weichenstatus.at(o).first.compare( toZiel->getS_id() ) == 0 ){//Wenn das Zielsignal im Weichenstatus gefunden ist
 	  for(  int p = 0 ; p < weichenstatus.at(o).second.size() ; p++ ){//durchlaufe alle relevanten Weichen
@@ -387,13 +389,19 @@ bool HSignal::setFahrt( HSignal *toZiel ){
 	}
       }
       //VSIGNALE - alle vorwärts VS als inFS markieren und schon mal Ziel Signal vorsignalisieren!
+      //qDebug()<<"durchlaufe vsignale vorwärts";//DEBUG
       for(  int i = 0 ; i < vorsignalV.size() ; i++ ){//durchlaufe alle möglich involvierten VS
 	if( vorsignalV.at(i)->getRichtung( getS_id(), toZiel->getS_id() ) >= 0 ){//wenn es genau diese Richtung gibt, involviere es in die FS und signalisiere den aktuellen Stand des Zielsignals
+	  //qDebug()<<"habs gefunden, setinFS";//DEBUG
 	  vorsignalV.at(i)->setinFS( true , getS_id() , toZiel->getS_id() );
+	  //qDebug()<<"habs gefunden, setinFS #2";//DEBUG
+	  //qDebug()<<toZiel->getS_status();//DEBUG
 	  vorsignalV.at(i)->setV_status( toZiel->getS_status() );
+	  //qDebug()<<"habs gefunden, setinFS #3";//DEBUG
 	}
       }
       //HSIGNAL-Status wird jetzt auf Fahrt gesetzt
+      //qDebug()<<"setting ziel";//DEBUG
       setZiel( toZiel->getS_id() );
       toZiel->setfromHS(this);
       s_status = true;
@@ -401,6 +409,7 @@ bool HSignal::setFahrt( HSignal *toZiel ){
       changeColor();
       emit refreshStellwerkstechnik( getS_id() , true );//Liste in Stellwerksim aktualiesieren
       //VSIGNALE - jetzt kann auch noch evtl VS auf Fahrt erwarten gehen-->rückwirkend
+      //qDebug()<<"vor vor rück";//DEBUG
       for(  int i = 0 ; i < vorsignalR.size() ; i++ ){//durchlaufe alle VS rückwirkend und finde genau das VS, bei dem die aktuelle Richtung vorliegt und inFS true ist -->stelle das entsprechend auf Fahrt erwarten
 	//qDebug()<<"in v rück for schleife";
 	if(vorsignalR.at(i)->getinFS() && vorsignalR.at(i)->isAktFS( getS_id() ) ){//finde das richtige VS
@@ -514,7 +523,7 @@ void HSignal::setFahrt( WSignal *toZiel ){
 }
 
 void HSignal::zugpassiert(){
-  qDebug()<<"                                                                   So, jetzt sind wir in zugpassiert von signal "<<getS_id();
+  //qDebug()<<"                                                                   So, jetzt sind wir in zugpassiert von signal "<<getS_id();
   s_status = false;//HS fällt beim passieren auf Halt
   hasHSZiel = false;
   hasWSZiel = false;
@@ -564,10 +573,10 @@ void HSignal::deleteFS(){
   //##########################################################################
   if(hasHSZiel){
     //::::Blockgeschichte ==========================
-    qDebug()<<" XXX DAVOR";
+    //qDebug()<<" XXX DAVOR";
     for(  int i = 0 ; i < block.size() ; i++ ){//durchlaufe den Blockstatus
       if( block.at(i).first.compare( getZiel() ) == 0 ){//Wenn das Zielsignal im Blockstatus gefunden ist
-	qDebug()<<" XXX DANACH";
+	//qDebug()<<" XXX DANACH";
 	for(  int j = 0 ; j < block.at(i).second.size() ; j++ ){//durchlaufe alle relevanten blöcke
 	  if( !block.at(i).second.at(j)->getB_status() ){//betrachte alle Belegtstatus [falls belegt]
 	    blockkontrolle = false;//flag auf false setzten
@@ -736,7 +745,7 @@ void HSignal::deleteFS(){
 }
 
 void HSignal::listenToFS(){
-  qDebug()<<"HSignal:::I am clicked ...";
+  //qDebug()<<"HSignal:::I am clicked ...";
   //leite weiter an den Clickmanager
   emit listened(this);
 

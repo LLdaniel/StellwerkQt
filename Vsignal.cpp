@@ -13,10 +13,10 @@ void VSignal::setV_id( int name ){
     if( name < 10 ){//zwei Vornullen werden erzeugt
       v_id = "V00" + suffix;//std::to_string( name );
     }
-    if( name < 100 && name > 10){//eine Vornull wird erzeugt
+    if( name < 100 && name > 9){//eine Vornull wird erzeugt
       v_id = "V0" + suffix;//std::to_string( name );
     }
-    if( name < 1000 && name > 100){//keine Vornull mehr nötig
+    if( name < 1000 && name > 99){//keine Vornull mehr nötig
       v_id = "V" + suffix;//std::to_string( name );
     }
   }

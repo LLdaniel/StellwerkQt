@@ -67,7 +67,7 @@ bool Block::evaluateFreigabe(){
   }
   if(counter == 2 && !b_status){//setting Freigabe true 
     // Freigabengeschichte
-    qDebug()<<"Block::Der COUNTER = 2";
+    //qDebug()<<"Block::Der COUNTER = 2";
     freigabe = true;//here freigabe = true -->right cycle
     changeColor();
     for(  int i = 0 ; i < bus.size() ; i++ ){//changing status of BUs open/close

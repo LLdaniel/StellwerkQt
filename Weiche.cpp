@@ -30,10 +30,10 @@ void Weiche::setW_id( int name ){
   if( name > 0 && name <10 ){//einstellig
     w_id = "00" + suffix;
   }
-  if( name > 9 && name <100 ){//zweistellig
+  if( name > 9 && name < 100 ){//zweistellig
     w_id = "0" + suffix;
   }
-  if( name > 100 && name <1000 ){//dreistellig
+  if( name > 99 && name <1000 ){//dreistellig
     w_id = suffix;
   }
 }
