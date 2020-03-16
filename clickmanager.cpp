@@ -1,15 +1,16 @@
-//*************************************************************************
-// clickmanager of control center [- CLICKMANAGER.CPP -]
-//*************************************************************************
+/*
+ * clickmanager to control the rail system [- CLICKMANAGER.CXX -]
+ **************************************************************************
+ */
 #include "clickmanager.h"
 #include <QDebug>
 void clickmanager::recieveFS(HSignal *toFS){
   counter++;
-  if( counter == 3){//reset-step at first
+  if( counter == 3){                          //reset-step at first
     counter = 1;
   }
   if(counter == 1){
-    clickList.first = toFS;//recieve first entry and wait for the second one
+    clickList.first = toFS;                   //recieve first entry and wait for the second one
     //::: HS->WS resistered----------------------------------------------------------------------
     counterForHW++;//                                                                           |
     if(counterForHW == 3){ counterForHW = 1; }//reset counter for HS->WS
@@ -17,33 +18,36 @@ void clickmanager::recieveFS(HSignal *toFS){
       qDebug()<<"<HS,WS>";
       qDebug()<<"<X,>";
       clickListHW.first = toFS;
-      toW = true;//flag, this could be a transition from HS to WS 
+      toW = true;                             //flag, this could be a transition from HS to WS 
     }//                                                                                         |
     //:::----------------------------------------------------------------------------------------
     //::: WS->HS registered------------------------------------------------------------------
     counterForWH++;//                                                                       |
     if(counterForWH == 3){ counterForWH = 2; }//reset counters for WS->HS
-    if(counterForWH == 2 && toH){// =2, because reciveFS(WSignal*) has set it to =1 
+    if(counterForWH == 2 && toH){             // =2, because reciveFS(WSignal*) has set it to =1 
       qDebug()<<"<WS,HS>";
       qDebug()<<"<X,X>";
       clickListWH.second = toFS;
       clickListWH.first->setFahrt(clickListWH.second->getS_id());
+      //
       //reset all counter:
       reset();
-    }//
+    }
   }
   if(counter == 2){
-    clickList.second = toFS;//second click happend --> <first>.setFahrt(<second>)
+    clickList.second = toFS;                  //second click happend --> <first>.setFahrt(<second>)
     clickList.first->setFahrt(clickList.second);
+    //
     //reset all counter:
     reset();
     qDebug()<<"<HS,HS>";
     qDebug()<<"<X,X>";
     if(clickList.first->getS_id().compare(clickList.second->getS_id()) == 0){//double click?-->delete FS
-      if(clickList.first->getS_status() == true){//If there is a route delete deleteFS, but only then otherwise deleteFS will fail
+      if(clickList.first->getS_status() == true){//If there is a route deleteFS, but only then otherwise deleteFS will fail
 	qDebug()<<"<HS,HS>";
 	qDebug()<<"<X_same,X_same>";
 	clickList.first->deleteFS();
+	//
 	//reset all counter:
 	reset();
       }
@@ -52,7 +56,7 @@ void clickmanager::recieveFS(HSignal *toFS){
 }
 
 void clickmanager::recieveFS(WSignal *toFS){
-  qDebug()<<"recived Click from WSIgnal";
+  //qDebug()<<"recived Click from WSIgnal";
   counterForW++;
   if( counterForW == 3){//reset step at first
     counterForW = 1;

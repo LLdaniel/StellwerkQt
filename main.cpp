@@ -1,14 +1,23 @@
-//**********************************************************************
-//------------------Stellwerk---------------------
-//Daniel Adlkofer
-//Dieses Stellwerk ist aus einem Projekt nach dem Vorbild von stellwerksim.de enstanden und könnte auch auf einer Modelleisenbahn verwendete werden,
-//wenn die hardwaretechnischen Schnittstellen bereit gestellt werden
-//--------
-//Weichenbenennung von 001-999 möglich = 999
-//BU Benennung von 1-99 möglich = 99
-//Signalbenennung S,V,W von 001-999 möglich = 999
-//Blockbenennung von aa-zz möglich = 676
-//***********************************************************************
+/*
+ * main routine for control center [- MAIN.CXX -]
+ *******************************************************************************
+ * Different steps are needed for the control center                           *
+ *    1) initialize all control center objects                                 *
+ *    2) set pins for hardware connection                                      *
+ *    3) create thread for route memory and updates of the segment occupation  *
+ *    4) properly set all connection for the interaction of control center     *
+ *                                   [ turnouts from 001-999: all = 999 ]      *  
+ *                                   [ railroad crossings from 1-99: all = 99 ]*
+ *                                   [ signals from SWV001-SWV999: all = 999 ] *
+ *                                   [ segments from aa-zz: all = 676 ]        *
+ *******************************************************************************
+ *
+ * control center
+ * __________________
+ * control center after the german "ESTW" (electronic signalling control center) for model train:
+ * hardware with raspberry pi, wiringPi
+ * Gui and main routine in C++/Qt
+ */
 #include "mainwindow.h"
 #include <QApplication>
 #include <QDebug>
@@ -44,7 +53,8 @@ extern "C"{
 #endif
 
 int main( int argc , char *argv[] ){
-  //parameter Übergabe
+  //
+  //command line arguments
   //bool debug = false;
   printf("argc: %d\n", argc);
   for(int i=0; i < argc; i++) {
@@ -70,27 +80,33 @@ int main( int argc , char *argv[] ){
       
     }
   }
-  //::Eigentlicher Start main
+ 
+  // starting QT application
+  //**************************************************************************
+  
   QApplication a(argc, argv);
   MainWindow w;
+  //
   //create scene
   QGraphicsScene *scene = new QGraphicsScene(&w);
   scene->setBackgroundBrush(Qt::black);
-  // connect for quiting program
+  //
+  //connect for quiting program
   QObject::connect(&w,&MainWindow::shutdown,&a,QApplication::quit);
-
+  //
   //create view
   QGraphicsView *view = new QGraphicsView(scene);
   view->setWindowTitle("Electronic Signalling Control Center - Model Railway");
-  //view->showMaximized();
-  w.setCentralWidget(view);//add view to mainwindow
+  w.setCentralWidget(view);                                                             //add view to mainwindow
   w.setWindowTitle("Electronic Signalling Control Center - Model Railway");
   
-  //Initialisierung der Strecke--------------------------------------------------------
-  //Stellwerkstechnik+Block aa as basis
+  // initialaizing the specific model railway plan
+  //**************************************************************************
+  //
+  //Stellwerkstechnik+Block aa as base
   Stellwerkstechnik *stellwerkstecptr = new Stellwerkstechnik();
   Block *aaptr = new Block("aa", stellwerkstecptr);
-  //:::Weichen:::
+  //:::turnouts:::
   Weiche *w1ptr = new Weiche(1);
   Weiche *w2ptr = new Weiche(2);
   Weiche *w3ptr = new Weiche(3);
@@ -122,7 +138,7 @@ int main( int argc , char *argv[] ){
   Weiche *w29ptr = new Weiche(29);
   Weiche *w30ptr = new Weiche(30);
   Weiche *w31ptr = new Weiche(31);
-  //:::Block:::
+  //:::segments:::
   Block *abptr = new Block("ab", stellwerkstecptr);
   Block *acptr = new Block("ac", stellwerkstecptr);
   Block *adptr = new Block("ad", stellwerkstecptr);
@@ -163,7 +179,7 @@ int main( int argc , char *argv[] ){
   Block *bmptr = new Block("bm", stellwerkstecptr);
   Block *bnptr = new Block("bn", stellwerkstecptr);
   Block *boptr = new Block("bo", stellwerkstecptr);
-  //:::VS:::
+  //:::distant signals:::
   VSignal *v1ptr = new VSignal(1);
   VSignal *v2ptr = new VSignal(2);
   VSignal *v3ptr = new VSignal(3);
@@ -290,7 +306,7 @@ int main( int argc , char *argv[] ){
   v41ptr->setRichtung("S045","S040");
   v42ptr->setRichtung("S044","S004");
   v42ptr->setRichtung("S044","S005");
-  //:::HS:::
+  //:::main signals:::
   HSignal *s1ptr = new HSignal(1);
   HSignal *s2ptr = new HSignal(2);
   HSignal *s3ptr = new HSignal(3);
@@ -405,6 +421,7 @@ int main( int argc , char *argv[] ){
   s27ptr->addVSignal(v22ptr,"v");
   s28ptr->addVSignal(v19ptr,"r");
   s28ptr->addVSignal(v23ptr,"v");
+  s28ptr->addVSignal(v35ptr,"v");
   s29ptr->addVSignal(v21ptr,"v");
   s29ptr->addVSignal(v29ptr,"r");
   s30ptr->addVSignal(v18ptr,"v");
@@ -444,6 +461,7 @@ int main( int argc , char *argv[] ){
   s45ptr->addVSignal(v24ptr,"r");
   s46ptr->addVSignal(v40ptr,"v");
   s46ptr->addVSignal(v35ptr,"r");
+  s46ptr->addVSignal(v23ptr,"r");
   s47ptr->addVSignal(v39ptr,"v");
   s47ptr->addVSignal(v25ptr,"r");
   s47ptr->addVSignal(v26ptr,"r");
@@ -452,7 +470,7 @@ int main( int argc , char *argv[] ){
   s48ptr->addVSignal(v31ptr,"r");
   s48ptr->addVSignal(v33ptr,"r");
   //:::::::::
-  //WSignale
+  //shunt signals
   WSignal *ww1ptr = new WSignal(1);
   ww1ptr->setRichtung("S009","S002");
   ww1ptr->setRichtung("S009","S003");
@@ -696,18 +714,239 @@ int main( int argc , char *argv[] ){
   QLabel *ww12label = new QLabel();
   scene->addWidget(ww12label);
 
-  WSignal *ww14ptr = new WSignal(14);
-  WSignal *ww17ptr = new WSignal(17);
-  WSignal *ww19ptr = new WSignal(19);
-  WSignal *ww20ptr = new WSignal(20);
-  WSignal *ww22ptr = new WSignal(22);
-  WSignal *ww23ptr = new WSignal(23);
+  WSignal *ww13ptr = new WSignal(13);
+  ww13ptr->setRichtung("S048","S035");
+  ww13ptr->setRichtung("S048","S036");
+  ww13ptr->setRichtung("S048","S037");
+  s48ptr->addWSignal(ww13ptr,"v");
+  s35ptr->addWSignal(ww13ptr,"r");
+  s36ptr->addWSignal(ww13ptr,"r");
+  s37ptr->addWSignal(ww13ptr,"r");
+  //
+  QGraphicsSvgItem *itemw13 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw132 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw13);
+  scene->addItem(itemw132);
+  itemw13->setPos(QPointF(1065,-345));
+  itemw132->setPos(QPointF(1065,-345));
+  itemw13->setScale(0.05);
+  itemw132->setScale(0.05);
+  itemw13->setRotation(90);
+  itemw132->setRotation(90);
+  ww13ptr->addVSignalitems(itemw13, itemw132);
+  QLabel *ww13label = new QLabel();
+  scene->addWidget(ww13label);
   
-  //Weichenstatus ---------------------------------------------------
+  WSignal *ww14ptr = new WSignal(14);
+  //
+  QGraphicsSvgItem *itemw14 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw142 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw14);
+  scene->addItem(itemw142);
+  itemw14->setPos(QPointF(945,-230));
+  itemw142->setPos(QPointF(945,-230));
+  itemw14->setScale(0.05);
+  itemw142->setScale(0.05);
+  itemw14->setRotation(-90);
+  itemw142->setRotation(-90);
+  ww14ptr->addVSignalitems(itemw14, itemw142);
+  QLabel *ww14label = new QLabel();
+  scene->addWidget(ww14label);
+
+  WSignal *ww15ptr = new WSignal(15);
+  //
+  QGraphicsSvgItem *itemw15 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw152 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw15);
+  scene->addItem(itemw152);
+  itemw15->setPos(QPointF(1145,-200));
+  itemw152->setPos(QPointF(1145,-200));
+  itemw15->setScale(0.05);
+  itemw152->setScale(0.05);
+  itemw15->setRotation(90);
+  itemw152->setRotation(90);
+  ww15ptr->addVSignalitems(itemw15, itemw152);
+  QLabel *ww15label = new QLabel();
+  scene->addWidget(ww15label);
+
+  WSignal *ww16ptr = new WSignal(16);
+  //
+  QGraphicsSvgItem *itemw16 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw162 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw16);
+  scene->addItem(itemw162);
+  itemw16->setPos(QPointF(2065,-225));
+  itemw162->setPos(QPointF(2065,-225));
+  itemw16->setScale(0.05);
+  itemw162->setScale(0.05);
+  itemw16->setRotation(-90);
+  itemw162->setRotation(-90);
+  ww16ptr->addVSignalitems(itemw16, itemw162);
+  QLabel *ww16label = new QLabel();
+  scene->addWidget(ww16label);
+  
+  WSignal *ww17ptr = new WSignal(17);
+  //
+  QGraphicsSvgItem *itemw17 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw172 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw17);
+  scene->addItem(itemw172);
+  itemw17->setPos(QPointF(2395,-200));
+  itemw172->setPos(QPointF(2395,-200));
+  itemw17->setScale(0.05);
+  itemw172->setScale(0.05);
+  itemw17->setRotation(90);
+  itemw172->setRotation(90);
+  ww17ptr->addVSignalitems(itemw17, itemw172);
+  QLabel *ww17label = new QLabel();
+  scene->addWidget(ww17label);
+  
+  WSignal *ww18ptr = new WSignal(18);
+  //
+  QGraphicsSvgItem *itemw18 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw182 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw18);
+  scene->addItem(itemw182);
+  itemw18->setPos(QPointF(2055,-190));
+  itemw182->setPos(QPointF(2055,-190));
+  itemw18->setScale(0.05);
+  itemw182->setScale(0.05);
+  itemw18->setRotation(-45);
+  itemw182->setRotation(-45);
+  ww18ptr->addVSignalitems(itemw18, itemw182);
+  QLabel *ww18label = new QLabel();
+  scene->addWidget(ww18label);
+
+  WSignal *ww19ptr = new WSignal(19);
+  //
+  QGraphicsSvgItem *itemw19 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw192 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw19);
+  scene->addItem(itemw192);
+  itemw19->setPos(QPointF(2262,50));
+  itemw192->setPos(QPointF(2262,50));
+  itemw19->setScale(0.05);
+  itemw192->setScale(0.05);
+  itemw19->setRotation(135);
+  itemw192->setRotation(135);
+  ww19ptr->addVSignalitems(itemw19, itemw192);
+  QLabel *ww19label = new QLabel();
+  scene->addWidget(ww19label);
+  
+  WSignal *ww20ptr = new WSignal(20);
+  //
+  QGraphicsSvgItem *itemw20 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw202 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw20);
+  scene->addItem(itemw202);
+  itemw20->setPos(QPointF(2430,-275));
+  itemw202->setPos(QPointF(2430,-275));
+  itemw20->setScale(0.05);
+  itemw202->setScale(0.05);
+  itemw20->setRotation(90);
+  itemw202->setRotation(90);
+  ww20ptr->addVSignalitems(itemw20, itemw202);
+  QLabel *ww20label = new QLabel();
+  scene->addWidget(ww20label);
+
+  WSignal *ww21ptr = new WSignal(21);
+  //
+  QGraphicsSvgItem *itemw21 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw212 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw21);
+  scene->addItem(itemw212);
+  itemw21->setPos(QPointF(2200,-305));
+  itemw212->setPos(QPointF(2200,-305));
+  itemw21->setScale(0.05);
+  itemw212->setScale(0.05);
+  itemw21->setRotation(-90);
+  itemw212->setRotation(-90);
+  ww21ptr->addVSignalitems(itemw21, itemw212);
+  QLabel *ww21label = new QLabel();
+  scene->addWidget(ww21label);
+  
+  WSignal *ww22ptr = new WSignal(22);
+  ww22ptr->setRichtung("S002","S034");
+  ww22ptr->setRichtung("S002","S033");
+  ww22ptr->setRichtung("S002","S032");
+  s2ptr->addWSignal(ww22ptr,"v");
+  s34ptr->addWSignal(ww22ptr,"r");
+  s33ptr->addWSignal(ww22ptr,"r");
+  s32ptr->addWSignal(ww22ptr,"r");
+  //
+  QGraphicsSvgItem *itemw22 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw222 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw22);
+  scene->addItem(itemw222);
+  itemw22->setPos(QPointF(2210,-375));
+  itemw222->setPos(QPointF(2210,-375));
+  itemw22->setScale(0.05);
+  itemw222->setScale(0.05);
+  itemw22->setRotation(-90);
+  itemw222->setRotation(-90);
+  ww22ptr->addVSignalitems(itemw22, itemw222);
+  QLabel *ww22label = new QLabel();
+  scene->addWidget(ww22label);
+  
+  WSignal *ww23ptr = new WSignal(23);
+  ww23ptr->setRichtung("S036","S001");
+  ww23ptr->setRichtung("S036","S026");
+  ww23ptr->setRichtung("S037","S001");
+  ww23ptr->setRichtung("S037","S026");
+  s36ptr->addWSignal(ww23ptr,"v");
+  s37ptr->addWSignal(ww23ptr,"v");
+  s1ptr->addWSignal(ww23ptr,"r");
+  s26ptr->addWSignal(ww23ptr,"r");
+  //
+  QGraphicsSvgItem *itemw23 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw232 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw23);
+  scene->addItem(itemw232);
+  itemw23->setPos(QPointF(1825,220));
+  itemw232->setPos(QPointF(1825,220));
+  itemw23->setScale(0.05);
+  itemw232->setScale(0.05);
+  itemw23->setRotation(-90);
+  itemw232->setRotation(-90);
+  ww23ptr->addVSignalitems(itemw23, itemw232);
+  QLabel *ww23label = new QLabel();
+  scene->addWidget(ww23label);
+  
+  //turnout status ---------------------------------------------------
   QPair<Weiche*, bool> s1tos4w1(w2ptr,true);
   QList<QPair<Weiche*, bool>> s1tos4;
   s1tos4.push_back(s1tos4w1);
   s1ptr->addWeichenstatus(s4ptr,s1tos4);
+
+  QPair<Weiche*, bool> s2tos42w1(w1ptr,false);
+  QPair<Weiche*, bool> s2tos42w2(w2ptr,false);
+  QList<QPair<Weiche*, bool>> s2tos42;
+  s2tos42.push_back(s2tos42w1);
+  s2tos42.push_back(s2tos42w2);
+  s2ptr->addWeichenstatus(s42ptr,s2tos42);
+  QPair<Weiche*, bool> s2tos33w31(w31ptr,false);
+  QPair<Weiche*, bool> s2tos33w2(w2ptr,false);
+  QPair<Weiche*, bool> s2tos33w25(w25ptr,false);
+  QPair<Weiche*, bool> s2tos33w26(w26ptr,false);
+  QList<QPair<Weiche*, bool>> s2tos33;
+  s2tos33.push_back(s2tos33w31);
+  s2tos33.push_back(s2tos33w2);
+  s2tos33.push_back(s2tos33w25);
+  s2tos33.push_back(s2tos33w26);
+  s2ptr->addWeichenstatus(s33ptr,s2tos33);
+  QPair<Weiche*, bool> s2tos32w31(w31ptr,false);
+  QPair<Weiche*, bool> s2tos32w2(w2ptr,false);
+  QPair<Weiche*, bool> s2tos32w25(w25ptr,true);
+  QList<QPair<Weiche*, bool>> s2tos32;
+  s2tos32.push_back(s2tos32w31);
+  s2tos32.push_back(s2tos32w2);
+  s2tos32.push_back(s2tos32w25);
+  s2ptr->addWeichenstatus(s32ptr,s2tos32);
+
+  QPair<Weiche*, bool> s3tos42w1(w1ptr,true);
+  QList<QPair<Weiche*, bool>> s3tos42;
+  s3tos42.push_back(s3tos42w1);
+  s3ptr->addWeichenstatus(s42ptr,s3tos42);
 
   QPair<Weiche*, bool> ww3tos9w10(w10ptr,false);
   QList<QPair<Weiche*, bool>> ww3tos9;
@@ -1490,11 +1729,82 @@ int main( int argc , char *argv[] ){
   QList<QPair<Weiche*, bool>> s48tos37;
   s48tos37.push_back(s48tos37w30);
   s48ptr->addWeichenstatus(s37ptr,s48tos37);
+
+  QPair<Weiche*, bool> ww13tos37w30(w30ptr,true);
+  QList<QPair<Weiche*, bool>> ww13tos37;
+  ww13tos37.push_back(ww13tos37w30);
+  ww13ptr->addWeichenstatusZuH(s37ptr->getS_id(),ww13tos37);
+  QPair<Weiche*, bool> ww13tos36w30(w30ptr,false);
+  QPair<Weiche*, bool> ww13tos36w29(w29ptr,true);
+  QList<QPair<Weiche*, bool>> ww13tos36;
+  ww13tos36.push_back(ww13tos36w30);
+  ww13tos36.push_back(ww13tos36w29);
+  ww13ptr->addWeichenstatusZuH(s36ptr->getS_id(),ww13tos36);
+  QPair<Weiche*, bool> ww13tos35w30(w30ptr,false);
+  QPair<Weiche*, bool> ww13tos35w29(w29ptr,false);
+  QPair<Weiche*, bool> ww13tos35w28(w28ptr,false);
+  QList<QPair<Weiche*, bool>> ww13tos35;
+  ww13tos35.push_back(ww13tos35w30);
+  ww13tos35.push_back(ww13tos35w29);
+  ww13tos35.push_back(ww13tos35w28);
+  ww13ptr->addWeichenstatusZuH(s35ptr->getS_id(),ww13tos35);
+
+  QPair<Weiche*, bool> ww15tos35w28(w28ptr,true);
+  QList<QPair<Weiche*, bool>> ww15tos35;
+  ww15tos35.push_back(ww15tos35w28);
+  ww15ptr->addWeichenstatusZuH(s35ptr->getS_id(),ww15tos35);
+
+  QPair<Weiche*, bool> ww16tos34w27(w27ptr,true);
+  QList<QPair<Weiche*, bool>> ww16tos34;
+  ww16tos34.push_back(ww16tos34w27);
+  ww16ptr->addWeichenstatusZuH(s34ptr->getS_id(),ww16tos34);
+
+  QPair<Weiche*, bool> ww18tos34w27(w27ptr,false);
+  QList<QPair<Weiche*, bool>> ww18tos34;
+  ww18tos34.push_back(ww18tos34w27);
+  ww18ptr->addWeichenstatusZuH(s34ptr->getS_id(),ww18tos34);
+
+  QPair<Weiche*, bool> ww21tos33w26(w26ptr,true);
+  QList<QPair<Weiche*, bool>> ww21tos33;
+  ww21tos33.push_back(ww21tos33w26);
+  ww21ptr->addWeichenstatusZuH(s33ptr->getS_id(),ww21tos33);
+
+  QPair<Weiche*, bool> ww22tos32w25(w25ptr,true);
+  QList<QPair<Weiche*, bool>> ww22tos32;
+  ww22tos32.push_back(ww22tos32w25);
+  ww22ptr->addWeichenstatusZuH(s32ptr->getS_id(),ww22tos32);
+  QPair<Weiche*, bool> ww22tos33w25(w25ptr,false);
+  QPair<Weiche*, bool> ww22tos33w26(w26ptr,false);
+  QList<QPair<Weiche*, bool>> ww22tos33;
+  ww22tos33.push_back(ww22tos33w25);
+  ww22tos33.push_back(ww22tos33w26);
+  ww22ptr->addWeichenstatusZuH(s33ptr->getS_id(),ww22tos33);
   
-  //Blockstatus -----------------------------------------------
+  
+  //segment status ----------------------------------------------------------------
   QList<Block*> s1tos4b;
   s1tos4b.push_back(aaptr);
   s1ptr->addBlock(s4ptr,s1tos4b);
+
+  QList<Block*> s2tos42b;
+  s2tos42b.push_back(bmptr);
+  s2tos42b.push_back(blptr);
+  s2ptr->addBlock(s42ptr,s2tos42b);
+  QList<Block*> s2tos33b;
+  s2tos33b.push_back(bnptr);
+  s2tos33b.push_back(bkptr);
+  s2tos33b.push_back(beptr);
+  s2ptr->addBlock(s33ptr,s2tos33b);
+  QList<Block*> s2tos32b;
+  s2tos32b.push_back(bnptr);
+  s2tos32b.push_back(bkptr);
+  s2tos32b.push_back(bdptr);
+  s2ptr->addBlock(s32ptr,s2tos32b);
+
+  QList<Block*> s3tos42b;
+  s3tos42b.push_back(bmptr);
+  s3tos42b.push_back(blptr);
+  s3ptr->addBlock(s42ptr,s3tos42b);
   
   QList<Block*> ww3tos9b;
   ww3tos9b.push_back(ahptr);
@@ -1830,7 +2140,7 @@ int main( int argc , char *argv[] ){
   s41tos30b.push_back(axptr);
   s41ptr->addBlock(s30ptr,s41tos30b);
   QList<Block*> s41tos31b;
-  s41tos31b.push_back(axptr);
+  s41tos31b.push_back(bcptr);
   s41ptr->addBlock(s31ptr,s41tos31b);
 
   QList<Block*> s40tos29b;
@@ -1903,7 +2213,6 @@ int main( int argc , char *argv[] ){
 
   QList<Block*> s38tos44b;
   s38tos44b.push_back(blptr);
-  s38tos44b.push_back(bmptr);
   s38ptr->addBlock(s44ptr,s38tos44b);
   QList<Block*> s38tos48b;
   s38tos48b.push_back(azptr);
@@ -1952,9 +2261,42 @@ int main( int argc , char *argv[] ){
   s48tos37b.push_back(bdptr);
   s48ptr->addBlock(s37ptr,s48tos37b);
 
+  QList<Block*> ww13tos37b;
+  ww13tos37b.push_back(bdptr);
+  ww13ptr->addBlockZuH(s37ptr->getS_id(),ww13tos37b);
+  QList<Block*> ww13tos36b;
+  ww13tos36b.push_back(beptr);
+  ww13ptr->addBlockZuH(s36ptr->getS_id(),ww13tos36b);
+  QList<Block*> ww13tos35b;
+  ww13tos35b.push_back(bfptr);
+  ww13ptr->addBlockZuH(s35ptr->getS_id(),ww13tos35b);
+
+  QList<Block*> ww15tos35b;
+  ww15tos35b.push_back(bfptr);
+  ww15ptr->addBlockZuH(s35ptr->getS_id(),ww15tos35b);
+
+  QList<Block*> ww18tos34b;
+  ww18tos34b.push_back(bfptr);
+  ww18ptr->addBlockZuH(s34ptr->getS_id(),ww18tos34b);
+
+  QList<Block*> ww16tos34b;
+  ww16tos34b.push_back(bfptr);
+  ww16ptr->addBlockZuH(s34ptr->getS_id(),ww16tos34b);
+
+  QList<Block*> ww21tos33b;
+  ww21tos33b.push_back(beptr);
+  ww21ptr->addBlockZuH(s33ptr->getS_id(),ww21tos33b);
+
+  QList<Block*> ww22tos33b;
+  ww22tos33b.push_back(beptr);
+  ww22ptr->addBlockZuH(s33ptr->getS_id(),ww22tos33b);
+  QList<Block*> ww22tos32b;
+  ww22tos32b.push_back(bdptr);
+  ww22ptr->addBlockZuH(s32ptr->getS_id(),ww22tos32b);
+
 
   
-  // ++++++++++++++++++++++++ muss als erstes mal initialisiert werden...!
+  // first initalization for stellwekstechnik, necessary! ----------------------------
   stellwerkstecptr->add_Signal(s1ptr->getS_id(),false);
   stellwerkstecptr->add_Signal(s2ptr->getS_id(),false);
   stellwerkstecptr->add_Signal(s3ptr->getS_id(),false);
@@ -2016,6 +2358,17 @@ int main( int argc , char *argv[] ){
   stellwerkstecptr->add_Signal(ww10ptr->getV_id(),false);
   stellwerkstecptr->add_Signal(ww11ptr->getV_id(),false);
   stellwerkstecptr->add_Signal(ww12ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww13ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww14ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww15ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww16ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww17ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww18ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww19ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww20ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww21ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww22ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww23ptr->getV_id(),false);
 
   //BÜs
   //BU bu1(1);
@@ -2094,6 +2447,17 @@ int main( int argc , char *argv[] ){
   QObject::connect(ww10ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(ww11ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(ww12ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww13ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww14ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww15ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww16ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww17ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww18ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww19ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww20ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww21ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww22ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww23ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(aaptr,&Block::zugpassiert,s1ptr,&HSignal::zugpassiert);
   QObject::connect(bnptr,&Block::zugpassiert,s2ptr,&HSignal::zugpassiert);
   QObject::connect(bmptr,&Block::zugpassiert,s2ptr,&HSignal::zugpassiert);
@@ -2167,8 +2531,17 @@ int main( int argc , char *argv[] ){
   QObject::connect(akptr,&Block::zugpassiertW,ww10ptr,&WSignal::zugpassiertW);
   QObject::connect(amptr,&Block::zugpassiertW,ww10ptr,&WSignal::zugpassiertW);
   QObject::connect(atptr,&Block::zugpassiertW,ww12ptr,&WSignal::zugpassiertW);
+  QObject::connect(bdptr,&Block::zugpassiertW,ww13ptr,&WSignal::zugpassiertW);
+  QObject::connect(beptr,&Block::zugpassiertW,ww13ptr,&WSignal::zugpassiertW);
+  QObject::connect(bfptr,&Block::zugpassiertW,ww13ptr,&WSignal::zugpassiertW);
+  QObject::connect(bfptr,&Block::zugpassiertW,ww15ptr,&WSignal::zugpassiertW);
+  QObject::connect(bfptr,&Block::zugpassiertW,ww16ptr,&WSignal::zugpassiertW);
+  QObject::connect(bfptr,&Block::zugpassiertW,ww18ptr,&WSignal::zugpassiertW);
+  QObject::connect(beptr,&Block::zugpassiertW,ww21ptr,&WSignal::zugpassiertW);
+  QObject::connect(beptr,&Block::zugpassiertW,ww22ptr,&WSignal::zugpassiertW);
+  QObject::connect(bdptr,&Block::zugpassiertW,ww22ptr,&WSignal::zugpassiertW);
   
-  //Hier wird das Grenzsignal übergeben
+  //segments which are at a border for signals -----------------------------------------
   aaptr->addpassiert(s13ptr->getS_id(),acptr);
   aaptr->addpassiert(s1ptr->getS_id(),bnptr);
   bnptr->addpassiert(s2ptr->getS_id(),aaptr);
@@ -2242,9 +2615,18 @@ int main( int argc , char *argv[] ){
   amptr->addpassiert(ww10ptr->getV_id(),aqptr);
   akptr->addpassiert(ww10ptr->getV_id(),aqptr);
   atptr->addpassiert(ww12ptr->getV_id(),asptr);
+  bdptr->addpassiert(ww13ptr->getV_id(),baptr);
+  beptr->addpassiert(ww13ptr->getV_id(),baptr);
+  bfptr->addpassiert(ww13ptr->getV_id(),baptr);
+  bfptr->addpassiert(ww15ptr->getV_id(),bgptr);
+  bfptr->addpassiert(ww16ptr->getV_id(),biptr);
+  bfptr->addpassiert(ww18ptr->getV_id(),bhptr);
+  beptr->addpassiert(ww21ptr->getV_id(),bjptr);
+  beptr->addpassiert(ww22ptr->getV_id(),bkptr);
+  bdptr->addpassiert(ww22ptr->getV_id(),bkptr);
   
   //
-  //GUI Attribute
+  //GUI attributes
   QGraphicsRectItem *w1rectge = new QGraphicsRectItem();
   w1rectge->setRect(0,0,10,75);
   w1rectge->setPos(QPointF(500,800));
@@ -2285,7 +2667,7 @@ int main( int argc , char *argv[] ){
   QLabel *w2label = new QLabel();
   scene->addWidget(w2label);
   w2ptr->addWeichenitem(w2rectab,w2rectge,w2label);
-  w2ptr->moveLabel(420,715);
+  w2ptr->moveLabel(435,715);
 
   QGraphicsRectItem *aarect = new QGraphicsRectItem();
   aarect->setRect(0,0,10,1200);
@@ -2295,21 +2677,21 @@ int main( int argc , char *argv[] ){
   aaptr->addBlockitems(aarect);
   scene->addItem(aarect);
 
-  QGraphicsRectItem *bmrect = new QGraphicsRectItem();
-  bmrect->setRect(0,0,10,150);
-  bmrect->setPos(QPointF(650,730));
-  bmrect->setBrush(QColor(79,79,79));
-  bmrect->setRotation(90);
-  bmptr->addBlockitems(bmrect);
-  scene->addItem(bmrect);
-
   QGraphicsRectItem *bnrect = new QGraphicsRectItem();
   bnrect->setRect(0,0,10,150);
-  bnrect->setPos(QPointF(650,800));
+  bnrect->setPos(QPointF(650,730));
   bnrect->setBrush(QColor(79,79,79));
   bnrect->setRotation(90);
   bnptr->addBlockitems(bnrect);
   scene->addItem(bnrect);
+
+  QGraphicsRectItem *bmrect = new QGraphicsRectItem();
+  bmrect->setRect(0,0,10,150);
+  bmrect->setPos(QPointF(650,800));
+  bmrect->setBrush(QColor(79,79,79));
+  bmrect->setRotation(90);
+  bmptr->addBlockitems(bmrect);
+  scene->addItem(bmrect);
 
   QGraphicsRectItem *w4rectge = new QGraphicsRectItem();
   w4rectge->setRect(0,0,10,75);
@@ -2352,7 +2734,7 @@ int main( int argc , char *argv[] ){
   w5rectge->setRotation(90);
   scene->addItem(w5rectge);
   QGraphicsRectItem *w5rectab = new QGraphicsRectItem();
-  w5rectab->setRect(0,0,10,80);
+  w5rectab->setRect(0,0,10,85);
   w5rectab->setPos(QPointF(-850,735));
   w5rectab->setBrush(QColor(79,79,79));
   w5rectab->setRotation(135);
@@ -2568,7 +2950,7 @@ int main( int argc , char *argv[] ){
   QLabel *w8label = new QLabel();
   scene->addWidget(w8label);
   w8ptr->addWeichenitem(w8rectab,w8rectge,w8label);
-  w8ptr->moveLabel(-140,475);
+  w8ptr->moveLabel(-180,475);
 
   QGraphicsSvgItem *s4item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
   QGraphicsSvgItem *s4item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
@@ -2593,15 +2975,15 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin4 = new QGraphicsRectItem();
   sphin4->setRect(0,0,10,10);
   sphin4->setBrush(Qt::yellow);
-  sphin4->setPos(QPointF(-715,700));
+  sphin4->setPos(QPointF(-715,710));
   QGraphicsRectItem *spweg4 = new QGraphicsRectItem();
   spweg4->setRect(0,0,10,10);
   spweg4->setBrush(Qt::yellow);
-  spweg4->setPos(QPointF(-715,710));
+  spweg4->setPos(QPointF(-715,700));
   scene->addItem(spweg4);
   scene->addItem(sphin4);
   s4ptr->addHSignalitem(s4item1,s4item2, s4item3, s4label,s4push,spweg4,sphin4);
-  s4ptr->moveButton(-755,725);
+  s4ptr->moveButton(-775,725);
   s4ptr->moveLabel(-700,705);
 
   QGraphicsSvgItem *s5item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
@@ -2627,15 +3009,15 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin5 = new QGraphicsRectItem();
   sphin5->setRect(0,0,10,10);
   sphin5->setBrush(Qt::yellow);
-  sphin5->setPos(QPointF(-715,770));
+  sphin5->setPos(QPointF(-715,780));
   QGraphicsRectItem *spweg5 = new QGraphicsRectItem();
   spweg5->setRect(0,0,10,10);
   spweg5->setBrush(Qt::yellow);
-  spweg5->setPos(QPointF(-715,780));
+  spweg5->setPos(QPointF(-715,770));
   scene->addItem(spweg5);
   scene->addItem(sphin5);
   s5ptr->addHSignalitem(s5item1,s5item2, s5item3, s5label,s5push,spweg5,sphin5);
-  s5ptr->moveButton(-755,795);
+  s5ptr->moveButton(-775,795);
   s5ptr->moveLabel(-700,775);
 
   QGraphicsSvgItem *s2item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
@@ -2669,7 +3051,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(spweg2);
   scene->addItem(sphin2);
   s2ptr->addHSignalitem(s2item1,s2item2, s2item3, s2label,s2push,spweg2,sphin2);
-  s2ptr->moveButton(385,725);
+  s2ptr->moveButton(405,725);
   s2ptr->moveLabel(318,750);
 
   QGraphicsSvgItem *s3item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
@@ -2703,7 +3085,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(spweg3);
   scene->addItem(sphin3);
   s3ptr->addHSignalitem(s3item1,s3item2, s3item3, s3label,s3push,spweg3,sphin3);
-  s3ptr->moveButton(385,795);
+  s3ptr->moveButton(405,795);
   s3ptr->moveLabel(318,820);
 
   QGraphicsSvgItem *item1 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
@@ -2749,7 +3131,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(spweg13);
   scene->addItem(sphin13);
   s13ptr->addHSignalitem(s13item1,s13item2, s13item3, s13label,s13push,spweg13,sphin13);
-  s13ptr->moveButton(-965,725);
+  s13ptr->moveButton(-945,725);
   s13ptr->moveLabel(-1037,750);
 
   QGraphicsSvgItem *itemv11 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
@@ -2787,11 +3169,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin1 = new QGraphicsRectItem();
   sphin1->setRect(0,0,10,10);
   sphin1->setBrush(Qt::yellow);
-  sphin1->setPos(QPointF(555,700));
+  sphin1->setPos(QPointF(555,710));
   QGraphicsRectItem *spweg1 = new QGraphicsRectItem();
   spweg1->setRect(0,0,10,10);
   spweg1->setBrush(Qt::yellow);
-  spweg1->setPos(QPointF(555,710));
+  spweg1->setPos(QPointF(555,700));
   scene->addItem(spweg1);
   scene->addItem(sphin1);
   s1ptr->addHSignalitem(s1item1,s1item2, s1item3, s1label,s1push,spweg1,sphin1);
@@ -2902,15 +3284,15 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin9 = new QGraphicsRectItem();
   sphin9->setRect(0,0,10,10);
   sphin9->setBrush(Qt::yellow);
-  sphin9->setPos(QPointF(-805,90));
+  sphin9->setPos(QPointF(-805,100));
   QGraphicsRectItem *spweg9 = new QGraphicsRectItem();
   spweg9->setRect(0,0,10,10);
   spweg9->setBrush(Qt::yellow);
-  spweg9->setPos(QPointF(-805,100));
+  spweg9->setPos(QPointF(-805,90));
   scene->addItem(spweg9);
   scene->addItem(sphin9);
   s9ptr->addHSignalitem(s9item1,s9item2, s9item3, s9label,s9push,spweg9,sphin9);
-  s9ptr->moveButton(-840,115);
+  s9ptr->moveButton(-860,115);
   s9ptr->moveLabel(-790,90);
 
   QGraphicsSvgItem *s11item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
@@ -2936,15 +3318,15 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin11 = new QGraphicsRectItem();
   sphin11->setRect(0,0,10,10);
   sphin11->setBrush(Qt::yellow);
-  sphin11->setPos(QPointF(-805,160));
+  sphin11->setPos(QPointF(-805,170));
   QGraphicsRectItem *spweg11 = new QGraphicsRectItem();
   spweg11->setRect(0,0,10,10);
   spweg11->setBrush(Qt::yellow);
-  spweg11->setPos(QPointF(-805,170));
+  spweg11->setPos(QPointF(-805,160));
   scene->addItem(spweg11);
   scene->addItem(sphin11);
   s11ptr->addHSignalitem(s11item1,s11item2, s11item3, s11label,s11push,spweg11,sphin11);
-  s11ptr->moveButton(-840,185);
+  s11ptr->moveButton(-860,185);
   s11ptr->moveLabel(-790,160);
 
   QGraphicsSvgItem *s10item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
@@ -2970,15 +3352,15 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin10 = new QGraphicsRectItem();
   sphin10->setRect(0,0,10,10);
   sphin10->setBrush(Qt::yellow);
-  sphin10->setPos(QPointF(75,150));
+  sphin10->setPos(QPointF(75,140));
   QGraphicsRectItem *spweg10 = new QGraphicsRectItem();
   spweg10->setRect(0,0,10,10);
   spweg10->setBrush(Qt::yellow);
-  spweg10->setPos(QPointF(75,140));
+  spweg10->setPos(QPointF(75,150));
   scene->addItem(spweg10);
   scene->addItem(sphin10);
   s10ptr->addHSignalitem(s10item1,s10item2, s10item3, s10label,s10push,spweg10,sphin10);
-  s10ptr->moveButton(110,115);
+  s10ptr->moveButton(120,115);
   s10ptr->moveLabel(45,140);
 
   QGraphicsSvgItem *s12item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
@@ -3004,15 +3386,15 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin12 = new QGraphicsRectItem();
   sphin12->setRect(0,0,10,10);
   sphin12->setBrush(Qt::yellow);
-  sphin12->setPos(QPointF(75,220));
+  sphin12->setPos(QPointF(75,210));
   QGraphicsRectItem *spweg12 = new QGraphicsRectItem();
   spweg12->setRect(0,0,10,10);
   spweg12->setBrush(Qt::yellow);
-  spweg12->setPos(QPointF(75,210));
+  spweg12->setPos(QPointF(75,220));
   scene->addItem(spweg12);
   scene->addItem(sphin12);
   s12ptr->addHSignalitem(s12item1,s12item2, s12item3, s12label,s12push,spweg12,sphin12);
-  s12ptr->moveButton(110,185);
+  s12ptr->moveButton(120,185);
   s12ptr->moveLabel(45,210);
   
   QGraphicsSvgItem *itemv81 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
@@ -3132,15 +3514,15 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin8 = new QGraphicsRectItem();
   sphin8->setRect(0,0,10,10);
   sphin8->setBrush(Qt::yellow);
-  sphin8->setPos(QPointF(-715,700));
+  sphin8->setPos(QPointF(-90,468));
   QGraphicsRectItem *spweg8 = new QGraphicsRectItem();
   spweg8->setRect(0,0,10,10);
   spweg8->setBrush(Qt::yellow);
-  spweg8->setPos(QPointF(-715,710));
+  spweg8->setPos(QPointF(-90,458));
   scene->addItem(spweg8);
   scene->addItem(sphin8);
   s8ptr->addHSignalitem(s8item1,s8item2, s8item3, s8label,s8push,spweg8,sphin8);
-  s8ptr->moveButton(-110,480);
+  s8ptr->moveButton(-115,480);
   s8ptr->moveLabel(-70,465);
 
 
@@ -3327,7 +3709,7 @@ int main( int argc , char *argv[] ){
   QLabel *w19label = new QLabel();
   scene->addWidget(w19label);
   w19ptr->addWeichenitem(w19rectab,w19rectge,w19label);
-  w19ptr->moveLabel(-575,10);
+  w19ptr->moveLabel(-605,10);
 
   QGraphicsRectItem *w18rectge = new QGraphicsRectItem();
   w18rectge->setRect(0,0,10,55);
@@ -3462,11 +3844,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin14 = new QGraphicsRectItem();
   sphin14->setRect(0,0,10,10);
   sphin14->setBrush(Qt::yellow);
-  sphin14->setPos(QPointF(155,-580));
+  sphin14->setPos(QPointF(155,-590));
   QGraphicsRectItem *spweg14 = new QGraphicsRectItem();
   spweg14->setRect(0,0,10,10);
   spweg14->setBrush(Qt::yellow);
-  spweg14->setPos(QPointF(155,-590));
+  spweg14->setPos(QPointF(155,-580));
   scene->addItem(spweg14);
   scene->addItem(sphin14);
   s14ptr->addHSignalitem(s14item1,s14item2, s14item3, s14label,s14push,spweg14,sphin14);
@@ -3496,11 +3878,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin15 = new QGraphicsRectItem();
   sphin15->setRect(0,0,10,10);
   sphin15->setBrush(Qt::yellow);
-  sphin15->setPos(QPointF(155,-510));
+  sphin15->setPos(QPointF(155,-520));
   QGraphicsRectItem *spweg15 = new QGraphicsRectItem();
   spweg15->setRect(0,0,10,10);
   spweg15->setBrush(Qt::yellow);
-  spweg15->setPos(QPointF(155,-520));
+  spweg15->setPos(QPointF(155,-510));
   scene->addItem(spweg15);
   scene->addItem(sphin15);
   s15ptr->addHSignalitem(s15item1,s15item2, s15item3, s15label,s15push,spweg15,sphin15);
@@ -3542,11 +3924,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin18 = new QGraphicsRectItem();
   sphin18->setRect(0,0,10,10);
   sphin18->setBrush(Qt::yellow);
-  sphin18->setPos(QPointF(145,-130));
+  sphin18->setPos(QPointF(145,-140));
   QGraphicsRectItem *spweg18 = new QGraphicsRectItem();
   spweg18->setRect(0,0,10,10);
   spweg18->setBrush(Qt::yellow);
-  spweg18->setPos(QPointF(145,-140));
+  spweg18->setPos(QPointF(145,-130));
   scene->addItem(spweg18);
   scene->addItem(sphin18);
   s18ptr->addHSignalitem(s18item1,s18item2, s18item3, s18label,s18push,spweg18,sphin18);
@@ -3576,11 +3958,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin17 = new QGraphicsRectItem();
   sphin17->setRect(0,0,10,10);
   sphin17->setBrush(Qt::yellow);
-  sphin17->setPos(QPointF(185,-45));
+  sphin17->setPos(QPointF(185,-55));
   QGraphicsRectItem *spweg17 = new QGraphicsRectItem();
   spweg17->setRect(0,0,10,10);
   spweg17->setBrush(Qt::yellow);
-  spweg17->setPos(QPointF(185,-55));
+  spweg17->setPos(QPointF(185,-45));
   scene->addItem(spweg17);
   scene->addItem(sphin17);
   s17ptr->addHSignalitem(s17item1,s17item2, s17item3, s17label,s17push,spweg17,sphin17);
@@ -3593,9 +3975,9 @@ int main( int argc , char *argv[] ){
   scene->addItem(s16item1);
   scene->addItem(s16item3);
   scene->addItem(s16item2);
-  s16item1->setPos(QPointF(380,25));
-  s16item2->setPos(QPointF(380,25));
-  s16item3->setPos(QPointF(380,25));
+  s16item1->setPos(QPointF(420,25));
+  s16item2->setPos(QPointF(420,25));
+  s16item3->setPos(QPointF(420,25));
   s16item1->setScale(0.1);
   s16item2->setScale(0.1);
   s16item3->setScale(0.1);
@@ -3610,16 +3992,16 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin16 = new QGraphicsRectItem();
   sphin16->setRect(0,0,10,10);
   sphin16->setBrush(Qt::yellow);
-  sphin16->setPos(QPointF(300,25));
+  sphin16->setPos(QPointF(340,25));
   QGraphicsRectItem *spweg16 = new QGraphicsRectItem();
   spweg16->setRect(0,0,10,10);
   spweg16->setBrush(Qt::yellow);
-  spweg16->setPos(QPointF(300,35));
+  spweg16->setPos(QPointF(340,35));
   scene->addItem(spweg16);
   scene->addItem(sphin16);
   s16ptr->addHSignalitem(s16item1,s16item2, s16item3, s16label,s16push,spweg16,sphin16);
-  s16ptr->moveButton(350,-5);
-  s16ptr->moveLabel(270,30);
+  s16ptr->moveButton(390,-5);
+  s16ptr->moveLabel(310,30);
 
   QGraphicsSvgItem *item141 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
   QGraphicsSvgItem *item142 = new QGraphicsSvgItem(":/resources/VShalt.svg");
@@ -3702,15 +4084,15 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin21 = new QGraphicsRectItem();
   sphin21->setRect(0,0,10,10);
   sphin21->setBrush(Qt::yellow);
-  sphin21->setPos(QPointF(-505,-30));
+  sphin21->setPos(QPointF(-505,-20));
   QGraphicsRectItem *spweg21 = new QGraphicsRectItem();
   spweg21->setRect(0,0,10,10);
   spweg21->setBrush(Qt::yellow);
-  spweg21->setPos(QPointF(-505,-20));
+  spweg21->setPos(QPointF(-505,-30));
   scene->addItem(spweg21);
   scene->addItem(sphin21);
   s21ptr->addHSignalitem(s21item1,s21item2, s21item3, s21label,s21push,spweg21,sphin21);
-  s21ptr->moveButton(-560,-5);
+  s21ptr->moveButton(-570,-5);
   s21ptr->moveLabel(-490,-25);
 
   QGraphicsSvgItem *itemv131 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
@@ -3748,11 +4130,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin20 = new QGraphicsRectItem();
   sphin20->setRect(0,0,10,10);
   sphin20->setBrush(Qt::yellow);
-  sphin20->setPos(QPointF(-545,-105));
+  sphin20->setPos(QPointF(-545,-95));
   QGraphicsRectItem *spweg20 = new QGraphicsRectItem();
   spweg20->setRect(0,0,10,10);
   spweg20->setBrush(Qt::yellow);
-  spweg20->setPos(QPointF(-545,-95));
+  spweg20->setPos(QPointF(-545,-105));
   scene->addItem(spweg20);
   scene->addItem(sphin20);
   s20ptr->addHSignalitem(s20item1,s20item2, s20item3, s20label,s20push,spweg20,sphin20);
@@ -3795,15 +4177,15 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin19 = new QGraphicsRectItem();
   sphin19->setRect(0,0,10,10);
   sphin19->setBrush(Qt::yellow);
-  sphin19->setPos(QPointF(-625,-190));
+  sphin19->setPos(QPointF(-625,-180));
   QGraphicsRectItem *spweg19 = new QGraphicsRectItem();
   spweg19->setRect(0,0,10,10);
   spweg19->setBrush(Qt::yellow);
-  spweg19->setPos(QPointF(-625,-180));
+  spweg19->setPos(QPointF(-625,-190));
   scene->addItem(spweg19);
   scene->addItem(sphin19);
   s19ptr->addHSignalitem(s19item1,s19item2, s19item3, s19label,s19push,spweg19,sphin19);
-  s19ptr->moveButton(-680,-165);
+  s19ptr->moveButton(-690,-165);
   s19ptr->moveLabel(-610,-185);
 
   QGraphicsSvgItem *itemv161 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
@@ -3841,11 +4223,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin23 = new QGraphicsRectItem();
   sphin23->setRect(0,0,10,10);
   sphin23->setBrush(Qt::yellow);
-  sphin23->setPos(QPointF(-835,-210));
+  sphin23->setPos(QPointF(-825,-220));
   QGraphicsRectItem *spweg23 = new QGraphicsRectItem();
   spweg23->setRect(0,0,10,10);
   spweg23->setBrush(Qt::yellow);
-  spweg23->setPos(QPointF(-825,-220));
+  spweg23->setPos(QPointF(-835,-210));
   spweg23->setRotation(135);
   sphin23->setRotation(135);
   scene->addItem(spweg23);
@@ -3909,7 +4291,8 @@ int main( int argc , char *argv[] ){
   ww3ptr->moveButton(240,185);
   ww3ptr->moveLabel(270,170);
 
-  //neue Bahn ---------------------------------------------------------------------------------------------------
+  
+  //new part of the model railway--------------------------------------------
   QGraphicsRectItem *asrect2 = new QGraphicsRectItem();
   asrect2->setRect(0,0,10,300);
   asrect2->setPos(QPointF(600,90));
@@ -3986,7 +4369,7 @@ int main( int argc , char *argv[] ){
   QLabel *w21label = new QLabel();
   scene->addWidget(w21label);
   w21ptr->addWeichenitem(w21rectab,w21rectge,w21label);
-  w21ptr->moveLabel(910,-530);
+  w21ptr->moveLabel(880,-530);
   
   QGraphicsRectItem *awrect = new QGraphicsRectItem();
   awrect->setRect(0,0,10,1660);
@@ -4091,7 +4474,7 @@ int main( int argc , char *argv[] ){
   w24rectge->setRotation(90);
   scene->addItem(w24rectge);
   QGraphicsRectItem *w24rectab = new QGraphicsRectItem();
-  w24rectab->setRect(0,0,10,50);
+  w24rectab->setRect(0,0,10,55);
   w24rectab->setPos(QPointF(2510,-460));
   w24rectab->setBrush(QColor(79,79,79));
   w24rectab->setRotation(-135);
@@ -4290,7 +4673,7 @@ int main( int argc , char *argv[] ){
   QLabel *w25label = new QLabel();
   scene->addWidget(w25label);
   w25ptr->addWeichenitem(w25rectab,w25rectge,w25label);
-  w25ptr->moveLabel(2200,-385);
+  w25ptr->moveLabel(2160,-385);
 
   QGraphicsRectItem *w26rectge = new QGraphicsRectItem();
   w26rectge->setRect(0,0,10,75);
@@ -4523,11 +4906,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin25 = new QGraphicsRectItem();
   sphin25->setRect(0,0,10,10);
   sphin25->setBrush(Qt::yellow);
-  sphin25->setPos(QPointF(570,40));
+  sphin25->setPos(QPointF(580,40));
   QGraphicsRectItem *spweg25 = new QGraphicsRectItem();
   spweg25->setRect(0,0,10,10);
   spweg25->setBrush(Qt::yellow);
-  spweg25->setPos(QPointF(580,40));
+  spweg25->setPos(QPointF(570,40));
   scene->addItem(spweg25);
   scene->addItem(sphin25);
   s25ptr->addHSignalitem(s25item1,s25item2, s25item3, s25label,s25push,spweg25,sphin25);
@@ -4671,11 +5054,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin29 = new QGraphicsRectItem();
   sphin29->setRect(0,0,10,10);
   sphin29->setBrush(Qt::yellow);
-  sphin29->setPos(QPointF(956,-640));
+  sphin29->setPos(QPointF(956,-630));
   QGraphicsRectItem *spweg29 = new QGraphicsRectItem();
   spweg29->setRect(0,0,10,10);
   spweg29->setBrush(Qt::yellow);
-  spweg29->setPos(QPointF(956,-630));
+  spweg29->setPos(QPointF(956,-640));
   scene->addItem(spweg29);
   scene->addItem(sphin29);
   s29ptr->addHSignalitem(s29item1,s29item2, s29item3, s29label,s29push,spweg29,sphin29);
@@ -4705,15 +5088,15 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin30 = new QGraphicsRectItem();
   sphin30->setRect(0,0,10,10);
   sphin30->setBrush(Qt::yellow);
-  sphin30->setPos(QPointF(976,-570));
+  sphin30->setPos(QPointF(976,-560));
   QGraphicsRectItem *spweg30 = new QGraphicsRectItem();
   spweg30->setRect(0,0,10,10);
   spweg30->setBrush(Qt::yellow);
-  spweg30->setPos(QPointF(976,-560));
+  spweg30->setPos(QPointF(976,-570));
   scene->addItem(spweg30);
   scene->addItem(sphin30);
   s30ptr->addHSignalitem(s30item1,s30item2, s30item3, s30label,s30push,spweg30,sphin30);
-  s30ptr->moveButton(940,-545);
+  s30ptr->moveButton(930,-545);
   s30ptr->moveLabel(985,-560);
 
   QGraphicsSvgItem *itemv311 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
@@ -4797,11 +5180,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin41 = new QGraphicsRectItem();
   sphin41->setRect(0,0,10,10);
   sphin41->setBrush(Qt::yellow);
-  sphin41->setPos(QPointF(2631,-570));
+  sphin41->setPos(QPointF(2631,-560));
   QGraphicsRectItem *spweg41 = new QGraphicsRectItem();
   spweg41->setRect(0,0,10,10);
   spweg41->setBrush(Qt::yellow);
-  spweg41->setPos(QPointF(2631,-560));
+  spweg41->setPos(QPointF(2631,-570));
   scene->addItem(spweg41);
   scene->addItem(sphin41);
   s41ptr->addHSignalitem(s41item1,s41item2, s41item3, s41label,s41push,spweg41,sphin41);
@@ -4843,11 +5226,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin40 = new QGraphicsRectItem();
   sphin40->setRect(0,0,10,10);
   sphin40->setBrush(Qt::yellow);
-  sphin40->setPos(QPointF(2631,-640));
+  sphin40->setPos(QPointF(2631,-630));
   QGraphicsRectItem *spweg40 = new QGraphicsRectItem();
   spweg40->setRect(0,0,10,10);
   spweg40->setBrush(Qt::yellow);
-  spweg40->setPos(QPointF(2631,-630));
+  spweg40->setPos(QPointF(2631,-640));
   scene->addItem(spweg40);
   scene->addItem(sphin40);
   s40ptr->addHSignalitem(s40item1,s40item2, s40item3, s40label,s40push,spweg40,sphin40);
@@ -4901,11 +5284,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin48 = new QGraphicsRectItem();
   sphin48->setRect(0,0,10,10);
   sphin48->setBrush(Qt::yellow);
-  sphin48->setPos(QPointF(1431,352));
+  sphin48->setPos(QPointF(1431,362));
   QGraphicsRectItem *spweg48 = new QGraphicsRectItem();
   spweg48->setRect(0,0,10,10);
   spweg48->setBrush(Qt::yellow);
-  spweg48->setPos(QPointF(1431,362));
+  spweg48->setPos(QPointF(1431,352));
   scene->addItem(spweg48);
   scene->addItem(sphin48);
   s48ptr->addHSignalitem(s48item1,s48item2, s48item3, s48label,s48push,spweg48,sphin48);
@@ -4947,11 +5330,11 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin46 = new QGraphicsRectItem();
   sphin46->setRect(0,0,10,10);
   sphin46->setBrush(Qt::yellow);
-  sphin46->setPos(QPointF(1431,422));
+  sphin46->setPos(QPointF(1431,432));
   QGraphicsRectItem *spweg46 = new QGraphicsRectItem();
   spweg46->setRect(0,0,10,10);
   spweg46->setBrush(Qt::yellow);
-  spweg46->setPos(QPointF(1431,432));
+  spweg46->setPos(QPointF(1431,422));
   scene->addItem(spweg46);
   scene->addItem(sphin46);
   s46ptr->addHSignalitem(s46item1,s46item2, s46item3, s46label,s46push,spweg46,sphin46);
@@ -5135,7 +5518,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(sphin26);
   s26ptr->addHSignalitem(s26item1,s26item2, s26item3, s26label,s26push,spweg26,sphin26);
   s26ptr->moveButton(745,-440);
-  s26ptr->moveLabel(820,-360);
+  s26ptr->moveLabel(780,-315);
 
   QGraphicsSvgItem *itemv321 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
   QGraphicsSvgItem *itemv322 = new QGraphicsSvgItem(":/resources/VShalt.svg");
@@ -5172,15 +5555,15 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin42 = new QGraphicsRectItem();
   sphin42->setRect(0,0,10,10);
   sphin42->setBrush(Qt::yellow);
-  sphin42->setPos(QPointF(2631,-500));
+  sphin42->setPos(QPointF(2631,-490));
   QGraphicsRectItem *spweg42 = new QGraphicsRectItem();
   spweg42->setRect(0,0,10,10);
   spweg42->setBrush(Qt::yellow);
-  spweg42->setPos(QPointF(2631,-490));
+  spweg42->setPos(QPointF(2631,-500));
   scene->addItem(spweg42);
   scene->addItem(sphin42);
   s42ptr->addHSignalitem(s42item1,s42item2, s42item3, s42label,s42push,spweg42,sphin42);
-  s42ptr->moveButton(2580,-475);
+  s42ptr->moveButton(2575,-475);
   s42ptr->moveLabel(2615,-475);
 
   QGraphicsSvgItem *s37item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
@@ -5316,12 +5699,344 @@ int main( int argc , char *argv[] ){
   scene->addItem(spweg43);
   scene->addItem(sphin43);
   s43ptr->addHSignalitem(s43item1,s43item2, s43item3, s43label,s43push,spweg43,sphin43);
-  s43ptr->moveButton(1675,210);
+  s43ptr->moveButton(1655,225);
   s43ptr->moveLabel(1583,245);
+
+  QGraphicsSvgItem *itemv271 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *itemv272 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(itemv271);
+  scene->addItem(itemv272);
+  itemv271->setPos(QPointF(1245,-225));
+  itemv272->setPos(QPointF(1245,-225));
+  itemv271->setScale(0.1);
+  itemv272->setScale(0.1);
+  itemv271->setRotation(-90);
+  itemv272->setRotation(-90);
+  v27ptr->addVSignalitems(itemv271, itemv272);
   
-  //QPushButtonPart
+  QGraphicsSvgItem *s34item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s34item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s34item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s34item1);
+  scene->addItem(s34item3);
+  scene->addItem(s34item2);
+  s34item1->setPos(QPointF(1205,-230));
+  s34item2->setPos(QPointF(1205,-230));
+  s34item3->setPos(QPointF(1205,-230));
+  s34item1->setScale(0.1);
+  s34item2->setScale(0.1);
+  s34item3->setScale(0.1);
+  s34item1->setRotation(-90);
+  s34item2->setRotation(-90);
+  s34item3->setRotation(-90);
+  QPushButton *s34push = new QPushButton();
+  scene->addWidget(s34push);
+  QLabel *s34label = new QLabel();
+  scene->addWidget(s34label);
+  //speicher GUIs
+  QGraphicsRectItem *sphin34 = new QGraphicsRectItem();
+  sphin34->setRect(0,0,10,10);
+  sphin34->setBrush(Qt::yellow);
+  sphin34->setPos(QPointF(1281,-238));
+  QGraphicsRectItem *spweg34 = new QGraphicsRectItem();
+  spweg34->setRect(0,0,10,10);
+  spweg34->setBrush(Qt::yellow);
+  spweg34->setPos(QPointF(1281,-248));
+  scene->addItem(spweg34);
+  scene->addItem(sphin34);
+  s34ptr->addHSignalitem(s34item1,s34item2, s34item3, s34label,s34push,spweg34,sphin34);
+  s34ptr->moveButton(1210,-225);
+  s34ptr->moveLabel(1295,-240);
+
+  QGraphicsSvgItem *itemv261 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *itemv262 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(itemv261);
+  scene->addItem(itemv262);
+  itemv261->setPos(QPointF(1245,-300));
+  itemv262->setPos(QPointF(1245,-300));
+  itemv261->setScale(0.1);
+  itemv262->setScale(0.1);
+  itemv261->setRotation(-90);
+  itemv262->setRotation(-90);
+  v26ptr->addVSignalitems(itemv261, itemv262);
+  
+  QGraphicsSvgItem *s33item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s33item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s33item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s33item1);
+  scene->addItem(s33item3);
+  scene->addItem(s33item2);
+  s33item1->setPos(QPointF(1205,-305));
+  s33item2->setPos(QPointF(1205,-305));
+  s33item3->setPos(QPointF(1205,-305));
+  s33item1->setScale(0.1);
+  s33item2->setScale(0.1);
+  s33item3->setScale(0.1);
+  s33item1->setRotation(-90);
+  s33item2->setRotation(-90);
+  s33item3->setRotation(-90);
+  QPushButton *s33push = new QPushButton();
+  scene->addWidget(s33push);
+  QLabel *s33label = new QLabel();
+  scene->addWidget(s33label);
+  //speicher GUIs
+  QGraphicsRectItem *sphin33 = new QGraphicsRectItem();
+  sphin33->setRect(0,0,10,10);
+  sphin33->setBrush(Qt::yellow);
+  sphin33->setPos(QPointF(1281,-313));
+  QGraphicsRectItem *spweg33 = new QGraphicsRectItem();
+  spweg33->setRect(0,0,10,10);
+  spweg33->setBrush(Qt::yellow);
+  spweg33->setPos(QPointF(1281,-323));
+  scene->addItem(spweg33);
+  scene->addItem(sphin33);
+  s33ptr->addHSignalitem(s33item1,s33item2, s33item3, s33label,s33push,spweg33,sphin33);
+  s33ptr->moveButton(1210,-300);
+  s33ptr->moveLabel(1295,-315);
+
+  QGraphicsSvgItem *itemv241 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *itemv242 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(itemv241);
+  scene->addItem(itemv242);
+  itemv241->setPos(QPointF(910,-470));
+  itemv242->setPos(QPointF(910,-470));
+  itemv241->setScale(0.1);
+  itemv242->setScale(0.1);
+  itemv241->setRotation(-90);
+  itemv242->setRotation(-90);
+  v24ptr->addVSignalitems(itemv241, itemv242);
+  
+  QGraphicsSvgItem *s31item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s31item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s31item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s31item1);
+  scene->addItem(s31item3);
+  scene->addItem(s31item2);
+  s31item1->setPos(QPointF(870,-475));
+  s31item2->setPos(QPointF(870,-475));
+  s31item3->setPos(QPointF(870,-475));
+  s31item1->setScale(0.1);
+  s31item2->setScale(0.1);
+  s31item3->setScale(0.1);
+  s31item1->setRotation(-90);
+  s31item2->setRotation(-90);
+  s31item3->setRotation(-90);
+  QPushButton *s31push = new QPushButton();
+  scene->addWidget(s31push);
+  QLabel *s31label = new QLabel();
+  scene->addWidget(s31label);
+  //speicher GUIs
+  QGraphicsRectItem *sphin31 = new QGraphicsRectItem();
+  sphin31->setRect(0,0,10,10);
+  sphin31->setBrush(Qt::yellow);
+  sphin31->setPos(QPointF(946,-488));
+  QGraphicsRectItem *spweg31 = new QGraphicsRectItem();
+  spweg31->setRect(0,0,10,10);
+  spweg31->setBrush(Qt::yellow);
+  spweg31->setPos(QPointF(946,-498));
+  scene->addItem(spweg31);
+  scene->addItem(sphin31);
+  s31ptr->addHSignalitem(s31item1,s31item2, s31item3, s31label,s31push,spweg31,sphin31);
+  s31ptr->moveButton(870,-475);
+  s31ptr->moveLabel(980,-495);
+  
+  QGraphicsSvgItem *itemv251 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *itemv252 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(itemv251);
+  scene->addItem(itemv252);
+  itemv251->setPos(QPointF(1170,-370));
+  itemv252->setPos(QPointF(1170,-370));
+  itemv251->setScale(0.1);
+  itemv252->setScale(0.1);
+  itemv251->setRotation(-90);
+  itemv252->setRotation(-90);
+  v25ptr->addVSignalitems(itemv251, itemv252);
+  
+  QGraphicsSvgItem *s32item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s32item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s32item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s32item1);
+  scene->addItem(s32item3);
+  scene->addItem(s32item2);
+  s32item1->setPos(QPointF(1130,-375));
+  s32item2->setPos(QPointF(1130,-375));
+  s32item3->setPos(QPointF(1130,-375));
+  s32item1->setScale(0.1);
+  s32item2->setScale(0.1);
+  s32item3->setScale(0.1);
+  s32item1->setRotation(-90);
+  s32item2->setRotation(-90);
+  s32item3->setRotation(-90);
+  QPushButton *s32push = new QPushButton();
+  scene->addWidget(s32push);
+  QLabel *s32label = new QLabel();
+  scene->addWidget(s32label);
+  //speicher GUIs
+  QGraphicsRectItem *sphin32 = new QGraphicsRectItem();
+  sphin32->setRect(0,0,10,10);
+  sphin32->setBrush(Qt::yellow);
+  sphin32->setPos(QPointF(1206,-383));
+  QGraphicsRectItem *spweg32 = new QGraphicsRectItem();
+  spweg32->setRect(0,0,10,10);
+  spweg32->setBrush(Qt::yellow);
+  spweg32->setPos(QPointF(1206,-393));
+  scene->addItem(spweg32);
+  scene->addItem(sphin32);
+  s32ptr->addHSignalitem(s32item1,s32item2, s32item3, s32label,s32push,spweg32,sphin32);
+  s32ptr->moveButton(1115,-370);
+  s32ptr->moveLabel(1220,-385);
+
+  QGraphicsSvgItem *itemv361 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *itemv362 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(itemv361);
+  scene->addItem(itemv362);
+  itemv361->setPos(QPointF(1755,220));
+  itemv362->setPos(QPointF(1755,220));
+  itemv361->setScale(0.1);
+  itemv362->setScale(0.1);
+  itemv361->setRotation(-90);
+  itemv362->setRotation(-90);
+  v36ptr->addVSignalitems(itemv361, itemv362);
+
+  QGraphicsSvgItem *itemv341 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *itemv342 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(itemv341);
+  scene->addItem(itemv342);
+  itemv341->setPos(QPointF(2490,-355));
+  itemv342->setPos(QPointF(2490,-355));
+  itemv341->setScale(0.1);
+  itemv342->setScale(0.1);
+  v34ptr->addVSignalitems(itemv341, itemv342);
+
+  QGraphicsSvgItem *itemv371 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *itemv372 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(itemv371);
+  scene->addItem(itemv372);
+  itemv371->setPos(QPointF(1920,320));
+  itemv372->setPos(QPointF(1920,320));
+  itemv371->setScale(0.1);
+  itemv372->setScale(0.1);
+  itemv371->setRotation(90);
+  itemv372->setRotation(90);
+  v37ptr->addVSignalitems(itemv371, itemv372);
+
+  QGraphicsSvgItem *itemv421 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *itemv422 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(itemv421);
+  scene->addItem(itemv422);
+  itemv421->setPos(QPointF(1785,525));
+  itemv422->setPos(QPointF(1785,525));
+  itemv421->setScale(0.1);
+  itemv422->setScale(0.1);
+  itemv421->setRotation(180);
+  itemv422->setRotation(180);
+  v42ptr->addVSignalitems(itemv421, itemv422);
+
+  QGraphicsSvgItem *s44item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s44item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s44item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s44item1);
+  scene->addItem(s44item3);
+  scene->addItem(s44item2);
+  s44item1->setPos(QPointF(1780,570));
+  s44item2->setPos(QPointF(1780,570));
+  s44item3->setPos(QPointF(1780,570));
+  s44item1->setScale(0.1);
+  s44item2->setScale(0.1);
+  s44item3->setScale(0.1);
+  s44item1->setRotation(180);
+  s44item2->setRotation(180);
+  s44item3->setRotation(180);
+  QPushButton *s44push = new QPushButton();
+  scene->addWidget(s44push);
+  QLabel *s44label = new QLabel();
+  scene->addWidget(s44label);
+  //speicher GUIs
+  QGraphicsRectItem *sphin44 = new QGraphicsRectItem();
+  sphin44->setRect(0,0,10,10);
+  sphin44->setBrush(Qt::yellow);
+  sphin44->setPos(QPointF(1770,480));
+  QGraphicsRectItem *spweg44 = new QGraphicsRectItem();
+  spweg44->setRect(0,0,10,10);
+  spweg44->setBrush(Qt::yellow);
+  spweg44->setPos(QPointF(1760,480));
+  scene->addItem(spweg44);
+  scene->addItem(sphin44);
+  s44ptr->addHSignalitem(s44item1,s44item2, s44item3, s44label,s44push,spweg44,sphin44);
+  s44ptr->moveButton(1785,530);
+  s44ptr->moveLabel(1750,465);
+
+  QPushButton *ww13push = new QPushButton();
+  scene->addWidget(ww13push);
+  ww13ptr->addButtonAndLabel(ww13label,ww13push);
+  ww13ptr->moveButton(1040,-370);
+  ww13ptr->moveLabel(1005,-345);
+
+  QPushButton *ww14push = new QPushButton();
+  scene->addWidget(ww14push);
+  ww14ptr->addButtonAndLabel(ww14label,ww14push);
+  ww14ptr->moveButton(935,-225);
+  ww14ptr->moveLabel(975,-245);
+
+  QPushButton *ww15push = new QPushButton();
+  scene->addWidget(ww15push);
+  ww15ptr->addButtonAndLabel(ww15label,ww15push);
+  ww15ptr->moveButton(1125,-225);
+  ww15ptr->moveLabel(1085,-200);
+
+  QPushButton *ww16push = new QPushButton();
+  scene->addWidget(ww16push);
+  ww16ptr->addButtonAndLabel(ww16label,ww16push);
+  ww16ptr->moveButton(2085,-225);
+  ww16ptr->moveLabel(2095,-240);
+
+  QPushButton *ww17push = new QPushButton();
+  scene->addWidget(ww17push);
+  ww17ptr->addButtonAndLabel(ww17label,ww17push);
+  ww17ptr->moveButton(2375,-225);
+  ww17ptr->moveLabel(2335,-200);
+
+  QPushButton *ww18push = new QPushButton();
+  scene->addWidget(ww18push);
+  ww18ptr->addButtonAndLabel(ww18label,ww18push);
+  ww18ptr->moveButton(2045,-185);
+  ww18ptr->moveLabel(2080,-175);
+
+  QPushButton *ww19push = new QPushButton();
+  scene->addWidget(ww19push);
+  ww19ptr->addButtonAndLabel(ww19label,ww19push);
+  ww19ptr->moveButton(2250,25);
+  ww19ptr->moveLabel(2200,20);
+
+  QPushButton *ww20push = new QPushButton();
+  scene->addWidget(ww20push);
+  ww20ptr->addButtonAndLabel(ww20label,ww20push);
+  ww20ptr->moveButton(2410,-300);
+  ww20ptr->moveLabel(2370,-275);
+
+  QPushButton *ww21push = new QPushButton();
+  scene->addWidget(ww21push);
+  ww21ptr->addButtonAndLabel(ww21label,ww21push);
+  ww21ptr->moveButton(2210,-300);
+  ww21ptr->moveLabel(2230,-315);
+
+  QPushButton *ww22push = new QPushButton();
+  scene->addWidget(ww22push);
+  ww22ptr->addButtonAndLabel(ww22label,ww22push);
+  ww22ptr->moveButton(2210,-370);
+  ww22ptr->moveLabel(2240,-390);
+
+  QPushButton *ww23push = new QPushButton();
+  scene->addWidget(ww23push);
+  ww23ptr->addButtonAndLabel(ww23label,ww23push);
+  ww23ptr->moveButton(1815,225);
+  ww23ptr->moveLabel(1855,200); 
+
+  // initalize clickmanager
+  //************************************************************************** 
+  
   clickmanager *c1 = new clickmanager;
-  QObject::connect(s1ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) ); //QOverload wegen zeideutigkeit von recieveFS; C++11, C++14 qOverload<>
+  QObject::connect(s1ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) ); //QOverload because of the two different recieveFS methods with different arguments; C++11, C++14 qOverload<>
   QObject::connect(s2ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(s3ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(s4ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
@@ -5369,7 +6084,7 @@ int main( int argc , char *argv[] ){
   QObject::connect(s46ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(s47ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(s48ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
-  //ebenfalls für WSignal
+  //also for WSignal
   QObject::connect(ww1ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(ww2ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(ww3ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
@@ -5382,11 +6097,22 @@ int main( int argc , char *argv[] ){
   QObject::connect(ww10ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(ww11ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(ww12ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww13ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww14ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww15ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww16ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww17ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww18ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww19ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww20ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww21ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww22ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww23ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   //:::::::::
 
-  
-  /////// Thread start
-  //initialisiere pins als in/out-put + speichere in worker eine Liste von pins
+
+  // worker thread for segment/turnout updates = input
+  //************************************************************************** 
   QThread* thread = new QThread;
   worker* wrkr = new worker();
   wrkr->moveToThread(thread);
@@ -5395,8 +6121,10 @@ int main( int argc , char *argv[] ){
   QObject::connect(&a, &QApplication::aboutToQuit, wrkr, &worker::quit); // quit updateBelegt on aboutToQuit
   QObject::connect(&a, &QApplication::aboutToQuit, thread, &QThread::quit); // quit thread on aboutToQuit
   thread->start();
-  //thread endet theoretisch auch über wrkr.quit() -> updateBelegt() -> emit finished -> oberer slot
-        
+  //thread can be finished by calling wrkr.quit() -> updateBelegt() -> emit finished -> above slot
+
+  // memory thread for route memory
+  //**************************************************************************  
   QThread* thread2 = new QThread;
   Spmemory *mem = new Spmemory();
   mem->moveToThread(thread2);
@@ -5456,29 +6184,34 @@ int main( int argc , char *argv[] ){
   QObject::connect(s48ptr, &HSignal::callspmemory,mem, &Spmemory::addFS);
   thread2->start();
   w.showMaximized();
-  
-  /*  wiringPiSetupGpio();
+
+
+  // setting upt hadware connections = GPIO pins
+  //************************************************************************** 
+  /*wiringPiSetupGpio();
 
   sr595Setup (100, 8, 9, 5, 11);
-  digitalWrite(102,0);
-  digitalWrite(103,0);
+  digitalWrite(100,0);
+  digitalWrite(101,0);
   
-  digitalWrite(102,1);
+  digitalWrite(100,1);
   delay(20);
-  digitalWrite(102,0);
+  digitalWrite(100,0);
 
-  delay(3000);
+  delay(2000);
   
-  digitalWrite(103,1);
+  digitalWrite(101,1);
   delay(20);
-  digitalWrite(103,0);
+  digitalWrite(101,0);
   */
-  
-  // End of program, now delete all resources... all classes with parents are deleted through this chain, addItem, addWidget takes ownership
+
+  // end of program; release resources
+  //************************************************************************** 
+  // all classes with parents are deleted through this chain, addItem, addWidget takes ownership, the rest is left for the programmer:
   int eofprogram = a.exec();
   qDebug() <<"endofprogram";
-  //reverse order
-  
+  //
+  //delete in reverse order
   delete mem;
   delete thread2;
      
@@ -5488,11 +6221,16 @@ int main( int argc , char *argv[] ){
   delete c1;
    
   delete stellwerkstecptr;
+  
   delete aaptr; delete abptr; delete acptr; delete adptr; delete aeptr; delete afptr; delete agptr; delete ahptr; delete aiptr; delete ajptr; delete akptr; delete alptr; delete amptr; delete anptr; delete aoptr; delete apptr; delete aqptr; delete arptr; delete asptr; delete atptr; delete avptr; delete awptr; delete axptr; delete ayptr; delete azptr; delete baptr; delete bbptr; delete bcptr; delete bdptr; delete beptr; delete bfptr; delete bgptr; delete bhptr; delete biptr; delete bjptr; delete bkptr; delete blptr; delete bmptr; delete bnptr; delete boptr;
-  delete ww1ptr; delete ww2ptr; delete ww3ptr; delete ww4ptr; delete ww5ptr; delete ww6ptr; delete ww7ptr; delete ww8ptr; delete ww9ptr; delete ww10ptr; delete ww11ptr;
+  
+  delete ww1ptr; delete ww2ptr; delete ww3ptr; delete ww4ptr; delete ww5ptr; delete ww6ptr; delete ww7ptr; delete ww8ptr; delete ww9ptr; delete ww10ptr; delete ww11ptr; delete ww12ptr; delete ww13ptr; delete ww14ptr; delete ww15ptr; delete ww16ptr; delete ww17ptr; delete ww18ptr; delete ww19ptr; delete ww20ptr; delete ww21ptr; delete ww22ptr; delete ww23ptr; 
+  
   delete v1ptr; delete v2ptr; delete v3ptr; delete v4ptr; delete v5ptr; delete v6ptr; delete v7ptr; delete v8ptr; delete v9ptr; delete v10ptr; delete v11ptr; delete v12ptr; delete v13ptr; delete v14ptr; delete v15ptr; delete v16ptr; delete v17ptr; delete  v18ptr; delete v19ptr; delete v20ptr; delete v21ptr; delete v22ptr; delete v23ptr; delete v24ptr; delete v25ptr; delete v26ptr; delete v27ptr; delete v28ptr; delete v29ptr; delete v30ptr; delete v31ptr; delete v32ptr; delete v33ptr; delete v34ptr; delete v35ptr; delete v36ptr; delete v37ptr; delete v38ptr; delete v39ptr; delete v40ptr; delete v41ptr; delete v42ptr;
-  delete w1ptr; delete w2ptr; delete w3ptr; delete w4ptr; delete w5ptr; delete w6ptr; delete w7ptr; delete w8ptr; delete w9ptr; delete w10ptr; delete w11ptr; delete w12ptr; delete w13ptr; delete w14ptr; delete w15ptr; delete w16ptr; delete w17ptr; delete w18ptr; delete w19ptr; delete w20ptr; delete w21ptr; delete w22ptr; delete w23ptr; delete w24ptr; delete w28ptr; delete w29ptr; delete w30ptr; delete w31ptr;
-  delete s1ptr; delete s2ptr; delete s3ptr; delete s4ptr; delete s5ptr; delete s6ptr; delete s7ptr; delete s8ptr; delete s9ptr; delete s10ptr; delete s11ptr; delete s12ptr; delete s13ptr; delete s14ptr; delete s15ptr; delete s16ptr; delete s17ptr; delete s18ptr; delete s19ptr; delete s20ptr; delete s21ptr; delete s22ptr; delete s23ptr; delete s24ptr; delete s25ptr; delete s26ptr; delete s27ptr; delete s28ptr; delete s29ptr; delete s30ptr; delete s31ptr; delete s32ptr; delete s33ptr; delete s34ptr; delete s35ptr; delete s36ptr; delete s37ptr; delete s38ptr; s39ptr; delete s40ptr; delete s41ptr; delete s42ptr; delete s43ptr; delete s44ptr; delete s45ptr; delete s46ptr; delete s47ptr; delete s48ptr; 
+  
+  delete w1ptr; delete w2ptr; delete w3ptr; delete w4ptr; delete w5ptr; delete w6ptr; delete w7ptr; delete w8ptr; delete w9ptr; delete w10ptr; delete w11ptr; delete w12ptr; delete w13ptr; delete w14ptr; delete w15ptr; delete w16ptr; delete w17ptr; delete w18ptr; delete w19ptr; delete w20ptr; delete w21ptr; delete w22ptr; delete w23ptr; delete w24ptr; delete w25ptr; delete w26ptr; delete w27ptr; delete w28ptr; delete w29ptr; delete w30ptr; delete w31ptr;
+  
+  delete s1ptr; delete s2ptr; delete s3ptr; delete s4ptr; delete s5ptr; delete s6ptr; delete s7ptr; delete s8ptr; delete s9ptr; delete s10ptr; delete s11ptr; delete s12ptr; delete s13ptr; delete s14ptr; delete s15ptr; delete s16ptr; delete s17ptr; delete s18ptr; delete s19ptr; delete s20ptr; delete s21ptr; delete s22ptr; delete s23ptr; delete s24ptr; delete s25ptr; delete s26ptr; delete s27ptr; delete s28ptr; delete s29ptr; delete s30ptr; delete s31ptr; delete s32ptr; delete s33ptr; delete s34ptr; delete s35ptr; delete s36ptr; delete s37ptr; delete s38ptr; delete s39ptr; delete s40ptr; delete s41ptr; delete s42ptr; delete s43ptr; delete s44ptr; delete s45ptr; delete s46ptr; delete s47ptr; delete s48ptr; 
   
   return eofprogram;
 

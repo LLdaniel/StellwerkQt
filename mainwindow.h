@@ -1,3 +1,9 @@
+/*
+ * mainwindow and plan [- MAINWINDOW.H -]
+ *******************************************************************************
+ * GUI related control center                                                  *
+ *******************************************************************************
+ */
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <QMouseEvent>

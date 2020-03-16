@@ -1,11 +1,13 @@
-//*************************************************************************
-// Block of control center [- BLOCK.H -]
-// Rail segments with feedback of the current state: occupied or free
-//      it includes BUs and opens/closes them
-//      unlocking Block segments is done with evaluateFreigabe: normal order
-//      for block states is: free-occupied-free --> unlock trigger
-//      name rage from aa to zz
-//*************************************************************************
+/*
+ * segments for railroad [- BLOCK.H -]
+ *******************************************************************************
+ * Rail segments with feedback of the current state: occupied or free          *
+ *    - includes crossings (BUs) and opens/closes them                         *
+ *    - unlocking segments is done with evaluateFreigabe with the normal order *
+ *      for block states: free-occupied-free --> unlock triggered              *
+ *    - name range from "aa" to "zz"                                           *
+ *******************************************************************************
+ */
 #ifndef BLOCK_H
 #define BLOCK_H
 #include <QObject>
@@ -31,11 +33,11 @@ public:
   void showBus();
   void deleteBus( BU* todelete );
   void addpassiert( QString grenzS, Block* prevBlock );  //needed for zugpassiert: which segments are in front of signals
-  //void addcontrolspeicher( bool hs ){ controlspeicher = hs; } // deprecated
   void deletepassiert();                                 //marking haspassiert as false und deletes all entries
   bool getHaspassiert(){ return haspassiert; }
   ~Block();
-  //+++GUI+++
+  //
+  // +++ GUI +++
   //
   void addBlockitems( QGraphicsRectItem *rect ){ blockitems << rect; }
   //

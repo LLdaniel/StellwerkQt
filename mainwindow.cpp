@@ -18,16 +18,13 @@ MainWindow::~MainWindow(){
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    //registriere Mouse Event, lokalisiere auf was geklickt wurde und wie, rufe Funktion auf, die nochmal einen Klick erwartet (auf Zielsignal), rufe dann setFahrt auf
     if(event->button() == Qt::LeftButton){
-        qDebug()<<"Left mouse button was pressed";
-        qDebug()<<"x= "<<event->x()<<" and y="<<event->y();
+      
     }
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_Escape){
-        qDebug()<<"ESC was pressed";
     }
 }
 

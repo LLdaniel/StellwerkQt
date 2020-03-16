@@ -1,6 +1,7 @@
-//*************************************************************************
-// railroad crossing of control center [- BU.CXX -]
-//*************************************************************************
+/*
+ * railroad crossing [- BU.CXX -]
+ **************************************************************************
+ */
 #include "BU.h"
 #include <QDebug>
 #include <QBrush>
@@ -10,8 +11,8 @@ BU::BU( int name ){
 }
 
 void BU::setName( int name ){
-  if( name > 0 && name < 100){//two digit?
-    if( name < 10 ){//insert 0 before
+  if( name > 0 && name < 99){
+    if( name < 10 ){
       buname = "BU0" + QString::number( name );
     }
     else buname = "BU" + QString::number( name );//eles no 0 is needed before
@@ -22,15 +23,15 @@ void BU::setName( int name ){
 }
 
 void BU::setBU_status( bool status ){
-  bu_status = status;//change state
+  bu_status = status;                                     //change state
   changeColor();
 }
 void BU::changeColor(){
     if(bu_status){
-        burect->setBrush(QColor(153,50,204));//lila
+        burect->setBrush(QColor(153,50,204));             //lila
     }
     if(!bu_status){
-        burect->setBrush(QColor(255,64,64));//light red
+        burect->setBrush(QColor(255,64,64));              //light red
     }
 }
 

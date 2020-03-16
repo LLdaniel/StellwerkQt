@@ -1,6 +1,7 @@
-//*************************************************************************
-//Weiche des Stellwerks  [- WEICHE.CXX -]
-//*************************************************************************
+/*
+ * turnout [- WEICHE.CXX -]
+ **************************************************************************
+ */
 #include "Weiche.h"
 #include <QDebug>
 #include <QFont>
@@ -18,31 +19,31 @@ Weiche::Weiche (int name){
 }
 
 void Weiche::setBelegung( bool newbelegung ){
-  if( counter == 2){ counter = 0; }//reset counter falls =2
-  counter++;//ansonsten vermerk, dass ein Belegungszyklus gemacht wird-->Statusänderung
-  evaluateVerriegelung();//evtl entriegeln
-  belegung = newbelegung;//jetzt kann der Status gesetzt werden
+  if( counter == 2){ counter = 0; }                           //reset counter if  =2
+  counter++;                                                  //otherwise: remember state change in cycle
+  evaluateVerriegelung();                                     //unlock maybe
+  belegung = newbelegung;                                     //set status
   changeColor();
 }
 
 void Weiche::setW_id( int name ){
-  QString suffix = QString::number( name );//name zu String konvertieren
-  if( name > 0 && name <10 ){//einstellig
+  QString suffix = QString::number( name );                   //convert name to QStrin
+  if( name > 0 && name <10 ){
     w_id = "00" + suffix;
   }
-  if( name > 9 && name < 100 ){//zweistellig
+  if( name > 9 && name < 100 ){
     w_id = "0" + suffix;
   }
-  if( name > 99 && name <1000 ){//dreistellig
+  if( name > 99 && name <1000 ){
     w_id = suffix;
   }
 }
 
 void Weiche::setW_status( bool status ){
-  if( verriegelung || !belegung ){//wenn eine Verriegelung/Belegung besteht; keine Stellerlaubnis
+  if( verriegelung || !belegung ){                           //turnout locked, no change in status possible 
     qDebug()<<"Weiche::Diese Weiche ist verriegelt!";
   }
-  else{//ok, dann ist stellen erlaubt
+  else{                                                      //ok, change status is permitted
     w_status = status;
     switchWeiche(status);
     changeColor();
@@ -62,18 +63,16 @@ void Weiche::addWeichenitem(QGraphicsRectItem *ab, QGraphicsRectItem *ge, QLabel
 }
 
 void Weiche::evaluateVerriegelung(){
-  if( counter == 1 || counter == 0){//zum debuggen
-    //qDebug()<<"Weiche::counter = 1|0";
+  if( counter == 1 || counter == 0){                         //debug
   }
-  if( counter == 2 && !belegung){//hier wird dann die Weiche freigegeben-->ist der richtige Zyklus hier
-    //qDebug()<<"Weiche::Der counter = 2";
-    verriegelung = false;//konkrete Entriegelung nach Zyklus true-false-true
+  if( counter == 2 && !belegung){                            //unlock turnout
+    verriegelung = false;                                    //unlock after cycle true-false-true
     changeColor();
   }
 }
 
 void Weiche::changeColor(){
-  if( w_status ){//immer die Stellung mit gelb anzeigen --> hier geradeaus
+  if( w_status ){                                            //current turnout state is displayed with yellow: straight
     gerade->setBrush(QColor(238,201,0));
     if(!belegung){
       abknickend->setBrush(Qt::red);
@@ -85,7 +84,7 @@ void Weiche::changeColor(){
       abknickend->setBrush(QColor(79,79,79));
     }
   }
-  if( !w_status ){//immer die Stellung mit gelb anzeigen --> hier abknickend
+  if( !w_status ){                                          //current turnout state is displayed with yellow: deviated
     abknickend->setBrush(QColor(238,201,0));
     if(!belegung){
       gerade->setBrush(Qt::red);
@@ -123,15 +122,15 @@ void Weiche::setGpio(int pinGerade, int pinAbknickend){
 }
 
 void Weiche::switchWeiche(bool linksrechts){
-  if(pin0 > 0 and pin1 > 0){//nur wenn beide pins initialisiert sind, soll auch gestellt werden
+  if(pin0 > 0 and pin1 > 0){                                 //connect to hadware command only when there are two directions set
     if(linksrechts){
       digitalWrite(pin0, HIGH);
-      delay(25);//[ms]
+      delay(20);//[ms]
       digitalWrite(pin0, LOW);
     }
     if(!linksrechts){
       digitalWrite(pin1, HIGH);
-      delay(25);//[ms]
+      delay(20);//[ms]
       digitalWrite(pin1, LOW);
     }
   }

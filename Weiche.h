@@ -1,6 +1,6 @@
-//*************************************************************************
-//Weiche des Stellwerks  [- WEICHE.H -]
-//*************************************************************************
+/*
+ * turnout [- WEICHE.H -]
+ */
 #ifndef WEICHE_H
 #define WEICHE_H
 #include <QString>
@@ -8,7 +8,7 @@
 #include <QLabel>
 class Weiche{
 public:
-Weiche( int name );//Name wird als int übergeben und später zum string umgebastelt
+Weiche( int name );                                    //name as int, will be converted to QString
   //
   void setBelegung( bool newbelegung );
   bool getBelegung(){ return belegung; }
@@ -21,35 +21,36 @@ Weiche( int name );//Name wird als int übergeben und später zum string umgebas
   bool getVerriegelung(){ return verriegelung; }
   ~Weiche();
   //
-  //+++GUI+++
+  //+++ GUI +++
+  //
   void addWeichenitem(QGraphicsRectItem *ab , QGraphicsRectItem *ge , QLabel *la);
   void moveLabel( int x , int y ){ beschriftung->move(x,y); }
-  //+++GPIO+++
-  int getGpio( bool linksrechts ); //0 gerade || 1 abknickend
+  //
+  //+++ GPIO +++
+  //
+  int getGpio( bool linksrechts );                     //0 straight || 1 deviated
   void setGpio( int pinGerade, int pinAbknickend );
   void switchWeiche(bool linksrechts);
 private:
-  QString w_id;//dreistellige Ziffernfolge der Form 068
-  bool w_status = true;//true:=gerade ; false:=abknickend
-  bool verriegelung = false;//true:=verriegelt ; false:=entriegelt
-bool belegung = true;//true:=frei ; false:=belegt
-  int counter = 0;//Counter für die Zyklen im Belegtstatus
+  QString w_id;                                        //i.e. 068
+  bool w_status = true;                                //true:=straight ; false:=deviated
+  bool verriegelung = false;                           //true:=locked ; false:=unlocked
+  bool belegung = true;                                  //true:=unoccupied ; false:=occupied
+  int counter = 0;                                     //counter for occupation cycles to determine unlock status
   //
   void evaluateVerriegelung();
   //
-  //+++GUI+++
-  QGraphicsRectItem *abknickend = new QGraphicsRectItem();//Flanke abknickend
-  QGraphicsRectItem *gerade = new QGraphicsRectItem();//Flanke geradeaus
-  QLabel *beschriftung = new QLabel();//Beschriftung
+  //+++ GUI +++
   //
-  void changeColor();//ändert je nach status, belegung und verriegelung die farbe
-  //+++GPIO+++
-  int pin0 = -1; //initialisiert als -1, wenn also keine Pins zugeordnet sind, funktioniert das programm trotzdem
+  QGraphicsRectItem *abknickend = new QGraphicsRectItem();
+  QGraphicsRectItem *gerade = new QGraphicsRectItem();
+  QLabel *beschriftung = new QLabel();
+  //
+  void changeColor();                                  //change appearance on plan
+  //
+  //+++ GPIO +++
+  //
+  int pin0 = -1;                                       //initialized as -1 if there is no hardware connection, so control center works without it 
   int pin1 = -1;
 };
 #endif
-//Weiche muss umgeschrieben werden: Hardwaretechnisch ist keine Belegtanzeige möglich auf der Weiche (Massebrücke)
-//Deshalb ist die Alternatividee: bei jeder FS wird vermerkt, was der Block vor der Weiche ist:
-//Wenn dieser von belegt auf frei geht, ist der Zug drüber weg und es kann nach 1-2s die Weiche entriegelt werden
-//Sonderfall ist, wenn der Zug schon auf dem vorderen Block steht: dann muss
-//Schweierigkeiten außerdem bei: Weichen die eine Weiche davor haben - vielleicht geht es aber doch

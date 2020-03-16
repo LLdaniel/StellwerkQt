@@ -1,6 +1,12 @@
-//****************************************************************************
-//Speicherliste des Stellwerks von Stellwerkstechnik [- STELLWERKSTECHNIK.H -]
-//****************************************************************************
+/*
+ * stellwerkstechnik for main and shunt signal status [- STELLWERKSTECHNIK.H -]
+ *******************************************************************************
+ * To break ciricular dependencies with HSignal and WSingal, this class is up  *
+ * to date and stores the current status of the above kind of signals          *
+ *    - note: a transition from HS->WS is saved as true="go" for the main      *
+ *      signal                                                                 *
+ *******************************************************************************
+ */
 #ifndef STELLWERKSTECHNIK_H
 #define STELLWERKSTECHNIK_H
 #include <QObject>
@@ -14,15 +20,13 @@ class Stellwerkstechnik : public QObject{
   //
   void delete_HSignal( QString strtodelete );
   void show_Signal();
-  bool getS_pass_status( QString statusvonSignal );//gibt S_status von HS zurück
-  QString HSorWS(QString zutesten);//testet, ob es sich um ein W oder S handelt
+  bool getS_pass_status( QString statusvonSignal );               //returns S_status von main signal
+  QString HSorWS(QString zutesten);                               //test if it is a main or a shunt signal
   ~Stellwerkstechnik(){};
 public slots:
   void add_Signal(QString strid , bool status );
  private:
-  QList<QPair<int,bool> > hsignale;//Hier weden alle HSignale der Anlage mit status gespeichert gespeichert
-  QList<QPair<int,bool> > wsignale;//Hier weden alle HSignale der Anlage mit status gespeichert gespeichert
+  QList<QPair<int,bool> > hsignale;                               //save main signals with status
+  QList<QPair<int,bool> > wsignale;                               //save shunt signals with status
 };
 #endif
-//Vorteilhaft wäre jetzt noch: sobald ein Signal-Pointer kreiert wird-->automatischer Eintrag in obiger Liste
-//Stellwerkstechnik erweiterbar: kann auch Blockliste beinhalten, oder auch Weichenliste

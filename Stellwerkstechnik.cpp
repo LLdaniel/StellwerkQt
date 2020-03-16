@@ -1,38 +1,38 @@
-//*************************************************************************
-//Speicherliste des Stellwerks von Stellwerkstechnik [- STELLWERKSTECHNIK.CXX -]
-//*************************************************************************
+/*
+ * Stellwerkstechnik  [- STELLWERKSTECHNIK.CXX -]
+ **************************************************************************
+ */
 #include "Stellwerkstechnik.h"
 #include <QDebug>
 //
 void Stellwerkstechnik::add_Signal( QString strid , bool status ){
-  //Konvertierung von string zu int gemäß HSignal Benennung:
+  //
+  //convert string to HSignal naming convention:
   int id =  strid.right(3).toInt();
-  //Unterscheidung von Signalen, die schon in der Liste sind, und welche, die neu hinzuzufügen sind:
-  int pos = -1;//merkt sich die Position
-  if(HSorWS(strid).compare("HS") == 0){//je nach dem, ob WS oder HS...
-    //qDebug()<<"STELLWERKSTECHNIK:: HS detektiert in add_Signal";
-    for(  int i = 0 ; i < hsignale.size() ; i++){//suchen, ob Signal schon da ist?
-      if( hsignale[i].first == id ){//es gibt schon einen Eintrag  in QList [] -> non-const, mit at() -> const!
+  //
+  //differentiate between already registered and new signals:
+  int pos = -1;                                                      //remember Position
+  if(HSorWS(strid).compare("HS") == 0){                              //WS or HS?
+    for(  int i = 0 ; i < hsignale.size() ; i++){                    //singal already existent?
+      if( hsignale[i].first == id ){                                 //entry found  note: in QList [] -> non-const, mit at() -> const!
 	pos = i;
-	hsignale[i].second = status;//Führe Statusänderung durch
+	hsignale[i].second = status;                                 //change status
       }
     }
-    if(pos == -1){//es gibt keinen Eintrag, da nie == id zugetroffen hat und pos=-1 noch immer steht
+    if(pos == -1){                                                   //no entry existent: pos=-1 
       QPair<int,bool> newpair(id,status);
       hsignale.append(newpair);
     }
   }
-  pos = -1;//reset zur Vorsicht
+  pos = -1;                                                          //safety measure, set to -1
   if(HSorWS(strid).compare("WS") == 0){
-    //qDebug()<<"STELLWERKSTECHNIK:: WS detektiert in add_Signal";
-    for(  int i = 0 ; i < wsignale.size() ; i++){//suchen, ob Signal schon da ist?
-      if( wsignale[i].first == id ){//es gibt schon einen Eintrag
+    for(  int i = 0 ; i < wsignale.size() ; i++){                    //singal already existent?
+      if( wsignale[i].first == id ){                                            
 	pos = i;
-	wsignale[i].second = status;//Führe Statusänderung durch
-	//qDebug()<<"NIX neues";
+	wsignale[i].second = status;//Führe Statusänderung durch     //entry found  note: in QList [] -> non-const, mit at() -> const!
       }
     }
-    if(pos == -1){//es gibt keinen Eintrag, da nie == id zugetroffen hat und pos=-1 noch immer steht
+    if(pos == -1){                                                   //no entry existent: pos=-1 
       QPair<int,bool> newpair(id,status);
       wsignale.append(newpair);
     }
@@ -44,22 +44,21 @@ void Stellwerkstechnik::delete_HSignal(QString strtodelete ){
   int remember = -1;
   if(HSorWS(strtodelete).compare("HS") == 0){
     for(  int i = 0; i < hsignale.size() ; i++){
-      if(hsignale[i].first == todelete ){//falls das zu löschende Signal gefunden ist
+      if(hsignale[i].first == todelete ){                             //find to delete signal HS
 	remember = i;
-	//qDebug()<<"i_Stellwerkstechnik::deleteHsignal = "<<i;//DEBUG
 	break;
       }
     }
   }
   if(HSorWS(strtodelete).compare("WS") == 0){
     for(  int i = 0; i < wsignale.size() ; i++){
-      if(wsignale[i].first == todelete ){//falls das zu löschende Signal gefunden ist
+      if(wsignale[i].first == todelete ){                             //find to delete signal WS
 	remember = i;
-	//qDebug()<<"i_Stellwerkstechnik::deleteWsignal = "<<i;//DEBUG
 	break;
       }
     }
   }
+  //
   //deleting...
   hsignale.erase( hsignale.begin() + remember );
 }
@@ -76,32 +75,28 @@ void Stellwerkstechnik::show_Signal(){
   }
   qDebug()<<"************************************************************";
 }
-
+    
 bool Stellwerkstechnik::getS_pass_status( QString statusvonSignal ){
-  //gebe den status des Signals zurück
-  //zunächst den String in int gemäß HSignal/WSignal Benennung umwandeln
+  //
+  //convert string to HSignal naming convention:
   int converted = statusvonSignal.right(3).toInt();
-  qDebug()<<"CONVERTED: "<<converted;
   bool feedback = false;
   if( HSorWS(statusvonSignal).compare("HS") == 0 ){
-    for(  int i = 0 ; i < hsignale.size() ; i++){//Suchen des betreffenden HSignals und Ausgabe des bool
+    for(  int i = 0 ; i < hsignale.size() ; i++){                     //search for signal and return bool HS 
       if( converted == hsignale[i].first ){
 	feedback = hsignale[i].second;
-	qDebug()<<"TEC_FEEDBACK_HSPfad"<<feedback;
 	break;
       }
     }
   }
   if(HSorWS(statusvonSignal).compare("WS") == 0){
-    for(  int i = 0 ; i < wsignale.size() ; i++){//Suchen des betreffenden WSignals und Ausgabe des bool
+    for(  int i = 0 ; i < wsignale.size() ; i++){                    //search for signal and return bool WS 
       if( converted == wsignale[i].first ){
 	feedback = wsignale[i].second;
-	qDebug()<<"TEC_FEEDBACK_WSPfad"<<feedback;
 	break;
       }
     }
   }
-  qDebug()<<"TEC_FEEDBACK:"<<feedback;
   return feedback;
 }
 

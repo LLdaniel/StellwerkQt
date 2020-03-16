@@ -1,6 +1,11 @@
-//*************************************************************************
-//Rangiersignal des Stellwerks  [- WSIGNAL.H -]
-//*************************************************************************
+/*
+ * shunt signal [- WSIGNAL.H -]
+ *******************************************************************************
+ * shunt signal for shunting trips, possible routes include:                   *
+ *    - shunt signal to main signal                                            *
+ *    - shunt signal to shunt signal                                           *
+ *******************************************************************************
+ */
 #ifndef WSIGNAL_H
 #define WSIGNAL_H
 #include "VSignal.h"
@@ -12,51 +17,52 @@
 #include <QString>
 #include <QList>
 #include <QPair>
-class WSignal : public QObject,public VSignal{//WSignal erbt nun von VSignal
+class WSignal : public QObject,public VSignal{                 //WSignal inherits from VSignal
   Q_OBJECT
 public:
  WSignal( int name ) :  VSignal( name ){ setV_id( name ); }// with :HSignal(name) call the Super Constructor
-  void setV_id( int name );//overload setS_id, wegen W als Präfix
+  void setV_id( int name );                                   //overload setS_id, because of W as prefix
   void setFahrt(WSignal* toZiel);
   void setFahrt(QString toZiel);
   QString getZiel(){ return ziel; }
   void addWeichenstatus( WSignal *toZiel , QList<QPair<Weiche* , bool>> weichenpair );
   void addWeichenstatusZuH( QString toZiel , QList<QPair<Weiche* , bool>> weichenpair );
-  void showWeichenstatusALL();//-->gesamte Liste wird geprintet
-  void showWeichenstatus( WSignal *whichZiel );//mit speziellem Ziel zum printen des betreffenden Weichenstatus
+  void showWeichenstatusALL();
+  void showWeichenstatus( WSignal *whichZiel );
   void addBlock( WSignal *toZiel , QList<Block*> inputBlock );
   void addBlockZuH( QString toZiel , QList<Block*> inputBlock );
   void showBlock( WSignal *whichZiel );
   void showBlockALL();
-  void deleteNachbar( WSignal *todelete );//Nachbar todelete wird in Block und Weichenstatus gelöscht
+  void deleteNachbar( WSignal *todelete );
   void setZiel( QString zziel );
-  void deleteFS();//löscht die FS, falls nicht schon was belegt ist
-  bool isNachbar(WSignal *toZiel);//testet, ob das Zielsignal ein Nachbarsignal ist -->toZiel sollte natürlich das von SetFahrt sein
-  bool isNachbar(QString toZiel);//testet, ob das Zielsignal ein Nachbarsignal ist -->toZiel sollte natürlich das von SetFahrt sein
+  void deleteFS();
+  bool isNachbar(WSignal *toZiel);                            //check if end signal is neighbour
+  bool isNachbar(QString toZiel);                             //check if end signal is neighbour overload
   ~WSignal();
-  //+++GUI+++
+  //
+  //+++ GUI +++
+  //
   void addButtonAndLabel(QLabel *lab, QPushButton *but);
   void moveLabel( int x , int y ){ beschriftung->move(x,y); }
   void moveButton( int x, int y ){ push->move(x,y); }
 
 signals:
   void listened( WSignal *clickedWS);
-  void refreshStellwerkstechnikW( QString sig , bool stat );//informiere Stellwerkstechnik über statusÄnderungen des WS
+  void refreshStellwerkstechnikW( QString sig , bool stat ); //update stellwerkstechnik
 public slots:
-  void listenToFS(); //es wird nach click events Ausschau gehalten --> Umwandlung als setFahrt Befehl
-  void zugpassiertW();//Zugpassiert für WS->WS FS
-  //void zugpassiert() für das Schalten der WS als Art VS wird ja von VS geerbt
+  void listenToFS();                                         //look for clicks, which will be conerted to route commands from clickmanager
+  void zugpassiertW();                                       //zugpassiert for routes of character WS->WS FS
+  //void zugpassiert()                                       //zugpassiert from routes of character HS->HS with WS as VS: WS inherits from VS and inherits therefore VS`s zugpassiert
 private:
-   //mal eine Überlegung wert: WSignal braucht eigentlich auc noch ein zugpassiert... -->zur Not wegen Stellwerkstec bei setFahrt noch Inspirationen holen
-  QString ziel;//Hier wird das Zielsignal der aktuellen FS gespeichert
+  QString ziel;                                              //save end signal 
   bool hasWSZiel = false;
   bool hasHSZiel = false;
-  QList<QPair<QString , QList<QPair<Weiche* , bool>> > > weichenstatus;//Weichenstatus gespeichert über eine Liste von Signalen mit einer Liste von Weichen-Status-Paaren: <Ziel <Weiche,bool>>
-  QList<QPair<QString, QList<Block*>> > block;//Hier werden die in einer FS involvierten Blöcke in der Form Zielsignal Blockliste gespeichert
-  QList<QPair<QString , QList<QPair<Weiche* , bool>> > > weichenstatusZuH;//Weichenstatus gespeichert über eine Liste von Signalen mit einer Liste von Weichen-Status-Paaren: <Ziel <Weiche,bool>>
-  QList<QPair<QString, QList<Block*>> > blockZuH;//Hier werden die in einer FS involvierten Blöcke in der Form Zielsignal Blockliste gespeichert
+  QList<QPair<QString , QList<QPair<Weiche* , bool>> > > weichenstatus; // involved turnouts in specific routes to WS
+  QList<QPair<QString, QList<Block*>> > block;                          // involved segments in specific routes to WS          
+  QList<QPair<QString , QList<QPair<Weiche* , bool>> > > weichenstatusZuH;// involved turnouts in specific routes to HS
+  QList<QPair<QString, QList<Block*>> > blockZuH;                         // involved segments in specific routes to HS       
   //+++GUI+++
-  QLabel *beschriftung = new QLabel();//Beschriftung
+  QLabel *beschriftung = new QLabel();
   QPushButton *push = new QPushButton();
 };
 #endif

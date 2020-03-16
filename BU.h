@@ -1,7 +1,10 @@
-//*************************************************************************
-// railroad crossing of control center [- BU.H -]
-// can be open or closed an is managed with rail segments
-//*************************************************************************
+/*
+ * railroad crossings [- BU.H -]
+ *******************************************************************************
+ * automatically managed railroad crossing                                     *
+ *    - is managed with rail segments                                          *
+ *******************************************************************************
+ */
 #ifndef BU_H
 #define BU_H
 #include <QString>
@@ -14,14 +17,18 @@ class BU{
   QString getName(){ return buname; }
   void setBU_status( bool status );
   bool getBU_status(){ return bu_status; }
-  //+++GUI+++
+  //
+  //+++ GUI +++
+  //
   void addBUrect(QGraphicsRectItem *item){ burect = item; }
   void changeColor();
   ~BU();
  private:
-  QString buname;//BU naming convention BU01, BU56
+  QString buname;                                           //BU naming convention BU01, BU56
   bool bu_status = true;//true:=open ; false:=closed
-  //+++GUI+++
+  //
+  //+++ GUI +++
+  //
   QGraphicsRectItem *burect = new QGraphicsRectItem();
 };
 #endif
