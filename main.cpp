@@ -6188,22 +6188,28 @@ int main( int argc , char *argv[] ){
 
   // setting upt hadware connections = GPIO pins
   //************************************************************************** 
-  /*wiringPiSetupGpio();
+  wiringPiSetupGpio();
 
-  sr595Setup (100, 8, 9, 5, 11);
-  digitalWrite(100,0);
-  digitalWrite(101,0);
+  sr595Setup (100, 24, 9, 5, 11);
   
-  digitalWrite(100,1);
-  delay(20);
-  digitalWrite(100,0);
+  //do not rely on random state of shift register: set all to LOW=0
+  for(int pipin = 100; pipin < 124; pipin++){
+    digitalWrite(pipin,LOW);
+  }
 
-  delay(2000);
-  
-  digitalWrite(101,1);
-  delay(20);
-  digitalWrite(101,0);
-  */
+  //initialize all turnouts with pins:
+  w20ptr->setGpio(107,106);
+  w21ptr->setGpio(105,104);
+  w22ptr->setGpio(103,102);
+  w23ptr->setGpio(100,101);
+  w24ptr->setGpio(115,114);
+  w25ptr->setGpio(113,112);
+  w26ptr->setGpio(111,110);
+  w27ptr->setGpio(108,109);
+  w28ptr->setGpio(123,122);
+  w29ptr->setGpio(120,121);
+  w30ptr->setGpio(119,118);
+  w31ptr->setGpio(116,117);
 
   // end of program; release resources
   //************************************************************************** 
