@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     Stellwerkstechnik.cpp \
     clickmanager.cpp \
     worker.cpp \
-    Spmemory.cpp
+    Spmemory.cpp \
+    filemanager.cpp
 
 HEADERS  += mainwindow.h \
     VSignal.h \
@@ -47,7 +48,8 @@ HEADERS  += mainwindow.h \
     Block.h \
     clickmanager.h \
     worker.h \
-    Spmemory.h
+    Spmemory.h \
+    filemanager.h
 
     FORMS    += mainwindow.ui
     RESOURCES+=resources.qrc

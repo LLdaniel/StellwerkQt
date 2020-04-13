@@ -29,6 +29,7 @@
 #include "WSignal.h"
 #include "worker.h"
 #include "Spmemory.h"
+#include "filemanager.h"
 #include <QString>
 #include <QPair>
 #include <QList>
@@ -83,6 +84,9 @@ int main( int argc , char *argv[] ){
  
   // starting QT application
   //**************************************************************************
+
+  wiringPiSetupGpio(); // is needed by mainwindow already, therefore set it up now
+  pinMode(13,OUTPUT);  // power turnouts on/off with GPIO13
   
   QApplication a(argc, argv);
   MainWindow w;
@@ -99,6 +103,11 @@ int main( int argc , char *argv[] ){
   view->setWindowTitle("Electronic Signalling Control Center - Model Railway");
   w.setCentralWidget(view);                                                             //add view to mainwindow
   w.setWindowTitle("Electronic Signalling Control Center - Model Railway");
+
+  // create a filemanager and read turnout state from previous session
+  //**************************************************************************
+  filemanager fmngr("/home/raspi/turnouts.txt");
+  fmngr.read();
   
   // initialaizing the specific model railway plan
   //**************************************************************************
@@ -107,7 +116,7 @@ int main( int argc , char *argv[] ){
   Stellwerkstechnik *stellwerkstecptr = new Stellwerkstechnik();
   Block *aaptr = new Block("aa", stellwerkstecptr);
   //:::turnouts:::
-  Weiche *w1ptr = new Weiche(1);
+  Weiche *w1ptr = new Weiche(1); //new should read: new Weiche(1,fmngr.passstate(1));
   Weiche *w2ptr = new Weiche(2);
   Weiche *w3ptr = new Weiche(3);
   Weiche *w4ptr = new Weiche(4);
@@ -6186,18 +6195,22 @@ int main( int argc , char *argv[] ){
   w.showMaximized();
 
 
-  // setting upt hadware connections = GPIO pins
+  // setting up hadware connections = GPIO pins
   //************************************************************************** 
-  wiringPiSetupGpio();
+  //wiringPiSetupGpio(); cf beginning of program (also needed in mainwindow)
 
-  sr595Setup (100, 24, 9, 5, 11);
+  sr595Setup (100, 32, 9, 5, 11); 
+  //sr595Setup (200, 32, );
   
   //do not rely on random state of shift register: set all to LOW=0
-  for(int pipin = 100; pipin < 124; pipin++){
+  for(int pipin = 100; pipin < 132; pipin++){
     digitalWrite(pipin,LOW);
+    //digitalWrite(pinpin+100,LOW);
   }
 
   //initialize all turnouts with pins:
+  w1ptr->setGpio(130,131);
+  w2ptr->setGpio(129,128);
   w20ptr->setGpio(107,106);
   w21ptr->setGpio(105,104);
   w22ptr->setGpio(103,102);
@@ -6206,16 +6219,20 @@ int main( int argc , char *argv[] ){
   w25ptr->setGpio(113,112);
   w26ptr->setGpio(111,110);
   w27ptr->setGpio(108,109);
-  w28ptr->setGpio(123,122);
+  w28ptr->setGpio(123,122); //124,125 126,127  as spare pins
   w29ptr->setGpio(120,121);
   w30ptr->setGpio(119,118);
   w31ptr->setGpio(116,117);
 
-  // end of program; release resources
+  // end of program; release resources and write current turnout states
   //************************************************************************** 
   // all classes with parents are deleted through this chain, addItem, addWidget takes ownership, the rest is left for the programmer:
   int eofprogram = a.exec();
   qDebug() <<"endofprogram";
+
+  // add turnouts to filemanager and write the states to the txt file
+  fmngr.add(w1ptr->getW_status());  fmngr.add(w2ptr->getW_status()); fmngr.add(w3ptr->getW_status()); fmngr.add(w4ptr->getW_status()); fmngr.add(w5ptr->getW_status()); fmngr.add(w6ptr->getW_status()); fmngr.add(w7ptr->getW_status()); fmngr.add(w7ptr->getW_status());  fmngr.add(w8ptr->getW_status()); fmngr.add(w9ptr->getW_status()); fmngr.add(w10ptr->getW_status()); fmngr.add(w11ptr->getW_status()); fmngr.add(w12ptr->getW_status()); fmngr.add(w13ptr->getW_status()); fmngr.add(w14ptr->getW_status());  fmngr.add(w15ptr->getW_status()); fmngr.add(w16ptr->getW_status()); fmngr.add(w17ptr->getW_status()); fmngr.add(w18ptr->getW_status()); fmngr.add(w19ptr->getW_status()); fmngr.add(w20ptr->getW_status()); fmngr.add(w21ptr->getW_status());  fmngr.add(w22ptr->getW_status()); fmngr.add(w23ptr->getW_status()); fmngr.add(w24ptr->getW_status()); fmngr.add(w25ptr->getW_status()); fmngr.add(w26ptr->getW_status()); fmngr.add(w27ptr->getW_status()); fmngr.add(w28ptr->getW_status());  fmngr.add(w29ptr->getW_status()); fmngr.add(w30ptr->getW_status()); fmngr.add(w31ptr->getW_status());
+  fmngr.write();
   //
   //delete in reverse order
   delete mem;

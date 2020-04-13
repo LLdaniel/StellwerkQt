@@ -34,7 +34,10 @@ private slots:
   void showHelpDialog();
   void upscale();
   void downscale();
+  void powerOffTurnouts();
+  void powerOnTurnouts();
 private:
+  int powerturnouts = 13;
   void createActions();
   void createMenus();
   Ui::MainWindow *ui;
@@ -43,6 +46,8 @@ private:
   QMenu *viewMenu;
   QMenu *aboutMenu;
   QAction *shutdownAct;
+  QAction *poweronTurnouts;
+  QAction *poweroffTurnouts;
   QAction *resetAct;
   QAction *aboutAct;
   QAction *upscaleAct;

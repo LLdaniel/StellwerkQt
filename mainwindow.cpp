@@ -7,9 +7,15 @@
 #include <QDebug>
 #include <QKeySequence>
 #include <QGraphicsView>
-
+#ifdef __cplusplus
+extern "C"{
+#endif
+#include <wiringPi.h>
+#ifdef __cplusplus
+}
+#endif
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+  QMainWindow(parent),
     ui(new Ui::MainWindow){
     ui->setupUi(this);
     createActions();
@@ -36,6 +42,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
 void MainWindow::createMenus(){
   ccMenu = menuBar()->addMenu(tr("&ControlCenter"));
   ccMenu->addAction(shutdownAct);
+  ccMenu->addAction(poweronTurnouts);
+  ccMenu->addAction(poweroffTurnouts);
 
   piMenu = menuBar()->addMenu(tr("&RaspberryPi"));
   piMenu->addAction(resetAct);
@@ -56,6 +64,16 @@ void MainWindow::createActions(){
   shutdownAct->setShortcuts(QKeySequence::Quit);
   shutdownAct->setStatusTip(tr("Initiate control center shutdown"));
   QObject::connect(shutdownAct, &QAction::triggered, this, &MainWindow::shutdown);
+
+  poweronTurnouts = new QAction(tr("&Power on turnouts"), this);
+  poweronTurnouts->setShortcuts(QKeySequence::Paste);
+  poweronTurnouts->setStatusTip(tr("Power on turnouts"));
+  QObject::connect(poweronTurnouts, &QAction::triggered, this, &MainWindow::powerOnTurnouts);
+
+  poweroffTurnouts = new QAction(tr("&Power off turnouts"), this);
+  poweroffTurnouts->setShortcuts(QKeySequence::Undo);
+  poweroffTurnouts->setStatusTip(tr("Power off turnouts"));
+  QObject::connect(poweroffTurnouts, &QAction::triggered, this, &MainWindow::powerOffTurnouts);
 
   resetAct = new QAction(tr("&Reset Pins"), this);
   resetAct->setShortcuts(QKeySequence::Refresh);
@@ -100,4 +118,14 @@ void MainWindow::upscale(){
 
 void MainWindow::downscale(){
   ((QGraphicsView*)this->centralWidget())->scale(2.0,2.0);
+}
+
+void MainWindow::powerOffTurnouts(){
+  qDebug()<<"Weichen off";
+  //digitalWrite(powerturnouts,LOW);
+}
+
+void MainWindow::powerOnTurnouts(){
+  qDebug()<<"Weichen on";
+  //digitalWrite(powerturnouts,HIGH);
 }

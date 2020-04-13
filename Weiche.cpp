@@ -14,8 +14,9 @@ extern "C"{
 }
 #endif
 //
-Weiche::Weiche (int name){
+Weiche::Weiche (int name, bool state/*=true*/){
   setW_id( name );
+  w_status = state;
 }
 
 void Weiche::setBelegung( bool newbelegung ){

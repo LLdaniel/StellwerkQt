@@ -8,7 +8,7 @@
 #include <QLabel>
 class Weiche{
 public:
-Weiche( int name );                                    //name as int, will be converted to QString
+  Weiche( int name, bool state = true );                                    //name as int, will be converted to QString
   //
   void setBelegung( bool newbelegung );
   bool getBelegung(){ return belegung; }
@@ -33,9 +33,9 @@ Weiche( int name );                                    //name as int, will be co
   void switchWeiche(bool linksrechts);
 private:
   QString w_id;                                        //i.e. 068
-  bool w_status = true;                                //true:=straight ; false:=deviated
+  bool w_status;                                       //true:=straight ; false:=deviated
   bool verriegelung = false;                           //true:=locked ; false:=unlocked
-  bool belegung = true;                                  //true:=unoccupied ; false:=occupied
+  bool belegung = true;                                //true:=unoccupied ; false:=occupied
   int counter = 0;                                     //counter for occupation cycles to determine unlock status
   //
   void evaluateVerriegelung();
