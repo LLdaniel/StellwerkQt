@@ -6,7 +6,7 @@
 #include <QDebug>
 #include <QVariant>
 filemanager::filemanager( QString dir){
-  file.rename(dir);
+  file.setFileName(dir);
 }
 
 filemanager::~filemanager(){
@@ -38,7 +38,7 @@ void filemanager::write(){
 }
 
 bool filemanager::passstate(int position){
-  return status.at(position);
+  return status.at(position-1);
 }
 
 void filemanager::add( bool newstate ){
