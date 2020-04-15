@@ -61,7 +61,10 @@ void MainWindow::createMenus(){
 
 void MainWindow::createActions(){
   shutdownAct = new QAction(tr("&Shutdown"), this);
-  shutdownAct->setShortcuts(QKeySequence::Quit);
+  QKeySequence s(Qt::ControlModifier + Qt::Key_Q);
+  QList<QKeySequence> shtdwnSeq;
+  shtdwnSeq.append(s);
+  shutdownAct->setShortcuts(shtdwnSeq);
   shutdownAct->setStatusTip(tr("Initiate control center shutdown"));
   QObject::connect(shutdownAct, &QAction::triggered, this, &MainWindow::shutdown);
 
