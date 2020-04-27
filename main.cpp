@@ -85,8 +85,9 @@ int main( int argc , char *argv[] ){
   // starting QT application
   //**************************************************************************
 
-  wiringPiSetupGpio(); // is needed by mainwindow already, therefore set it up now
-  pinMode(13,OUTPUT);  // power turnouts on/off with GPIO13
+  wiringPiSetupGpio(); // is needed by mainwindow already, therefore set it up now                                              
+  //pinMode(13,OUTPUT);  // power turnouts on/off with GPIO13                                                                          !!!!!!!!!!!!!!!!
+  //digitalWrite(13,LOW);
   
   QApplication a(argc, argv);
   MainWindow w;
@@ -106,7 +107,7 @@ int main( int argc , char *argv[] ){
 
   // create a filemanager and read turnout state from previous session
   //**************************************************************************
-  filemanager fmngr("/home/raspi/turnouts.txt");
+  filemanager fmngr("/home/pi/turnouts.txt");
   fmngr.read();
   
   // initialaizing the specific model railway plan
@@ -116,37 +117,37 @@ int main( int argc , char *argv[] ){
   Stellwerkstechnik *stellwerkstecptr = new Stellwerkstechnik();
   Block *aaptr = new Block("aa", stellwerkstecptr);
   //:::turnouts:::
-  Weiche *w1ptr = new Weiche(1); //new should read: new Weiche(1,fmngr.passstate(1));
-  Weiche *w2ptr = new Weiche(2);
-  Weiche *w3ptr = new Weiche(3);
-  Weiche *w4ptr = new Weiche(4);
-  Weiche *w5ptr = new Weiche(5);
-  Weiche *w6ptr = new Weiche(6);
-  Weiche *w7ptr = new Weiche(7);
-  Weiche *w8ptr = new Weiche(8);
-  Weiche *w9ptr = new Weiche(9);
-  Weiche *w10ptr = new Weiche(10);
-  Weiche *w11ptr = new Weiche(11);
-  Weiche *w12ptr = new Weiche(12);
-  Weiche *w13ptr = new Weiche(13);
-  Weiche *w14ptr = new Weiche(14);
-  Weiche *w15ptr = new Weiche(15);
-  Weiche *w16ptr = new Weiche(16);
-  Weiche *w17ptr = new Weiche(17);
-  Weiche *w18ptr = new Weiche(18);
-  Weiche *w19ptr = new Weiche(19);
-  Weiche *w20ptr = new Weiche(20);
-  Weiche *w21ptr = new Weiche(21);
-  Weiche *w22ptr = new Weiche(22);
-  Weiche *w23ptr = new Weiche(23);
-  Weiche *w24ptr = new Weiche(24);
-  Weiche *w25ptr = new Weiche(25);
-  Weiche *w26ptr = new Weiche(26);
-  Weiche *w27ptr = new Weiche(27);
-  Weiche *w28ptr = new Weiche(28);
-  Weiche *w29ptr = new Weiche(29);
-  Weiche *w30ptr = new Weiche(30);
-  Weiche *w31ptr = new Weiche(31);
+  Weiche *w1ptr = new Weiche(1,fmngr.passstate(1)); 
+  Weiche *w2ptr = new Weiche(2,fmngr.passstate(2));
+  Weiche *w3ptr = new Weiche(3,fmngr.passstate(3));
+  Weiche *w4ptr = new Weiche(4,fmngr.passstate(4));
+  Weiche *w5ptr = new Weiche(5,fmngr.passstate(5));
+  Weiche *w6ptr = new Weiche(6,fmngr.passstate(6));
+  Weiche *w7ptr = new Weiche(7,fmngr.passstate(7));
+  Weiche *w8ptr = new Weiche(8,fmngr.passstate(8));
+  Weiche *w9ptr = new Weiche(9,fmngr.passstate(9));
+  Weiche *w10ptr = new Weiche(10,fmngr.passstate(10));
+  Weiche *w11ptr = new Weiche(11,fmngr.passstate(11));
+  Weiche *w12ptr = new Weiche(12,fmngr.passstate(12));
+  Weiche *w13ptr = new Weiche(13,fmngr.passstate(13));
+  Weiche *w14ptr = new Weiche(14,fmngr.passstate(14));
+  Weiche *w15ptr = new Weiche(15,fmngr.passstate(15));
+  Weiche *w16ptr = new Weiche(16,fmngr.passstate(16));
+  Weiche *w17ptr = new Weiche(17,fmngr.passstate(17));
+  Weiche *w18ptr = new Weiche(18,fmngr.passstate(18));
+  Weiche *w19ptr = new Weiche(19,fmngr.passstate(19));
+  Weiche *w20ptr = new Weiche(20,fmngr.passstate(20));
+  Weiche *w21ptr = new Weiche(21,fmngr.passstate(21));
+  Weiche *w22ptr = new Weiche(22,fmngr.passstate(22));
+  Weiche *w23ptr = new Weiche(23,fmngr.passstate(23));
+  Weiche *w24ptr = new Weiche(24,fmngr.passstate(24));
+  Weiche *w25ptr = new Weiche(25,fmngr.passstate(25));
+  Weiche *w26ptr = new Weiche(26,fmngr.passstate(26));
+  Weiche *w27ptr = new Weiche(27,fmngr.passstate(27));
+  Weiche *w28ptr = new Weiche(28,fmngr.passstate(28));
+  Weiche *w29ptr = new Weiche(29,fmngr.passstate(29));
+  Weiche *w30ptr = new Weiche(30,fmngr.passstate(30));
+  Weiche *w31ptr = new Weiche(31,fmngr.passstate(31));
   //:::segments:::
   Block *abptr = new Block("ab", stellwerkstecptr);
   Block *acptr = new Block("ac", stellwerkstecptr);
@@ -934,7 +935,7 @@ int main( int argc , char *argv[] ){
   s2tos42.push_back(s2tos42w2);
   s2ptr->addWeichenstatus(s42ptr,s2tos42);
   QPair<Weiche*, bool> s2tos33w31(w31ptr,false);
-  QPair<Weiche*, bool> s2tos33w2(w2ptr,false);
+  QPair<Weiche*, bool> s2tos33w2(w2ptr,true);
   QPair<Weiche*, bool> s2tos33w25(w25ptr,false);
   QPair<Weiche*, bool> s2tos33w26(w26ptr,false);
   QList<QPair<Weiche*, bool>> s2tos33;
@@ -944,7 +945,7 @@ int main( int argc , char *argv[] ){
   s2tos33.push_back(s2tos33w26);
   s2ptr->addWeichenstatus(s33ptr,s2tos33);
   QPair<Weiche*, bool> s2tos32w31(w31ptr,false);
-  QPair<Weiche*, bool> s2tos32w2(w2ptr,false);
+  QPair<Weiche*, bool> s2tos32w2(w2ptr,true);
   QPair<Weiche*, bool> s2tos32w25(w25ptr,true);
   QList<QPair<Weiche*, bool>> s2tos32;
   s2tos32.push_back(s2tos32w31);
@@ -1625,12 +1626,12 @@ int main( int argc , char *argv[] ){
   s35toww19.push_back(s35toww19w27);
   s35ptr->addWeichenstatusZuRangier(ww19ptr,s35toww19);
 
-  QPair<Weiche*, bool> s36tos1w26(w26ptr,false);
   QPair<Weiche*, bool> s36tos1w25(w25ptr,false);
+  QPair<Weiche*, bool> s36tos1w26(w26ptr,false);
   QPair<Weiche*, bool> s36tos1w31(w31ptr,false);
   QList<QPair<Weiche*, bool>> s36tos1;
-  s36tos1.push_back(s36tos1w26);
   s36tos1.push_back(s36tos1w25);
+  s36tos1.push_back(s36tos1w26);
   s36tos1.push_back(s36tos1w31);
   s36ptr->addWeichenstatus(s1ptr,s36tos1);
   QPair<Weiche*, bool> s36tos26w26(w26ptr,false);
@@ -6199,16 +6200,16 @@ int main( int argc , char *argv[] ){
   //************************************************************************** 
   //wiringPiSetupGpio(); cf beginning of program (also needed in mainwindow)
 
-  sr595Setup (100, 32, 9, 5, 11); 
-  //sr595Setup (200, 32, );
+  sr595Setup (100, 32, 9, 5, 11);                    //pin base, pin number, serial, clock, refresh                                      
+  sr595Setup (200, 32, 19, 6, 26); 
   
   //do not rely on random state of shift register: set all to LOW=0
   for(int pipin = 100; pipin < 132; pipin++){
-    digitalWrite(pipin,LOW);
-    //digitalWrite(pinpin+100,LOW);
+    digitalWrite(pipin,LOW);                                                                
+    digitalWrite(pipin+100,LOW);
   }
 
-  //initialize all turnouts with pins:
+  //initialize all turnouts with pins:                                                  
   w1ptr->setGpio(130,131);
   w2ptr->setGpio(129,128);
   w20ptr->setGpio(107,106);
@@ -6224,6 +6225,30 @@ int main( int argc , char *argv[] ){
   w30ptr->setGpio(119,118);
   w31ptr->setGpio(116,117);
 
+  w3ptr->setGpio(200,201);
+  w4ptr->setGpio(202,203);
+  w5ptr->setGpio(204,205);
+  w6ptr->setGpio(206,207);
+  w7ptr->setGpio(209,208);
+  w8ptr->setGpio(210,211);
+  w9ptr->setGpio(212,213);
+  w10ptr->setGpio(215,214);
+  w11ptr->setGpio(217,216);
+  w12ptr->setGpio(219,218);
+  w13ptr->setGpio(220,221);
+  w14ptr->setGpio(223,222);
+  //w15 is spare, double turnout, controlled for
+  w16ptr->setGpio(225,224);
+  w17ptr->setGpio(226,227);
+  //w18 is spare, double turnout, controlled for
+  w19ptr->setGpio(228,229);
+                            //230, 231 are spare pins
+
+  s21ptr->showWeichenstatusALL();
+  s36ptr->showWeichenstatusALL();
+  s37ptr->showWeichenstatusALL();
+  s48ptr->showWeichenstatusALL();
+
   // end of program; release resources and write current turnout states
   //************************************************************************** 
   // all classes with parents are deleted through this chain, addItem, addWidget takes ownership, the rest is left for the programmer:
@@ -6231,7 +6256,7 @@ int main( int argc , char *argv[] ){
   qDebug() <<"endofprogram";
 
   // add turnouts to filemanager and write the states to the txt file
-  fmngr.add(w1ptr->getW_status());  fmngr.add(w2ptr->getW_status()); fmngr.add(w3ptr->getW_status()); fmngr.add(w4ptr->getW_status()); fmngr.add(w5ptr->getW_status()); fmngr.add(w6ptr->getW_status()); fmngr.add(w7ptr->getW_status()); fmngr.add(w7ptr->getW_status());  fmngr.add(w8ptr->getW_status()); fmngr.add(w9ptr->getW_status()); fmngr.add(w10ptr->getW_status()); fmngr.add(w11ptr->getW_status()); fmngr.add(w12ptr->getW_status()); fmngr.add(w13ptr->getW_status()); fmngr.add(w14ptr->getW_status());  fmngr.add(w15ptr->getW_status()); fmngr.add(w16ptr->getW_status()); fmngr.add(w17ptr->getW_status()); fmngr.add(w18ptr->getW_status()); fmngr.add(w19ptr->getW_status()); fmngr.add(w20ptr->getW_status()); fmngr.add(w21ptr->getW_status());  fmngr.add(w22ptr->getW_status()); fmngr.add(w23ptr->getW_status()); fmngr.add(w24ptr->getW_status()); fmngr.add(w25ptr->getW_status()); fmngr.add(w26ptr->getW_status()); fmngr.add(w27ptr->getW_status()); fmngr.add(w28ptr->getW_status());  fmngr.add(w29ptr->getW_status()); fmngr.add(w30ptr->getW_status()); fmngr.add(w31ptr->getW_status());
+  fmngr.add(w1ptr->getW_status()); fmngr.add(w2ptr->getW_status()); fmngr.add(w3ptr->getW_status()); fmngr.add(w4ptr->getW_status()); fmngr.add(w5ptr->getW_status()); fmngr.add(w6ptr->getW_status()); fmngr.add(w7ptr->getW_status());  fmngr.add(w8ptr->getW_status()); fmngr.add(w9ptr->getW_status()); fmngr.add(w10ptr->getW_status()); fmngr.add(w11ptr->getW_status()); fmngr.add(w12ptr->getW_status()); fmngr.add(w13ptr->getW_status()); fmngr.add(w14ptr->getW_status());  fmngr.add(w15ptr->getW_status()); fmngr.add(w16ptr->getW_status()); fmngr.add(w17ptr->getW_status()); fmngr.add(w18ptr->getW_status()); fmngr.add(w19ptr->getW_status()); fmngr.add(w20ptr->getW_status()); fmngr.add(w21ptr->getW_status());  fmngr.add(w22ptr->getW_status()); fmngr.add(w23ptr->getW_status()); fmngr.add(w24ptr->getW_status()); fmngr.add(w25ptr->getW_status()); fmngr.add(w26ptr->getW_status()); fmngr.add(w27ptr->getW_status()); fmngr.add(w28ptr->getW_status());  fmngr.add(w29ptr->getW_status()); fmngr.add(w30ptr->getW_status()); fmngr.add(w31ptr->getW_status());
   fmngr.write();
   //
   //delete in reverse order
