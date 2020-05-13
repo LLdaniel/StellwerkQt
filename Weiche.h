@@ -3,12 +3,14 @@
  */
 #ifndef WEICHE_H
 #define WEICHE_H
+#include <QObject>
 #include <QString>
 #include <QGraphicsRectItem>
 #include <QLabel>
-class Weiche{
+class Weiche : public QObject{
+  Q_OBJECT
 public:
-  Weiche( int name, bool state = true );                                    //name as int, will be converted to QString
+  Weiche( int name, bool state = true, bool kreuz = false);                                    //name as int, will be converted to QString
   //
   void setBelegung( bool newbelegung );
   bool getBelegung(){ return belegung; }
@@ -31,12 +33,15 @@ public:
   int getGpio( bool linksrechts );                     //0 straight || 1 deviated
   void setGpio( int pinGerade, int pinAbknickend );
   void switchWeiche(bool linksrechts);
+signals:
+  void kreuzungsweiche(bool sollstatus);               //tell Connector, that this part of a double turnout
 private:
   QString w_id;                                        //i.e. 068
   bool w_status;                                       //true:=straight ; false:=deviated
   bool verriegelung = false;                           //true:=locked ; false:=unlocked
   bool belegung = true;                                //true:=unoccupied ; false:=occupied
   int counter = 0;                                     //counter for occupation cycles to determine unlock status
+  bool kreuzung;                                       //part of a double turnout?
   //
   void evaluateVerriegelung();
   //

@@ -28,6 +28,7 @@
 #include "VSignal.h"
 #include "WSignal.h"
 #include "worker.h"
+#include "Connector.h"
 #include "Spmemory.h"
 #include "filemanager.h"
 #include <QString>
@@ -130,11 +131,11 @@ int main( int argc , char *argv[] ){
   Weiche *w11ptr = new Weiche(11,fmngr.passstate(11));
   Weiche *w12ptr = new Weiche(12,fmngr.passstate(12));
   Weiche *w13ptr = new Weiche(13,fmngr.passstate(13));
-  Weiche *w14ptr = new Weiche(14,fmngr.passstate(14));
-  Weiche *w15ptr = new Weiche(15,fmngr.passstate(15));
+  Weiche *w14ptr = new Weiche(14,fmngr.passstate(14),true);
+  Weiche *w15ptr = new Weiche(15,fmngr.passstate(15),true);
   Weiche *w16ptr = new Weiche(16,fmngr.passstate(16));
-  Weiche *w17ptr = new Weiche(17,fmngr.passstate(17));
-  Weiche *w18ptr = new Weiche(18,fmngr.passstate(18));
+  Weiche *w17ptr = new Weiche(17,fmngr.passstate(17),true);
+  Weiche *w18ptr = new Weiche(18,fmngr.passstate(18),true);
   Weiche *w19ptr = new Weiche(19,fmngr.passstate(19));
   Weiche *w20ptr = new Weiche(20,fmngr.passstate(20));
   Weiche *w21ptr = new Weiche(21,fmngr.passstate(21));
@@ -148,6 +149,13 @@ int main( int argc , char *argv[] ){
   Weiche *w29ptr = new Weiche(29,fmngr.passstate(29));
   Weiche *w30ptr = new Weiche(30,fmngr.passstate(30));
   Weiche *w31ptr = new Weiche(31,fmngr.passstate(31));
+  //:::double turnouts:::
+  Connector *connector1 = new Connector("014015");
+  Connector *connector2 = new Connector("017018");
+  QObject::connect(w14ptr,&Weiche::kreuzungsweiche,connector1,&Connector::recieveCall);
+  QObject::connect(w15ptr,&Weiche::kreuzungsweiche,connector1,&Connector::recieveCall);
+  QObject::connect(w17ptr,&Weiche::kreuzungsweiche,connector2,&Connector::recieveCall);
+  QObject::connect(w18ptr,&Weiche::kreuzungsweiche,connector2,&Connector::recieveCall);
   //:::segments:::
   Block *abptr = new Block("ab", stellwerkstecptr);
   Block *acptr = new Block("ac", stellwerkstecptr);
@@ -6236,10 +6244,12 @@ int main( int argc , char *argv[] ){
   w11ptr->setGpio(217,216);
   w12ptr->setGpio(219,218);
   w13ptr->setGpio(220,221);
-  w14ptr->setGpio(223,222);
+  connector1->setGpio(223,222);
+  //w14ptr->setGpio(223,222);
   //w15 is spare, double turnout, controlled for
   w16ptr->setGpio(225,224);
-  w17ptr->setGpio(226,227);
+  connector2->setGpio(227,226);
+  //w17ptr->setGpio(226,227);
   //w18 is spare, double turnout, controlled for
   w19ptr->setGpio(228,229);
                             //230, 231 are spare pins

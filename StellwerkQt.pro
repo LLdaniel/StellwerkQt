@@ -36,7 +36,8 @@ SOURCES += main.cpp\
     clickmanager.cpp \
     worker.cpp \
     Spmemory.cpp \
-    filemanager.cpp
+    filemanager.cpp \
+    Connector.cpp
 
 HEADERS  += mainwindow.h \
     VSignal.h \
@@ -49,7 +50,8 @@ HEADERS  += mainwindow.h \
     clickmanager.h \
     worker.h \
     Spmemory.h \
-    filemanager.h
+    filemanager.h \
+    Connector.h
 
     FORMS    += mainwindow.ui
     RESOURCES+=resources.qrc

@@ -14,9 +14,10 @@ extern "C"{
 }
 #endif
 //
-Weiche::Weiche (int name, bool state/*=true*/){
+Weiche::Weiche (int name, bool state/*=true*/, bool kreuz/*=false*/){
   setW_id( name );
   w_status = state;
+  kreuzung = kreuz;
 }
 
 void Weiche::setBelegung( bool newbelegung ){
@@ -28,7 +29,7 @@ void Weiche::setBelegung( bool newbelegung ){
 }
 
 void Weiche::setW_id( int name ){
-  QString suffix = QString::number( name );                   //convert name to QStrin
+  QString suffix = QString::number( name );                   //convert name to QString
   if( name > 0 && name <10 ){
     w_id = "00" + suffix;
   }
@@ -46,7 +47,9 @@ void Weiche::setW_status( bool status ){
   }
   else{                                                      //ok, change status is permitted
     w_status = status;
+    qDebug()<<"change turnout "<<w_id<<"permitted"; 
     switchWeiche(status);
+    if(kreuzung){emit kreuzungsweiche(status);}              //if part in double turnout: call to Connector
     changeColor();
   }
 }
@@ -125,11 +128,13 @@ void Weiche::setGpio(int pinGerade, int pinAbknickend){
 void Weiche::switchWeiche(bool linksrechts){
   if(pin0 > 0 and pin1 > 0){                                 //connect to hadware command only when there are two directions set
     if(linksrechts){
+      qDebug()<<"Stelle weiche "<<w_id<<" auf true";
       digitalWrite(pin0, HIGH);
       delay(20);//[ms]
       digitalWrite(pin0, LOW);
     }
     if(!linksrechts){
+      qDebug()<<"Stelle weiche "<<w_id<<" auf false";
       digitalWrite(pin1, HIGH);
       delay(20);//[ms]
       digitalWrite(pin1, LOW);
