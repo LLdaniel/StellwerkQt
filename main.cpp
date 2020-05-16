@@ -931,9 +931,9 @@ int main( int argc , char *argv[] ){
   scene->addWidget(ww23label);
   
   //turnout status ---------------------------------------------------
-  QPair<Weiche*, bool> s1tos4w1(w2ptr,true);
+  QPair<Weiche*, bool> s1tos4w2(w2ptr,true);
   QList<QPair<Weiche*, bool>> s1tos4;
-  s1tos4.push_back(s1tos4w1);
+  s1tos4.push_back(s1tos4w2);
   s1ptr->addWeichenstatus(s4ptr,s1tos4);
 
   QPair<Weiche*, bool> s2tos42w1(w1ptr,false);
@@ -6244,13 +6244,9 @@ int main( int argc , char *argv[] ){
   w11ptr->setGpio(217,216);
   w12ptr->setGpio(219,218);
   w13ptr->setGpio(220,221);
-  connector1->setGpio(223,222);
-  //w14ptr->setGpio(223,222);
-  //w15 is spare, double turnout, controlled for
+  connector1->setGpio(223,222); //instead of w14ptr->setGpio(223,222); //w15 is spare, double turnout, controlled for
   w16ptr->setGpio(225,224);
-  connector2->setGpio(227,226);
-  //w17ptr->setGpio(226,227);
-  //w18 is spare, double turnout, controlled for
+  connector2->setGpio(227,226); //instead w17ptr->setGpio(226,227); //w18 is spare, double turnout, controlled for
   w19ptr->setGpio(228,229);
                             //230, 231 are spare pins
 
@@ -6258,7 +6254,7 @@ int main( int argc , char *argv[] ){
   s36ptr->showWeichenstatusALL();
   s37ptr->showWeichenstatusALL();
   s48ptr->showWeichenstatusALL();
-
+  
   // end of program; release resources and write current turnout states
   //************************************************************************** 
   // all classes with parents are deleted through this chain, addItem, addWidget takes ownership, the rest is left for the programmer:
