@@ -6208,8 +6208,8 @@ int main( int argc , char *argv[] ){
   //************************************************************************** 
   //wiringPiSetupGpio(); cf beginning of program (also needed in mainwindow)
 
-  sr595Setup (100, 32, 9, 5, 11);                    //pin base, pin number, serial, clock, refresh                                      
-  sr595Setup (200, 32, 19, 6, 26); 
+  sr595Setup (100, 28, 9, 5, 11);                    //pin base, pin number, serial, clock, refresh                                      
+  sr595Setup (200, 30, 19, 6, 26); 
   
   //do not rely on random state of shift register: set all to LOW=0
   for(int pipin = 100; pipin < 132; pipin++){
@@ -6217,9 +6217,10 @@ int main( int argc , char *argv[] ){
     digitalWrite(pipin+100,LOW);
   }
 
-  //initialize all turnouts with pins:                                                  
-  w1ptr->setGpio(130,131);
-  w2ptr->setGpio(129,128);
+  //initialize all turnouts with pins:
+  //   it seems that it is relevant, if there are spare pins or not (some turnouts switch status altough no hardware problems or Stellwerk commands in switchWeiche are called). Releated to wiringPi and choosen pinBase together with shifting immediately the shift register status to output
+  w1ptr->setGpio(124,125); 
+  w2ptr->setGpio(127,126); 
   w20ptr->setGpio(107,106);
   w21ptr->setGpio(105,104);
   w22ptr->setGpio(103,102);
@@ -6228,10 +6229,10 @@ int main( int argc , char *argv[] ){
   w25ptr->setGpio(113,112);
   w26ptr->setGpio(111,110);
   w27ptr->setGpio(108,109);
-  w28ptr->setGpio(123,122); //124,125 126,127  as spare pins
+  w28ptr->setGpio(123,122); 
   w29ptr->setGpio(120,121);
   w30ptr->setGpio(119,118);
-  w31ptr->setGpio(116,117);
+  w31ptr->setGpio(116,117); //spare pins: 128,129,130,131 --> see pinBase=28
 
   w3ptr->setGpio(200,201);
   w4ptr->setGpio(202,203);
@@ -6244,11 +6245,11 @@ int main( int argc , char *argv[] ){
   w11ptr->setGpio(217,216);
   w12ptr->setGpio(219,218);
   w13ptr->setGpio(220,221);
-  connector1->setGpio(223,222); //instead of w14ptr->setGpio(223,222); //w15 is spare, double turnout, controlled for
-  w16ptr->setGpio(225,224);
-  connector2->setGpio(227,226); //instead w17ptr->setGpio(226,227); //w18 is spare, double turnout, controlled for
+  connector1->setGpio(223,222); //instead of w14ptr->setGpio(223,222); //w15 is spare, double turnout with connector1
+  w16ptr->setGpio(225,224); 
+  connector2->setGpio(227,226); //instead of w17ptr->setGpio(226,227); //w18 is spare, double turnout with connector2
   w19ptr->setGpio(228,229);
-                            //230, 231 are spare pins
+                            //230, 231 are spare pins --> see pinBase=30
 
   s21ptr->showWeichenstatusALL();
   s36ptr->showWeichenstatusALL();
