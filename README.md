@@ -18,8 +18,12 @@ The program has different sub-classes giving the chance to simulate a signalling
 - **clickmanager** is used for the GUI control plan to manage user inputs for settung up routes
 - **wiringPi** includes the library of drogon http://wiringpi.com/ to manage I/O of the RaspberryPi
 - **mainwindow** and **.pro** files are related to Qt which are used for GUI implementations
+- **Spmemory** is the memory of routes not yet possible
+- **Connector** connects two turnouts to one double-turnout (keeping the character of two single turnouts)
+- **worker** manages the updates of the segments' status
+- **filemanager** reads the last session's turnout state and writes the state for the next session
 ### cross compiling
-Crosscompiling was tested with Qt 5.8.0, Raspbian Jessie on RaspberryPi 3B and Debian Jessie on the host computer.
+Crosscompiling was tested with Qt 5.12.0, Raspbian Jessie on RaspberryPi 3B and Debian Jessie on the host computer.
 For cross compiling with **qmake** do:  
 `~/rpi/qt5/bin/qmake -r`  
 `make`  
