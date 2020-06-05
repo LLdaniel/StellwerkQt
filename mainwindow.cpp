@@ -35,6 +35,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 
 void MainWindow::keyPressEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_Escape){
+      
     }
 }
 
@@ -51,6 +52,7 @@ void MainWindow::createMenus(){
   viewMenu = menuBar()->addMenu(tr("&View"));
   viewMenu->addAction(upscaleAct);
   viewMenu->addAction(downscaleAct);
+  viewMenu->addAction(fullscreenAct);
 
   aboutMenu = menuBar()->addMenu(tr("&About"));
   aboutMenu->addAction(aboutAct);
@@ -97,6 +99,14 @@ void MainWindow::createActions(){
   downscaleAct->setShortcuts(downSeq);
   downscaleAct->setStatusTip(tr("down-scales view"));
   QObject::connect(downscaleAct, &QAction::triggered, this, &MainWindow::downscale);
+
+  fullscreenAct = new QAction(tr("&Fullscreen"), this);
+  QKeySequence sc(Qt::ControlModifier + Qt::Key_F);
+  QList<QKeySequence> scSeq;
+  scSeq.append(sc);
+  fullscreenAct->setShortcuts(scSeq);
+  fullscreenAct->setStatusTip(tr("Enable/Disable Fullscreen"));
+  QObject::connect(fullscreenAct, &QAction::triggered, this, &MainWindow::screen);
   
   aboutAct = new QAction(tr("&About ControlCenter..."), this);
   aboutAct->setStatusTip(tr("More information about ControlCenter"));
@@ -116,11 +126,11 @@ void MainWindow::showHelpDialog(){
 }
 
 void MainWindow::upscale(){
-  ((QGraphicsView*)this->centralWidget())->scale(0.5,0.5);
+  ((QGraphicsView*)this->centralWidget())->scale(0.90,0.90);
 }
 
 void MainWindow::downscale(){
-  ((QGraphicsView*)this->centralWidget())->scale(2.0,2.0);
+  ((QGraphicsView*)this->centralWidget())->scale(1.111111,1.111111);
 }
 
 void MainWindow::powerOffTurnouts(){
@@ -131,4 +141,12 @@ void MainWindow::powerOffTurnouts(){
 void MainWindow::powerOnTurnouts(){
   qDebug()<<"Weichen on";
   //digitalWrite(powerturnouts,HIGH);
+}
+
+void MainWindow::screen(){
+  if(this->isFullScreen()){
+    this->setWindowState(Qt::WindowMaximized);
+  } else {
+    this->setWindowState(Qt::WindowFullScreen);
+  }
 }

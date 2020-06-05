@@ -6201,7 +6201,7 @@ int main( int argc , char *argv[] ){
   QObject::connect(s47ptr, &HSignal::callspmemory,mem, &Spmemory::addFS);
   QObject::connect(s48ptr, &HSignal::callspmemory,mem, &Spmemory::addFS);
   thread2->start();
-  w.showMaximized();
+  w.showFullScreen(); //FullScreen as default
 
 
   // setting up hadware connections = GPIO pins
@@ -6251,11 +6251,6 @@ int main( int argc , char *argv[] ){
   w19ptr->setGpio(228,229);
                             //230, 231 are spare pins --> see pinBase=30
 
-  s21ptr->showWeichenstatusALL();
-  s36ptr->showWeichenstatusALL();
-  s37ptr->showWeichenstatusALL();
-  s48ptr->showWeichenstatusALL();
-  
   // end of program; release resources and write current turnout states
   //************************************************************************** 
   // all classes with parents are deleted through this chain, addItem, addWidget takes ownership, the rest is left for the programmer:

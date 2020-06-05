@@ -47,7 +47,7 @@ void Weiche::setW_status( bool status ){
   }
   else{                                                      //ok, change status is permitted
     w_status = status;
-    qDebug()<<"change turnout "<<w_id<<"permitted"; 
+    //qDebug()<<"change turnout "<<w_id<<"permitted"; 
     switchWeiche(status);
     if(kreuzung){emit kreuzungsweiche(status);}              //if part in double turnout: call to Connector
     changeColor();
@@ -128,7 +128,7 @@ void Weiche::setGpio(int pinGerade, int pinAbknickend){
 void Weiche::switchWeiche(bool linksrechts){
   if(pin0 > 0 and pin1 > 0){                                 //connect to hadware command only when there are two directions set
     if(linksrechts){
-      qDebug()<<"Stelle weiche "<<w_id<<" auf true";
+      //qDebug()<<"Stelle weiche "<<w_id<<" auf true";
       digitalWrite(pin0, HIGH);
       delay(20);//[ms]
       digitalWrite(pin0, LOW);

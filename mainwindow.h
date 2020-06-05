@@ -36,6 +36,7 @@ private slots:
   void downscale();
   void powerOffTurnouts();
   void powerOnTurnouts();
+  void screen();
 private:
   int powerturnouts = 13;
   void createActions();
@@ -52,6 +53,7 @@ private:
   QAction *aboutAct;
   QAction *upscaleAct;
   QAction *downscaleAct;
+  QAction *fullscreenAct;
   QMessageBox aboutBox;
   QAction *helpAct;
   QMessageBox helpBox;
