@@ -41,6 +41,12 @@ public:
   //
   void addBlockitems( QGraphicsRectItem *rect ){ blockitems << rect; }
   //
+  // +++ GPIO +++
+  //
+  int getGpio();                     
+  void setGpio( int blockpin);
+  int readBlock();
+  //
 public slots:
   void setB_status( bool status );
 signals:
@@ -61,5 +67,7 @@ signals:
   //
   QList<QGraphicsRectItem*> blockitems;                  //QGraphicsRectItems for visualisation of Blocks 
   void changeColor();                                    //change color in respect to the different states
+  //+++ GPIO +++
+  int pin = -1;
 };
 #endif

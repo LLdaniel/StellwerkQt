@@ -5,6 +5,8 @@
 #include "Block.h"
 #include <QDebug>
 #include <QBrush>
+#include <wiringPi.h>
+#include <mcp23017.h>
 
 Block::Block(QString name , Stellwerkstechnik *signaltechnik){
   setName( name );
@@ -117,6 +119,18 @@ void Block::changeColor(){
     }
   }
 
+}
+
+void Block::setGpio(int blockpin){
+  pin = blockpin;
+}
+
+int Block::getGpio(){
+  return pin;
+}
+
+int Block::readBlock(){
+  return digitalRead(pin);
 }
 
 Block::~Block(){

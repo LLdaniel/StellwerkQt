@@ -50,6 +50,7 @@ extern "C"{
 #endif
 #include <wiringPi.h>
 #include <sr595.h>
+#include <mcp23017.h>
 #ifdef __cplusplus
 }
 #endif
@@ -6251,6 +6252,14 @@ int main( int argc , char *argv[] ){
   w19ptr->setGpio(228,229);
                             //230, 231 are spare pins --> see pinBase=30
 
+  // setting all segments with pins:
+  //mcp23017Setup (400, 0x20);
+  //for(mcp = 0; mcp < 16; mcp++){
+    //pinMode (400 + mcp, INPUT);
+    //pullUpDnControl(400 + mcp, PUD_UP) ;
+    //}
+  //aaptr->setGpio(pin);
+  
   // end of program; release resources and write current turnout states
   //************************************************************************** 
   // all classes with parents are deleted through this chain, addItem, addWidget takes ownership, the rest is left for the programmer:
