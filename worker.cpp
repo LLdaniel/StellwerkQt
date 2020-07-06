@@ -4,26 +4,22 @@
  */
 #include "worker.h"
 #include <QDebug>
-#include <wiringPi.h>
-worker::worker( QList<QPair<int,Block*>> allBlocks, QList<QPair<int,Weiche*>> allWeichen ){
+
+worker::worker( QList<Block*> allBlocks, QList<Weiche*> allWeichen ){
   blocklist = allBlocks;
   weichenlist = allWeichen;
+  t->callOnTimeout(this, &worker::updateBelegt);
 }
 
 worker::~worker(){
 
 }
 
-void worker::addBlockList( int morePins, Block* moreBlocks ){
-  QPair<int,Block*> hilfspair = qMakePair(morePins,moreBlocks);
-  blocklist.push_back( hilfspair );
-}
-
 void worker::showBlocks(){
   qDebug()<<"************************************************************";
   qDebug()<<"*** Dies sind die Blöcke, die ständig überwacht werden   ***";
   for(  int i = 0 ; i < blocklist.size() ; i++ ){//Durchläuft alle update Blocks
-    qDebug()<<"***   "<<blocklist.at(i).first<<" -> "<<blocklist.at(i).second->getName()<<"                                           ***";
+    qDebug()<<"***   "<<blocklist.at(i)->getGpio()<<" -> "<<blocklist.at(i)->getName()<<"                                           ***";
   }
   qDebug()<<"************************************************************";
   qDebug()<<"";
@@ -31,17 +27,20 @@ void worker::showBlocks(){
 
 void worker::showWeichen(){
   qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies sind die Blöcke, die ständig überwacht werden   ***";
-  for(  int i = 0 ; i < blocklist.size() ; i++ ){//Durchläuft alle update Blocks
-    qDebug()<<"***   "<<weichenlist.at(i).first<<" -> "<<weichenlist.at(i).second->getW_id()<<"                                           ***";
+  qDebug()<<"*** Dies sind die Weichen, die ständig überwacht werden  ***";
+  for(  int i = 0 ; i < weichenlist.size() ; i++ ){//Durchläuft alle update Blocks
+    // qDebug()<<"***   "<<weichenlist.at(i)->getGpio()<<" -> "<<weichenlist.at(i)->getW_id()<<"                                           ***";
   }
   qDebug()<<"************************************************************";
   qDebug()<<"";
 }
 
-void worker::addWeichenList( int morePins, Weiche* moreWeichen ){
-  QPair<int,Weiche*> hilfspair = qMakePair(morePins,moreWeichen);
-  weichenlist.push_back( hilfspair );
+void worker::timing(){                                        //this is a hack: thread connected with processSpeicher directly only executes processSpeicher, but cannot insert updates, therefore timer with 0ms which calls it also repeatedly, but there thread has chance to process event loop and new events see https://github.com/LLdaniel/QThreadExample
+  if( update ) t->start();
+  if(!update ){
+    delete t;
+    qDebug()<<" F I N I S H E D #1 ";
+  }
 }
 
 void worker::quit(){
@@ -51,12 +50,12 @@ void worker::quit(){
 void worker::updateBelegt(){
   int i = 0;
   int aktuellBlock = -1;
-  int aktuellWeiche = -1;
+  //int aktuellWeiche = -1;
   int maxindex = 0;
   //
   // which list is greater?
   if( blocklist.size() >= weichenlist.size() ){
-    maxindex = blocklist.size();
+  maxindex = blocklist.size();
   }
   if( weichenlist.size() > blocklist.size() ){
     maxindex = weichenlist.size();
@@ -65,28 +64,20 @@ void worker::updateBelegt(){
   // check, if there are pins für weichen oder blocks at all  
   while( update and maxindex > 0){
     //
-    //mapping is 1 to 1 with the pair, loop runs parallel for turnout and segments and stops for the smaller list earlier until the resset
+    //loop runs parallel for turnout and segments and stops for the smaller list earlier until the reset
     if( i < blocklist.size() ){
-      aktuellBlock = digitalRead(blocklist.at(i).first);
+      aktuellBlock = blocklist.at(i)->readBlock();
       if( aktuellBlock == 0 ){                                      //read pins false = belegt || true = frei dagegen ist 0 = LOW , 1 = HIGH
-	blocklist.at(i).second->setB_status(true);
+	blocklist.at(i)->setB_status(true);
       }
       if( aktuellBlock == 1 ){                                      //read pins
-	blocklist.at(i).second->setB_status(false);
+	blocklist.at(i)->setB_status(false);
       }
     }
-    //////////////////////////
-    if( i < weichenlist.size() ){
-      aktuellWeiche = digitalRead(weichenlist.at(i).first);
-      if( aktuellWeiche == 0 ){                                     //read pins false = belegt || true = frei dagegen ist 0 = LOW , 1 = HIGH
-	weichenlist.at(i).second->setBelegung(true);
-      }
-      if( aktuellWeiche == 1 ){                                     //read pins
-	weichenlist.at(i).second->setBelegung(false);
-      }
-    }
+    // #### copy above block for Weichen: __________
     //
     //test more segments of the list otherwise start a new run -- maybe interrupt is the better variant
+    timing();
     if( i < maxindex ){
       i++;
     }
@@ -95,5 +86,4 @@ void worker::updateBelegt(){
   //
   //end of loop either there are no entries or quit call: finish worker
   qDebug()<<"                           F E R T I S C H ";
-  emit finished();
 }

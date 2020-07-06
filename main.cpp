@@ -6135,8 +6135,7 @@ int main( int argc , char *argv[] ){
   QThread* thread = new QThread;
   worker* wrkr = new worker();
   wrkr->moveToThread(thread);
-  QObject::connect(thread, &QThread::started, wrkr, &worker::updateBelegt); ////thread start connection 
-  QObject::connect(wrkr, &worker::finished, thread, &QThread::quit); //if no pin is registered finished
+  QObject::connect(thread, &QThread::started, wrkr, &worker::timing); //thread start connection 
   QObject::connect(&a, &QApplication::aboutToQuit, wrkr, &worker::quit); // quit updateBelegt on aboutToQuit
   QObject::connect(&a, &QApplication::aboutToQuit, thread, &QThread::quit); // quit thread on aboutToQuit
   thread->start();
@@ -6148,7 +6147,6 @@ int main( int argc , char *argv[] ){
   Spmemory *mem = new Spmemory();
   mem->moveToThread(thread2);
   QObject::connect(thread2, &QThread::started, mem, &Spmemory::timing); //thread start connection 
-  //  QObject::connect(mem, &Spmemory::finished, thread2, &QThread::quit);
   QObject::connect(&a, &QApplication::aboutToQuit, mem, &Spmemory::quit); // quit timing on aboutToQuit
   QObject::connect(&a, &QApplication::aboutToQuit, thread2, &QThread::quit); // quit thread2 on aboutToQuit
 

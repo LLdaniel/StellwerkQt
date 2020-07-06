@@ -11,27 +11,25 @@
 #include <Block.h>
 #include <Weiche.h>
 #include <QList>
-#include <QPair>
+#include <QTimer>
 
 class worker : public QObject{                        //after https://mayaposch.wordpress.com/2011/11/01/how-to-really-truly-use-qthreads-the-full-explanation/
   Q_OBJECT
 public:
-  worker( QList<QPair<int,Block*>> allBlocks, QList<QPair<int,Weiche*>> allWeichen );
+  worker( QList<Block*> allBlocks, QList<Weiche*> allWeichen );
   worker(){}
   ~worker();
-  void addBlockList( int morePins, Block* moreBlocks );
   void showBlocks();
-  void addWeichenList( int morePins, Weiche* moreWeichen );
   void showWeichen();
 public slots:
+  void timing();               // intermediate step to solve blocked thread: step towards processSpeicher
   void updateBelegt();                                // updates of all segment status in loop
   void quit();                                        // if program is shutdown, quit thread
-signals:
-  void finished();
 private:
   bool update = true;                                 //update wanted yes = true || no = false
-  QList< QPair<int,Block*>> blocklist;                //all segments which must be updated
-  QList< QPair<int,Weiche*>> weichenlist;             //alle turnout occupations which must be updated
+  QList<Block*> blocklist;                            //all segments which must be updated
+  QList<Weiche*> weichenlist;                         //alle turnout occupations which must be updated
+  QTimer *t = new QTimer(this);
   
 };
 #endif // WORKER_H
