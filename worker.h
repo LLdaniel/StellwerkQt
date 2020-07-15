@@ -17,9 +17,10 @@ class worker : public QObject{                        //after https://mayaposch.
   Q_OBJECT
 public:
   worker( QList<Block*> allBlocks, QList<Weiche*> allWeichen );
-  worker(){}
+  worker(){t->callOnTimeout(this, &worker::updateBelegt);}
   ~worker();
   void showBlocks();
+  void addBlocks(Block* bl);
   void showWeichen();
 public slots:
   void timing();               // intermediate step to solve blocked thread: step towards processSpeicher

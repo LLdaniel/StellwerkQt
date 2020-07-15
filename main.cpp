@@ -6138,7 +6138,7 @@ int main( int argc , char *argv[] ){
   QObject::connect(thread, &QThread::started, wrkr, &worker::timing); //thread start connection 
   QObject::connect(&a, &QApplication::aboutToQuit, wrkr, &worker::quit); // quit updateBelegt on aboutToQuit
   QObject::connect(&a, &QApplication::aboutToQuit, thread, &QThread::quit); // quit thread on aboutToQuit
-  thread->start();
+  //thread->start();
   //thread can be finished by calling wrkr.quit() -> updateBelegt() -> emit finished -> above slot
 
   // memory thread for route memory
@@ -6200,6 +6200,7 @@ int main( int argc , char *argv[] ){
   QObject::connect(s47ptr, &HSignal::callspmemory,mem, &Spmemory::addFS);
   QObject::connect(s48ptr, &HSignal::callspmemory,mem, &Spmemory::addFS);
   thread2->start();
+  
   w.showFullScreen(); //FullScreen as default
 
 
@@ -6254,9 +6255,14 @@ int main( int argc , char *argv[] ){
   //mcp23017Setup (400, 0x20);
   //for(mcp = 0; mcp < 16; mcp++){
     //pinMode (400 + mcp, INPUT);
-    //pullUpDnControl(400 + mcp, PUD_UP) ;
+    //pullUpDnControl(400 + mcp, PUD_UP);
     //}
-  //aaptr->setGpio(pin);
+  // nur übergangsweise, zum test also
+  pinMode (24, INPUT);
+  pullUpDnControl(24, PUD_UP);
+  abptr->setGpio(24);
+  wrkr->addBlocks(abptr);
+  thread->start();
   
   // end of program; release resources and write current turnout states
   //************************************************************************** 

@@ -11,6 +11,7 @@ worker::worker( QList<Block*> allBlocks, QList<Weiche*> allWeichen ){
   t->callOnTimeout(this, &worker::updateBelegt);
 }
 
+
 worker::~worker(){
 
 }
@@ -23,6 +24,10 @@ void worker::showBlocks(){
   }
   qDebug()<<"************************************************************";
   qDebug()<<"";
+}
+
+void worker::addBlocks(Block* bl){
+  blocklist.push_back(bl);
 }
 
 void worker::showWeichen(){
@@ -48,6 +53,7 @@ void worker::quit(){
 }
 
 void worker::updateBelegt(){
+  qDebug(" ich mach dann mal was");
   int i = 0;
   int aktuellBlock = -1;
   //int aktuellWeiche = -1;
@@ -63,15 +69,18 @@ void worker::updateBelegt(){
   //
   // check, if there are pins für weichen oder blocks at all  
   while( update and maxindex > 0){
+    //qDebug(" w o r k i n g");
     //
     //loop runs parallel for turnout and segments and stops for the smaller list earlier until the reset
     if( i < blocklist.size() ){
       aktuellBlock = blocklist.at(i)->readBlock();
       if( aktuellBlock == 0 ){                                      //read pins false = belegt || true = frei dagegen ist 0 = LOW , 1 = HIGH
-	blocklist.at(i)->setB_status(true);
+	blocklist.at(i)->setB_status(false);
+	//qDebug("true = frei");
       }
       if( aktuellBlock == 1 ){                                      //read pins
-	blocklist.at(i)->setB_status(false);
+	blocklist.at(i)->setB_status(true);
+	//qDebug("false = belegt");
       }
     }
     // #### copy above block for Weichen: __________
