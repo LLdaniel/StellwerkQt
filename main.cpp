@@ -150,6 +150,20 @@ int main( int argc , char *argv[] ){
   Weiche *w29ptr = new Weiche(29,fmngr.passstate(29));
   Weiche *w30ptr = new Weiche(30,fmngr.passstate(30));
   Weiche *w31ptr = new Weiche(31,fmngr.passstate(31));
+  Weiche *w40ptr = new Weiche(40,fmngr.passstate(40));
+  Weiche *w41ptr = new Weiche(41,fmngr.passstate(41));
+  Weiche *w42ptr = new Weiche(42,fmngr.passstate(42));
+  Weiche *w43ptr = new Weiche(43,fmngr.passstate(43));
+  Weiche *w44ptr = new Weiche(44,fmngr.passstate(44));
+  Weiche *w45ptr = new Weiche(45,fmngr.passstate(45));
+  Weiche *w46ptr = new Weiche(46,fmngr.passstate(46));
+  Weiche *w47ptr = new Weiche(47,fmngr.passstate(47));
+  Weiche *w48ptr = new Weiche(48,fmngr.passstate(48));
+  Weiche *w49ptr = new Weiche(49,fmngr.passstate(49));
+  Weiche *w50ptr = new Weiche(50,fmngr.passstate(50));
+  Weiche *w51ptr = new Weiche(51,fmngr.passstate(51));
+  Weiche *w52ptr = new Weiche(52,fmngr.passstate(52));
+  Weiche *w53ptr = new Weiche(53,fmngr.passstate(53));
   //:::double turnouts:::
   Connector *connector1 = new Connector("014015");
   Connector *connector2 = new Connector("017018");
@@ -198,6 +212,14 @@ int main( int argc , char *argv[] ){
   Block *bmptr = new Block("bm", stellwerkstecptr);
   Block *bnptr = new Block("bn", stellwerkstecptr);
   Block *boptr = new Block("bo", stellwerkstecptr);
+  Block *bpptr = new Block("bp", stellwerkstecptr);
+  Block *bqptr = new Block("bq", stellwerkstecptr);
+  Block *brptr = new Block("br", stellwerkstecptr);
+  Block *bsptr = new Block("bs", stellwerkstecptr);
+  Block *btptr = new Block("bt", stellwerkstecptr);
+  Block *buptr = new Block("bu", stellwerkstecptr);
+  Block *bvptr = new Block("bv", stellwerkstecptr);
+  Block *bwptr = new Block("bw", stellwerkstecptr);
   Block *bxptr = new Block("bx", stellwerkstecptr);
   Block *byptr = new Block("by", stellwerkstecptr);
   Block *bzptr = new Block("bz", stellwerkstecptr);
@@ -3652,7 +3674,338 @@ int main( int argc , char *argv[] ){
   s8ptr->moveButton(-115,560);
   s8ptr->moveLabel(-70,545);
 
+  //Schattenbahnhof
+  QGraphicsRectItem *bzrect2 = new QGraphicsRectItem();
+  bzrect2->setRect(0,0,10,140);
+  bzrect2->setPos(QPointF(-1075,1800));
+  bzrect2->setBrush(QColor(79,79,79));
+  bzrect2->setRotation(-90);
+  bzptr->addBlockitems(bzrect2);
+  scene->addItem(bzrect2);
+  QGraphicsRectItem *bzrect3 = new QGraphicsRectItem();
+  bzrect3->setRect(0,0,10,729);
+  bzrect3->setPos(QPointF(-1075,1061));
+  bzrect3->setBrush(QColor(79,79,79));
+  bzptr->addBlockitems(bzrect3);
+  scene->addItem(bzrect3);
+  
 
+  QGraphicsRectItem *w40rectge = new QGraphicsRectItem();
+  w40rectge->setRect(0,0,10,75);
+  w40rectge->setPos(QPointF(-935,1800));
+  w40rectge->setBrush(QColor(79,79,79));
+  w40rectge->setRotation(-90);
+  scene->addItem(w40rectge);
+  QGraphicsRectItem *w40rectab = new QGraphicsRectItem();
+  w40rectab->setRect(0,0,10,99);
+  w40rectab->setPos(QPointF(-935,1800));
+  w40rectab->setBrush(QColor(79,79,79));
+  w40rectab->setRotation(-135);
+  scene->addItem(w40rectab);
+  QLabel *w40label = new QLabel();
+  scene->addWidget(w40label);
+  w40ptr->addWeichenitem(w40rectab,w40rectge,w40label);
+  w40ptr->moveLabel(-920,1805);
+
+  QGraphicsRectItem *w42rectge = new QGraphicsRectItem();
+  w42rectge->setRect(0,0,10,99);
+  w42rectge->setPos(QPointF(-865,1730));
+  w42rectge->setBrush(QColor(79,79,79));
+  w42rectge->setRotation(-135);
+  scene->addItem(w42rectge);
+  QGraphicsRectItem *w42rectab = new QGraphicsRectItem();
+  w42rectab->setRect(0,0,10,50);
+  w42rectab->setPos(QPointF(-865,1730));
+  w42rectab->setBrush(QColor(79,79,79));
+  w42rectab->setRotation(-90);
+  scene->addItem(w42rectab);
+  QLabel *w42label = new QLabel();
+  scene->addWidget(w42label);
+  w42ptr->addWeichenitem(w42rectab,w42rectge,w42label);
+  w42ptr->moveLabel(-900,1705);
+
+  QGraphicsRectItem *w44rectge = new QGraphicsRectItem();
+  w44rectge->setRect(0,0,10,99);
+  w44rectge->setPos(QPointF(-795,1660));
+  w44rectge->setBrush(QColor(79,79,79));
+  w44rectge->setRotation(-135);
+  scene->addItem(w44rectge);
+  QGraphicsRectItem *w44rectab = new QGraphicsRectItem();
+  w44rectab->setRect(0,0,10,50);
+  w44rectab->setPos(QPointF(-795,1660));
+  w44rectab->setBrush(QColor(79,79,79));
+  w44rectab->setRotation(-90);
+  scene->addItem(w44rectab);
+  QLabel *w44label = new QLabel();
+  scene->addWidget(w44label);
+  w44ptr->addWeichenitem(w44rectab,w44rectge,w44label);
+  w44ptr->moveLabel(-830,1635);
+
+  QGraphicsRectItem *w46rectge = new QGraphicsRectItem();
+  w46rectge->setRect(0,0,10,99);
+  w46rectge->setPos(QPointF(-725,1590));
+  w46rectge->setBrush(QColor(79,79,79));
+  w46rectge->setRotation(-135);
+  scene->addItem(w46rectge);
+  QGraphicsRectItem *w46rectab = new QGraphicsRectItem();
+  w46rectab->setRect(0,0,10,50);
+  w46rectab->setPos(QPointF(-725,1590));
+  w46rectab->setBrush(QColor(79,79,79));
+  w46rectab->setRotation(-90);
+  scene->addItem(w46rectab);
+  QLabel *w46label = new QLabel();
+  scene->addWidget(w46label);
+  w46ptr->addWeichenitem(w46rectab,w46rectge,w46label);
+  w46ptr->moveLabel(-760,1565);
+
+  QGraphicsRectItem *w48rectge = new QGraphicsRectItem();
+  w48rectge->setRect(0,0,10,99);
+  w48rectge->setPos(QPointF(-655,1520));
+  w48rectge->setBrush(QColor(79,79,79));
+  w48rectge->setRotation(-135);
+  scene->addItem(w48rectge);
+  QGraphicsRectItem *w48rectab = new QGraphicsRectItem();
+  w48rectab->setRect(0,0,10,50);
+  w48rectab->setPos(QPointF(-655,1520));
+  w48rectab->setBrush(QColor(79,79,79));
+  w48rectab->setRotation(-90);
+  scene->addItem(w48rectab);
+  QLabel *w48label = new QLabel();
+  scene->addWidget(w48label);
+  w48ptr->addWeichenitem(w48rectab,w48rectge,w48label);
+  w48ptr->moveLabel(-690,1495);
+
+  QGraphicsRectItem *w50rectge = new QGraphicsRectItem();
+  w50rectge->setRect(0,0,10,99);
+  w50rectge->setPos(QPointF(-585,1450));
+  w50rectge->setBrush(QColor(79,79,79));
+  w50rectge->setRotation(-135);
+  scene->addItem(w50rectge);
+  QGraphicsRectItem *w50rectab = new QGraphicsRectItem();
+  w50rectab->setRect(0,0,10,50);
+  w50rectab->setPos(QPointF(-585,1450));
+  w50rectab->setBrush(QColor(79,79,79));
+  w50rectab->setRotation(-90);
+  scene->addItem(w50rectab);
+  QLabel *w50label = new QLabel();
+  scene->addWidget(w50label);
+  w50ptr->addWeichenitem(w50rectab,w50rectge,w50label);
+  w50ptr->moveLabel(-620,1425);
+
+  QGraphicsRectItem *w52rectge = new QGraphicsRectItem();
+  w52rectge->setRect(0,0,10,99);
+  w52rectge->setPos(QPointF(-515,1380));
+  w52rectge->setBrush(QColor(79,79,79));
+  w52rectge->setRotation(-135);
+  scene->addItem(w52rectge);
+  QGraphicsRectItem *w52rectab = new QGraphicsRectItem();
+  w52rectab->setRect(0,0,10,50);
+  w52rectab->setPos(QPointF(-515,1380));
+  w52rectab->setBrush(QColor(79,79,79));
+  w52rectab->setRotation(-90);
+  scene->addItem(w52rectab);
+  QLabel *w52label = new QLabel();
+  scene->addWidget(w52label);
+  w52ptr->addWeichenitem(w52rectab,w52rectge,w52label);
+  w52ptr->moveLabel(-550,1355);
+
+  QGraphicsRectItem *bwrect = new QGraphicsRectItem();
+  bwrect->setRect(0,0,10,750);
+  bwrect->setPos(QPointF(-865,1800));
+  bwrect->setBrush(QColor(79,79,79));
+  bwrect->setRotation(-90);
+  bwptr->addBlockitems(bwrect);
+  scene->addItem(bwrect);
+
+  QGraphicsRectItem *bvrect = new QGraphicsRectItem();
+  bvrect->setRect(0,0,10,720);
+  bvrect->setPos(QPointF(-815,1730));
+  bvrect->setBrush(QColor(79,79,79));
+  bvrect->setRotation(-90);
+  bvptr->addBlockitems(bvrect);
+  scene->addItem(bvrect);
+
+  QGraphicsRectItem *burect = new QGraphicsRectItem();
+  burect->setRect(0,0,10,720);
+  burect->setPos(QPointF(-745,1660));
+  burect->setBrush(QColor(79,79,79));
+  burect->setRotation(-90);
+  buptr->addBlockitems(burect);
+  scene->addItem(burect);
+
+  QGraphicsRectItem *btrect = new QGraphicsRectItem();
+  btrect->setRect(0,0,10,720);
+  btrect->setPos(QPointF(-675,1590));
+  btrect->setBrush(QColor(79,79,79));
+  btrect->setRotation(-90);
+  btptr->addBlockitems(btrect);
+  scene->addItem(btrect);
+
+  QGraphicsRectItem *bsrect = new QGraphicsRectItem();
+  bsrect->setRect(0,0,10,720);
+  bsrect->setPos(QPointF(-605,1520));
+  bsrect->setBrush(QColor(79,79,79));
+  bsrect->setRotation(-90);
+  bsptr->addBlockitems(bsrect);
+  scene->addItem(bsrect);
+
+  QGraphicsRectItem *brrect = new QGraphicsRectItem();
+  brrect->setRect(0,0,10,720);
+  brrect->setPos(QPointF(-535,1450));
+  brrect->setBrush(QColor(79,79,79));
+  brrect->setRotation(-90);
+  brptr->addBlockitems(brrect);
+  scene->addItem(brrect);
+
+  QGraphicsRectItem *bqrect = new QGraphicsRectItem();
+  bqrect->setRect(0,0,10,720);
+  bqrect->setPos(QPointF(-465,1380));
+  bqrect->setBrush(QColor(79,79,79));
+  bqrect->setRotation(-90);
+  bqptr->addBlockitems(bqrect);
+  scene->addItem(bqrect);
+
+  QGraphicsRectItem *bprect = new QGraphicsRectItem();
+  bprect->setRect(0,0,10,755);
+  bprect->setPos(QPointF(-445,1310));
+  bprect->setBrush(QColor(79,79,79));
+  bprect->setRotation(-90);
+  bpptr->addBlockitems(bprect);
+  scene->addItem(bprect);
+
+  QGraphicsRectItem *w53rectge = new QGraphicsRectItem();
+  w53rectge->setRect(0,0,10,75);
+  w53rectge->setPos(QPointF(375,1300));
+  w53rectge->setBrush(QColor(79,79,79));
+  w53rectge->setRotation(90);
+  scene->addItem(w53rectge);
+  QGraphicsRectItem *w53rectab = new QGraphicsRectItem();
+  w53rectab->setRect(0,0,10,99);
+  w53rectab->setPos(QPointF(375,1300));
+  w53rectab->setBrush(QColor(79,79,79));
+  w53rectab->setRotation(45);
+  scene->addItem(w53rectab);
+  QLabel *w53label = new QLabel();
+  scene->addWidget(w53label);
+  w53ptr->addWeichenitem(w53rectab,w53rectge,w53label);
+  w53ptr->moveLabel(350,1285);
+
+  QGraphicsRectItem *w51rectge = new QGraphicsRectItem();
+  w51rectge->setRect(0,0,10,99);
+  w51rectge->setPos(QPointF(305,1370));
+  w51rectge->setBrush(QColor(79,79,79));
+  w51rectge->setRotation(45);
+  scene->addItem(w51rectge);
+  QGraphicsRectItem *w51rectab = new QGraphicsRectItem();
+  w51rectab->setRect(0,0,10,50);
+  w51rectab->setPos(QPointF(305,1370));
+  w51rectab->setBrush(QColor(79,79,79));
+  w51rectab->setRotation(90);
+  scene->addItem(w51rectab);
+  QLabel *w51label = new QLabel();
+  scene->addWidget(w51label);
+  w51ptr->addWeichenitem(w51rectab,w51rectge,w51label);
+  w51ptr->moveLabel(320,1375);
+
+  QGraphicsRectItem *w49rectge = new QGraphicsRectItem();
+  w49rectge->setRect(0,0,10,99);
+  w49rectge->setPos(QPointF(235,1440));
+  w49rectge->setBrush(QColor(79,79,79));
+  w49rectge->setRotation(45);
+  scene->addItem(w49rectge);
+  QGraphicsRectItem *w49rectab = new QGraphicsRectItem();
+  w49rectab->setRect(0,0,10,50);
+  w49rectab->setPos(QPointF(235,1440));
+  w49rectab->setBrush(QColor(79,79,79));
+  w49rectab->setRotation(90);
+  scene->addItem(w49rectab);
+  QLabel *w49label = new QLabel();
+  scene->addWidget(w49label);
+  w49ptr->addWeichenitem(w49rectab,w49rectge,w49label);
+  w49ptr->moveLabel(250,1445);
+
+  QGraphicsRectItem *w47rectge = new QGraphicsRectItem();
+  w47rectge->setRect(0,0,10,99);
+  w47rectge->setPos(QPointF(165,1510));
+  w47rectge->setBrush(QColor(79,79,79));
+  w47rectge->setRotation(45);
+  scene->addItem(w47rectge);
+  QGraphicsRectItem *w47rectab = new QGraphicsRectItem();
+  w47rectab->setRect(0,0,10,50);
+  w47rectab->setPos(QPointF(165,1510));
+  w47rectab->setBrush(QColor(79,79,79));
+  w47rectab->setRotation(90);
+  scene->addItem(w47rectab);
+  QLabel *w47label = new QLabel();
+  scene->addWidget(w47label);
+  w47ptr->addWeichenitem(w47rectab,w47rectge,w47label);
+  w47ptr->moveLabel(180,1515);
+
+  QGraphicsRectItem *w45rectge = new QGraphicsRectItem();
+  w45rectge->setRect(0,0,10,99);
+  w45rectge->setPos(QPointF(95,1580));
+  w45rectge->setBrush(QColor(79,79,79));
+  w45rectge->setRotation(45);
+  scene->addItem(w45rectge);
+  QGraphicsRectItem *w45rectab = new QGraphicsRectItem();
+  w45rectab->setRect(0,0,10,50);
+  w45rectab->setPos(QPointF(95,1580));
+  w45rectab->setBrush(QColor(79,79,79));
+  w45rectab->setRotation(90);
+  scene->addItem(w45rectab);
+  QLabel *w45label = new QLabel();
+  scene->addWidget(w45label);
+  w45ptr->addWeichenitem(w45rectab,w45rectge,w45label);
+  w45ptr->moveLabel(110,1585);
+
+  QGraphicsRectItem *w43rectge = new QGraphicsRectItem();
+  w43rectge->setRect(0,0,10,99);
+  w43rectge->setPos(QPointF(25,1650));
+  w43rectge->setBrush(QColor(79,79,79));
+  w43rectge->setRotation(45);
+  scene->addItem(w43rectge);
+  QGraphicsRectItem *w43rectab = new QGraphicsRectItem();
+  w43rectab->setRect(0,0,10,50);
+  w43rectab->setPos(QPointF(25,1650));
+  w43rectab->setBrush(QColor(79,79,79));
+  w43rectab->setRotation(90);
+  scene->addItem(w43rectab);
+  QLabel *w43label = new QLabel();
+  scene->addWidget(w43label);
+  w43ptr->addWeichenitem(w43rectab,w43rectge,w43label);
+  w43ptr->moveLabel(40,1655);
+
+  QGraphicsRectItem *w41rectge = new QGraphicsRectItem();
+  w41rectge->setRect(0,0,10,99);
+  w41rectge->setPos(QPointF(-45,1720));
+  w41rectge->setBrush(QColor(79,79,79));
+  w41rectge->setRotation(45);
+  scene->addItem(w41rectge);
+  QGraphicsRectItem *w41rectab = new QGraphicsRectItem();
+  w41rectab->setRect(0,0,10,50);
+  w41rectab->setPos(QPointF(-45,1720));
+  w41rectab->setBrush(QColor(79,79,79));
+  w41rectab->setRotation(90);
+  scene->addItem(w41rectab);
+  QLabel *w41label = new QLabel();
+  scene->addWidget(w41label);
+  w41ptr->addWeichenitem(w41rectab,w41rectge,w41label);
+  w41ptr->moveLabel(-20,1725);
+
+  QGraphicsRectItem *byrect3 = new QGraphicsRectItem();
+  byrect3->setRect(0,0,10,140);
+  byrect3->setPos(QPointF(474,1201));
+  byrect3->setBrush(QColor(79,79,79));
+  byrect3->setRotation(45);
+  bpptr->addBlockitems(byrect3);
+  scene->addItem(byrect3);
+  QGraphicsRectItem *byrect4 = new QGraphicsRectItem();
+  byrect4->setRect(0,0,10,140);
+  byrect4->setPos(QPointF(474,1061));
+  byrect4->setBrush(QColor(79,79,79));
+  bpptr->addBlockitems(byrect4);
+  scene->addItem(byrect4);
+  
   //strecke oben
   QGraphicsRectItem *akrect = new QGraphicsRectItem();
   akrect->setRect(0,0,10,1000);
@@ -6383,7 +6736,7 @@ int main( int argc , char *argv[] ){
   qDebug() <<"endofprogram";
 
   // add turnouts to filemanager and write the states to the txt file
-  fmngr.add(w1ptr->getW_status()); fmngr.add(w2ptr->getW_status()); fmngr.add(w3ptr->getW_status()); fmngr.add(w4ptr->getW_status()); fmngr.add(w5ptr->getW_status()); fmngr.add(w6ptr->getW_status()); fmngr.add(w7ptr->getW_status());  fmngr.add(w8ptr->getW_status()); fmngr.add(w9ptr->getW_status()); fmngr.add(w10ptr->getW_status()); fmngr.add(w11ptr->getW_status()); fmngr.add(w12ptr->getW_status()); fmngr.add(w13ptr->getW_status()); fmngr.add(w14ptr->getW_status());  fmngr.add(w15ptr->getW_status()); fmngr.add(w16ptr->getW_status()); fmngr.add(w17ptr->getW_status()); fmngr.add(w18ptr->getW_status()); fmngr.add(w19ptr->getW_status()); fmngr.add(w20ptr->getW_status()); fmngr.add(w21ptr->getW_status());  fmngr.add(w22ptr->getW_status()); fmngr.add(w23ptr->getW_status()); fmngr.add(w24ptr->getW_status()); fmngr.add(w25ptr->getW_status()); fmngr.add(w26ptr->getW_status()); fmngr.add(w27ptr->getW_status()); fmngr.add(w28ptr->getW_status());  fmngr.add(w29ptr->getW_status()); fmngr.add(w30ptr->getW_status()); fmngr.add(w31ptr->getW_status());
+  fmngr.add(w1ptr->getW_status()); fmngr.add(w2ptr->getW_status()); fmngr.add(w3ptr->getW_status()); fmngr.add(w4ptr->getW_status()); fmngr.add(w5ptr->getW_status()); fmngr.add(w6ptr->getW_status()); fmngr.add(w7ptr->getW_status());  fmngr.add(w8ptr->getW_status()); fmngr.add(w9ptr->getW_status()); fmngr.add(w10ptr->getW_status()); fmngr.add(w11ptr->getW_status()); fmngr.add(w12ptr->getW_status()); fmngr.add(w13ptr->getW_status()); fmngr.add(w14ptr->getW_status());  fmngr.add(w15ptr->getW_status()); fmngr.add(w16ptr->getW_status()); fmngr.add(w17ptr->getW_status()); fmngr.add(w18ptr->getW_status()); fmngr.add(w19ptr->getW_status()); fmngr.add(w20ptr->getW_status()); fmngr.add(w21ptr->getW_status());  fmngr.add(w22ptr->getW_status()); fmngr.add(w23ptr->getW_status()); fmngr.add(w24ptr->getW_status()); fmngr.add(w25ptr->getW_status()); fmngr.add(w26ptr->getW_status()); fmngr.add(w27ptr->getW_status()); fmngr.add(w28ptr->getW_status());  fmngr.add(w29ptr->getW_status()); fmngr.add(w30ptr->getW_status()); fmngr.add(w31ptr->getW_status()); fmngr.add(w40ptr->getW_status()); fmngr.add(w41ptr->getW_status()); fmngr.add(w42ptr->getW_status()); 
   fmngr.write();
   //
   //delete in reverse order
@@ -6397,13 +6750,13 @@ int main( int argc , char *argv[] ){
    
   delete stellwerkstecptr;
   
-  delete aaptr; delete abptr; delete acptr; delete adptr; delete aeptr; delete afptr; delete agptr; delete ahptr; delete aiptr; delete ajptr; delete akptr; delete alptr; delete amptr; delete anptr; delete aoptr; delete apptr; delete aqptr; delete arptr; delete asptr; delete atptr; delete avptr; delete awptr; delete axptr; delete ayptr; delete azptr; delete baptr; delete bbptr; delete bcptr; delete bdptr; delete beptr; delete bfptr; delete bgptr; delete bhptr; delete biptr; delete bjptr; delete bkptr; delete blptr; delete bmptr; delete bnptr; delete boptr; delete bxptr; delete byptr; delete bzptr;
+  delete aaptr; delete abptr; delete acptr; delete adptr; delete aeptr; delete afptr; delete agptr; delete ahptr; delete aiptr; delete ajptr; delete akptr; delete alptr; delete amptr; delete anptr; delete aoptr; delete apptr; delete aqptr; delete arptr; delete asptr; delete atptr; delete avptr; delete awptr; delete axptr; delete ayptr; delete azptr; delete baptr; delete bbptr; delete bcptr; delete bdptr; delete beptr; delete bfptr; delete bgptr; delete bhptr; delete biptr; delete bjptr; delete bkptr; delete blptr; delete bmptr; delete bnptr; delete boptr; delete bpptr; delete bqptr; delete brptr; delete bsptr; delete btptr; delete buptr; delete bvptr; delete bwptr; delete bxptr; delete byptr; delete bzptr;
   
   delete ww1ptr; delete ww2ptr; delete ww3ptr; delete ww4ptr; delete ww5ptr; delete ww6ptr; delete ww7ptr; delete ww8ptr; delete ww9ptr; delete ww10ptr; delete ww11ptr; delete ww12ptr; delete ww13ptr; delete ww14ptr; delete ww15ptr; delete ww16ptr; delete ww17ptr; delete ww18ptr; delete ww19ptr; delete ww20ptr; delete ww21ptr; delete ww22ptr; delete ww23ptr; 
   
   delete v1ptr; delete v2ptr; delete v3ptr; delete v4ptr; delete v5ptr; delete v6ptr; delete v7ptr; delete v8ptr; delete v9ptr; delete v10ptr; delete v11ptr; delete v12ptr; delete v13ptr; delete v14ptr; delete v15ptr; delete v16ptr; delete v17ptr; delete  v18ptr; delete v19ptr; delete v20ptr; delete v21ptr; delete v22ptr; delete v23ptr; delete v24ptr; delete v25ptr; delete v26ptr; delete v27ptr; delete v28ptr; delete v29ptr; delete v30ptr; delete v31ptr; delete v32ptr; delete v33ptr; delete v34ptr; delete v35ptr; delete v36ptr; delete v37ptr; delete v38ptr; delete v39ptr; delete v40ptr; delete v41ptr; delete v42ptr;
   
-  delete w1ptr; delete w2ptr; delete w3ptr; delete w4ptr; delete w5ptr; delete w6ptr; delete w7ptr; delete w8ptr; delete w9ptr; delete w10ptr; delete w11ptr; delete w12ptr; delete w13ptr; delete w14ptr; delete w15ptr; delete w16ptr; delete w17ptr; delete w18ptr; delete w19ptr; delete w20ptr; delete w21ptr; delete w22ptr; delete w23ptr; delete w24ptr; delete w25ptr; delete w26ptr; delete w27ptr; delete w28ptr; delete w29ptr; delete w30ptr; delete w31ptr;
+  delete w1ptr; delete w2ptr; delete w3ptr; delete w4ptr; delete w5ptr; delete w6ptr; delete w7ptr; delete w8ptr; delete w9ptr; delete w10ptr; delete w11ptr; delete w12ptr; delete w13ptr; delete w14ptr; delete w15ptr; delete w16ptr; delete w17ptr; delete w18ptr; delete w19ptr; delete w20ptr; delete w21ptr; delete w22ptr; delete w23ptr; delete w24ptr; delete w25ptr; delete w26ptr; delete w27ptr; delete w28ptr; delete w29ptr; delete w30ptr; delete w31ptr; delete w40ptr; delete w41ptr; delete w42ptr; delete w43ptr; delete w44ptr; delete w45ptr; delete w46ptr; delete w47ptr; delete w48ptr; delete w49ptr; delete w50ptr; delete w51ptr; delete w52ptr; delete w53ptr;
   
   delete s1ptr; delete s2ptr; delete s3ptr; delete s4ptr; delete s5ptr; delete s6ptr; delete s7ptr; delete s8ptr; delete s9ptr; delete s10ptr; delete s11ptr; delete s12ptr; delete s13ptr; delete s14ptr; delete s15ptr; delete s16ptr; delete s17ptr; delete s18ptr; delete s19ptr; delete s20ptr; delete s21ptr; delete s22ptr; delete s23ptr; delete s24ptr; delete s25ptr; delete s26ptr; delete s27ptr; delete s28ptr; delete s29ptr; delete s30ptr; delete s31ptr; delete s32ptr; delete s33ptr; delete s34ptr; delete s35ptr; delete s36ptr; delete s37ptr; delete s38ptr; delete s39ptr; delete s40ptr; delete s41ptr; delete s42ptr; delete s43ptr; delete s44ptr; delete s45ptr; delete s46ptr; delete s47ptr; delete s48ptr; delete s49ptr; delete s50ptr; 
   
