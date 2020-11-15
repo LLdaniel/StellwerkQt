@@ -427,11 +427,14 @@ bool WSignal::isNachbar(WSignal *toZiel){
 
 bool WSignal::isNachbar(QString toZiel){
   bool giveback = false;
-  for(  int i = 0; i < blockZuH.size(); i++){
-    if(blockZuH.at(i).first.compare( toZiel ) == 0){
-      giveback = true;
+  if(!blockZuH.isEmpty()){
+    for(  int i = 0; i < blockZuH.size(); i++){
+      if(blockZuH.at(i).first.compare( toZiel ) == 0){
+	giveback = true;
+      }
     }
   }
+  else giveback = true;     //it is empty, but this can happen (Schattenbahnhof)
   return giveback;
 }
 
