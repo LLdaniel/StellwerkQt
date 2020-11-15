@@ -1213,8 +1213,8 @@ int main( int argc , char *argv[] ){
   QGraphicsSvgItem *itemw392 = new QGraphicsSvgItem(":/resources/WShalt.svg");
   scene->addItem(itemw39);
   scene->addItem(itemw392);
-  itemw39->setPos(QPointF(-955,1805));
-  itemw392->setPos(QPointF(-955,1805));
+  itemw39->setPos(QPointF(-975,1805));
+  itemw392->setPos(QPointF(-975,1805));
   itemw39->setRotation(90);
   itemw392->setRotation(90);
   itemw39->setScale(0.05);
@@ -1229,8 +1229,8 @@ int main( int argc , char *argv[] ){
   QGraphicsSvgItem *itemw402 = new QGraphicsSvgItem(":/resources/WShalt.svg");
   scene->addItem(itemw40);
   scene->addItem(itemw402);
-  itemw40->setPos(QPointF(371,1289));
-  itemw402->setPos(QPointF(371,1289));
+  itemw40->setPos(QPointF(391,1269));
+  itemw402->setPos(QPointF(391,1269));
   itemw40->setRotation(-135);
   itemw402->setRotation(-135);
   itemw40->setScale(0.05);
@@ -4539,14 +4539,14 @@ int main( int argc , char *argv[] ){
   QPushButton *ww39push = new QPushButton();
   scene->addWidget(ww39push);
   ww39ptr->addButtonAndLabel(ww39label,ww39push);
-  ww39ptr->moveButton(-985,1785);
-  ww39ptr->moveLabel(-1025,1810);
+  ww39ptr->moveButton(-1005,1785);
+  ww39ptr->moveLabel(-1045,1810);
 
   QPushButton *ww40push = new QPushButton();
   scene->addWidget(ww40push);
   ww40ptr->addButtonAndLabel(ww40label,ww40push);
-  ww40ptr->moveButton(391,1270);
-  ww40ptr->moveLabel(371,1239);
+  ww40ptr->moveButton(410,1250);
+  ww40ptr->moveLabel(391,1219);
 
   QPushButton *ww41push = new QPushButton();
   scene->addWidget(ww41push);
@@ -4639,15 +4639,15 @@ int main( int argc , char *argv[] ){
   scene->addItem(spweg52);
   scene->addItem(sphin52);
   s52ptr->addHSignalitem(s52item1,s52item2, s52item3, s52label,s52push,spweg52,sphin52);
-  s52ptr->moveButton(-1005,1785);
+  s52ptr->moveButton(-985,1785);
   s52ptr->moveLabel(-950,1765);
 
   QGraphicsSvgItem *itemv431 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
   QGraphicsSvgItem *itemv432 = new QGraphicsSvgItem(":/resources/VShalt.svg");
   scene->addItem(itemv431);
   scene->addItem(itemv432);
-  itemv431->setPos(QPointF(449,1265));
-  itemv432->setPos(QPointF(449,1265));
+  itemv431->setPos(QPointF(439,1275));
+  itemv432->setPos(QPointF(439,1275));
   itemv431->setScale(0.1);
   itemv432->setScale(0.1);
   itemv431->setRotation(45);
@@ -4660,9 +4660,9 @@ int main( int argc , char *argv[] ){
   scene->addItem(s51item1);
   scene->addItem(s51item3);
   scene->addItem(s51item2);
-  s51item1->setPos(QPointF(484,1235));
-  s51item2->setPos(QPointF(484,1235));
-  s51item3->setPos(QPointF(484,1235));
+  s51item1->setPos(QPointF(474,1245));
+  s51item2->setPos(QPointF(474,1245));
+  s51item3->setPos(QPointF(474,1245));
   s51item1->setScale(0.1);
   s51item2->setScale(0.1);
   s51item3->setScale(0.1);
@@ -4677,18 +4677,18 @@ int main( int argc , char *argv[] ){
   QGraphicsRectItem *sphin51 = new QGraphicsRectItem();
   sphin51->setRect(0,0,10,10);
   sphin51->setBrush(Qt::yellow);
-  sphin51->setPos(QPointF(419,1300));
+  sphin51->setPos(QPointF(409,1310));
   QGraphicsRectItem *spweg51 = new QGraphicsRectItem();
   spweg51->setRect(0,0,10,10);
   spweg51->setBrush(Qt::yellow);
-  spweg51->setPos(QPointF(431,1303));
+  spweg51->setPos(QPointF(421,1313));
   spweg51->setRotation(45);
   sphin51->setRotation(45);
   scene->addItem(spweg51);
   scene->addItem(sphin51);
   s51ptr->addHSignalitem(s51item1,s51item2, s51item3, s51label,s51push,spweg51,sphin51);
-  s51ptr->moveButton(410,1250);
-  s51ptr->moveLabel(394,1315);
+  s51ptr->moveButton(391,1270);
+  s51ptr->moveLabel(384,1325);
 
   //----------------------------------------------
   QPair<Weiche*, bool> ww40toww31w53(w53ptr,true);
@@ -7746,6 +7746,8 @@ int main( int argc , char *argv[] ){
   QObject::connect(ww39ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(ww40ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(ww41ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww42ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww43ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   //:::::::::
 
 
