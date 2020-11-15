@@ -266,6 +266,8 @@ int main( int argc , char *argv[] ){
   VSignal *v40ptr = new VSignal(40);
   VSignal *v41ptr = new VSignal(41);
   VSignal *v42ptr = new VSignal(42);
+  VSignal *v43ptr = new VSignal(43);
+  VSignal *v44ptr = new VSignal(44);
   v1ptr->setRichtung("S001","S004");
   v2ptr->setRichtung("S013","S002");
   v3ptr->setRichtung("S004","S015");
@@ -350,6 +352,8 @@ int main( int argc , char *argv[] ){
   v41ptr->setRichtung("S045","S040");
   v42ptr->setRichtung("S044","S004");
   v42ptr->setRichtung("S044","S005");
+  v43ptr->setRichtung("S051","S049");
+  v44ptr->setRichtung("S052","S010");
   //:::main signals:::
   HSignal *s1ptr = new HSignal(1);
   HSignal *s2ptr = new HSignal(2);
@@ -401,6 +405,8 @@ int main( int argc , char *argv[] ){
   HSignal *s48ptr = new HSignal(48);
   HSignal *s49ptr = new HSignal(49);
   HSignal *s50ptr = new HSignal(50);
+  HSignal *s51ptr = new HSignal(51);
+  HSignal *s52ptr = new HSignal(52);
   
   //:::::::::
   s1ptr->addVSignal(v1ptr,"v");
@@ -515,6 +521,10 @@ int main( int argc , char *argv[] ){
   s48ptr->addVSignal(v38ptr,"v");
   s48ptr->addVSignal(v31ptr,"r");
   s48ptr->addVSignal(v33ptr,"r");
+  s49ptr->addVSignal(v43ptr,"r");
+  s51ptr->addVSignal(v43ptr,"v");
+  s10ptr->addVSignal(v44ptr,"r");
+  s52ptr->addVSignal(v44ptr,"v");
   //:::::::::
   //shunt signals
   WSignal *ww1ptr = new WSignal(1);
@@ -956,6 +966,334 @@ int main( int argc , char *argv[] ){
   ww23ptr->addVSignalitems(itemw23, itemw232);
   QLabel *ww23label = new QLabel();
   scene->addWidget(ww23label);
+
+  WSignal *ww24ptr = new WSignal(24);
+  //
+  QGraphicsSvgItem *itemw24 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw242 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw24);
+  scene->addItem(itemw242);
+  itemw24->setPos(QPointF(-865,1785));
+  itemw242->setPos(QPointF(-865,1785));
+  itemw24->setRotation(-90);
+  itemw242->setRotation(-90);
+  itemw24->setScale(0.05);
+  itemw242->setScale(0.05);
+  ww24ptr->addVSignalitems(itemw24, itemw242);
+  QLabel *ww24label = new QLabel();
+  scene->addWidget(ww24label);
+
+  WSignal *ww25ptr = new WSignal(25);
+  //
+  QGraphicsSvgItem *itemw25 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw252 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw25);
+  scene->addItem(itemw252);
+  itemw25->setPos(QPointF(-815,1715));
+  itemw252->setPos(QPointF(-815,1715));
+  itemw25->setRotation(-90);
+  itemw252->setRotation(-90);
+  itemw25->setScale(0.05);
+  itemw252->setScale(0.05);
+  ww25ptr->addVSignalitems(itemw25, itemw252);
+  QLabel *ww25label = new QLabel();
+  scene->addWidget(ww25label);
+
+  WSignal *ww26ptr = new WSignal(26);
+  //
+  QGraphicsSvgItem *itemw26 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw262 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw26);
+  scene->addItem(itemw262);
+  itemw26->setPos(QPointF(-745,1645));
+  itemw262->setPos(QPointF(-745,1645));
+  itemw26->setRotation(-90);
+  itemw262->setRotation(-90);
+  itemw26->setScale(0.05);
+  itemw262->setScale(0.05);
+  ww26ptr->addVSignalitems(itemw26, itemw262);
+  QLabel *ww26label = new QLabel();
+  scene->addWidget(ww26label);
+
+  WSignal *ww27ptr = new WSignal(27);
+  //
+  QGraphicsSvgItem *itemw27 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw272 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw27);
+  scene->addItem(itemw272);
+  itemw27->setPos(QPointF(-675,1575));
+  itemw272->setPos(QPointF(-675,1575));
+  itemw27->setRotation(-90);
+  itemw272->setRotation(-90);
+  itemw27->setScale(0.05);
+  itemw272->setScale(0.05);
+  ww27ptr->addVSignalitems(itemw27, itemw272);
+  QLabel *ww27label = new QLabel();
+  scene->addWidget(ww27label);
+
+  WSignal *ww28ptr = new WSignal(28);
+  //
+  QGraphicsSvgItem *itemw28 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw282 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw28);
+  scene->addItem(itemw282);
+  itemw28->setPos(QPointF(-605,1505));
+  itemw282->setPos(QPointF(-605,1505));
+  itemw28->setRotation(-90);
+  itemw282->setRotation(-90);
+  itemw28->setScale(0.05);
+  itemw282->setScale(0.05);
+  ww28ptr->addVSignalitems(itemw28, itemw282);
+  QLabel *ww28label = new QLabel();
+  scene->addWidget(ww28label);
+
+  WSignal *ww29ptr = new WSignal(29);
+  //
+  QGraphicsSvgItem *itemw29 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw292 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw29);
+  scene->addItem(itemw292);
+  itemw29->setPos(QPointF(-535,1435));
+  itemw292->setPos(QPointF(-535,1435));
+  itemw29->setRotation(-90);
+  itemw292->setRotation(-90);
+  itemw29->setScale(0.05);
+  itemw292->setScale(0.05);
+  ww29ptr->addVSignalitems(itemw29, itemw292);
+  QLabel *ww29label = new QLabel();
+  scene->addWidget(ww29label);
+
+  WSignal *ww30ptr = new WSignal(30);
+  //
+  QGraphicsSvgItem *itemw30 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw302 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw30);
+  scene->addItem(itemw302);
+  itemw30->setPos(QPointF(-465,1365));
+  itemw302->setPos(QPointF(-465,1365));
+  itemw30->setRotation(-90);
+  itemw302->setRotation(-90);
+  itemw30->setScale(0.05);
+  itemw302->setScale(0.05);
+  ww30ptr->addVSignalitems(itemw30, itemw302);
+  QLabel *ww30label = new QLabel();
+  scene->addWidget(ww30label);
+
+  WSignal *ww31ptr = new WSignal(31);
+  //
+  QGraphicsSvgItem *itemw311 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw312 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw311);
+  scene->addItem(itemw312);
+  itemw311->setPos(QPointF(-445,1295));
+  itemw312->setPos(QPointF(-445,1295));
+  itemw311->setRotation(-90);
+  itemw312->setRotation(-90);
+  itemw311->setScale(0.05);
+  itemw312->setScale(0.05);
+  ww31ptr->addVSignalitems(itemw311, itemw312);
+  QLabel *ww31label = new QLabel();
+  scene->addWidget(ww31label);
+
+  WSignal *ww32ptr = new WSignal(32);
+  //
+  QGraphicsSvgItem *itemw321 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw322 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw321);
+  scene->addItem(itemw322);
+  itemw321->setPos(QPointF(310,1315));
+  itemw322->setPos(QPointF(310,1315));
+  itemw321->setRotation(90);
+  itemw322->setRotation(90);
+  itemw321->setScale(0.05);
+  itemw322->setScale(0.05);
+  ww32ptr->addVSignalitems(itemw321, itemw322);
+  QLabel *ww32label = new QLabel();
+  scene->addWidget(ww32label);
+
+  WSignal *ww33ptr = new WSignal(33);
+  //
+  QGraphicsSvgItem *itemw33 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw332 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw33);
+  scene->addItem(itemw332);
+  itemw33->setPos(QPointF(255,1385));
+  itemw332->setPos(QPointF(255,1385));
+  itemw33->setRotation(90);
+  itemw332->setRotation(90);
+  itemw33->setScale(0.05);
+  itemw332->setScale(0.05);
+  ww33ptr->addVSignalitems(itemw33, itemw332);
+  QLabel *ww33label = new QLabel();
+  scene->addWidget(ww33label);
+
+  WSignal *ww34ptr = new WSignal(34);
+  //
+  QGraphicsSvgItem *itemw34 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw342 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw34);
+  scene->addItem(itemw342);
+  itemw34->setPos(QPointF(185,1455));
+  itemw342->setPos(QPointF(185,1455));
+  itemw34->setRotation(90);
+  itemw342->setRotation(90);
+  itemw34->setScale(0.05);
+  itemw342->setScale(0.05);
+  ww34ptr->addVSignalitems(itemw34, itemw342);
+  QLabel *ww34label = new QLabel();
+  scene->addWidget(ww34label);
+
+  WSignal *ww35ptr = new WSignal(35);
+  //
+  QGraphicsSvgItem *itemw35 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw352 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw35);
+  scene->addItem(itemw352);
+  itemw35->setPos(QPointF(115,1525));
+  itemw352->setPos(QPointF(115,1525));
+  itemw35->setRotation(90);
+  itemw352->setRotation(90);
+  itemw35->setScale(0.05);
+  itemw352->setScale(0.05);
+  ww35ptr->addVSignalitems(itemw35, itemw352);
+  QLabel *ww35label = new QLabel();
+  scene->addWidget(ww35label);
+
+  WSignal *ww36ptr = new WSignal(36);
+  //
+  QGraphicsSvgItem *itemw36 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw362 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw36);
+  scene->addItem(itemw362);
+  itemw36->setPos(QPointF(45,1595));
+  itemw362->setPos(QPointF(45,1595));
+  itemw36->setRotation(90);
+  itemw362->setRotation(90);
+  itemw36->setScale(0.05);
+  itemw362->setScale(0.05);
+  ww36ptr->addVSignalitems(itemw36, itemw362);
+  QLabel *ww36label = new QLabel();
+  scene->addWidget(ww36label);
+
+  WSignal *ww37ptr = new WSignal(37);
+  //
+  QGraphicsSvgItem *itemw37 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw372 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw37);
+  scene->addItem(itemw372);
+  itemw37->setPos(QPointF(-25,1665));
+  itemw372->setPos(QPointF(-25,1665));
+  itemw37->setRotation(90);
+  itemw372->setRotation(90);
+  itemw37->setScale(0.05);
+  itemw372->setScale(0.05);
+  ww37ptr->addVSignalitems(itemw37, itemw372);
+  QLabel *ww37label = new QLabel();
+  scene->addWidget(ww37label);
+
+  WSignal *ww38ptr = new WSignal(38);
+  //
+  QGraphicsSvgItem *itemw38 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw382 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw38);
+  scene->addItem(itemw382);
+  itemw38->setPos(QPointF(-95,1735));
+  itemw382->setPos(QPointF(-95,1735));
+  itemw38->setRotation(90);
+  itemw382->setRotation(90);
+  itemw38->setScale(0.05);
+  itemw382->setScale(0.05);
+  ww38ptr->addVSignalitems(itemw38, itemw382);
+  QLabel *ww38label = new QLabel();
+  scene->addWidget(ww38label);
+  
+  WSignal *ww39ptr = new WSignal(39);
+  //
+  QGraphicsSvgItem *itemw39 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw392 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw39);
+  scene->addItem(itemw392);
+  itemw39->setPos(QPointF(-955,1805));
+  itemw392->setPos(QPointF(-955,1805));
+  itemw39->setRotation(90);
+  itemw392->setRotation(90);
+  itemw39->setScale(0.05);
+  itemw392->setScale(0.05);
+  ww39ptr->addVSignalitems(itemw39, itemw392);
+  QLabel *ww39label = new QLabel();
+  scene->addWidget(ww39label);
+
+  WSignal *ww40ptr = new WSignal(40);
+  //
+  QGraphicsSvgItem *itemw40 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw402 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw40);
+  scene->addItem(itemw402);
+  itemw40->setPos(QPointF(371,1289));
+  itemw402->setPos(QPointF(371,1289));
+  itemw40->setRotation(-135);
+  itemw402->setRotation(-135);
+  itemw40->setScale(0.05);
+  itemw402->setScale(0.05);
+  ww40ptr->addVSignalitems(itemw40, itemw402);
+  QLabel *ww40label = new QLabel();
+  scene->addWidget(ww40label);
+
+  WSignal *ww41ptr = new WSignal(41);
+  //
+  QGraphicsSvgItem *itemw41 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw412 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw41);
+  scene->addItem(itemw412);
+  itemw41->setPos(QPointF(-115,1805));
+  itemw412->setPos(QPointF(-115,1805));
+  itemw41->setRotation(90);
+  itemw412->setRotation(90);
+  itemw41->setScale(0.05);
+  itemw412->setScale(0.05);
+  ww41ptr->addVSignalitems(itemw41, itemw412);
+  QLabel *ww41label = new QLabel();
+  scene->addWidget(ww41label);
+  
+  WSignal *ww42ptr = new WSignal(42);
+  //
+  ww42ptr->setRichtung("S051","S049");
+  s51ptr->addWSignal(ww42ptr,"v");
+  s49ptr->addWSignal(ww42ptr,"r");
+  //
+  QGraphicsSvgItem *itemw421 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw422 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw421);
+  scene->addItem(itemw422);
+  itemw421->setPos(QPointF(145,115));
+  itemw422->setPos(QPointF(145,115));
+  itemw421->setRotation(-90);
+  itemw422->setRotation(-90);
+  itemw421->setScale(0.05);
+  itemw422->setScale(0.05);
+  ww42ptr->addVSignalitems(itemw421, itemw422);
+  QLabel *ww42label = new QLabel();
+  scene->addWidget(ww42label);
+  
+  WSignal *ww43ptr = new WSignal(43);
+  //
+  ww42ptr->setRichtung("S052","S010");
+  s52ptr->addWSignal(ww43ptr,"v");
+  s10ptr->addWSignal(ww43ptr,"r");
+  //
+  QGraphicsSvgItem *itemw431 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
+  QGraphicsSvgItem *itemw432 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  scene->addItem(itemw431);
+  scene->addItem(itemw432);
+  itemw431->setPos(QPointF(-980,220));
+  itemw432->setPos(QPointF(-980,220));
+  itemw431->setRotation(90);
+  itemw432->setRotation(90);
+  itemw431->setScale(0.05);
+  itemw432->setScale(0.05);
+  ww43ptr->addVSignalitems(itemw431, itemw432);
+  QLabel *ww43label = new QLabel();
+  scene->addWidget(ww43label);
   
   //turnout status ---------------------------------------------------
   QPair<Weiche*, bool> s1tos4w2(w2ptr,true);
@@ -2392,7 +2730,8 @@ int main( int argc , char *argv[] ){
   stellwerkstecptr->add_Signal(s48ptr->getS_id(),false);
   stellwerkstecptr->add_Signal(s49ptr->getS_id(),false);
   stellwerkstecptr->add_Signal(s50ptr->getS_id(),false);
-  
+  stellwerkstecptr->add_Signal(s51ptr->getS_id(),false);
+  stellwerkstecptr->add_Signal(s52ptr->getS_id(),false);
   
   stellwerkstecptr->add_Signal(ww1ptr->getV_id(),false);
   stellwerkstecptr->add_Signal(ww2ptr->getV_id(),false);
@@ -2417,6 +2756,26 @@ int main( int argc , char *argv[] ){
   stellwerkstecptr->add_Signal(ww21ptr->getV_id(),false);
   stellwerkstecptr->add_Signal(ww22ptr->getV_id(),false);
   stellwerkstecptr->add_Signal(ww23ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww24ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww25ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww26ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww27ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww28ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww29ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww30ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww31ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww32ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww33ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww34ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww35ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww36ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww37ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww38ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww39ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww40ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww41ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww42ptr->getV_id(),false);
+  stellwerkstecptr->add_Signal(ww43ptr->getV_id(),false);
 
   //BÜs
   //BU bu1(1);
@@ -2484,6 +2843,8 @@ int main( int argc , char *argv[] ){
   QObject::connect(s48ptr,&HSignal::refreshStellwerkstechnik,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(s49ptr,&HSignal::refreshStellwerkstechnik,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(s50ptr,&HSignal::refreshStellwerkstechnik,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(s51ptr,&HSignal::refreshStellwerkstechnik,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(s52ptr,&HSignal::refreshStellwerkstechnik,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   
   QObject::connect(ww1ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(ww2ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
@@ -2508,6 +2869,26 @@ int main( int argc , char *argv[] ){
   QObject::connect(ww21ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(ww22ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(ww23ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww24ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww25ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww26ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww27ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww28ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww29ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww30ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww31ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww32ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww33ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww34ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww35ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww36ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww37ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww38ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww39ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww40ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww41ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww42ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  QObject::connect(ww43ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(aaptr,&Block::zugpassiert,s1ptr,&HSignal::zugpassiert);
   QObject::connect(bnptr,&Block::zugpassiert,s2ptr,&HSignal::zugpassiert);
   QObject::connect(bmptr,&Block::zugpassiert,s2ptr,&HSignal::zugpassiert);
@@ -2567,6 +2948,8 @@ int main( int argc , char *argv[] ){
   QObject::connect(bbptr,&Block::zugpassiert,s46ptr,&HSignal::zugpassiert);
   QObject::connect(azptr,&Block::zugpassiert,s47ptr,&HSignal::zugpassiert);
   QObject::connect(baptr,&Block::zugpassiert,s48ptr,&HSignal::zugpassiert);
+  QObject::connect(byptr,&Block::zugpassiert,s51ptr,&HSignal::zugpassiert);
+  QObject::connect(bzptr,&Block::zugpassiert,s52ptr,&HSignal::zugpassiert);
   
   QObject::connect(aiptr,&Block::zugpassiertW,ww2ptr,&WSignal::zugpassiertW);
   QObject::connect(bxptr,&Block::zugpassiertW,ww2ptr,&WSignal::zugpassiertW);
@@ -2590,6 +2973,41 @@ int main( int argc , char *argv[] ){
   QObject::connect(beptr,&Block::zugpassiertW,ww21ptr,&WSignal::zugpassiertW);
   QObject::connect(beptr,&Block::zugpassiertW,ww22ptr,&WSignal::zugpassiertW);
   QObject::connect(bdptr,&Block::zugpassiertW,ww22ptr,&WSignal::zugpassiertW);
+  QObject::connect(bzptr,&Block::zugpassiertW,ww24ptr,&WSignal::zugpassiertW);
+  QObject::connect(bzptr,&Block::zugpassiertW,ww25ptr,&WSignal::zugpassiertW);
+  QObject::connect(bzptr,&Block::zugpassiertW,ww26ptr,&WSignal::zugpassiertW);
+  QObject::connect(bzptr,&Block::zugpassiertW,ww27ptr,&WSignal::zugpassiertW);
+  QObject::connect(bzptr,&Block::zugpassiertW,ww28ptr,&WSignal::zugpassiertW);
+  QObject::connect(bzptr,&Block::zugpassiertW,ww29ptr,&WSignal::zugpassiertW);
+  QObject::connect(bzptr,&Block::zugpassiertW,ww30ptr,&WSignal::zugpassiertW);
+  QObject::connect(bzptr,&Block::zugpassiertW,ww31ptr,&WSignal::zugpassiertW);
+  QObject::connect(byptr,&Block::zugpassiertW,ww32ptr,&WSignal::zugpassiertW);
+  QObject::connect(byptr,&Block::zugpassiertW,ww33ptr,&WSignal::zugpassiertW);
+  QObject::connect(byptr,&Block::zugpassiertW,ww34ptr,&WSignal::zugpassiertW);
+  QObject::connect(byptr,&Block::zugpassiertW,ww35ptr,&WSignal::zugpassiertW);
+  QObject::connect(byptr,&Block::zugpassiertW,ww36ptr,&WSignal::zugpassiertW);
+  QObject::connect(byptr,&Block::zugpassiertW,ww37ptr,&WSignal::zugpassiertW);
+  QObject::connect(byptr,&Block::zugpassiertW,ww38ptr,&WSignal::zugpassiertW);
+  QObject::connect(byptr,&Block::zugpassiertW,ww41ptr,&WSignal::zugpassiertW);
+  QObject::connect(bwptr,&Block::zugpassiertW,ww39ptr,&WSignal::zugpassiertW);
+  QObject::connect(bvptr,&Block::zugpassiertW,ww39ptr,&WSignal::zugpassiertW);
+  QObject::connect(buptr,&Block::zugpassiertW,ww39ptr,&WSignal::zugpassiertW);
+  QObject::connect(btptr,&Block::zugpassiertW,ww39ptr,&WSignal::zugpassiertW);
+  QObject::connect(bsptr,&Block::zugpassiertW,ww39ptr,&WSignal::zugpassiertW);
+  QObject::connect(brptr,&Block::zugpassiertW,ww39ptr,&WSignal::zugpassiertW);
+  QObject::connect(bqptr,&Block::zugpassiertW,ww39ptr,&WSignal::zugpassiertW);
+  QObject::connect(bpptr,&Block::zugpassiertW,ww39ptr,&WSignal::zugpassiertW);
+  QObject::connect(bpptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
+  QObject::connect(bqptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
+  QObject::connect(brptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
+  QObject::connect(bsptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
+  QObject::connect(btptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
+  QObject::connect(buptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
+  QObject::connect(bvptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
+  QObject::connect(bwptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
+  QObject::connect(byptr,&Block::zugpassiertW,ww42ptr,&WSignal::zugpassiertW);
+  QObject::connect(bzptr,&Block::zugpassiertW,ww43ptr,&WSignal::zugpassiertW);
+  
   
   //segments which are at a border for signals -----------------------------------------
   aaptr->addpassiert(s13ptr->getS_id(),acptr);
@@ -2651,6 +3069,22 @@ int main( int argc , char *argv[] ){
   bbptr->addpassiert(s46ptr->getS_id(),ayptr);
   azptr->addpassiert(s47ptr->getS_id(),baptr);
   baptr->addpassiert(s48ptr->getS_id(),azptr);
+  byptr->addpassiert(s51ptr->getS_id(),bpptr);
+  byptr->addpassiert(s51ptr->getS_id(),bqptr);
+  byptr->addpassiert(s51ptr->getS_id(),brptr);
+  byptr->addpassiert(s51ptr->getS_id(),bsptr);
+  byptr->addpassiert(s51ptr->getS_id(),btptr);
+  byptr->addpassiert(s51ptr->getS_id(),buptr);
+  byptr->addpassiert(s51ptr->getS_id(),bvptr);
+  byptr->addpassiert(s51ptr->getS_id(),bwptr);
+  bzptr->addpassiert(s52ptr->getS_id(),bpptr);
+  bzptr->addpassiert(s52ptr->getS_id(),bqptr);
+  bzptr->addpassiert(s52ptr->getS_id(),brptr);
+  bzptr->addpassiert(s52ptr->getS_id(),bsptr);
+  bzptr->addpassiert(s52ptr->getS_id(),btptr);
+  bzptr->addpassiert(s52ptr->getS_id(),buptr);
+  bzptr->addpassiert(s52ptr->getS_id(),bvptr);
+  bzptr->addpassiert(s52ptr->getS_id(),bwptr);
   
   bxptr->addpassiert(ww2ptr->getV_id(),adptr);
   aiptr->addpassiert(ww2ptr->getV_id(),adptr);
@@ -2674,6 +3108,42 @@ int main( int argc , char *argv[] ){
   beptr->addpassiert(ww21ptr->getV_id(),bjptr);
   beptr->addpassiert(ww22ptr->getV_id(),bkptr);
   bdptr->addpassiert(ww22ptr->getV_id(),bkptr);
+  bzptr->addpassiert(ww24ptr->getV_id(),bwptr);
+  bzptr->addpassiert(ww25ptr->getV_id(),bvptr);
+  bzptr->addpassiert(ww26ptr->getV_id(),buptr);
+  bzptr->addpassiert(ww27ptr->getV_id(),btptr);
+  bzptr->addpassiert(ww28ptr->getV_id(),bsptr);
+  bzptr->addpassiert(ww29ptr->getV_id(),brptr);
+  bzptr->addpassiert(ww30ptr->getV_id(),bqptr);
+  bzptr->addpassiert(ww31ptr->getV_id(),bpptr);
+  byptr->addpassiert(ww32ptr->getV_id(),bpptr);
+  byptr->addpassiert(ww33ptr->getV_id(),bqptr);
+  byptr->addpassiert(ww34ptr->getV_id(),brptr);
+  byptr->addpassiert(ww35ptr->getV_id(),bsptr);
+  byptr->addpassiert(ww36ptr->getV_id(),btptr);
+  byptr->addpassiert(ww37ptr->getV_id(),buptr);
+  byptr->addpassiert(ww38ptr->getV_id(),bvptr);
+  byptr->addpassiert(ww41ptr->getV_id(),bwptr);
+  bpptr->addpassiert(ww39ptr->getV_id(),bzptr);
+  bqptr->addpassiert(ww39ptr->getV_id(),bzptr);
+  brptr->addpassiert(ww39ptr->getV_id(),bzptr);
+  bsptr->addpassiert(ww39ptr->getV_id(),bzptr);
+  btptr->addpassiert(ww39ptr->getV_id(),bzptr);
+  buptr->addpassiert(ww39ptr->getV_id(),bzptr);
+  bvptr->addpassiert(ww39ptr->getV_id(),bzptr);
+  bwptr->addpassiert(ww39ptr->getV_id(),bzptr);
+  bwptr->addpassiert(ww40ptr->getV_id(),byptr);
+  bvptr->addpassiert(ww40ptr->getV_id(),byptr);
+  bwptr->addpassiert(ww40ptr->getV_id(),byptr);
+  buptr->addpassiert(ww40ptr->getV_id(),byptr);
+  btptr->addpassiert(ww40ptr->getV_id(),byptr);
+  bsptr->addpassiert(ww40ptr->getV_id(),byptr);
+  brptr->addpassiert(ww40ptr->getV_id(),byptr);
+  bqptr->addpassiert(ww40ptr->getV_id(),byptr);
+  bpptr->addpassiert(ww40ptr->getV_id(),byptr);
+  bxptr->addpassiert(ww42ptr->getV_id(),byptr);
+  ahptr->addpassiert(ww43ptr->getV_id(),bzptr);
+  
   
   //
   //GUI attributes
@@ -3674,6 +4144,18 @@ int main( int argc , char *argv[] ){
   s8ptr->moveButton(-115,560);
   s8ptr->moveLabel(-70,545);
 
+  QPushButton *ww42push = new QPushButton();
+  scene->addWidget(ww42push);
+  ww42ptr->addButtonAndLabel(ww42label,ww42push);
+  ww42ptr->moveButton(145,115);
+  ww42ptr->moveLabel(180,95);
+
+  QPushButton *ww43push = new QPushButton();
+  scene->addWidget(ww43push);
+  ww43ptr->addButtonAndLabel(ww43label,ww43push);
+  ww43ptr->moveButton(-1000,195);
+  ww43ptr->moveLabel(-1045,220);
+
   //Schattenbahnhof
   QGraphicsRectItem *bzrect2 = new QGraphicsRectItem();
   bzrect2->setRect(0,0,10,140);
@@ -4005,6 +4487,661 @@ int main( int argc , char *argv[] ){
   byrect4->setBrush(QColor(79,79,79));
   bpptr->addBlockitems(byrect4);
   scene->addItem(byrect4);
+
+  QPushButton *ww24push = new QPushButton();
+  scene->addWidget(ww24push);
+  ww24ptr->addButtonAndLabel(ww24label,ww24push);
+  ww24ptr->moveButton(-865,1785);
+  ww24ptr->moveLabel(-835,1770);
+
+  QPushButton *ww25push = new QPushButton();
+  scene->addWidget(ww25push);
+  ww25ptr->addButtonAndLabel(ww25label,ww25push);
+  ww25ptr->moveButton(-815,1715);
+  ww25ptr->moveLabel(-785,1700);
+
+  QPushButton *ww26push = new QPushButton();
+  scene->addWidget(ww26push);
+  ww26ptr->addButtonAndLabel(ww26label,ww26push);
+  ww26ptr->moveButton(-745,1645);
+  ww26ptr->moveLabel(-715,1630);
+
+  QPushButton *ww27push = new QPushButton();
+  scene->addWidget(ww27push);
+  ww27ptr->addButtonAndLabel(ww27label,ww27push);
+  ww27ptr->moveButton(-675,1575);
+  ww27ptr->moveLabel(-645,1560);
+
+  QPushButton *ww28push = new QPushButton();
+  scene->addWidget(ww28push);
+  ww28ptr->addButtonAndLabel(ww28label,ww28push);
+  ww28ptr->moveButton(-605,1505);
+  ww28ptr->moveLabel(-575,1490);
+
+  QPushButton *ww29push = new QPushButton();
+  scene->addWidget(ww29push);
+  ww29ptr->addButtonAndLabel(ww29label,ww29push);
+  ww29ptr->moveButton(-535,1435);
+  ww29ptr->moveLabel(-505,1420);
+
+  QPushButton *ww30push = new QPushButton();
+  scene->addWidget(ww30push);
+  ww30ptr->addButtonAndLabel(ww30label,ww30push);
+  ww30ptr->moveButton(-465,1365);
+  ww30ptr->moveLabel(-435,1350);
+
+  QPushButton *ww31push = new QPushButton();
+  scene->addWidget(ww31push);
+  ww31ptr->addButtonAndLabel(ww31label,ww31push);
+  ww31ptr->moveButton(-445,1295);
+  ww31ptr->moveLabel(-415,1280);
+
+  QPushButton *ww39push = new QPushButton();
+  scene->addWidget(ww39push);
+  ww39ptr->addButtonAndLabel(ww39label,ww39push);
+  ww39ptr->moveButton(-985,1785);
+  ww39ptr->moveLabel(-1025,1810);
+
+  QPushButton *ww40push = new QPushButton();
+  scene->addWidget(ww40push);
+  ww40ptr->addButtonAndLabel(ww40label,ww40push);
+  ww40ptr->moveButton(391,1270);
+  ww40ptr->moveLabel(371,1239);
+
+  QPushButton *ww41push = new QPushButton();
+  scene->addWidget(ww41push);
+  ww41ptr->addButtonAndLabel(ww41label,ww41push);
+  ww41ptr->moveButton(-135,1785);
+  ww41ptr->moveLabel(-180,1810);
+
+  QPushButton *ww38push = new QPushButton();
+  scene->addWidget(ww38push);
+  ww38ptr->addButtonAndLabel(ww38label,ww38push);
+  ww38ptr->moveButton(-115,1715);
+  ww38ptr->moveLabel(-160,1740);
+
+  QPushButton *ww37push = new QPushButton();
+  scene->addWidget(ww37push);
+  ww37ptr->addButtonAndLabel(ww37label,ww37push);
+  ww37ptr->moveButton(-45,1645);
+  ww37ptr->moveLabel(-90,1670);
+
+  QPushButton *ww36push = new QPushButton();
+  scene->addWidget(ww36push);
+  ww36ptr->addButtonAndLabel(ww36label,ww36push);
+  ww36ptr->moveButton(25,1575);
+  ww36ptr->moveLabel(-20,1600);
+
+  QPushButton *ww35push = new QPushButton();
+  scene->addWidget(ww35push);
+  ww35ptr->addButtonAndLabel(ww35label,ww35push);
+  ww35ptr->moveButton(95,1505);
+  ww35ptr->moveLabel(50,1530);
+
+  QPushButton *ww34push = new QPushButton();
+  scene->addWidget(ww34push);
+  ww34ptr->addButtonAndLabel(ww34label,ww34push);
+  ww34ptr->moveButton(165,1435);
+  ww34ptr->moveLabel(120,1460);
+
+  QPushButton *ww33push = new QPushButton();
+  scene->addWidget(ww33push);
+  ww33ptr->addButtonAndLabel(ww33label,ww33push);
+  ww33ptr->moveButton(235,1365);
+  ww33ptr->moveLabel(190,1390);
+
+  QPushButton *ww32push = new QPushButton();
+  scene->addWidget(ww32push);
+  ww32ptr->addButtonAndLabel(ww32label,ww32push);
+  ww32ptr->moveButton(290,1295);
+  ww32ptr->moveLabel(245,1320);
+
+  QGraphicsSvgItem *itemv44 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *itemv442 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(itemv44);
+  scene->addItem(itemv442);
+  itemv44->setPos(QPointF(-1000,1785));
+  itemv442->setPos(QPointF(-1000,1785));
+  itemv44->setScale(0.1);
+  itemv442->setScale(0.1);
+  itemv44->setRotation(-90);
+  itemv442->setRotation(-90);
+  v44ptr->addVSignalitems(itemv44, itemv442);
+
+  QGraphicsSvgItem *s52item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s52item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s52item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s52item1);
+  scene->addItem(s52item3);
+  scene->addItem(s52item2);
+  s52item1->setPos(QPointF(-1040,1780));
+  s52item2->setPos(QPointF(-1040,1780));
+  s52item3->setPos(QPointF(-1040,1780));
+  s52item1->setScale(0.1);
+  s52item2->setScale(0.1);
+  s52item3->setScale(0.1);
+  s52item1->setRotation(-90);
+  s52item2->setRotation(-90);
+  s52item3->setRotation(-90);
+  QPushButton *s52push = new QPushButton();
+  scene->addWidget(s52push);
+  QLabel *s52label = new QLabel();
+  scene->addWidget(s52label);
+  //speicher GUIs
+  QGraphicsRectItem *sphin52 = new QGraphicsRectItem();
+  sphin52->setRect(0,0,10,10);
+  sphin52->setBrush(Qt::yellow);
+  sphin52->setPos(QPointF(-960,1770));
+  QGraphicsRectItem *spweg52 = new QGraphicsRectItem();
+  spweg52->setRect(0,0,10,10);
+  spweg52->setBrush(Qt::yellow);
+  spweg52->setPos(QPointF(-960,1760));
+  scene->addItem(spweg52);
+  scene->addItem(sphin52);
+  s52ptr->addHSignalitem(s52item1,s52item2, s52item3, s52label,s52push,spweg52,sphin52);
+  s52ptr->moveButton(-1005,1785);
+  s52ptr->moveLabel(-950,1765);
+
+  QGraphicsSvgItem *itemv431 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
+  QGraphicsSvgItem *itemv432 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  scene->addItem(itemv431);
+  scene->addItem(itemv432);
+  itemv431->setPos(QPointF(449,1265));
+  itemv432->setPos(QPointF(449,1265));
+  itemv431->setScale(0.1);
+  itemv432->setScale(0.1);
+  itemv431->setRotation(45);
+  itemv432->setRotation(45);
+  v43ptr->addVSignalitems(itemv431, itemv432);
+  
+  QGraphicsSvgItem *s51item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
+  QGraphicsSvgItem *s51item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
+  QGraphicsSvgItem *s51item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  scene->addItem(s51item1);
+  scene->addItem(s51item3);
+  scene->addItem(s51item2);
+  s51item1->setPos(QPointF(484,1235));
+  s51item2->setPos(QPointF(484,1235));
+  s51item3->setPos(QPointF(484,1235));
+  s51item1->setScale(0.1);
+  s51item2->setScale(0.1);
+  s51item3->setScale(0.1);
+  s51item1->setRotation(45);
+  s51item2->setRotation(45);
+  s51item3->setRotation(45);
+  QPushButton *s51push = new QPushButton();
+  scene->addWidget(s51push);
+  QLabel *s51label = new QLabel();
+  scene->addWidget(s51label);
+  //speicher GUIs
+  QGraphicsRectItem *sphin51 = new QGraphicsRectItem();
+  sphin51->setRect(0,0,10,10);
+  sphin51->setBrush(Qt::yellow);
+  sphin51->setPos(QPointF(419,1300));
+  QGraphicsRectItem *spweg51 = new QGraphicsRectItem();
+  spweg51->setRect(0,0,10,10);
+  spweg51->setBrush(Qt::yellow);
+  spweg51->setPos(QPointF(431,1303));
+  spweg51->setRotation(45);
+  sphin51->setRotation(45);
+  scene->addItem(spweg51);
+  scene->addItem(sphin51);
+  s51ptr->addHSignalitem(s51item1,s51item2, s51item3, s51label,s51push,spweg51,sphin51);
+  s51ptr->moveButton(410,1250);
+  s51ptr->moveLabel(394,1315);
+
+  //----------------------------------------------
+  QPair<Weiche*, bool> ww40toww31w53(w53ptr,true);
+  QList<QPair<Weiche*, bool>> ww40toww31;
+  ww40toww31.push_back(ww40toww31w53);
+  ww40ptr->addWeichenstatus(ww31ptr,ww40toww31);
+  QPair<Weiche*, bool> ww40toww30w53(w53ptr,false);
+  QPair<Weiche*, bool> ww40toww30w51(w51ptr,false);
+  QList<QPair<Weiche*, bool>> ww40toww30;
+  ww40toww30.push_back(ww40toww30w53);
+  ww40toww30.push_back(ww40toww30w51);
+  ww40ptr->addWeichenstatus(ww30ptr,ww40toww30);
+  QPair<Weiche*, bool> ww40toww29w53(w53ptr,false);
+  QPair<Weiche*, bool> ww40toww29w51(w51ptr,true);
+  QPair<Weiche*, bool> ww40toww29w49(w49ptr,false);
+  QList<QPair<Weiche*, bool>> ww40toww29;
+  ww40toww29.push_back(ww40toww29w53);
+  ww40toww29.push_back(ww40toww29w51);
+  ww40toww29.push_back(ww40toww29w49);
+  ww40ptr->addWeichenstatus(ww29ptr,ww40toww29);
+  QPair<Weiche*, bool> ww40toww28w53(w53ptr,false);
+  QPair<Weiche*, bool> ww40toww28w51(w51ptr,true);
+  QPair<Weiche*, bool> ww40toww28w49(w49ptr,true);
+  QPair<Weiche*, bool> ww40toww28w47(w47ptr,false);
+  QList<QPair<Weiche*, bool>> ww40toww28;
+  ww40toww28.push_back(ww40toww28w53);
+  ww40toww28.push_back(ww40toww28w51);
+  ww40toww28.push_back(ww40toww28w49);
+  ww40toww28.push_back(ww40toww28w47);
+  ww40ptr->addWeichenstatus(ww28ptr,ww40toww28);
+  QPair<Weiche*, bool> ww40toww27w53(w53ptr,false);
+  QPair<Weiche*, bool> ww40toww27w51(w51ptr,true);
+  QPair<Weiche*, bool> ww40toww27w49(w49ptr,true);
+  QPair<Weiche*, bool> ww40toww27w47(w47ptr,true);
+  QPair<Weiche*, bool> ww40toww27w45(w45ptr,false);
+  QList<QPair<Weiche*, bool>> ww40toww27;
+  ww40toww27.push_back(ww40toww27w53);
+  ww40toww27.push_back(ww40toww27w51);
+  ww40toww27.push_back(ww40toww27w49);
+  ww40toww27.push_back(ww40toww27w47);
+  ww40toww27.push_back(ww40toww27w45);
+  ww40ptr->addWeichenstatus(ww27ptr,ww40toww27);
+  QPair<Weiche*, bool> ww40toww26w53(w53ptr,false);
+  QPair<Weiche*, bool> ww40toww26w51(w51ptr,true);
+  QPair<Weiche*, bool> ww40toww26w49(w49ptr,true);
+  QPair<Weiche*, bool> ww40toww26w47(w47ptr,true);
+  QPair<Weiche*, bool> ww40toww26w45(w45ptr,true);
+  QPair<Weiche*, bool> ww40toww26w43(w43ptr,false);
+  QList<QPair<Weiche*, bool>> ww40toww26;
+  ww40toww26.push_back(ww40toww26w53);
+  ww40toww26.push_back(ww40toww26w51);
+  ww40toww26.push_back(ww40toww26w49);
+  ww40toww26.push_back(ww40toww26w47);
+  ww40toww26.push_back(ww40toww26w45);
+  ww40toww26.push_back(ww40toww26w43);
+  ww40ptr->addWeichenstatus(ww26ptr,ww40toww26);
+  QPair<Weiche*, bool> ww40toww25w53(w53ptr,false);
+  QPair<Weiche*, bool> ww40toww25w51(w51ptr,true);
+  QPair<Weiche*, bool> ww40toww25w49(w49ptr,true);
+  QPair<Weiche*, bool> ww40toww25w47(w47ptr,true);
+  QPair<Weiche*, bool> ww40toww25w45(w45ptr,true);
+  QPair<Weiche*, bool> ww40toww25w43(w43ptr,true);
+  QPair<Weiche*, bool> ww40toww25w41(w41ptr,false);
+  QList<QPair<Weiche*, bool>> ww40toww25;
+  ww40toww25.push_back(ww40toww25w53);
+  ww40toww25.push_back(ww40toww25w51);
+  ww40toww25.push_back(ww40toww25w49);
+  ww40toww25.push_back(ww40toww25w47);
+  ww40toww25.push_back(ww40toww25w45);
+  ww40toww25.push_back(ww40toww25w43);
+  ww40toww25.push_back(ww40toww25w41);
+  ww40ptr->addWeichenstatus(ww25ptr,ww40toww25);
+  QPair<Weiche*, bool> ww40toww24w53(w53ptr,false);
+  QPair<Weiche*, bool> ww40toww24w51(w51ptr,true);
+  QPair<Weiche*, bool> ww40toww24w49(w49ptr,true);
+  QPair<Weiche*, bool> ww40toww24w47(w47ptr,true);
+  QPair<Weiche*, bool> ww40toww24w45(w45ptr,true);
+  QPair<Weiche*, bool> ww40toww24w43(w43ptr,true);
+  QPair<Weiche*, bool> ww40toww24w41(w41ptr,true);
+  QList<QPair<Weiche*, bool>> ww40toww24;
+  ww40toww24.push_back(ww40toww24w53);
+  ww40toww24.push_back(ww40toww24w51);
+  ww40toww24.push_back(ww40toww24w49);
+  ww40toww24.push_back(ww40toww24w47);
+  ww40toww24.push_back(ww40toww24w45);
+  ww40toww24.push_back(ww40toww24w43);
+  ww40toww24.push_back(ww40toww24w41);
+  ww40ptr->addWeichenstatus(ww24ptr,ww40toww24);
+
+  QPair<Weiche*, bool> ww39toww41w40(w40ptr,true);
+  QList<QPair<Weiche*, bool>> ww39toww41;
+  ww39toww41.push_back(ww39toww41w40);
+  ww39ptr->addWeichenstatus(ww41ptr,ww39toww41);
+  QPair<Weiche*, bool> ww39toww38w40(w40ptr,false);
+  QPair<Weiche*, bool> ww39toww38w42(w42ptr,false);
+  QList<QPair<Weiche*, bool>> ww39toww38;
+  ww39toww38.push_back(ww39toww38w40);
+  ww39toww38.push_back(ww39toww38w42);
+  ww39ptr->addWeichenstatus(ww38ptr,ww39toww38);
+  QPair<Weiche*, bool> ww39toww37w40(w40ptr,false);
+  QPair<Weiche*, bool> ww39toww37w42(w42ptr,true);
+  QPair<Weiche*, bool> ww39toww37w44(w44ptr,false);
+  QList<QPair<Weiche*, bool>> ww39toww37;
+  ww39toww37.push_back(ww39toww37w40);
+  ww39toww37.push_back(ww39toww37w42);
+  ww39toww37.push_back(ww39toww37w44);
+  ww39ptr->addWeichenstatus(ww37ptr,ww39toww37);
+  QPair<Weiche*, bool> ww39toww36w40(w40ptr,false);
+  QPair<Weiche*, bool> ww39toww36w42(w42ptr,true);
+  QPair<Weiche*, bool> ww39toww36w44(w44ptr,true);
+  QPair<Weiche*, bool> ww39toww36w46(w46ptr,false);
+  QList<QPair<Weiche*, bool>> ww39toww36;
+  ww39toww36.push_back(ww39toww36w40);
+  ww39toww36.push_back(ww39toww36w42);
+  ww39toww36.push_back(ww39toww36w44);
+  ww39toww36.push_back(ww39toww36w46);
+  ww39ptr->addWeichenstatus(ww36ptr,ww39toww36);
+  QPair<Weiche*, bool> ww39toww35w40(w40ptr,false);
+  QPair<Weiche*, bool> ww39toww35w42(w42ptr,true);
+  QPair<Weiche*, bool> ww39toww35w44(w44ptr,true);
+  QPair<Weiche*, bool> ww39toww35w46(w46ptr,true);
+  QPair<Weiche*, bool> ww39toww35w48(w48ptr,false);
+  QList<QPair<Weiche*, bool>> ww39toww35;
+  ww39toww35.push_back(ww39toww35w40);
+  ww39toww35.push_back(ww39toww35w42);
+  ww39toww35.push_back(ww39toww35w44);
+  ww39toww35.push_back(ww39toww35w46);
+  ww39toww35.push_back(ww39toww35w48);
+  ww39ptr->addWeichenstatus(ww35ptr,ww39toww35);
+  QPair<Weiche*, bool> ww39toww34w40(w40ptr,false);
+  QPair<Weiche*, bool> ww39toww34w42(w42ptr,true);
+  QPair<Weiche*, bool> ww39toww34w44(w44ptr,true);
+  QPair<Weiche*, bool> ww39toww34w46(w46ptr,true);
+  QPair<Weiche*, bool> ww39toww34w48(w48ptr,true);
+  QPair<Weiche*, bool> ww39toww34w50(w50ptr,false);
+  QList<QPair<Weiche*, bool>> ww39toww34;
+  ww39toww34.push_back(ww39toww34w40);
+  ww39toww34.push_back(ww39toww34w42);
+  ww39toww34.push_back(ww39toww34w44);
+  ww39toww34.push_back(ww39toww34w46);
+  ww39toww34.push_back(ww39toww34w48);
+  ww39toww34.push_back(ww39toww34w50);
+  ww39ptr->addWeichenstatus(ww34ptr,ww39toww34);
+  QPair<Weiche*, bool> ww39toww33w40(w40ptr,false);
+  QPair<Weiche*, bool> ww39toww33w42(w42ptr,true);
+  QPair<Weiche*, bool> ww39toww33w44(w44ptr,true);
+  QPair<Weiche*, bool> ww39toww33w46(w46ptr,true);
+  QPair<Weiche*, bool> ww39toww33w48(w48ptr,true);
+  QPair<Weiche*, bool> ww39toww33w50(w50ptr,true);
+  QPair<Weiche*, bool> ww39toww33w52(w52ptr,false);
+  QList<QPair<Weiche*, bool>> ww39toww33;
+  ww39toww33.push_back(ww39toww33w40);
+  ww39toww33.push_back(ww39toww33w42);
+  ww39toww33.push_back(ww39toww33w44);
+  ww39toww33.push_back(ww39toww33w46);
+  ww39toww33.push_back(ww39toww33w48);
+  ww39toww33.push_back(ww39toww33w50);
+  ww39toww33.push_back(ww39toww33w52);
+  ww39ptr->addWeichenstatus(ww33ptr,ww39toww33);
+  QPair<Weiche*, bool> ww39toww32w40(w40ptr,false);
+  QPair<Weiche*, bool> ww39toww32w42(w42ptr,true);
+  QPair<Weiche*, bool> ww39toww32w44(w44ptr,true);
+  QPair<Weiche*, bool> ww39toww32w46(w46ptr,true);
+  QPair<Weiche*, bool> ww39toww32w48(w48ptr,true);
+  QPair<Weiche*, bool> ww39toww32w50(w50ptr,true);
+  QPair<Weiche*, bool> ww39toww32w52(w52ptr,true);
+  QList<QPair<Weiche*, bool>> ww39toww32;
+  ww39toww32.push_back(ww39toww32w40);
+  ww39toww32.push_back(ww39toww32w42);
+  ww39toww32.push_back(ww39toww32w44);
+  ww39toww32.push_back(ww39toww32w46);
+  ww39toww32.push_back(ww39toww32w48);
+  ww39toww32.push_back(ww39toww32w50);
+  ww39toww32.push_back(ww39toww32w52);
+  ww39ptr->addWeichenstatus(ww32ptr,ww39toww32);
+
+  QPair<Weiche*, bool> ww24tos52w40(w40ptr,true);
+  QList<QPair<Weiche*, bool>> ww24tos52;
+  ww24tos52.push_back(ww24tos52w40);
+  ww24ptr->addWeichenstatusZuH(s52ptr->getS_id(),ww24tos52);
+  
+  QPair<Weiche*, bool> ww25tos52w40(w40ptr,false);
+  QPair<Weiche*, bool> ww25tos52w42(w42ptr,false);
+  QList<QPair<Weiche*, bool>> ww25tos52;
+  ww25tos52.push_back(ww25tos52w40);
+  ww25tos52.push_back(ww25tos52w42);
+  ww25ptr->addWeichenstatusZuH(s52ptr->getS_id(),ww25tos52);
+  
+  QPair<Weiche*, bool> ww26tos52w40(w40ptr,false);
+  QPair<Weiche*, bool> ww26tos52w42(w42ptr,true);
+  QPair<Weiche*, bool> ww26tos52w44(w44ptr,false);
+  QList<QPair<Weiche*, bool>> ww26tos52;
+  ww26tos52.push_back(ww26tos52w40);
+  ww26tos52.push_back(ww26tos52w42);
+  ww26tos52.push_back(ww26tos52w44);
+  ww26ptr->addWeichenstatusZuH(s52ptr->getS_id(),ww26tos52);
+  
+  QPair<Weiche*, bool> ww27tos52w40(w40ptr,false);
+  QPair<Weiche*, bool> ww27tos52w42(w42ptr,true);
+  QPair<Weiche*, bool> ww27tos52w44(w44ptr,true);
+  QPair<Weiche*, bool> ww27tos52w46(w46ptr,false);
+  QList<QPair<Weiche*, bool>> ww27tos52;
+  ww27tos52.push_back(ww27tos52w40);
+  ww27tos52.push_back(ww27tos52w42);
+  ww27tos52.push_back(ww27tos52w44);
+  ww27tos52.push_back(ww27tos52w46);
+  ww27ptr->addWeichenstatusZuH(s52ptr->getS_id(),ww27tos52);
+  
+  QPair<Weiche*, bool> ww28tos52w40(w40ptr,false);
+  QPair<Weiche*, bool> ww28tos52w42(w42ptr,true);
+  QPair<Weiche*, bool> ww28tos52w44(w44ptr,true);
+  QPair<Weiche*, bool> ww28tos52w46(w46ptr,true);
+  QPair<Weiche*, bool> ww28tos52w48(w48ptr,false);
+  QList<QPair<Weiche*, bool>> ww28tos52;
+  ww28tos52.push_back(ww28tos52w40);
+  ww28tos52.push_back(ww28tos52w42);
+  ww28tos52.push_back(ww28tos52w44);
+  ww28tos52.push_back(ww28tos52w46);
+  ww28tos52.push_back(ww28tos52w48);
+  ww28ptr->addWeichenstatusZuH(s52ptr->getS_id(),ww28tos52);
+  
+  QPair<Weiche*, bool> ww29tos52w40(w40ptr,false);
+  QPair<Weiche*, bool> ww29tos52w42(w42ptr,true);
+  QPair<Weiche*, bool> ww29tos52w44(w44ptr,true);
+  QPair<Weiche*, bool> ww29tos52w46(w46ptr,true);
+  QPair<Weiche*, bool> ww29tos52w48(w48ptr,true);
+  QPair<Weiche*, bool> ww29tos52w50(w50ptr,false);
+  QList<QPair<Weiche*, bool>> ww29tos52;
+  ww29tos52.push_back(ww29tos52w40);
+  ww29tos52.push_back(ww29tos52w42);
+  ww29tos52.push_back(ww29tos52w44);
+  ww29tos52.push_back(ww29tos52w46);
+  ww29tos52.push_back(ww29tos52w48);
+  ww29tos52.push_back(ww29tos52w50);
+  ww29ptr->addWeichenstatusZuH(s52ptr->getS_id(),ww29tos52);
+  
+  QPair<Weiche*, bool> ww30tos52w40(w40ptr,false);
+  QPair<Weiche*, bool> ww30tos52w42(w42ptr,true);
+  QPair<Weiche*, bool> ww30tos52w44(w44ptr,true);
+  QPair<Weiche*, bool> ww30tos52w46(w46ptr,true);
+  QPair<Weiche*, bool> ww30tos52w48(w48ptr,true);
+  QPair<Weiche*, bool> ww30tos52w50(w50ptr,true);
+  QPair<Weiche*, bool> ww30tos52w52(w52ptr,false);
+  QList<QPair<Weiche*, bool>> ww30tos52;
+  ww30tos52.push_back(ww30tos52w40);
+  ww30tos52.push_back(ww30tos52w42);
+  ww30tos52.push_back(ww30tos52w44);
+  ww30tos52.push_back(ww30tos52w46);
+  ww30tos52.push_back(ww30tos52w48);
+  ww30tos52.push_back(ww30tos52w50);
+  ww30tos52.push_back(ww30tos52w52);
+  ww30ptr->addWeichenstatusZuH(s52ptr->getS_id(),ww30tos52);
+  
+  QPair<Weiche*, bool> ww31tos52w40(w40ptr,false);
+  QPair<Weiche*, bool> ww31tos52w42(w42ptr,true);
+  QPair<Weiche*, bool> ww31tos52w44(w44ptr,true);
+  QPair<Weiche*, bool> ww31tos52w46(w46ptr,true);
+  QPair<Weiche*, bool> ww31tos52w48(w48ptr,true);
+  QPair<Weiche*, bool> ww31tos52w50(w50ptr,true);
+  QPair<Weiche*, bool> ww31tos52w52(w52ptr,true);
+  QList<QPair<Weiche*, bool>> ww31tos52;
+  ww31tos52.push_back(ww31tos52w40);
+  ww31tos52.push_back(ww31tos52w42);
+  ww31tos52.push_back(ww31tos52w44);
+  ww31tos52.push_back(ww31tos52w46);
+  ww31tos52.push_back(ww31tos52w48);
+  ww31tos52.push_back(ww31tos52w50);
+  ww31tos52.push_back(ww31tos52w52);
+  ww31ptr->addWeichenstatusZuH(s52ptr->getS_id(),ww31tos52);
+
+  QPair<Weiche*, bool> ww41tos51w53(w53ptr,true);
+  QList<QPair<Weiche*, bool>> ww41tos51;
+  ww41tos51.push_back(ww41tos51w53);
+  ww41ptr->addWeichenstatusZuH(s51ptr->getS_id(),ww41tos51);
+  
+  QPair<Weiche*, bool> ww38tos51w53(w53ptr,false);
+  QPair<Weiche*, bool> ww38tos51w51(w51ptr,false);
+  QList<QPair<Weiche*, bool>> ww38tos51;
+  ww38tos51.push_back(ww38tos51w53);
+  ww38tos51.push_back(ww38tos51w51);
+  ww38ptr->addWeichenstatusZuH(s51ptr->getS_id(),ww38tos51);
+  
+  QPair<Weiche*, bool> ww37tos51w53(w53ptr,false);
+  QPair<Weiche*, bool> ww37tos51w51(w51ptr,true);
+  QPair<Weiche*, bool> ww37tos51w49(w49ptr,false);
+  QList<QPair<Weiche*, bool>> ww37tos51;
+  ww37tos51.push_back(ww37tos51w53);
+  ww37tos51.push_back(ww37tos51w51);
+  ww37tos51.push_back(ww37tos51w49);
+  ww37ptr->addWeichenstatusZuH(s51ptr->getS_id(),ww37tos51);
+  
+  QPair<Weiche*, bool> ww36tos51w53(w53ptr,false);
+  QPair<Weiche*, bool> ww36tos51w51(w51ptr,true);
+  QPair<Weiche*, bool> ww36tos51w49(w49ptr,true);
+  QPair<Weiche*, bool> ww36tos51w47(w47ptr,false);
+  QList<QPair<Weiche*, bool>> ww36tos51;
+  ww36tos51.push_back(ww36tos51w53);
+  ww36tos51.push_back(ww36tos51w51);
+  ww36tos51.push_back(ww36tos51w49);
+  ww36tos51.push_back(ww36tos51w47);
+  ww36ptr->addWeichenstatusZuH(s51ptr->getS_id(),ww36tos51);
+  
+  QPair<Weiche*, bool> ww35tos51w53(w53ptr,false);
+  QPair<Weiche*, bool> ww35tos51w51(w51ptr,true);
+  QPair<Weiche*, bool> ww35tos51w49(w49ptr,true);
+  QPair<Weiche*, bool> ww35tos51w47(w47ptr,true);
+  QPair<Weiche*, bool> ww35tos51w45(w45ptr,false);
+  QList<QPair<Weiche*, bool>> ww35tos51;
+  ww35tos51.push_back(ww35tos51w53);
+  ww35tos51.push_back(ww35tos51w51);
+  ww35tos51.push_back(ww35tos51w49);
+  ww35tos51.push_back(ww35tos51w47);
+  ww35tos51.push_back(ww35tos51w45);
+  ww35ptr->addWeichenstatusZuH(s51ptr->getS_id(),ww35tos51);
+  
+  QPair<Weiche*, bool> ww34tos51w53(w53ptr,false);
+  QPair<Weiche*, bool> ww34tos51w51(w51ptr,true);
+  QPair<Weiche*, bool> ww34tos51w49(w49ptr,true);
+  QPair<Weiche*, bool> ww34tos51w47(w47ptr,true);
+  QPair<Weiche*, bool> ww34tos51w45(w45ptr,true);
+  QPair<Weiche*, bool> ww34tos51w43(w43ptr,false);
+  QList<QPair<Weiche*, bool>> ww34tos51;
+  ww34tos51.push_back(ww34tos51w53);
+  ww34tos51.push_back(ww34tos51w51);
+  ww34tos51.push_back(ww34tos51w49);
+  ww34tos51.push_back(ww34tos51w47);
+  ww34tos51.push_back(ww34tos51w45);
+  ww34tos51.push_back(ww34tos51w43);
+  ww34ptr->addWeichenstatusZuH(s51ptr->getS_id(),ww34tos51);
+  
+  QPair<Weiche*, bool> ww33tos51w53(w53ptr,false);
+  QPair<Weiche*, bool> ww33tos51w51(w51ptr,true);
+  QPair<Weiche*, bool> ww33tos51w49(w49ptr,true);
+  QPair<Weiche*, bool> ww33tos51w47(w47ptr,true);
+  QPair<Weiche*, bool> ww33tos51w45(w45ptr,true);
+  QPair<Weiche*, bool> ww33tos51w43(w43ptr,true);
+  QPair<Weiche*, bool> ww33tos51w41(w41ptr,false);
+  QList<QPair<Weiche*, bool>> ww33tos51;
+  ww33tos51.push_back(ww33tos51w53);
+  ww33tos51.push_back(ww33tos51w51);
+  ww33tos51.push_back(ww33tos51w49);
+  ww33tos51.push_back(ww33tos51w47);
+  ww33tos51.push_back(ww33tos51w45);
+  ww33tos51.push_back(ww33tos51w43);
+  ww33tos51.push_back(ww33tos51w41);
+  ww33ptr->addWeichenstatusZuH(s51ptr->getS_id(),ww33tos51);
+  
+  QPair<Weiche*, bool> ww32tos51w53(w53ptr,false);
+  QPair<Weiche*, bool> ww32tos51w51(w51ptr,true);
+  QPair<Weiche*, bool> ww32tos51w49(w49ptr,true);
+  QPair<Weiche*, bool> ww32tos51w47(w47ptr,true);
+  QPair<Weiche*, bool> ww32tos51w45(w45ptr,true);
+  QPair<Weiche*, bool> ww32tos51w43(w43ptr,true);
+  QPair<Weiche*, bool> ww32tos51w41(w41ptr,true);
+  QList<QPair<Weiche*, bool>> ww32tos51;
+  ww32tos51.push_back(ww32tos51w53);
+  ww32tos51.push_back(ww32tos51w51);
+  ww32tos51.push_back(ww32tos51w49);
+  ww32tos51.push_back(ww32tos51w47);
+  ww32tos51.push_back(ww32tos51w45);
+  ww32tos51.push_back(ww32tos51w43);
+  ww32tos51.push_back(ww32tos51w41);
+  ww32ptr->addWeichenstatusZuH(s51ptr->getS_id(),ww32tos51);
+
+  QList<Block*> ww39toww41b;
+  ww39toww41b.push_back(bwptr);
+  ww39ptr->addBlock(ww41ptr,ww39toww41b);
+
+  QList<Block*> ww39toww38b;
+  ww39toww38b.push_back(bvptr);
+  ww39ptr->addBlock(ww38ptr,ww39toww38b);
+
+  QList<Block*> ww39toww37b;
+  ww39toww37b.push_back(buptr);
+  ww39ptr->addBlock(ww37ptr,ww39toww37b);
+
+  QList<Block*> ww39toww36b;
+  ww39toww36b.push_back(btptr);
+  ww39ptr->addBlock(ww36ptr,ww39toww36b);
+
+  QList<Block*> ww39toww35b;
+  ww39toww35b.push_back(bsptr);
+  ww39ptr->addBlock(ww35ptr,ww39toww35b);
+
+  QList<Block*> ww39toww34b;
+  ww39toww34b.push_back(brptr);
+  ww39ptr->addBlock(ww34ptr,ww39toww34b);
+
+  QList<Block*> ww39toww33b;
+  ww39toww33b.push_back(bqptr);
+  ww39ptr->addBlock(ww33ptr,ww39toww33b);
+
+  QList<Block*> ww39toww32b;
+  ww39toww32b.push_back(bpptr);
+  ww39ptr->addBlock(ww32ptr,ww39toww32b);
+
+  QList<Block*> ww40toww24b;
+  ww40toww24b.push_back(bwptr);
+  ww40ptr->addBlock(ww24ptr,ww40toww24b);
+
+  QList<Block*> ww40toww25b;
+  ww40toww25b.push_back(bvptr);
+  ww40ptr->addBlock(ww25ptr,ww40toww25b);
+
+  QList<Block*> ww40toww26b;
+  ww40toww26b.push_back(buptr);
+  ww40ptr->addBlock(ww26ptr,ww40toww26b);
+
+  QList<Block*> ww40toww27b;
+  ww40toww27b.push_back(btptr);
+  ww40ptr->addBlock(ww27ptr,ww40toww27b);
+
+  QList<Block*> ww40toww28b;
+  ww40toww28b.push_back(bsptr);
+  ww40ptr->addBlock(ww28ptr,ww40toww28b);
+
+  QList<Block*> ww40toww29b;
+  ww40toww29b.push_back(brptr);
+  ww40ptr->addBlock(ww29ptr,ww40toww29b);
+
+  QList<Block*> ww40toww30b;
+  ww40toww30b.push_back(bqptr);
+  ww40ptr->addBlock(ww30ptr,ww40toww30b);
+
+  QList<Block*> ww40toww31b;
+  ww40toww31b.push_back(bpptr);
+  ww40ptr->addBlock(ww31ptr,ww40toww31b);
+
+  QList<Block*> s51tos49b;
+  s51tos49b.push_back(byptr);
+  s51tos49b.push_back(bxptr);
+  s51ptr->addBlock(s49ptr,s51tos49b);
+  QList<Block*> s51toww42b;
+  s51toww42b.push_back(byptr);
+  s51ptr->addBlockZuRangier(ww42ptr,s51toww42b);
+
+  QList<Block*> s52tos10b;
+  s52tos10b.push_back(bzptr);
+  s52tos10b.push_back(ahptr);
+  s52ptr->addBlock(s10ptr,s52tos10b);
+  QList<Block*> s52toww43b;
+  s52toww43b.push_back(bzptr);
+  s52ptr->addBlockZuRangier(ww43ptr,s52toww43b);
+
+  QList<Block*> s9toww39b;
+  s9toww39b.push_back(bzptr);
+  s9ptr->addBlockZuRangier(ww39ptr,s9toww39b);
+
+  QList<Block*> s50toww40b;
+  s50toww40b.push_back(byptr);
+  s50ptr->addBlockZuRangier(ww40ptr,s50toww40b);
+  
+
   
   //strecke oben
   QGraphicsRectItem *akrect = new QGraphicsRectItem();
@@ -4025,7 +5162,6 @@ int main( int argc , char *argv[] ){
   w12rectge->setRect(0,0,10,75);
   w12rectge->setPos(QPointF(415,-110));
   w12rectge->setBrush(QColor(79,79,79));
-  //w12rectge->setRotation(90);
   scene->addItem(w12rectge);
   QGraphicsRectItem *w12rectab = new QGraphicsRectItem();
   w12rectab->setRect(0,0,10,50);
@@ -6566,6 +7702,8 @@ int main( int argc , char *argv[] ){
   QObject::connect(s48ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(s49ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(s50ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(s51ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(s52ptr,&HSignal::listened,c1,QOverload<HSignal*>::of(&clickmanager::recieveFS) );
   //also for WSignal
   QObject::connect(ww1ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(ww2ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
@@ -6590,6 +7728,24 @@ int main( int argc , char *argv[] ){
   QObject::connect(ww21ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(ww22ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   QObject::connect(ww23ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww24ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww25ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww26ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww27ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww28ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww29ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww30ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww31ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww32ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww33ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww34ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww35ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww36ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww37ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww38ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww39ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww40ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
+  QObject::connect(ww41ptr,&WSignal::listened,c1,QOverload<WSignal*>::of(&clickmanager::recieveFS) );
   //:::::::::
 
 
@@ -6664,6 +7820,8 @@ int main( int argc , char *argv[] ){
   QObject::connect(s48ptr, &HSignal::callspmemory,mem, &Spmemory::addFS);
   QObject::connect(s49ptr, &HSignal::callspmemory,mem, &Spmemory::addFS);
   QObject::connect(s50ptr, &HSignal::callspmemory,mem, &Spmemory::addFS);
+  QObject::connect(s51ptr, &HSignal::callspmemory,mem, &Spmemory::addFS);
+  QObject::connect(s52ptr, &HSignal::callspmemory,mem, &Spmemory::addFS);
   thread2->start();
   
   w.showFullScreen(); //FullScreen as default
@@ -6752,13 +7910,13 @@ int main( int argc , char *argv[] ){
   
   delete aaptr; delete abptr; delete acptr; delete adptr; delete aeptr; delete afptr; delete agptr; delete ahptr; delete aiptr; delete ajptr; delete akptr; delete alptr; delete amptr; delete anptr; delete aoptr; delete apptr; delete aqptr; delete arptr; delete asptr; delete atptr; delete avptr; delete awptr; delete axptr; delete ayptr; delete azptr; delete baptr; delete bbptr; delete bcptr; delete bdptr; delete beptr; delete bfptr; delete bgptr; delete bhptr; delete biptr; delete bjptr; delete bkptr; delete blptr; delete bmptr; delete bnptr; delete boptr; delete bpptr; delete bqptr; delete brptr; delete bsptr; delete btptr; delete buptr; delete bvptr; delete bwptr; delete bxptr; delete byptr; delete bzptr;
   
-  delete ww1ptr; delete ww2ptr; delete ww3ptr; delete ww4ptr; delete ww5ptr; delete ww6ptr; delete ww7ptr; delete ww8ptr; delete ww9ptr; delete ww10ptr; delete ww11ptr; delete ww12ptr; delete ww13ptr; delete ww14ptr; delete ww15ptr; delete ww16ptr; delete ww17ptr; delete ww18ptr; delete ww19ptr; delete ww20ptr; delete ww21ptr; delete ww22ptr; delete ww23ptr; 
+  delete ww1ptr; delete ww2ptr; delete ww3ptr; delete ww4ptr; delete ww5ptr; delete ww6ptr; delete ww7ptr; delete ww8ptr; delete ww9ptr; delete ww10ptr; delete ww11ptr; delete ww12ptr; delete ww13ptr; delete ww14ptr; delete ww15ptr; delete ww16ptr; delete ww17ptr; delete ww18ptr; delete ww19ptr; delete ww20ptr; delete ww21ptr; delete ww22ptr; delete ww23ptr; delete ww24ptr; delete ww25ptr; delete ww26ptr; delete ww27ptr; delete ww28ptr; delete ww29ptr; delete ww30ptr; delete ww31ptr; delete ww32ptr; delete ww33ptr; delete ww34ptr; delete ww35ptr; delete ww36ptr; delete ww37ptr; delete ww38ptr; delete ww39ptr; delete ww40ptr; delete ww41ptr; delete ww42ptr; delete ww43ptr; 
   
-  delete v1ptr; delete v2ptr; delete v3ptr; delete v4ptr; delete v5ptr; delete v6ptr; delete v7ptr; delete v8ptr; delete v9ptr; delete v10ptr; delete v11ptr; delete v12ptr; delete v13ptr; delete v14ptr; delete v15ptr; delete v16ptr; delete v17ptr; delete  v18ptr; delete v19ptr; delete v20ptr; delete v21ptr; delete v22ptr; delete v23ptr; delete v24ptr; delete v25ptr; delete v26ptr; delete v27ptr; delete v28ptr; delete v29ptr; delete v30ptr; delete v31ptr; delete v32ptr; delete v33ptr; delete v34ptr; delete v35ptr; delete v36ptr; delete v37ptr; delete v38ptr; delete v39ptr; delete v40ptr; delete v41ptr; delete v42ptr;
+  delete v1ptr; delete v2ptr; delete v3ptr; delete v4ptr; delete v5ptr; delete v6ptr; delete v7ptr; delete v8ptr; delete v9ptr; delete v10ptr; delete v11ptr; delete v12ptr; delete v13ptr; delete v14ptr; delete v15ptr; delete v16ptr; delete v17ptr; delete  v18ptr; delete v19ptr; delete v20ptr; delete v21ptr; delete v22ptr; delete v23ptr; delete v24ptr; delete v25ptr; delete v26ptr; delete v27ptr; delete v28ptr; delete v29ptr; delete v30ptr; delete v31ptr; delete v32ptr; delete v33ptr; delete v34ptr; delete v35ptr; delete v36ptr; delete v37ptr; delete v38ptr; delete v39ptr; delete v40ptr; delete v41ptr; delete v42ptr; delete v43ptr; delete v44ptr;
   
   delete w1ptr; delete w2ptr; delete w3ptr; delete w4ptr; delete w5ptr; delete w6ptr; delete w7ptr; delete w8ptr; delete w9ptr; delete w10ptr; delete w11ptr; delete w12ptr; delete w13ptr; delete w14ptr; delete w15ptr; delete w16ptr; delete w17ptr; delete w18ptr; delete w19ptr; delete w20ptr; delete w21ptr; delete w22ptr; delete w23ptr; delete w24ptr; delete w25ptr; delete w26ptr; delete w27ptr; delete w28ptr; delete w29ptr; delete w30ptr; delete w31ptr; delete w40ptr; delete w41ptr; delete w42ptr; delete w43ptr; delete w44ptr; delete w45ptr; delete w46ptr; delete w47ptr; delete w48ptr; delete w49ptr; delete w50ptr; delete w51ptr; delete w52ptr; delete w53ptr;
   
-  delete s1ptr; delete s2ptr; delete s3ptr; delete s4ptr; delete s5ptr; delete s6ptr; delete s7ptr; delete s8ptr; delete s9ptr; delete s10ptr; delete s11ptr; delete s12ptr; delete s13ptr; delete s14ptr; delete s15ptr; delete s16ptr; delete s17ptr; delete s18ptr; delete s19ptr; delete s20ptr; delete s21ptr; delete s22ptr; delete s23ptr; delete s24ptr; delete s25ptr; delete s26ptr; delete s27ptr; delete s28ptr; delete s29ptr; delete s30ptr; delete s31ptr; delete s32ptr; delete s33ptr; delete s34ptr; delete s35ptr; delete s36ptr; delete s37ptr; delete s38ptr; delete s39ptr; delete s40ptr; delete s41ptr; delete s42ptr; delete s43ptr; delete s44ptr; delete s45ptr; delete s46ptr; delete s47ptr; delete s48ptr; delete s49ptr; delete s50ptr; 
+  delete s1ptr; delete s2ptr; delete s3ptr; delete s4ptr; delete s5ptr; delete s6ptr; delete s7ptr; delete s8ptr; delete s9ptr; delete s10ptr; delete s11ptr; delete s12ptr; delete s13ptr; delete s14ptr; delete s15ptr; delete s16ptr; delete s17ptr; delete s18ptr; delete s19ptr; delete s20ptr; delete s21ptr; delete s22ptr; delete s23ptr; delete s24ptr; delete s25ptr; delete s26ptr; delete s27ptr; delete s28ptr; delete s29ptr; delete s30ptr; delete s31ptr; delete s32ptr; delete s33ptr; delete s34ptr; delete s35ptr; delete s36ptr; delete s37ptr; delete s38ptr; delete s39ptr; delete s40ptr; delete s41ptr; delete s42ptr; delete s43ptr; delete s44ptr; delete s45ptr; delete s46ptr; delete s47ptr; delete s48ptr; delete s49ptr; delete s50ptr; delete s51ptr; delete s52ptr;
   
   return eofprogram;
 
