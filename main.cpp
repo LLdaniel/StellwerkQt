@@ -4479,13 +4479,13 @@ int main( int argc , char *argv[] ){
   byrect3->setPos(QPointF(474,1201));
   byrect3->setBrush(QColor(79,79,79));
   byrect3->setRotation(45);
-  bpptr->addBlockitems(byrect3);
+  byptr->addBlockitems(byrect3);
   scene->addItem(byrect3);
   QGraphicsRectItem *byrect4 = new QGraphicsRectItem();
   byrect4->setRect(0,0,10,140);
   byrect4->setPos(QPointF(474,1061));
   byrect4->setBrush(QColor(79,79,79));
-  bpptr->addBlockitems(byrect4);
+  byptr->addBlockitems(byrect4);
   scene->addItem(byrect4);
 
   QPushButton *ww24push = new QPushButton();
@@ -7886,7 +7886,6 @@ int main( int argc , char *argv[] ){
   abptr->setGpio(24);
   wrkr->addBlocks(abptr);
   thread->start();
-  
   // end of program; release resources and write current turnout states
   //************************************************************************** 
   // all classes with parents are deleted through this chain, addItem, addWidget takes ownership, the rest is left for the programmer:
@@ -7894,7 +7893,7 @@ int main( int argc , char *argv[] ){
   qDebug() <<"endofprogram";
 
   // add turnouts to filemanager and write the states to the txt file
-  fmngr.add(w1ptr->getW_status()); fmngr.add(w2ptr->getW_status()); fmngr.add(w3ptr->getW_status()); fmngr.add(w4ptr->getW_status()); fmngr.add(w5ptr->getW_status()); fmngr.add(w6ptr->getW_status()); fmngr.add(w7ptr->getW_status());  fmngr.add(w8ptr->getW_status()); fmngr.add(w9ptr->getW_status()); fmngr.add(w10ptr->getW_status()); fmngr.add(w11ptr->getW_status()); fmngr.add(w12ptr->getW_status()); fmngr.add(w13ptr->getW_status()); fmngr.add(w14ptr->getW_status());  fmngr.add(w15ptr->getW_status()); fmngr.add(w16ptr->getW_status()); fmngr.add(w17ptr->getW_status()); fmngr.add(w18ptr->getW_status()); fmngr.add(w19ptr->getW_status()); fmngr.add(w20ptr->getW_status()); fmngr.add(w21ptr->getW_status());  fmngr.add(w22ptr->getW_status()); fmngr.add(w23ptr->getW_status()); fmngr.add(w24ptr->getW_status()); fmngr.add(w25ptr->getW_status()); fmngr.add(w26ptr->getW_status()); fmngr.add(w27ptr->getW_status()); fmngr.add(w28ptr->getW_status());  fmngr.add(w29ptr->getW_status()); fmngr.add(w30ptr->getW_status()); fmngr.add(w31ptr->getW_status()); fmngr.add(w40ptr->getW_status()); fmngr.add(w41ptr->getW_status()); fmngr.add(w42ptr->getW_status()); 
+  fmngr.add(w1ptr->getW_status()); fmngr.add(w2ptr->getW_status()); fmngr.add(w3ptr->getW_status()); fmngr.add(w4ptr->getW_status()); fmngr.add(w5ptr->getW_status()); fmngr.add(w6ptr->getW_status()); fmngr.add(w7ptr->getW_status());  fmngr.add(w8ptr->getW_status()); fmngr.add(w9ptr->getW_status()); fmngr.add(w10ptr->getW_status()); fmngr.add(w11ptr->getW_status()); fmngr.add(w12ptr->getW_status()); fmngr.add(w13ptr->getW_status()); fmngr.add(w14ptr->getW_status());  fmngr.add(w15ptr->getW_status()); fmngr.add(w16ptr->getW_status()); fmngr.add(w17ptr->getW_status()); fmngr.add(w18ptr->getW_status()); fmngr.add(w19ptr->getW_status()); fmngr.add(w20ptr->getW_status()); fmngr.add(w21ptr->getW_status());  fmngr.add(w22ptr->getW_status()); fmngr.add(w23ptr->getW_status()); fmngr.add(w24ptr->getW_status()); fmngr.add(w25ptr->getW_status()); fmngr.add(w26ptr->getW_status()); fmngr.add(w27ptr->getW_status()); fmngr.add(w28ptr->getW_status());  fmngr.add(w29ptr->getW_status()); fmngr.add(w30ptr->getW_status()); fmngr.add(w31ptr->getW_status()); fmngr.add(w40ptr->getW_status()); fmngr.add(w41ptr->getW_status()); fmngr.add(w42ptr->getW_status()); fmngr.add(w43ptr->getW_status()); fmngr.add(w44ptr->getW_status()); fmngr.add(w45ptr->getW_status()); fmngr.add(w46ptr->getW_status()); fmngr.add(w47ptr->getW_status()); fmngr.add(w48ptr->getW_status()); fmngr.add(w49ptr->getW_status()); fmngr.add(w50ptr->getW_status()); fmngr.add(w51ptr->getW_status()); fmngr.add(w52ptr->getW_status()); fmngr.add(w53ptr->getW_status()); 
   fmngr.write();
   //
   //delete in reverse order
