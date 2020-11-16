@@ -1277,7 +1277,7 @@ int main( int argc , char *argv[] ){
   
   WSignal *ww43ptr = new WSignal(43);
   //
-  ww42ptr->setRichtung("S052","S010");
+  ww43ptr->setRichtung("S052","S010");
   s52ptr->addWSignal(ww43ptr,"v");
   s10ptr->addWSignal(ww43ptr,"r");
   //
