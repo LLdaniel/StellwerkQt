@@ -7833,13 +7833,15 @@ int main( int argc , char *argv[] ){
   //************************************************************************** 
   //wiringPiSetupGpio(); cf beginning of program (also needed in mainwindow)
 
-  sr595Setup (100, 28, 9, 5, 11);                    //pin base, pin number, serial, clock, refresh                                      
+  sr595Setup (100, 28, 9, 5, 11);                    //pin base, pin number = active, serial, clock, refresh                                      
   sr595Setup (200, 30, 19, 6, 26); 
+  sr595Setup (300, 28, 17, 4, 27);
   
   //do not rely on random state of shift register: set all to LOW=0
   for(int pipin = 100; pipin < 132; pipin++){
     digitalWrite(pipin,LOW);                                                                
     digitalWrite(pipin+100,LOW);
+    digitalWrite(pipin+200,LOW);
   }
 
   //initialize all turnouts with pins:
@@ -7876,6 +7878,22 @@ int main( int argc , char *argv[] ){
   w19ptr->setGpio(228,229);
                             //230, 231 are spare pins --> see pinBase=30
 
+  w40ptr->setGpio(307,306);
+  w41ptr->setGpio(305,304);
+  w42ptr->setGpio(303,302);
+  w43ptr->setGpio(300,301);
+  w44ptr->setGpio(314,315);
+  w45ptr->setGpio(312,313);
+  w46ptr->setGpio(310,311);
+  w47ptr->setGpio(309,308);
+  w48ptr->setGpio(323,322);
+  w49ptr->setGpio(320,321);
+  w50ptr->setGpio(319,318);
+  w51ptr->setGpio(316,317);
+  w52ptr->setGpio(327,326);
+  w53ptr->setGpio(324,325);
+                            //327, 326, 325, 324 are spare pins --> see pinBase=28
+  
   // setting all segments with pins:
   //mcp23017Setup (400, 0x20);
   //for(mcp = 0; mcp < 16; mcp++){
