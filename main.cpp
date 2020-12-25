@@ -1369,14 +1369,14 @@ int main( int argc , char *argv[] ){
   s4tos14.push_back(s4tos14w5);
   s4ptr->addWeichenstatus(s14ptr,s4tos14);
 
-  QPair<Weiche*, bool> s4tos10w3(w3ptr,false);
-  QPair<Weiche*, bool> s4tos10w4(w4ptr,false);
-  QPair<Weiche*, bool> s4tos10w9(w9ptr,false);
-  QList<QPair<Weiche*, bool>> s4tos10;
-  s4tos10.push_back(s4tos10w3);
-  s4tos10.push_back(s4tos10w4);
-  s4tos10.push_back(s4tos10w9);
-  s4ptr->addWeichenstatus(s10ptr,s4tos10);
+  QPair<Weiche*, bool> s4tos50w3(w3ptr,false);
+  QPair<Weiche*, bool> s4tos50w4(w4ptr,false);
+  QPair<Weiche*, bool> s4tos50w9(w9ptr,false);
+  QList<QPair<Weiche*, bool>> s4tos50;
+  s4tos50.push_back(s4tos50w3);
+  s4tos50.push_back(s4tos50w4);
+  s4tos50.push_back(s4tos50w9);
+  s4ptr->addWeichenstatus(s10ptr,s4tos50);
 
   QPair<Weiche*, bool> s4tos12w3(w3ptr,false);
   QPair<Weiche*, bool> s4tos12w4(w4ptr,false);
@@ -1388,12 +1388,12 @@ int main( int argc , char *argv[] ){
   s4ptr->addWeichenstatus(s12ptr,s4tos12);
 
 
-  QPair<Weiche*, bool> s5tos10w4(w4ptr,true);
-  QPair<Weiche*, bool> s5tos10w9(w9ptr,false);
-  QList<QPair<Weiche*, bool>> s5tos10;
-  s5tos10.push_back(s5tos10w4);
-  s5tos10.push_back(s5tos10w9);
-  s5ptr->addWeichenstatus(s10ptr,s5tos10);
+  QPair<Weiche*, bool> s5tos50w4(w4ptr,true);
+  QPair<Weiche*, bool> s5tos50w9(w9ptr,false);
+  QList<QPair<Weiche*, bool>> s5tos50;
+  s5tos50.push_back(s5tos50w4);
+  s5tos50.push_back(s5tos50w9);
+  s5ptr->addWeichenstatus(s50ptr,s5tos50);
 
   QPair<Weiche*, bool> s6tos24w8(w8ptr,false);
   QList<QPair<Weiche*, bool>> s6tos24;
@@ -2209,19 +2209,19 @@ int main( int argc , char *argv[] ){
   QList<Block*> s4tos15b;
   s4tos15b.push_back(aeptr);
   s4ptr->addBlock(s15ptr,s4tos15b);
-  QList<Block*> s4tos10b;
-  s4tos10b.push_back(adptr);
-  s4tos10b.push_back(ahptr);
-  s4ptr->addBlock(s10ptr,s4tos10b);
+  QList<Block*> s4tos50b;
+  s4tos50b.push_back(adptr);
+  s4tos50b.push_back(bxptr);
+  s4ptr->addBlock(s10ptr,s4tos50b);
   QList<Block*> s4tos12b;
   s4tos12b.push_back(adptr);
   s4tos12b.push_back(aiptr);
   s4ptr->addBlock(s12ptr,s4tos12b);
 
-  QList<Block*> s5tos10b;
-  s5tos10b.push_back(adptr);
-  s5tos10b.push_back(ahptr);
-  s5ptr->addBlock(s10ptr,s5tos10b);
+  QList<Block*> s5tos50b;
+  s5tos50b.push_back(adptr);
+  s5tos50b.push_back(bxptr);
+  s5ptr->addBlock(s50ptr,s5tos50b);
   QList<Block*> s5tos12b;
   s5tos12b.push_back(adptr);
   s5tos12b.push_back(aiptr);
