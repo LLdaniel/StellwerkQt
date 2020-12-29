@@ -284,9 +284,9 @@ int main( int argc , char *argv[] ){
   v4ptr->setRichtung("S018","S006");
   v5ptr->setRichtung("S004","S014");
   v6ptr->setRichtung("S004","S012");
-  v6ptr->setRichtung("S004","S010");
+  v6ptr->setRichtung("S004","S050");
   v6ptr->setRichtung("S005","S012");
-  v6ptr->setRichtung("S005","S010");
+  v6ptr->setRichtung("S005","S050");
   v7ptr->setRichtung("S011","S003");
   v7ptr->setRichtung("S049","S003");
   v7ptr->setRichtung("S011","S002");
@@ -1376,7 +1376,7 @@ int main( int argc , char *argv[] ){
   s4tos50.push_back(s4tos50w3);
   s4tos50.push_back(s4tos50w4);
   s4tos50.push_back(s4tos50w9);
-  s4ptr->addWeichenstatus(s10ptr,s4tos50);
+  s4ptr->addWeichenstatus(s50ptr,s4tos50);
 
   QPair<Weiche*, bool> s4tos12w3(w3ptr,false);
   QPair<Weiche*, bool> s4tos12w4(w4ptr,false);
@@ -2212,7 +2212,7 @@ int main( int argc , char *argv[] ){
   QList<Block*> s4tos50b;
   s4tos50b.push_back(adptr);
   s4tos50b.push_back(bxptr);
-  s4ptr->addBlock(s10ptr,s4tos50b);
+  s4ptr->addBlock(s50ptr,s4tos50b);
   QList<Block*> s4tos12b;
   s4tos12b.push_back(adptr);
   s4tos12b.push_back(aiptr);
