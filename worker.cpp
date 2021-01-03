@@ -44,7 +44,7 @@ void worker::timing(){                                        //this is a hack: 
   if( update ) t->start();
   if(!update ){
     delete t;
-    qDebug()<<" F I N I S H E D #1 ";
+    qDebug()<<" F I N I S H E D: Worker ";
   }
 }
 
@@ -94,5 +94,5 @@ void worker::updateBelegt(){
   }
   //
   //end of loop either there are no entries or quit call: finish worker
-  qDebug()<<"                           F E R T I S C H ";
+  qDebug()<<"                           F E R T I S C H worker";
 }

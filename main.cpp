@@ -7895,17 +7895,36 @@ int main( int argc , char *argv[] ){
                             //327, 326, 325, 324 are spare pins --> see pinBase=28
   
   // setting all segments with pins:
-  //mcp23017Setup (400, 0x20);
-  //for(mcp = 0; mcp < 16; mcp++){
-    //pinMode (400 + mcp, INPUT);
-    //pullUpDnControl(400 + mcp, PUD_UP);
-    //}
-  // nur übergangsweise, zum test also
-  pinMode (24, INPUT);
-  pullUpDnControl(24, PUD_UP);
-  abptr->setGpio(24);
+  mcp23017Setup (400, 0x20);
+  for(int mcp = 0; mcp < 16; mcp++){
+    pinMode (400 + mcp, INPUT);
+    pullUpDnControl(400 + mcp, PUD_UP);
+  }
+
+  bxptr->setGpio(400);
+  abptr->setGpio(401);
+  bpptr->setGpio(415);
+  bqptr->setGpio(414);
+  brptr->setGpio(413);
+  bsptr->setGpio(412);
+  btptr->setGpio(411);
+  buptr->setGpio(410);
+  bvptr->setGpio(409);
+  bwptr->setGpio(408);
+  
+  //give them to the worker
   wrkr->addBlocks(abptr);
+  wrkr->addBlocks(bxptr);
+  wrkr->addBlocks(bpptr);
+  wrkr->addBlocks(bqptr);
+  wrkr->addBlocks(brptr);
+  wrkr->addBlocks(bsptr);
+  wrkr->addBlocks(btptr);
+  wrkr->addBlocks(buptr);
+  wrkr->addBlocks(bvptr);
+  wrkr->addBlocks(bwptr);
   thread->start();
+  
   // end of program; release resources and write current turnout states
   //************************************************************************** 
   // all classes with parents are deleted through this chain, addItem, addWidget takes ownership, the rest is left for the programmer:
