@@ -7901,8 +7901,11 @@ int main( int argc , char *argv[] ){
     pullUpDnControl(400 + mcp, PUD_UP);
   }
 
-  bxptr->setGpio(400);
+  byptr->setGpio(400);
   abptr->setGpio(401);
+  ahptr->setGpio(402);
+  bzptr->setGpio(403);
+  bxptr->setGpio(404);
   bpptr->setGpio(415);
   bqptr->setGpio(414);
   brptr->setGpio(413);
@@ -7914,7 +7917,10 @@ int main( int argc , char *argv[] ){
   
   //give them to the worker
   wrkr->addBlocks(abptr);
+  wrkr->addBlocks(ahptr);
   wrkr->addBlocks(bxptr);
+  wrkr->addBlocks(byptr);
+  wrkr->addBlocks(bzptr);
   wrkr->addBlocks(bpptr);
   wrkr->addBlocks(bqptr);
   wrkr->addBlocks(brptr);
