@@ -12,6 +12,8 @@
 #include <QKeyEvent>
 #include <QAction>
 #include <QMessageBox>
+#include "Block.h"
+#include "Weiche.h"
 
 namespace Ui {
   class MainWindow;
@@ -37,6 +39,9 @@ private slots:
   void powerOffTurnouts();
   void powerOnTurnouts();
   void screen();
+public slots:
+  void calledw(Weiche *callw, bool statew);
+  void calledb(Block *callb, bool stateb);
 private:
   int powerturnouts = 13;
   void createActions();

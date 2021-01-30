@@ -75,11 +75,11 @@ void worker::updateBelegt(){
     if( i < blocklist.size() ){
       aktuellBlock = blocklist.at(i)->readBlock();
       if( aktuellBlock == 0 ){                                      //read pins false = belegt || true = frei dagegen ist 0 = LOW , 1 = HIGH
-	blocklist.at(i)->setB_status(false);
+	emit callGUIb(blocklist.at(i), false);
 	//qDebug("true = frei");
       }
       if( aktuellBlock == 1 ){                                      //read pins
-	blocklist.at(i)->setB_status(true);
+	emit callGUIb(blocklist.at(i), true);
 	//qDebug("false = belegt");
       }
     }

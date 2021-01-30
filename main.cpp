@@ -7759,6 +7759,8 @@ int main( int argc , char *argv[] ){
   QObject::connect(thread, &QThread::started, wrkr, &worker::timing); //thread start connection 
   QObject::connect(&a, &QApplication::aboutToQuit, wrkr, &worker::quit); // quit updateBelegt on aboutToQuit
   QObject::connect(&a, &QApplication::aboutToQuit, thread, &QThread::quit); // quit thread on aboutToQuit
+  QObject::connect(wrkr, &worker::callGUIb, &w, &MainWindow::calledb); // connection worker<->GUI update Block
+  QObject::connect(wrkr, &worker::callGUIw, &w, &MainWindow::calledw); // connection worker<->GUI update Weiche
   //thread->start();
   //thread can be finished by calling wrkr.quit() -> updateBelegt() -> emit finished -> above slot
 

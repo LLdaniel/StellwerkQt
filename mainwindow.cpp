@@ -150,3 +150,11 @@ void MainWindow::screen(){
     this->setWindowState(Qt::WindowFullScreen);
   }
 }
+
+void MainWindow::calledw(Weiche *callw, bool statew){
+  //implement turnout update -> coming from worker thread
+}
+
+void MainWindow::calledb(Block *callb, bool stateb){
+  callb->setB_status(stateb);
+}

@@ -26,6 +26,9 @@ public slots:
   void timing();               // intermediate step to solve blocked thread: step towards processSpeicher
   void updateBelegt();                                // updates of all segment status in loop
   void quit();                                        // if program is shutdown, quit thread
+signals:
+  void callGUIw(Weiche *callw, bool statew);          // call main thread to do GUI update Weiche
+  void callGUIb(Block* callb, bool stateb);           // call main thread to do GUI update Block
 private:
   bool update = true;                                 //update wanted yes = true || no = false
   QList<Block*> blocklist;                            //all segments which must be updated
