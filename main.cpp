@@ -2948,6 +2948,7 @@ int main( int argc , char *argv[] ){
   QObject::connect(bbptr,&Block::zugpassiert,s46ptr,&HSignal::zugpassiert);
   QObject::connect(azptr,&Block::zugpassiert,s47ptr,&HSignal::zugpassiert);
   QObject::connect(baptr,&Block::zugpassiert,s48ptr,&HSignal::zugpassiert);
+  QObject::connect(byptr,&Block::zugpassiert,s50ptr,&HSignal::zugpassiert);
   QObject::connect(byptr,&Block::zugpassiert,s51ptr,&HSignal::zugpassiert);
   QObject::connect(bzptr,&Block::zugpassiert,s52ptr,&HSignal::zugpassiert);
   
@@ -3006,7 +3007,7 @@ int main( int argc , char *argv[] ){
   QObject::connect(bvptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
   QObject::connect(bwptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
   QObject::connect(byptr,&Block::zugpassiertW,ww42ptr,&WSignal::zugpassiertW);
-  QObject::connect(bzptr,&Block::zugpassiertW,ww43ptr,&WSignal::zugpassiertW);
+  QObject::connect(ahptr,&Block::zugpassiertW,ww43ptr,&WSignal::zugpassiertW);
   
   
   //segments which are at a border for signals -----------------------------------------
@@ -3069,6 +3070,7 @@ int main( int argc , char *argv[] ){
   bbptr->addpassiert(s46ptr->getS_id(),ayptr);
   azptr->addpassiert(s47ptr->getS_id(),baptr);
   baptr->addpassiert(s48ptr->getS_id(),azptr);
+  byptr->addpassiert(s50ptr->getS_id(),bxptr);
   byptr->addpassiert(s51ptr->getS_id(),bpptr);
   byptr->addpassiert(s51ptr->getS_id(),bqptr);
   byptr->addpassiert(s51ptr->getS_id(),brptr);
