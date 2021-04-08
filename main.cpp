@@ -410,6 +410,7 @@ int main( int argc , char *argv[] ){
   
   //:::::::::
   s1ptr->addVSignal(v1ptr,"v");
+  s1ptr->addVSignal(v36ptr,"r");
   s2ptr->addVSignal(v34ptr,"v");
   s2ptr->addVSignal(v37ptr,"v");
   s2ptr->addVSignal(v2ptr,"r");
@@ -2889,6 +2890,7 @@ int main( int argc , char *argv[] ){
   QObject::connect(ww41ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(ww42ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(ww43ptr,&WSignal::refreshStellwerkstechnikW,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
+  //structure: <segment> after <signal>
   QObject::connect(aaptr,&Block::zugpassiert,s1ptr,&HSignal::zugpassiert);
   QObject::connect(bnptr,&Block::zugpassiert,s2ptr,&HSignal::zugpassiert);
   QObject::connect(bmptr,&Block::zugpassiert,s2ptr,&HSignal::zugpassiert);
@@ -2897,6 +2899,7 @@ int main( int argc , char *argv[] ){
   QObject::connect(acptr,&Block::zugpassiert,s4ptr,&HSignal::zugpassiert);
   QObject::connect(aeptr,&Block::zugpassiert,s4ptr,&HSignal::zugpassiert);
   QObject::connect(afptr,&Block::zugpassiert,s4ptr,&HSignal::zugpassiert);
+  QObject::connect(adptr,&Block::zugpassiert,s4ptr,&HSignal::zugpassiert);
   QObject::connect(adptr,&Block::zugpassiert,s5ptr,&HSignal::zugpassiert);
   QObject::connect(auptr,&Block::zugpassiert,s6ptr,&HSignal::zugpassiert);
   QObject::connect(auptr,&Block::zugpassiert,s7ptr,&HSignal::zugpassiert);
@@ -2905,6 +2908,7 @@ int main( int argc , char *argv[] ){
   QObject::connect(adptr,&Block::zugpassiert,s11ptr,&HSignal::zugpassiert);
   QObject::connect(asptr,&Block::zugpassiert,s12ptr,&HSignal::zugpassiert);
   QObject::connect(afptr,&Block::zugpassiert,s8ptr,&HSignal::zugpassiert);
+  QObject::connect(agptr,&Block::zugpassiert,s8ptr,&HSignal::zugpassiert);
   QObject::connect(ajptr,&Block::zugpassiert,s14ptr,&HSignal::zugpassiert);
   QObject::connect(ajptr,&Block::zugpassiert,s15ptr,&HSignal::zugpassiert);
   QObject::connect(ajptr,&Block::zugpassiert,s16ptr,&HSignal::zugpassiert);
@@ -2912,7 +2916,9 @@ int main( int argc , char *argv[] ){
   QObject::connect(alptr,&Block::zugpassiert,s18ptr,&HSignal::zugpassiert);
   QObject::connect(arptr,&Block::zugpassiert,s19ptr,&HSignal::zugpassiert);
   QObject::connect(arptr,&Block::zugpassiert,s20ptr,&HSignal::zugpassiert);
+  QObject::connect(aqptr,&Block::zugpassiert,s20ptr,&HSignal::zugpassiert);
   QObject::connect(arptr,&Block::zugpassiert,s21ptr,&HSignal::zugpassiert);
+  QObject::connect(aqptr,&Block::zugpassiert,s21ptr,&HSignal::zugpassiert);
   QObject::connect(akptr,&Block::zugpassiert,s22ptr,&HSignal::zugpassiert);
   QObject::connect(anptr,&Block::zugpassiert,s23ptr,&HSignal::zugpassiert);
   QObject::connect(amptr,&Block::zugpassiert,s23ptr,&HSignal::zugpassiert);
@@ -2931,9 +2937,11 @@ int main( int argc , char *argv[] ){
   QObject::connect(baptr,&Block::zugpassiert,s32ptr,&HSignal::zugpassiert);
   QObject::connect(baptr,&Block::zugpassiert,s33ptr,&HSignal::zugpassiert);
   QObject::connect(baptr,&Block::zugpassiert,s34ptr,&HSignal::zugpassiert);
+  QObject::connect(bgptr,&Block::zugpassiert,s34ptr,&HSignal::zugpassiert);
   QObject::connect(bhptr,&Block::zugpassiert,s35ptr,&HSignal::zugpassiert);
   QObject::connect(biptr,&Block::zugpassiert,s35ptr,&HSignal::zugpassiert);
   QObject::connect(bkptr,&Block::zugpassiert,s36ptr,&HSignal::zugpassiert);
+  QObject::connect(bjptr,&Block::zugpassiert,s36ptr,&HSignal::zugpassiert);
   QObject::connect(bkptr,&Block::zugpassiert,s37ptr,&HSignal::zugpassiert);
   QObject::connect(blptr,&Block::zugpassiert,s38ptr,&HSignal::zugpassiert);
   QObject::connect(azptr,&Block::zugpassiert,s38ptr,&HSignal::zugpassiert);
@@ -2951,11 +2959,16 @@ int main( int argc , char *argv[] ){
   QObject::connect(byptr,&Block::zugpassiert,s50ptr,&HSignal::zugpassiert);
   QObject::connect(byptr,&Block::zugpassiert,s51ptr,&HSignal::zugpassiert);
   QObject::connect(bzptr,&Block::zugpassiert,s52ptr,&HSignal::zugpassiert);
+  QObject::connect(bzptr,&Block::zugpassiert,s9ptr,&HSignal::zugpassiert);
   
   QObject::connect(aiptr,&Block::zugpassiertW,ww2ptr,&WSignal::zugpassiertW);
   QObject::connect(bxptr,&Block::zugpassiertW,ww2ptr,&WSignal::zugpassiertW);
   QObject::connect(aaptr,&Block::zugpassiertW,ww1ptr,&WSignal::zugpassiertW);
   QObject::connect(abptr,&Block::zugpassiertW,ww1ptr,&WSignal::zugpassiertW);
+  QObject::connect(ahptr,&Block::zugpassiertW,ww3ptr,&WSignal::zugpassiertW);
+  QObject::connect(aiptr,&Block::zugpassiertW,ww3ptr,&WSignal::zugpassiertW);
+  QObject::connect(aeptr,&Block::zugpassiertW,ww4ptr,&WSignal::zugpassiertW);
+  QObject::connect(acptr,&Block::zugpassiertW,ww4ptr,&WSignal::zugpassiertW);
   QObject::connect(akptr,&Block::zugpassiertW,ww5ptr,&WSignal::zugpassiertW);
   QObject::connect(alptr,&Block::zugpassiertW,ww5ptr,&WSignal::zugpassiertW);
   QObject::connect(apptr,&Block::zugpassiertW,ww6ptr,&WSignal::zugpassiertW);
@@ -2974,6 +2987,8 @@ int main( int argc , char *argv[] ){
   QObject::connect(beptr,&Block::zugpassiertW,ww21ptr,&WSignal::zugpassiertW);
   QObject::connect(beptr,&Block::zugpassiertW,ww22ptr,&WSignal::zugpassiertW);
   QObject::connect(bdptr,&Block::zugpassiertW,ww22ptr,&WSignal::zugpassiertW);
+  QObject::connect(boptr,&Block::zugpassiertW,ww23ptr,&WSignal::zugpassiertW);
+  QObject::connect(bnptr,&Block::zugpassiertW,ww23ptr,&WSignal::zugpassiertW);
   QObject::connect(bzptr,&Block::zugpassiertW,ww24ptr,&WSignal::zugpassiertW);
   QObject::connect(bzptr,&Block::zugpassiertW,ww25ptr,&WSignal::zugpassiertW);
   QObject::connect(bzptr,&Block::zugpassiertW,ww26ptr,&WSignal::zugpassiertW);
@@ -3006,11 +3021,11 @@ int main( int argc , char *argv[] ){
   QObject::connect(buptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
   QObject::connect(bvptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
   QObject::connect(bwptr,&Block::zugpassiertW,ww40ptr,&WSignal::zugpassiertW);
-  QObject::connect(byptr,&Block::zugpassiertW,ww42ptr,&WSignal::zugpassiertW);
+  QObject::connect(bxptr,&Block::zugpassiertW,ww42ptr,&WSignal::zugpassiertW);
   QObject::connect(ahptr,&Block::zugpassiertW,ww43ptr,&WSignal::zugpassiertW);
   
   
-  //segments which are at a border for signals -----------------------------------------
+  //segments which are at a border for signals - structure: <after> signal <before>
   aaptr->addpassiert(s13ptr->getS_id(),acptr);
   aaptr->addpassiert(s1ptr->getS_id(),bnptr);
   bnptr->addpassiert(s2ptr->getS_id(),aaptr);
@@ -3023,7 +3038,9 @@ int main( int argc , char *argv[] ){
   adptr->addpassiert(s5ptr->getS_id(),abptr);
   auptr->addpassiert(s6ptr->getS_id(),agptr);
   auptr->addpassiert(s7ptr->getS_id(),afptr);
+  bzptr->addpassiert(s9ptr->getS_id(),ahptr);
   afptr->addpassiert(s8ptr->getS_id(),auptr);
+  agptr->addpassiert(s8ptr->getS_id(),auptr);
   adptr->addpassiert(s49ptr->getS_id(),bxptr);
   asptr->addpassiert(s10ptr->getS_id(),ahptr);
   asptr->addpassiert(s12ptr->getS_id(),aiptr);
@@ -3035,6 +3052,7 @@ int main( int argc , char *argv[] ){
   alptr->addpassiert(s18ptr->getS_id(),anptr);
   arptr->addpassiert(s19ptr->getS_id(),anptr);
   arptr->addpassiert(s20ptr->getS_id(),amptr);
+  aqptr->addpassiert(s20ptr->getS_id(),amptr);
   arptr->addpassiert(s21ptr->getS_id(),akptr);
   akptr->addpassiert(s22ptr->getS_id(),arptr);
   anptr->addpassiert(s23ptr->getS_id(),arptr);
@@ -3054,15 +3072,18 @@ int main( int argc , char *argv[] ){
   baptr->addpassiert(s32ptr->getS_id(),bdptr);
   baptr->addpassiert(s33ptr->getS_id(),beptr);
   baptr->addpassiert(s34ptr->getS_id(),bfptr);
+  bgptr->addpassiert(s34ptr->getS_id(),bfptr);
   biptr->addpassiert(s35ptr->getS_id(),bfptr);
   bhptr->addpassiert(s35ptr->getS_id(),bfptr);
   bjptr->addpassiert(s36ptr->getS_id(),beptr);
   bkptr->addpassiert(s36ptr->getS_id(),beptr);
   bkptr->addpassiert(s37ptr->getS_id(),bdptr);
   blptr->addpassiert(s38ptr->getS_id(),bcptr);
+  azptr->addpassiert(s38ptr->getS_id(),bcptr);
   azptr->addpassiert(s39ptr->getS_id(),axptr);
   awptr->addpassiert(s40ptr->getS_id(),ayptr);
   axptr->addpassiert(s41ptr->getS_id(),azptr);
+  bcptr->addpassiert(s41ptr->getS_id(),azptr);
   bcptr->addpassiert(s42ptr->getS_id(),blptr);
   bkptr->addpassiert(s43ptr->getS_id(),boptr);
   bmptr->addpassiert(s44ptr->getS_id(),blptr);
@@ -3092,6 +3113,8 @@ int main( int argc , char *argv[] ){
   aiptr->addpassiert(ww2ptr->getV_id(),adptr);
   aaptr->addpassiert(ww1ptr->getV_id(),adptr);
   abptr->addpassiert(ww1ptr->getV_id(),adptr);
+  aiptr->addpassiert(ww3ptr->getV_id(),asptr);
+  ahptr->addpassiert(ww3ptr->getV_id(),asptr);
   alptr->addpassiert(ww5ptr->getV_id(),ajptr);
   akptr->addpassiert(ww5ptr->getV_id(),ajptr);
   apptr->addpassiert(ww6ptr->getV_id(),aoptr);
@@ -3110,6 +3133,8 @@ int main( int argc , char *argv[] ){
   beptr->addpassiert(ww21ptr->getV_id(),bjptr);
   beptr->addpassiert(ww22ptr->getV_id(),bkptr);
   bdptr->addpassiert(ww22ptr->getV_id(),bkptr);
+  boptr->addpassiert(ww23ptr->getV_id(),bkptr);
+  bnptr->addpassiert(ww23ptr->getV_id(),bkptr);
   bzptr->addpassiert(ww24ptr->getV_id(),bwptr);
   bzptr->addpassiert(ww25ptr->getV_id(),bvptr);
   bzptr->addpassiert(ww26ptr->getV_id(),buptr);
@@ -3136,7 +3161,6 @@ int main( int argc , char *argv[] ){
   bwptr->addpassiert(ww39ptr->getV_id(),bzptr);
   bwptr->addpassiert(ww40ptr->getV_id(),byptr);
   bvptr->addpassiert(ww40ptr->getV_id(),byptr);
-  bwptr->addpassiert(ww40ptr->getV_id(),byptr);
   buptr->addpassiert(ww40ptr->getV_id(),byptr);
   btptr->addpassiert(ww40ptr->getV_id(),byptr);
   bsptr->addpassiert(ww40ptr->getV_id(),byptr);
@@ -7900,11 +7924,14 @@ int main( int argc , char *argv[] ){
   
   // setting all segments with pins:
   mcp23017Setup (400, 0x20);
+  mcp23017Setup (500, 0x21);
   for(int mcp = 0; mcp < 16; mcp++){
     pinMode (400 + mcp, INPUT);
+    pinMode (500 + mcp, INPUT);
     pullUpDnControl(400 + mcp, PUD_UP);
+    pullUpDnControl(500 + mcp, PUD_UP);
   }
-
+  // 0x20
   byptr->setGpio(400);
   abptr->setGpio(401);
   ahptr->setGpio(402);
@@ -7918,8 +7945,32 @@ int main( int argc , char *argv[] ){
   buptr->setGpio(410);
   bvptr->setGpio(409);
   bwptr->setGpio(408);
+  apptr->setGpio(405);
+  aiptr->setGpio(406);
+  acptr->setGpio(407);
+
+  // 0x21
+  aoptr->setGpio(500);
+  ajptr->setGpio(501);
+  akptr->setGpio(502);
+  amptr->setGpio(503);
+  afptr->setGpio(504);
+  agptr->setGpio(505);
+  adptr->setGpio(506);
+  avptr->setGpio(507);
+  //->setGpio(508);
+  //->setGpio(509);
+  auptr->setGpio(510);
+  anptr->setGpio(511);
+  arptr->setGpio(512);
+  aqptr->setGpio(513);
+  aaptr->setGpio(514);
+  aeptr->setGpio(515);
+  
+  
   
   //give them to the worker
+  // 0x20
   wrkr->addBlocks(abptr);
   wrkr->addBlocks(ahptr);
   wrkr->addBlocks(bxptr);
@@ -7933,6 +7984,28 @@ int main( int argc , char *argv[] ){
   wrkr->addBlocks(buptr);
   wrkr->addBlocks(bvptr);
   wrkr->addBlocks(bwptr);
+  wrkr->addBlocks(apptr);
+  wrkr->addBlocks(aiptr);
+  wrkr->addBlocks(acptr);
+
+  // 0x21
+  wrkr->addBlocks(aoptr);
+  wrkr->addBlocks(ajptr);
+  wrkr->addBlocks(akptr);
+  wrkr->addBlocks(amptr);
+  wrkr->addBlocks(afptr);
+  wrkr->addBlocks(agptr);
+  wrkr->addBlocks(adptr);
+  wrkr->addBlocks(avptr);
+  //wrkr->addBlocks();
+  //wrkr->addBlocks();
+  wrkr->addBlocks(auptr);
+  wrkr->addBlocks(anptr);
+  wrkr->addBlocks(arptr);
+  wrkr->addBlocks(aqptr);
+  wrkr->addBlocks(aaptr);
+  wrkr->addBlocks(aeptr);
+  
   thread->start();
   
   // end of program; release resources and write current turnout states
