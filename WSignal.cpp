@@ -54,10 +54,10 @@ void WSignal::setFahrt( WSignal *toZiel ){
 	    weichenkontrolle = false;                                     //change flag to false
 	    break;
 	  }
-	  if( weichenstatus.at(k).second.at(l).first->getVerriegelung() ){//look at turnout lock status[if locked = true]
-	    weichenverr = true;                                           //change flag to true 
-	    break;
-	  }
+	  //if( weichenstatus.at(k).second.at(l).first->getVerriegelung() ){//look at turnout lock status[if locked = true]
+	  // weichenverr = true;                                           //change flag to true 
+	  //break;
+	  //}// deprecated: hardware issue
 	}
 	//
 	//after the whole loop is finished, possibile permission exists
@@ -85,7 +85,7 @@ void WSignal::setFahrt( WSignal *toZiel ){
 	if( weichenstatus.at(o).first.compare( toZiel->getV_id() ) == 0 ){
 	  for(  int p = 0 ; p < weichenstatus.at(o).second.size() ; p++ ){
 	    weichenstatus.at(o).second.at(p).first->setW_status(weichenstatus.at(o).second.at(p).second); //change turnouts to the needed direction
-	    weichenstatus.at(o).second.at(p).first->setVerriegelung( true ); //lock turnouts
+	    //weichenstatus.at(o).second.at(p).first->setVerriegelung( true ); //lock turnouts // deprecated: hardware issue
 	  }
 	  //
 	  //every turnout is locked now
@@ -135,10 +135,10 @@ void WSignal::setFahrt(QString toZiel) // WS to HS
 	    weichenkontrolle = false;                                        //change flag to
 	    break;
 	  }
-	  if( weichenstatusZuH.at(k).second.at(l).first->getVerriegelung() ){//look at turnout status [if locked =true]
-	    weichenverr = true;                                              //change flag to true 
-	    break;
-	  }
+	  //if( weichenstatusZuH.at(k).second.at(l).first->getVerriegelung() ){//look at turnout status [if locked =true]
+	  // weichenverr = true;                                              //change flag to true 
+	  // break;
+	  //}//deprecated: hardware issue
         }
         //
 	//loop finished now possible route permission
@@ -166,7 +166,7 @@ void WSignal::setFahrt(QString toZiel) // WS to HS
         if( weichenstatusZuH.at(o).first.compare( toZiel ) == 0 ){            
 	  for(  int p = 0 ; p < weichenstatusZuH.at(o).second.size() ; p++ ){
 	    weichenstatusZuH.at(o).second.at(p).first->setW_status(weichenstatusZuH.at(o).second.at(p).second);//change turnouts according to the route needs
-	    weichenstatusZuH.at(o).second.at(p).first->setVerriegelung( true );//lock turnouts
+	    //weichenstatusZuH.at(o).second.at(p).first->setVerriegelung( true );//lock turnouts //deprecated: hardware issue
 	  }
 	  //
 	  //turnouts now locked
@@ -218,10 +218,10 @@ void WSignal::deleteFS(){
 	    weichenkontrolle = false;                                               //change flag to false 
 	    break;
 	  }
-	  if( !weichenstatus.at(k).second.at(l).first->getVerriegelung() ){         //look betrachte Verriegelung [falls entriegelt = false]
-	    weichenverr = false;                                                    //change flag to false 
-	    break;
-	  }
+	  //if( !weichenstatus.at(k).second.at(l).first->getVerriegelung() ){         //look betrachte Verriegelung [falls entriegelt = false]
+	  // weichenverr = false;                                                    //change flag to false 
+	  // break;
+	  //}// deprecated: hardware issue
 	}
 	//
 	//complete loop finshed and possible permission
@@ -245,15 +245,15 @@ void WSignal::deleteFS(){
 	}
       }
       //WEICHEN
-      for(  int o = 0 ; o < weichenstatus.size() ; o++ ){                          //loop over turnouts
-	if( weichenstatus.at(o).first.compare( getZiel() ) == 0 ){
-	  for(  int p = 0 ; p < weichenstatus.at(o).second.size() ; p++ ){
-	    weichenstatus.at(o).second.at(p).first->setVerriegelung( false );      //unlock turnouts
-	  }
+      //for(  int o = 0 ; o < weichenstatus.size() ; o++ ){                          //loop over turnouts
+      //	if( weichenstatus.at(o).first.compare( getZiel() ) == 0 ){
+      //  for(  int p = 0 ; p < weichenstatus.at(o).second.size() ; p++ ){
+      //    weichenstatus.at(o).second.at(p).first->setVerriegelung( false );      //unlock turnouts
+      //  }
 	  //
 	  //at the end of the loop: turnouts unlocked
-	}
-      }
+      //}
+      //}//...deprecated: hardware issue
       //WSIGNAL status changed to "stop"
       //end signal is not up to date now
       v_status = false;
@@ -288,10 +288,10 @@ void WSignal::deleteFS(){
 	    weichenkontrolle = false;                                               //change flag to false
 	    break;
 	  }
-	  if( !weichenstatusZuH.at(k).second.at(l).first->getVerriegelung() ){      //look at lock status [if unlocked = false]
-	    weichenverr = false;                                                    //change flag to false 
-	    break;
-	  }
+	  //if( !weichenstatusZuH.at(k).second.at(l).first->getVerriegelung() ){      //look at lock status [if unlocked = false]
+	  // weichenverr = false;                                                    //change flag to false 
+	  // break;
+	  //}//deprecated: hardware issue
 	}
 	//all turnouts unlocked and permission is possible
       }
@@ -315,15 +315,15 @@ void WSignal::deleteFS(){
 	//Die Schleife für die Namensuche läuft noch fertig
       }
       //WEICHEN
-      for(  int o = 0 ; o < weichenstatusZuH.size() ; o++ ){                         //loop over turnouts
-	if( weichenstatusZuH.at(o).first.compare( getZiel() ) == 0 ){
-	  for(  int p = 0 ; p < weichenstatusZuH.at(o).second.size() ; p++ ){        
-	    weichenstatusZuH.at(o).second.at(p).first->setVerriegelung( false );     //unlocking turnouts
-	  }
+      //for(  int o = 0 ; o < weichenstatusZuH.size() ; o++ ){                         //loop over turnouts
+      //	if( weichenstatusZuH.at(o).first.compare( getZiel() ) == 0 ){
+      //  for(  int p = 0 ; p < weichenstatusZuH.at(o).second.size() ; p++ ){        
+      //    weichenstatusZuH.at(o).second.at(p).first->setVerriegelung( false );     //unlocking turnouts
+      //  }
 	  //
 	  //all turnouts are now unlocked
-	}
-      }
+      //}
+      //}//...deprecated: hardware issue
       //WSIGNAL- change status to "stop"
       //end signal is not up to date now
       v_status = false;

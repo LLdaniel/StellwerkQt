@@ -315,10 +315,10 @@ bool HSignal::setFahrt( HSignal *toZiel ){
 	    weichenkontrolle = false;                                  //change flag to false
 	    break;
 	  }
-	  if( weichenstatus.at(k).second.at(l).first->getVerriegelung() ){//[if locked = true]
-	    weichenverr = true;                                           //change flag to true setzen
-	    break;
-	  }
+	  //if( weichenstatus.at(k).second.at(l).first->getVerriegelung() ){//[if locked = true]
+	  //  weichenverr = true;                                           //change flag to true setzen
+	  //  break;
+	  //} //deprecated: hardware issue
 	}
 	//
         //succesfully looped through all turnouts: weichenkontrolle and weichenstatus allow route
@@ -351,7 +351,7 @@ bool HSignal::setFahrt( HSignal *toZiel ){
 	if( weichenstatus.at(o).first.compare( toZiel->getS_id() ) == 0 ){
 	  for(  int p = 0 ; p < weichenstatus.at(o).second.size() ; p++ ){
 	    weichenstatus.at(o).second.at(p).first->setW_status(weichenstatus.at(o).second.at(p).second);//change turnout status as it should be for the current route
-	    weichenstatus.at(o).second.at(p).first->setVerriegelung( true );// and lock them; its a active route now
+	    //weichenstatus.at(o).second.at(p).first->setVerriegelung( true );// and lock them; its a active route now //deprecated: hardware issue
 	  }
 	  //
 	  //everything set for route
@@ -438,10 +438,10 @@ void HSignal::setFahrt( WSignal *toZiel ){
 	    weichenkontrolle = false;                      //change flag to false 
 	    break;
 	  }
-	  if( weichenstatusZuRangier.at(k).second.at(l).first->getVerriegelung() ){//look at all lock status [if locked = true]
-	    weichenverr = true;                            //change flag to true 
-	    break;
-	  }
+	  //if( weichenstatusZuRangier.at(k).second.at(l).first->getVerriegelung() ){//look at all lock status [if locked = true]
+	  //  weichenverr = true;                            //change flag to true 
+	  //  break;
+	  //} //deprecated: hardware issue
 	}
 	//
 	//completely looped through turnouts and permission possible for route
@@ -466,8 +466,8 @@ void HSignal::setFahrt( WSignal *toZiel ){
       for(  int o = 0 ; o < weichenstatusZuRangier.size() ; o++ ){//loop over turnouts
 	if( weichenstatusZuRangier.at(o).first.compare( toZiel->getV_id() ) == 0 ){
 	  for(  int p = 0 ; p < weichenstatusZuRangier.at(o).second.size() ; p++ ){
-	    weichenstatusZuRangier.at(o).second.at(p).first->setW_status(weichenstatusZuRangier.at(o).second.at(p).second);                                             //change turnout into direction which is needed for route
-	    weichenstatusZuRangier.at(o).second.at(p).first->setVerriegelung( true );//and lock them down, they are now part of the route
+	    weichenstatusZuRangier.at(o).second.at(p).first->setW_status(weichenstatusZuRangier.at(o).second.at(p).second);  //change turnout into direction which is needed for route
+	    //weichenstatusZuRangier.at(o).second.at(p).first->setVerriegelung( true );//and lock them down, they are now part of the route // deprecated: hardware issue
 	  }
 	  //all turnouts set and locked
 	}
@@ -561,10 +561,10 @@ void HSignal::deleteFS(){
 	    weichenkontrolle = false;                                  //change flag to false 
 	    break;
 	  }
-	  if( !weichenstatus.at(k).second.at(l).first->getVerriegelung() ){//look at all lock status [unlocked = false]
-	    weichenverr = false;                                       //change flag to false setzen
-	    break;
-	  }
+	  //if( !weichenstatus.at(k).second.at(l).first->getVerriegelung() ){//look at all lock status [unlocked = false]
+	  //  weichenverr = false;                                       //change flag to false setzen
+	  //  break;
+	  //} // deprecated: hardware issue
 	}
 	//
 	//looped through all turnouts, now permission is possible
@@ -588,15 +588,15 @@ void HSignal::deleteFS(){
 	}
       }
       //WEICHEN
-      for(  int o = 0 ; o < weichenstatus.size() ; o++ ){          //loop over turnouts
-	if( weichenstatus.at(o).first.compare( getZiel() ) == 0 ){
-	  for(  int p = 0 ; p < weichenstatus.at(o).second.size() ; p++ ){
-	    weichenstatus.at(o).second.at(p).first->setVerriegelung( false );//unlocking turnouts
-	  }
+      //for(  int o = 0 ; o < weichenstatus.size() ; o++ ){          //loop over turnouts
+      //if( weichenstatus.at(o).first.compare( getZiel() ) == 0 ){
+      //  for(  int p = 0 ; p < weichenstatus.at(o).second.size() ; p++ ){
+      //    weichenstatus.at(o).second.at(p).first->setVerriegelung( false );//unlocking turnouts
+      //  }
 	  //
 	  //all turnouts are unlocked
-	}
-      }
+      //}
+      //} //.... deprecated: hardware issue
       //WSIGNALE - set shunt signals to "stop"
       for(  int z = 0 ; z < wsignaleV.size() ; z++ ){//loop over involved shunt signals
 	if( wsignaleV.at(z)->getRichtung( getS_id(), getZiel() ) >= 0 ){//if there is exact this direction and inFS is true, set shunt signal to stop and delete inFS
@@ -653,10 +653,10 @@ void HSignal::deleteFS(){
 	    weichenkontrolle = false;                                     //change flag to false
 	    break;
 	  }
-	  if( !weichenstatusZuRangier.at(k).second.at(l).first->getVerriegelung() ){//look at all lock status [if unlocked  = false]
-	    weichenverr = false;                                     //change flag to false
-	    break;
-	  }
+	  //if( !weichenstatusZuRangier.at(k).second.at(l).first->getVerriegelung() ){//look at all lock status [if unlocked  = false]
+	  //  weichenverr = false;                                     //change flag to false
+	  //  break;
+	  //} //deprecated: hardware issue
 	}
 	//
 	//looped over everything and Weichnkontrolle und weichenverr = true, delete permission possible
@@ -680,15 +680,15 @@ void HSignal::deleteFS(){
 	}
       }
       //WEICHEN
-      for(  int o = 0 ; o < weichenstatusZuRangier.size() ; o++ ){//loop over turnouts
-	if( weichenstatusZuRangier.at(o).first.compare( getZiel() ) == 0 ){
-	  for(  int p = 0 ; p < weichenstatusZuRangier.at(o).second.size() ; p++ ){
-	    weichenstatusZuRangier.at(o).second.at(p).first->setVerriegelung( false );//and unlock all turnouts
-	  }
+      //for(  int o = 0 ; o < weichenstatusZuRangier.size() ; o++ ){//loop over turnouts
+      //if( weichenstatusZuRangier.at(o).first.compare( getZiel() ) == 0 ){
+      //  for(  int p = 0 ; p < weichenstatusZuRangier.at(o).second.size() ; p++ ){
+      //    weichenstatusZuRangier.at(o).second.at(p).first->setVerriegelung( false );//and unlock all turnouts
+      //  }
 	  //
 	  //all turnouts are now unlocked
-	}
-      }
+      //}
+      //}// ...deprecated: hardware issue
       //HSIGNAL- main signal status will be set to "stop"
       //Ziel ist ab jetzt nicht mehr aktuell
       s_status = false;

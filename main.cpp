@@ -7959,7 +7959,7 @@ int main( int argc , char *argv[] ){
   adptr->setGpio(506);
   avptr->setGpio(507);
   //->setGpio(508);
-  //->setGpio(509);
+  alptr->setGpio(509);
   auptr->setGpio(510);
   anptr->setGpio(511);
   arptr->setGpio(512);
@@ -7997,7 +7997,7 @@ int main( int argc , char *argv[] ){
   wrkr->addBlocks(agptr);
   wrkr->addBlocks(adptr);
   wrkr->addBlocks(avptr);
-  //wrkr->addBlocks();
+  wrkr->addBlocks(alptr);
   //wrkr->addBlocks();
   wrkr->addBlocks(auptr);
   wrkr->addBlocks(anptr);
