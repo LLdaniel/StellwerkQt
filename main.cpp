@@ -7925,12 +7925,19 @@ int main( int argc , char *argv[] ){
   // setting all segments with pins:
   mcp23017Setup (400, 0x20);
   mcp23017Setup (500, 0x21);
+  mcp23017Setup (600, 0x22);
+  mcp23017Setup (700, 0x23);
   for(int mcp = 0; mcp < 16; mcp++){
     pinMode (400 + mcp, INPUT);
     pinMode (500 + mcp, INPUT);
+    pinMode (600 + mcp, INPUT);
+    pinMode (700 + mcp, INPUT);
     pullUpDnControl(400 + mcp, PUD_UP);
     pullUpDnControl(500 + mcp, PUD_UP);
+    pullUpDnControl(600 + mcp, PUD_UP);
+    pullUpDnControl(700 + mcp, PUD_UP);
   }
+
   // 0x20
   byptr->setGpio(400);
   abptr->setGpio(401);
@@ -7966,6 +7973,42 @@ int main( int argc , char *argv[] ){
   aqptr->setGpio(513);
   aaptr->setGpio(514);
   aeptr->setGpio(515);
+
+  // 0x22
+  bjptr->setGpio(600);
+  biptr->setGpio(601);
+  bhptr->setGpio(602);
+  bgptr->setGpio(603);
+  bfptr->setGpio(604);
+  beptr->setGpio(605);
+  bdptr->setGpio(606);
+  bcptr->setGpio(607);
+  asptr->setGpio(608);
+  atptr->setGpio(609);
+  awptr->setGpio(610);
+  axptr->setGpio(611);
+  ayptr->setGpio(612);
+  azptr->setGpio(613);
+  baptr->setGpio(614);
+  bbptr->setGpio(615);
+
+  // 0x23
+  //->setGpio(700);
+  //->setGpio(701);
+  //->setGpio(702);
+  //->setGpio(703);
+  //->setGpio(704);
+  //->setGpio(705);
+  //->setGpio(706);
+  //->setGpio(707);
+  bkptr->setGpio(708);
+  blptr->setGpio(709);
+  bmptr->setGpio(710);
+  bnptr->setGpio(711);
+  boptr->setGpio(712);
+  //captr->setGpio(713); // former incrorrectly named as bp
+  //cbptr->setGpio(714); // former incrorrectly named as bq
+  //->setGpio(715);
   
   
   
@@ -8005,6 +8048,33 @@ int main( int argc , char *argv[] ){
   wrkr->addBlocks(aqptr);
   wrkr->addBlocks(aaptr);
   wrkr->addBlocks(aeptr);
+
+  // 0x22
+  wrkr->addBlocks(bjptr);
+  wrkr->addBlocks(biptr);
+  wrkr->addBlocks(bhptr);
+  wrkr->addBlocks(bgptr);
+  wrkr->addBlocks(bfptr);
+  wrkr->addBlocks(beptr);
+  wrkr->addBlocks(bdptr);
+  wrkr->addBlocks(bcptr);
+  wrkr->addBlocks(asptr);
+  wrkr->addBlocks(atptr);
+  wrkr->addBlocks(awptr);
+  wrkr->addBlocks(axptr);
+  wrkr->addBlocks(ayptr);
+  wrkr->addBlocks(azptr);
+  wrkr->addBlocks(baptr);
+  wrkr->addBlocks(bbptr);
+
+  // 0x23
+  wrkr->addBlocks(bkptr);
+  wrkr->addBlocks(blptr);
+  wrkr->addBlocks(bmptr);
+  wrkr->addBlocks(bnptr);
+  wrkr->addBlocks(boptr);
+  wrkr->addBlocks(bpptr);
+  wrkr->addBlocks(bqptr);
   
   thread->start();
   
