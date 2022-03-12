@@ -130,13 +130,13 @@ void Weiche::switchWeiche(bool linksrechts){
     if(linksrechts){
       //qDebug()<<"Stelle weiche "<<w_id<<" auf true";
       digitalWrite(pin0, HIGH);
-      delay(25);//[ms]
+      delay(35);//[ms]
       digitalWrite(pin0, LOW);
     }
     if(!linksrechts){
       //qDebug()<<"Stelle weiche "<<w_id<<" auf false";
       digitalWrite(pin1, HIGH);
-      delay(25);//[ms]
+      delay(35);//[ms]
       digitalWrite(pin1, LOW);
     }
   }
