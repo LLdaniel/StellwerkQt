@@ -32,7 +32,8 @@ void clickmanager::recieveFS(HSignal *toFS){
       //
       //reset all counter:
       reset();
-    }
+    }//                                                                                     |
+    //:::------------------------------------------------------------------------------------
   }
   if(counter == 2){
     clickList.second = toFS;                  //second click happend --> <first>.setFahrt(<second>)

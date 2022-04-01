@@ -2,8 +2,8 @@
  * segments for railroad [- BLOCK.H -]
  *******************************************************************************
  * Rail segments with feedback of the current state: occupied or free          *
- *    - includes crossings (BUs) and opens/closes them                         *
- *    - unlocking segments is done with evaluateFreigabe with the normal order *
+ *    - includes crossings (BUs) and open/close them                           *
+ *    - unlocking segments is done with evaluateFreigabe in the normal order   *
  *      for block states: free-occupied-free --> unlock triggered              *
  *    - name range from "aa" to "zz"                                           *
  *******************************************************************************
@@ -52,7 +52,7 @@ public slots:
 signals:
   void zugpassiert();                                    //signal goes to slot HSignal::zugpassiert
   void zugpassiertW();                                   //signal goes to slot WSignal::zugpassiert 
- private:
+private:
   QString blockname;                                     //Block naming convention: aa, ab, ac ... zz
   bool b_status = true;                                  //true:=free ; false:=occupied
   bool freigabe = true;                                  //true:=unlocked ; false:=locked

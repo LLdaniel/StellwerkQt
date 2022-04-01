@@ -44,7 +44,7 @@ bool Block::evaluateFreigabe(){
     //trigger: signal of pair is checked if Hp1 --> Hp1? if(prevBlock=occupied)-->singalpassiert; Hp0? do nothing
     if( haspassiert ){
       for( int i = 0; i < passiert.size(); i++){
-        if( technik->getS_pass_status( passiert.at(i).first ) && !passiert.at(i).second->getB_status() ){                                                //is signal green? (get method of Stellwerkstechnik) && previous Block occupied
+        if( technik->getS_pass_status( passiert.at(i).first ) && !passiert.at(i).second->getB_status() ){                //is signal green? (get method of Stellwerkstechnik) && previous Block occupied
 	  // WSignal or HSignal? trigger zugpassiertW or zugpassiert
 	  if(passiert.at(i).first.at(0) == "S"){
 	    emit zugpassiert();                   //connected to HSignal::zugpassiert/WSignal::zugpassiert

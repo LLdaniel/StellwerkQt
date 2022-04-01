@@ -38,7 +38,7 @@ int Connector::getGpio(bool linksrechts){
   if(linksrechts){
     aktuellerPin = pin0;
   }
-  if(!linksrechts){
+  else{
     aktuellerPin = pin1;
   }
   return aktuellerPin;
@@ -55,7 +55,7 @@ void Connector::act(){
       digitalWrite(pin0, LOW);
       //qDebug()<<"Hardware change Kreuzung: true";
     }
-    if(!changeit){
+    else{
       digitalWrite(pin1, HIGH);
       delay(25);//[ms]
       digitalWrite(pin1, LOW);

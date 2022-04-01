@@ -2,7 +2,7 @@
  * clickmanager to control the rail system [- CLICKMANAGER.H -]
  *******************************************************************************
  * - click from signal A to B --> sets route (automatically reserves           *
- *   segments and turnouts                                                     *
+ *   segments and turnouts)                                                    *
  * - double click on signal A deletes the route, but not the memory            *
  *******************************************************************************
  */
