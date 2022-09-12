@@ -8073,8 +8073,6 @@ int main( int argc , char *argv[] ){
   wrkr->addBlocks(bmptr);
   wrkr->addBlocks(bnptr);
   wrkr->addBlocks(boptr);
-  wrkr->addBlocks(bpptr);
-  wrkr->addBlocks(bqptr);
   
   thread->start();
   
