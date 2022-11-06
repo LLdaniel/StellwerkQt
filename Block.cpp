@@ -48,6 +48,9 @@ bool Block::evaluateFreigabe(){
 	  // WSignal or HSignal? trigger zugpassiertW or zugpassiert
 	  if(passiert.at(i).first.at(0) == "S"){
 	    emit zugpassiert();                   //connected to HSignal::zugpassiert/WSignal::zugpassiert
+	    for(int e = 0; e < this->passiert.size(); e++){
+	      qDebug()<<getName()<<passiert.at(e).first<<passiert.at(e).second->getName();
+	    }
 	  }
 	  if(passiert.at(i).first.at(0) == "W"){
 	    emit zugpassiertW();                  //connected to WSignal::zugpassiertW 

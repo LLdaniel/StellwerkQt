@@ -491,6 +491,7 @@ void HSignal::zugpassiert(){
   hasWSZiel = false;
   changeColor();
   emit refreshStellwerkstechnik( getS_id() , false );          //update list in Stellwerkstechnik
+  qDebug()<<"zugpassiert:"<<getS_id();
   //
   //VSIGNALE - change all distant signals to "expect stop" [backwards], also inFS should be deleted
   for(  int i = 0 ; i < vorsignalR.size() ; i++ ){             //find exact that distant signal, which is inFS and has the current direction 

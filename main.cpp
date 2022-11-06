@@ -96,7 +96,7 @@ int main( int argc , char *argv[] ){
   //
   //create scene
   QGraphicsScene *scene = new QGraphicsScene(&w);
-  scene->setBackgroundBrush(Qt::black);
+  scene->setBackgroundBrush(Qt::darkGray);
   //
   //connect for quiting program
   QObject::connect(&w,&MainWindow::shutdown,&a,QApplication::quit);
