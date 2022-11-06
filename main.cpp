@@ -5240,8 +5240,8 @@ int main( int argc , char *argv[] ){
   scene->addItem(acrect4);
 
   QGraphicsRectItem *aerect3 = new QGraphicsRectItem();
-  aerect3->setRect(0,0,10,500);
-  aerect3->setPos(QPointF(220,-540));
+  aerect3->setRect(0,0,10,510);
+  aerect3->setPos(QPointF(230,-540));
   aerect3->setBrush(QColor(79,79,79));
   aerect3->setRotation(90);
   aeptr->addBlockitems(aerect3);
@@ -5441,8 +5441,8 @@ int main( int argc , char *argv[] ){
   arptr->addBlockitems(arrect3);
   scene->addItem(arrect3);
   QGraphicsRectItem *arrect4 = new QGraphicsRectItem();
-  arrect4->setRect(0,0,10,200);
-  arrect4->setPos(QPointF(-880,-300));
+  arrect4->setRect(0,0,10,210);
+  arrect4->setPos(QPointF(-870,-300));
   arrect4->setBrush(QColor(79,79,79));
   arrect4->setRotation(90);
   arptr->addBlockitems(arrect4);
@@ -7160,7 +7160,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(sphin26);
   s26ptr->addHSignalitem(s26item1,s26item2, s26item3, s26label,s26push,spweg26,sphin26);
   s26ptr->moveButton(745,-405);
-  s26ptr->moveLabel(780,-280);
+  s26ptr->moveLabel(770,-300);
 
   QGraphicsSvgItem *itemv321 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
   QGraphicsSvgItem *itemv322 = new QGraphicsSvgItem(":/resources/VShalt.svg");
