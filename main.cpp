@@ -3224,16 +3224,16 @@ int main( int argc , char *argv[] ){
   scene->addItem(aarect);
 
   QGraphicsRectItem *bnrect = new QGraphicsRectItem();
-  bnrect->setRect(0,0,10,150);
-  bnrect->setPos(QPointF(650,810));
+  bnrect->setRect(0,0,10,1200);
+  bnrect->setPos(QPointF(1720,810));
   bnrect->setBrush(QColor(79,79,79));
   bnrect->setRotation(90);
   bnptr->addBlockitems(bnrect);
   scene->addItem(bnrect);
 
   QGraphicsRectItem *bmrect = new QGraphicsRectItem();
-  bmrect->setRect(0,0,10,150);
-  bmrect->setPos(QPointF(650,880));
+  bmrect->setRect(0,0,10,1300);
+  bmrect->setPos(QPointF(1800,880));
   bmrect->setBrush(QColor(79,79,79));
   bmrect->setRotation(90);
   bmptr->addBlockitems(bmrect);
@@ -3457,7 +3457,7 @@ int main( int argc , char *argv[] ){
   
   
   QGraphicsRectItem *asrect = new QGraphicsRectItem();
-  asrect->setRect(0,0,10,200);
+  asrect->setRect(0,0,10,385);
   asrect->setPos(QPointF(215,280));
   asrect->setBrush(QColor(79,79,79));
   asrect->setRotation(-90);
@@ -3490,7 +3490,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(afrect);
 
   QGraphicsRectItem *aurect = new QGraphicsRectItem();
-  aurect->setRect(0,0,10,500);
+  aurect->setRect(0,0,10,795);
   aurect->setPos(QPointF(-125,575));
   aurect->setBrush(QColor(79,79,79));
   aurect->setRotation(-90);
@@ -5936,7 +5936,7 @@ int main( int argc , char *argv[] ){
   
   //new part of the model railway--------------------------------------------
   QGraphicsRectItem *asrect2 = new QGraphicsRectItem();
-  asrect2->setRect(0,0,10,300);
+  asrect2->setRect(0,0,10,190);
   asrect2->setPos(QPointF(600,90));
   asrect2->setBrush(QColor(79,79,79));
   asptr->addBlockitems(asrect2);
@@ -5950,7 +5950,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(atrect);
 
   QGraphicsRectItem *aurect2 = new QGraphicsRectItem();
-  aurect2->setRect(0,0,10,150);
+  aurect2->setRect(0,0,10,335);
   aurect2->setPos(QPointF(670,240));
   aurect2->setBrush(QColor(79,79,79));
   auptr->addBlockitems(aurect2);
@@ -6156,7 +6156,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(blrect4);
 
   QGraphicsRectItem *bmrect2 = new QGraphicsRectItem();
-  bmrect2->setRect(0,0,10,250);
+  bmrect2->setRect(0,0,10,330);
   bmrect2->setPos(QPointF(1790,550));
   bmrect2->setBrush(QColor(79,79,79));
   bmptr->addBlockitems(bmrect2);
@@ -6447,7 +6447,7 @@ int main( int argc , char *argv[] ){
 
 
   QGraphicsRectItem *bnrect3 = new QGraphicsRectItem();
-  bnrect3->setRect(0,0,10,330);
+  bnrect3->setRect(0,0,10,340);
   bnrect3->setPos(QPointF(1710,470));
   bnrect3->setBrush(QColor(79,79,79));
   bnptr->addBlockitems(bnrect3);
