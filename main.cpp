@@ -7895,7 +7895,7 @@ int main( int argc , char *argv[] ){
   w6ptr->setGpio(206,207);
   w7ptr->setGpio(209,208);
   w8ptr->setGpio(210,211);
-  w9ptr->setGpio(212,213);
+  w9ptr->setGpio(213,212);
   w10ptr->setGpio(215,214);
   w11ptr->setGpio(217,216);
   w12ptr->setGpio(219,218);
