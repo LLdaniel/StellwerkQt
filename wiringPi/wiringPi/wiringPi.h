@@ -4,7 +4,7 @@
  *	Copyright (c) 2012-2017 Gordon Henderson
  ***********************************************************************
  * This file is part of wiringPi:
- *	https://projects.drogon.net/raspberry-pi/wiringpi/
+ *	https://github.com/WiringPi/WiringPi/
  *
  *    wiringPi is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU Lesser General Public License as published by
@@ -86,6 +86,7 @@
 
 // Pi model types and version numbers
 //	Intended for the GPIO program Use at your own risk.
+// https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#new-style-revision-codes
 
 #define	PI_MODEL_A		 0
 #define	PI_MODEL_B		 1
@@ -95,11 +96,17 @@
 #define	PI_ALPHA		 5
 #define	PI_MODEL_CM		 6
 #define	PI_MODEL_07		 7
-#define	PI_MODEL_3		 8
+#define	PI_MODEL_3B		 8
 #define	PI_MODEL_ZERO		 9
 #define	PI_MODEL_CM3		10
 #define	PI_MODEL_ZERO_W		12
-#define	PI_MODEL_3P 		13
+#define	PI_MODEL_3BP 		13
+#define	PI_MODEL_3AP 		14
+#define	PI_MODEL_CM3P 		16
+#define	PI_MODEL_4B 		17
+#define	PI_MODEL_ZERO_2W	18
+#define	PI_MODEL_400		19
+#define	PI_MODEL_CM4		20
 
 #define	PI_VERSION_1		0
 #define	PI_VERSION_1_1		1
@@ -111,7 +118,7 @@
 #define	PI_MAKER_EMBEST		2
 #define	PI_MAKER_UNKNOWN	3
 
-extern const char *piModelNames    [16] ;
+extern const char *piModelNames    [21] ;
 extern const char *piRevisionNames [16] ;
 extern const char *piMakerNames    [16] ;
 extern const int   piMemorySize    [ 8] ;
@@ -132,7 +139,7 @@ extern const int   piMemorySize    [ 8] ;
 // wiringPiNodeStruct:
 //	This describes additional device nodes in the extended wiringPi
 //	2.0 scheme of things.
-//	It's a simple linked list for now, but will hopefully migrate to 
+//	It's a simple linked list for now, but will hopefully migrate to
 //	a binary tree for efficiency reasons - but then again, the chances
 //	of more than 1 or 2 devices being added are fairly slim, so who
 //	knows....
@@ -209,7 +216,7 @@ extern          void pwmWrite            (int pin, int value) ;
 extern          int  analogRead          (int pin) ;
 extern          void analogWrite         (int pin, int value) ;
 
-// PiFace specifics 
+// PiFace specifics
 //	(Deprecated)
 
 extern int  wiringPiSetupPiFace (void) ;
