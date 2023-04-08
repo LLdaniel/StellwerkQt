@@ -82,6 +82,15 @@ int main( int argc , char *argv[] ){
     if(strcmp(argv[i],"-d") == 0 ){
       
     }
+    if(strcmp(argv[i],"aktio") == 0 ){
+      qDebug()<<"";
+      qDebug()<<"    /)/)";
+      qDebug()<<"    (^.^)  ";
+      qDebug()<<"   C(\")(\")  >o¤»";
+      qDebug()<<"";
+      qDebug()<<"";
+      qDebug()<<"     ...*nom*...";
+    }
   }
  
   // starting QT application
