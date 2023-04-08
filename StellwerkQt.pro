@@ -55,14 +55,11 @@ HEADERS  += mainwindow.h \
 
     FORMS    += mainwindow.ui
     RESOURCES+=resources.qrc
+    
 # wiringPi
-LIBS+=-L/home/daniel/Documents/Stellwerk/StellwerkQt/wiringPi/ -lwiringPi
-# pigpio
-#LIBS+=-L/home/daniel/Documents/Stellwerk/StellwerkQt/PIGPIO/ -lpigpio
+LIBS       +=-L"/home/daniel/Documents/StellwerkQt/WiringPi/wiringPi" -l:libwiringPi.so.2.70
 
 # wiringPi
-INCLUDEPATH+=/home/daniel/Documents/Stellwerk/StellwerkQt/wiringPi/
-DEPENDPATH+=/home/daniel/Documents/Stellwerk/StellwerkQt/wiringPi/
-# pigpio
-#INCLUDEPATH+=/home/daniel/Documents/Stellwerk/StellwerkQt/PIGPIO/
-#DEPENDPATH+=/home/daniel/Documents/Stellwerk/StellwerkQt/PIGPIO/
+INCLUDEPATH+=/home/daniel/Documents/StellwerkQt/WiringPi/wiringPi
+DEPENDPATH +=/home/daniel/Documents/StellwerkQt/WiringPi/wiringPi
+
