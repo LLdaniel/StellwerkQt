@@ -46,13 +46,13 @@ bool Block::evaluateFreigabe(){
       for( int i = 0; i < passiert.size(); i++){
         if( technik->getS_pass_status( passiert.at(i).first ) && !passiert.at(i).second->getB_status() ){                //is signal green? (get method of Stellwerkstechnik) && previous Block occupied
 	  // WSignal or HSignal? trigger zugpassiertW or zugpassiert
-	  if(passiert.at(i).first.at(0) == "S"){
+	  if(passiert.at(i).first.at(0) == 'S'){
 	    emit zugpassiert();                   //connected to HSignal::zugpassiert/WSignal::zugpassiert
 	    for(int e = 0; e < this->passiert.size(); e++){
 	      qDebug()<<this->getName()<<passiert.at(e).first<<passiert.at(e).second->getName();
 	    }
 	  }
-	  if(passiert.at(i).first.at(0) == "W"){
+	  if(passiert.at(i).first.at(0) == 'W'){
 	    emit zugpassiertW();                  //connected to WSignal::zugpassiertW 
 	  }
         }

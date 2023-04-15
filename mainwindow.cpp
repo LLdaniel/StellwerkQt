@@ -63,7 +63,7 @@ void MainWindow::createMenus(){
 
 void MainWindow::createActions(){
   shutdownAct = new QAction(tr("&Shutdown"), this);
-  QKeySequence s(Qt::ControlModifier + Qt::Key_Q);
+  QKeySequence s(Qt::ControlModifier | Qt::Key_Q);
   QList<QKeySequence> shtdwnSeq;
   shtdwnSeq.append(s);
   shutdownAct->setShortcuts(shtdwnSeq);
@@ -86,14 +86,14 @@ void MainWindow::createActions(){
   QObject::connect(resetAct, &QAction::triggered, this, &MainWindow::reset);
 
   upscaleAct = new QAction(tr("&ZoomOut"), this);
-  QKeySequence u(Qt::ControlModifier + Qt::Key_Minus);
+  QKeySequence u(Qt::ControlModifier | Qt::Key_Minus);
   QList<QKeySequence> upSeq;
   upSeq.append(u);
   upscaleAct->setShortcuts(upSeq);
   upscaleAct->setStatusTip(tr("up-scales view"));
   QObject::connect(upscaleAct, &QAction::triggered, this, &MainWindow::upscale);
   downscaleAct = new QAction(tr("&ZoomIn"), this);
-  QKeySequence d(Qt::ControlModifier + Qt::Key_Plus);
+  QKeySequence d(Qt::ControlModifier | Qt::Key_Plus);
   QList<QKeySequence> downSeq;
   downSeq.append(d);
   downscaleAct->setShortcuts(downSeq);
@@ -101,7 +101,7 @@ void MainWindow::createActions(){
   QObject::connect(downscaleAct, &QAction::triggered, this, &MainWindow::downscale);
 
   fullscreenAct = new QAction(tr("&Fullscreen"), this);
-  QKeySequence sc(Qt::ControlModifier + Qt::Key_F);
+  QKeySequence sc(Qt::ControlModifier | Qt::Key_F);
   QList<QKeySequence> scSeq;
   scSeq.append(sc);
   fullscreenAct->setShortcuts(scSeq);

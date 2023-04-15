@@ -1,11 +1,23 @@
 # moc files
 moc_*
+
 # emacs 
 *~
+
 # linked files
 *.o
+
 # make and qt
 .qmake.stash
 Makefile
 StellwerkQt
 qrc_resources.cpp
+
+#cmake
+.qt/
+.rcc/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+config.tests/
+StellwerkQt_autogen/
