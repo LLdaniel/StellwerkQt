@@ -21,3 +21,8 @@ CMakeFiles/
 cmake_install.cmake
 config.tests/
 StellwerkQt_autogen/
+
+#wiringPi header
+mcp23017.h
+sr595.h
+wiringPi.h

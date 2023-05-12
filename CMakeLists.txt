@@ -40,7 +40,7 @@ qt_set_finalizer_mode(StellwerkQt ENABLE MODES static_plugins)
 qt_finalize_target(StellwerkQt)
 
 target_include_directories(StellwerkQt PRIVATE
-  /home/daniel/Documents/StellwerkQt/WiringPi/wiringPi
+  /home/daniel/raspi/sysroot/usr/lib/libwiringPi.so.2.70
   )
 
 target_compile_definitions(StellwerkQt PRIVATE
@@ -48,7 +48,6 @@ target_compile_definitions(StellwerkQt PRIVATE
   )
 
 target_link_libraries(StellwerkQt PRIVATE
-  # Remove: L"/home/daniel/Documents/StellwerkQt/WiringPi/wiringPi"
   :libwiringPi.so.2.70
   Qt::Core
   Qt::Gui

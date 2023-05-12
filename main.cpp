@@ -82,7 +82,7 @@ int main( int argc , char *argv[] ){
     if(strcmp(argv[i],"-d") == 0 ){
       
     }
-    if(strcmp(argv[i],"aktio") == 0 ){
+    if(strcmp(argv[i],"akito") == 0 ){
       qDebug()<<"";
       qDebug()<<"    /)/)";
       qDebug()<<"    (^.^)  ";
@@ -90,6 +90,7 @@ int main( int argc , char *argv[] ){
       qDebug()<<"";
       qDebug()<<"";
       qDebug()<<"     ...*nom*...";
+      return 0;
     }
   }
  
@@ -118,7 +119,7 @@ int main( int argc , char *argv[] ){
 
   // create a filemanager and read turnout state from previous session
   //**************************************************************************
-  filemanager fmngr("/home/pi/turnouts.txt");
+  filemanager fmngr("/home/fdl/turnouts.txt");
   fmngr.read();
   
   // initialaizing the specific model railway plan
