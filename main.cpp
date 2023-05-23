@@ -44,6 +44,7 @@
 #include <QMenuBar>
 #include <QThread>
 #include <QtGlobal> // for QOverload
+#include <QStandardPaths>
 #include "clickmanager.h"
 #ifdef __cplusplus
 extern "C"{
@@ -119,7 +120,10 @@ int main( int argc , char *argv[] ){
 
   // create a filemanager and read turnout state from previous session
   //**************************************************************************
-  filemanager fmngr("/home/fdl/turnouts.txt");
+  QString filepath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+  qDebug()<<filepath;
+  qDebug()<<filepath+"/.config/StellwerkQt/turnouts.txt";
+  filemanager fmngr(filepath + "/.config/StellwerkQt/turnouts.txt");
   fmngr.read();
   
   // initialaizing the specific model railway plan
