@@ -5,6 +5,13 @@
 #include "BU.h"
 #include <QDebug>
 #include <QBrush>
+#ifdef __cplusplus
+extern "C"{
+#endif
+#include <wiringPi.h>
+#ifdef __cplusplus
+}
+#endif
 //
 BU::BU( int name ){
   setName( name );
@@ -25,14 +32,30 @@ void BU::setName( int name ){
 void BU::setBU_status( bool status ){
   bu_status = status;                                     //change state
   changeColor();
+  if(status){
+    open();
+  }
+  else close();
 }
 void BU::changeColor(){
     if(bu_status){
-        burect->setBrush(QColor(153,50,204));             //lila
+        burect->setBrush(QColor(Qt::gray));
     }
     if(!bu_status){
-        burect->setBrush(QColor(255,64,64));              //light red
+      burect->setBrush(QColor(Qt::white));
     }
+}
+
+void BU::close(){
+  if(pin > 0){
+    digitalWrite(pin, HIGH);
+  }
+}
+
+void BU::open(){
+  if(pin > 0){
+    digitalWrite(pin, LOW);
+  }
 }
 
 BU::~BU(){

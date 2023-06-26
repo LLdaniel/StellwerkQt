@@ -22,6 +22,13 @@ class BU{
   //
   void addBUrect(QGraphicsRectItem *item){ burect = item; }
   void changeColor();
+  //
+  //+++ GPIO +++
+  //
+  int getGpio(){ return pin; }
+  void setGpio( int BUpin ){ pin = BUpin; }
+  void close();
+  void open();
   ~BU();
  private:
   QString buname;                                           //BU naming convention BU01, BU56
@@ -30,5 +37,9 @@ class BU{
   //+++ GUI +++
   //
   QGraphicsRectItem *burect = new QGraphicsRectItem();
+  //
+  //+++ GPIO +++
+  //
+  int pin = -1;
 };
 #endif

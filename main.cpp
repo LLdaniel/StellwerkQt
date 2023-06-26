@@ -2793,19 +2793,19 @@ int main( int argc , char *argv[] ){
   stellwerkstecptr->add_Signal(ww43ptr->getV_id(),false);
 
   //BÜs
-  //BU bu1(1);
-  //BU *bu1ptr = &bu1;
+  BU bu1(1);
+  BU *bu1ptr = &bu1;
 
-  //GUI
-  //QGraphicsRectItem *bue = new QGraphicsRectItem();
-  //bue->setRect(0,0,50,25);
-  //bue->setPos(QPointF(-100,-20));
-  //bue->setBrush(QColor(QColor(153,50,204)));//lila
-  //bue->setRotation(90);
-  //scene->addItem(bue);
-  //bu1ptr->addBUrect(bue);
-  //aaptr->addBus( bu1ptr );
-
+  QGraphicsRectItem *bue = new QGraphicsRectItem();
+  bue->setRect(0,0,140,35);
+  bue->setPos(QPointF(2310,200));
+  bue->setBrush(QColor(Qt::gray));
+  bue->setRotation(90);
+  scene->addItem(bue);
+  bu1ptr->addBUrect(bue);
+  bu1ptr->setGpio(24);
+  bnptr->addBus( bu1ptr );
+  bmptr->addBus( bu1ptr );
   
   //signals and slots
   QObject::connect(s1ptr,&HSignal::refreshStellwerkstechnik,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
