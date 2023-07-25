@@ -1,12 +1,14 @@
-## signalling control center
+## Signalling Control Center
 electronic signal box for a model railway implemented on a cross compiled raspberry pi 3B (C++, Qt, wiringPi) :bullettrain_side:
 
-### description
+### Description
 This is a electronic signal box implemented in C++ and Qt for a cross compiled raspberry pi 3B using wiringPi library.
-The central aspect is to set up the routes from main signal A to main signal B, where all tournouts are set properly and the presignal signals the signal of B.
+The central aspect is to set up the routes from main signal A to main signal B, where all tournouts are set properly and the presignal shows the state of B.
 The whole information system for the electronic control center is based on which segments of rail is engaged due to trains.
 
-### program description
+![image](https://github.com/LLdaniel/StellwerkQt/assets/41345639/64aeac6d-5154-4f69-8fdf-a73d232a75f7)
+
+### Program description
 The program has different sub-classes giving the chance to simulate a signalling control center.  
 - **Block** divides the railway into smaller segments and signals the occupation of such segments and is connected to railway crossings
 - **BU** implements the railway crossings
@@ -22,19 +24,6 @@ The program has different sub-classes giving the chance to simulate a signalling
 - **Connector** connects two turnouts to one double-turnout (keeping the character of two single turnouts)
 - **worker** manages the updates of the segments' status
 - **filemanager** reads the last session's turnout state and writes the state for the next session
-### cross compiling
-Crosscompiling was tested with Qt 5.12.0, Raspbian Jessie on RaspberryPi 3B and Debian Jessie on the host computer.
-For cross compiling with **qmake** do:  
-`~/rpi/qt5/bin/qmake -r`  
-`make`  
-`make install`  
-
-Then deploy the new files to the RaspberryPi3B:  
-`rsync -avz qt5pi pi@raspberrypi.local:/usr/local`  
-
-### repository on host PC for RaspberryPi deplyoment
-Find instructions at:
-https://wiki.qt.io/RaspberryPi2EGLFS
 
 ### notes on threads
 For a arbitrary class myClass with methods ::hello and ::act one can execute the methods in separate threads shown below:
