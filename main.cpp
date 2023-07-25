@@ -237,6 +237,8 @@ int main( int argc , char *argv[] ){
   Block *bxptr = new Block("bx", stellwerkstecptr);
   Block *byptr = new Block("by", stellwerkstecptr);
   Block *bzptr = new Block("bz", stellwerkstecptr);
+  Block *captr = new Block("ca", stellwerkstecptr);
+  Block *cbptr = new Block("cb", stellwerkstecptr);
   //:::distant signals:::
   VSignal *v1ptr = new VSignal(1);
   VSignal *v2ptr = new VSignal(2);
@@ -2187,21 +2189,25 @@ int main( int argc , char *argv[] ){
   QList<Block*> s2tos42b;
   s2tos42b.push_back(bmptr);
   s2tos42b.push_back(blptr);
+  s2tos42b.push_back(cbptr);
   s2ptr->addBlock(s42ptr,s2tos42b);
   QList<Block*> s2tos33b;
   s2tos33b.push_back(bnptr);
   s2tos33b.push_back(bkptr);
   s2tos33b.push_back(beptr);
+  s2tos33b.push_back(captr);
   s2ptr->addBlock(s33ptr,s2tos33b);
   QList<Block*> s2tos32b;
   s2tos32b.push_back(bnptr);
   s2tos32b.push_back(bkptr);
   s2tos32b.push_back(bdptr);
+  s2tos32b.push_back(captr);
   s2ptr->addBlock(s32ptr,s2tos32b);
 
   QList<Block*> s3tos42b;
   s3tos42b.push_back(bmptr);
   s3tos42b.push_back(blptr);
+  s3tos42b.push_back(cbptr);
   s3ptr->addBlock(s42ptr,s3tos42b);
   
   QList<Block*> ww3tos9b;
@@ -2585,13 +2591,16 @@ int main( int argc , char *argv[] ){
   QList<Block*> s36tos1b;
   s36tos1b.push_back(bkptr);
   s36tos1b.push_back(bnptr);
+  s36tos1b.push_back(captr);
   s36ptr->addBlock(s1ptr,s36tos1b);
   QList<Block*> s36tos26b;
   s36tos26b.push_back(bkptr);
   s36tos26b.push_back(boptr);
+  s36tos26b.push_back(captr);
   s36ptr->addBlock(s26ptr,s36tos26b);
   QList<Block*> s36toww23b;
   s36toww23b.push_back(bkptr);
+  s36toww23b.push_back(captr);
   s36ptr->addBlockZuRangier(ww23ptr,s36toww23b);
   QList<Block*> s36toww20b;
   s36toww20b.push_back(bjptr);
@@ -2600,17 +2609,21 @@ int main( int argc , char *argv[] ){
   QList<Block*> s37tos1b;
   s37tos1b.push_back(bkptr);
   s37tos1b.push_back(bnptr);
+  s37tos1b.push_back(captr);
   s37ptr->addBlock(s1ptr,s37tos1b);
   QList<Block*> s37tos26b;
   s37tos26b.push_back(bkptr);
   s37tos26b.push_back(boptr);
+  s37tos26b.push_back(captr);
   s37ptr->addBlock(s26ptr,s37tos26b);
   QList<Block*> s37toww23b;
   s37toww23b.push_back(bkptr);
+  s37toww23b.push_back(captr);
   s37ptr->addBlockZuRangier(ww23ptr,s37toww23b);
 
   QList<Block*> s38tos44b;
   s38tos44b.push_back(blptr);
+  s38tos44b.push_back(cbptr);
   s38ptr->addBlock(s44ptr,s38tos44b);
   QList<Block*> s38tos48b;
   s38tos48b.push_back(azptr);
@@ -2623,6 +2636,7 @@ int main( int argc , char *argv[] ){
   QList<Block*> s43tos32b;
   s43tos32b.push_back(bkptr);
   s43tos32b.push_back(bdptr);
+  s43tos32b.push_back(captr);
   s43ptr->addBlock(s32ptr,s43tos32b);
   QList<Block*> s43tos33b;
   s43tos33b.push_back(bkptr);
@@ -2630,6 +2644,7 @@ int main( int argc , char *argv[] ){
   s43ptr->addBlock(s33ptr,s43tos33b);
   QList<Block*> s43toww22b;
   s43toww22b.push_back(bkptr);
+  s43toww22b.push_back(captr);
   s43ptr->addBlockZuRangier(ww22ptr,s43toww22b);
 
   QList<Block*> s44tos4b;
@@ -2804,8 +2819,8 @@ int main( int argc , char *argv[] ){
   scene->addItem(bue);
   bu1ptr->addBUrect(bue);
   bu1ptr->setGpio(24);
-  bnptr->addBus( bu1ptr );
-  bmptr->addBus( bu1ptr );
+  captr->addBus( bu1ptr );
+  cbptr->addBus( bu1ptr );
   
   //signals and slots
   QObject::connect(s1ptr,&HSignal::refreshStellwerkstechnik,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
@@ -6147,13 +6162,13 @@ int main( int argc , char *argv[] ){
   blptr->addBlockitems(blrect);
   scene->addItem(blrect);
 
-  QGraphicsRectItem *blrect2 = new QGraphicsRectItem();
-  blrect2->setRect(0,0,10,765);
-  blrect2->setPos(QPointF(2555,300));
-  blrect2->setBrush(QColor(79,79,79));
-  blrect2->setRotation(90);
-  blptr->addBlockitems(blrect2);
-  scene->addItem(blrect2);
+  QGraphicsRectItem *cbrect = new QGraphicsRectItem();
+  cbrect->setRect(0,0,10,765);
+  cbrect->setPos(QPointF(2555,300));
+  cbrect->setBrush(QColor(79,79,79));
+  cbrect->setRotation(90);
+  cbptr->addBlockitems(cbrect);
+  scene->addItem(cbrect);
 
   QGraphicsRectItem *blrect3 = new QGraphicsRectItem();
   blrect3->setRect(0,0,10,50);
@@ -6371,13 +6386,13 @@ int main( int argc , char *argv[] ){
   bkptr->addBlockitems(bkrect2);
   scene->addItem(bkrect2);
 
-  QGraphicsRectItem *bkrect3 = new QGraphicsRectItem();
-  bkrect3->setRect(0,0,10,725);
-  bkrect3->setPos(QPointF(2470,230));
-  bkrect3->setBrush(QColor(79,79,79));
-  bkrect3->setRotation(90);
-  bkptr->addBlockitems(bkrect3);
-  scene->addItem(bkrect3);
+  QGraphicsRectItem *carect = new QGraphicsRectItem();
+  carect->setRect(0,0,10,725);
+  carect->setPos(QPointF(2470,230));
+  carect->setBrush(QColor(79,79,79));
+  carect->setRotation(90);
+  captr->addBlockitems(carect);
+  scene->addItem(carect);
 
   QGraphicsRectItem *bnrect2 = new QGraphicsRectItem();
   bnrect2->setRect(0,0,10,80);
@@ -8020,8 +8035,8 @@ int main( int argc , char *argv[] ){
   bmptr->setGpio(710);
   bnptr->setGpio(711);
   boptr->setGpio(712);
-  //captr->setGpio(713); // former incrorrectly named as bp
-  //cbptr->setGpio(714); // former incrorrectly named as bq
+  captr->setGpio(713);
+  cbptr->setGpio(714);
   //->setGpio(715);
   
   
@@ -8087,6 +8102,9 @@ int main( int argc , char *argv[] ){
   wrkr->addBlocks(bmptr);
   wrkr->addBlocks(bnptr);
   wrkr->addBlocks(boptr);
+  wrkr->addBlocks(captr);
+  wrkr->addBlocks(cbptr);
+  
   
   thread->start();
   
@@ -8114,7 +8132,7 @@ int main( int argc , char *argv[] ){
    
   delete stellwerkstecptr;
   
-  delete aaptr; delete abptr; delete acptr; delete adptr; delete aeptr; delete afptr; delete agptr; delete ahptr; delete aiptr; delete ajptr; delete akptr; delete alptr; delete amptr; delete anptr; delete aoptr; delete apptr; delete aqptr; delete arptr; delete asptr; delete atptr; delete avptr; delete awptr; delete axptr; delete ayptr; delete azptr; delete baptr; delete bbptr; delete bcptr; delete bdptr; delete beptr; delete bfptr; delete bgptr; delete bhptr; delete biptr; delete bjptr; delete bkptr; delete blptr; delete bmptr; delete bnptr; delete boptr; delete bpptr; delete bqptr; delete brptr; delete bsptr; delete btptr; delete buptr; delete bvptr; delete bwptr; delete bxptr; delete byptr; delete bzptr;
+  delete aaptr; delete abptr; delete acptr; delete adptr; delete aeptr; delete afptr; delete agptr; delete ahptr; delete aiptr; delete ajptr; delete akptr; delete alptr; delete amptr; delete anptr; delete aoptr; delete apptr; delete aqptr; delete arptr; delete asptr; delete atptr; delete avptr; delete awptr; delete axptr; delete ayptr; delete azptr; delete baptr; delete bbptr; delete bcptr; delete bdptr; delete beptr; delete bfptr; delete bgptr; delete bhptr; delete biptr; delete bjptr; delete bkptr; delete blptr; delete bmptr; delete bnptr; delete boptr; delete bpptr; delete bqptr; delete brptr; delete bsptr; delete btptr; delete buptr; delete bvptr; delete bwptr; delete bxptr; delete byptr; delete bzptr; delete captr; delete cbptr;
   
   delete ww1ptr; delete ww2ptr; delete ww3ptr; delete ww4ptr; delete ww5ptr; delete ww6ptr; delete ww7ptr; delete ww8ptr; delete ww9ptr; delete ww10ptr; delete ww11ptr; delete ww12ptr; delete ww13ptr; delete ww14ptr; delete ww15ptr; delete ww16ptr; delete ww17ptr; delete ww18ptr; delete ww19ptr; delete ww20ptr; delete ww21ptr; delete ww22ptr; delete ww23ptr; delete ww24ptr; delete ww25ptr; delete ww26ptr; delete ww27ptr; delete ww28ptr; delete ww29ptr; delete ww30ptr; delete ww31ptr; delete ww32ptr; delete ww33ptr; delete ww34ptr; delete ww35ptr; delete ww36ptr; delete ww37ptr; delete ww38ptr; delete ww39ptr; delete ww40ptr; delete ww41ptr; delete ww42ptr; delete ww43ptr; 
   
