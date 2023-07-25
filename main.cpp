@@ -6170,19 +6170,19 @@ int main( int argc , char *argv[] ){
   cbptr->addBlockitems(cbrect);
   scene->addItem(cbrect);
 
-  QGraphicsRectItem *blrect3 = new QGraphicsRectItem();
-  blrect3->setRect(0,0,10,50);
-  blrect3->setPos(QPointF(1790,300));
-  blrect3->setBrush(QColor(79,79,79));
-  blptr->addBlockitems(blrect3);
-  scene->addItem(blrect3);
+  QGraphicsRectItem *bmrect3 = new QGraphicsRectItem();
+  bmrect3->setRect(0,0,10,50);
+  bmrect3->setPos(QPointF(1790,300));
+  bmrect3->setBrush(QColor(79,79,79));
+  bmptr->addBlockitems(bmrect3);
+  scene->addItem(bmrect3);
 
-  QGraphicsRectItem *blrect4 = new QGraphicsRectItem();
-  blrect4->setRect(0,0,10,80);
-  blrect4->setPos(QPointF(1790,470));
-  blrect4->setBrush(QColor(79,79,79));
-  blptr->addBlockitems(blrect4);
-  scene->addItem(blrect4);
+  QGraphicsRectItem *bmrect4 = new QGraphicsRectItem();
+  bmrect4->setRect(0,0,10,80);
+  bmrect4->setPos(QPointF(1790,470));
+  bmrect4->setBrush(QColor(79,79,79));
+  bmptr->addBlockitems(bmrect4);
+  scene->addItem(bmrect4);
 
   QGraphicsRectItem *bmrect2 = new QGraphicsRectItem();
   bmrect2->setRect(0,0,10,330);
