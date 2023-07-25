@@ -1,10 +1,10 @@
 ## Signalling Control Center
-electronic signal box for a model railway implemented on a cross compiled raspberry pi 3B (C++, Qt, wiringPi) :bullettrain_side:
+Electronic signalbox for a model railway implemented on a cross compiled raspberry pi 3B (C++, Qt, wiringPi) :bullettrain_side:
 
 ### Description
 This is a electronic signal box implemented in C++ and Qt for a cross compiled raspberry pi 3B using wiringPi library.
-The central aspect is to set up the routes from main signal A to main signal B, where all tournouts are set properly and the presignal shows the state of B.
-The whole information system for the electronic control center is based on which segments of rail is engaged due to trains.
+The central aspect is to set up the routes from main signal S001 to main signal S002, where all tournouts are set properly and the presignal shows the state of S002.
+The whole information system for the electronic control center is based on the segments of the railway: The occupation of segments is monitored with the GPIO interface of the Raspberry Pi.
 
 ![image](https://github.com/LLdaniel/StellwerkQt/assets/41345639/64aeac6d-5154-4f69-8fdf-a73d232a75f7)
 
@@ -25,33 +25,6 @@ The program has different sub-classes giving the chance to simulate a signalling
 - **worker** manages the updates of the segments' status
 - **filemanager** reads the last session's turnout state and writes the state for the next session
 
-### notes on threads
-For a arbitrary class myClass with methods ::hello and ::act one can execute the methods in separate threads shown below:
-```#include <iostream>
-#include <thread>
-#include <vector>
-#include "myclass.h"
-#include <queue>
-int main( int argc , char *argv[] ){
-  myclass c;//initialize object
-  std::thread t( &myclass::hello , &c);//create thread which executes the hello function
-  std::thread t2( &myclass::act , &c);//create thread which executes the act function
-  t.join();//add it, that it can be executed at the same time
-  t2.join();
-  //now the queue test:
-  std::queue<std::string> q;
-  q.push("command1");
-  std::cout<<q.front()<<std::endl;
-  return 0;
-}
-```
-
-### insider notes
-1. std::strings in VSignal+WSignal: circle of \#includes HS needs VS and VS needs HS =(  -->should work with this workaround 
-2. No locking for BÜs: would require more sofisticated implementation for deleteFS, at the same time BU::setFreigabe() has to be set manually
-3. No locking for VS, because of VSignal:setV_status(): one can change this either when using this method manually
-4. check signal-slot connections and create them properly --> maybe there is a chance to do this automatically
-5. the emit function is called at the end of HS::setFahrt(WSignal*): that is for the connection to Stellwerkstechnik, but (=stellwerkstec) signals the main signal as permitted route instead of signalling as a shunting signal, maybe this is not important, but check it again
-6. deleteFS [only HS part] deletes the route memory, memory items, but after a short time getZiel is called again although there is no existing memory anymore --> it is hopefully save
-7. release Speicher and process Speicher: normally the programm follws the emit command and setting the route memory to the current route required in evaluateFreigabe in setB_status directly a boolean return value of (before; emit release Speicher in evaluateFreigabe counter == 2 --> status=new status part was not executed and the programm followed processSpeicher and setting the memory route as current route resulted in a not unlocked segment
-8. Stellwerkstechnik hat nur dann den richtigen WSignalstatus, wenn es sich um eine FS WS->WS handelt, dann wird stellwerkstec für zugpassiert gebraucht, in anderen Fällen nicht (wirkung eher als Vsignal)
+### Build Process
+For the build process see the wikipages: https://github.com/LLdaniel/StellwerkQt/wiki.
+There you also can find some notes on threads.
