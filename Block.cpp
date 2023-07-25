@@ -24,15 +24,23 @@ void Block::setB_status( bool status ){
   counter++;                                     //every state change will be registered and counted
   evaluateFreigabe();                            //evaluation if segments can be unlocked or not
   b_status = status;                             //change status
+
+  // close BU when occupying segments - comment in to change back to reservation
+  if( !status ){
+    for(  int i = 0 ; i < bus.size() ; i++ ){      //close/open BU 
+      bus.at(i)->setBU_status(false);
+    }
+  }
   changeColor();
 }
 
 void Block::setFreigabe( bool free ){
   freigabe = free;
   changeColor();
-  for(  int i = 0 ; i < bus.size() ; i++ ){      //close/open BU 
+  /* closing BU when reserving segments - uncomment to change
+    for(  int i = 0 ; i < bus.size() ; i++ ){      //close/open BU 
     bus.at(i)->setBU_status(free);
-  }
+    }*/
 }
 
 bool Block::evaluateFreigabe(){
