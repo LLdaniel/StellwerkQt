@@ -5,6 +5,9 @@
 #include "filemanager.h"
 #include <QDebug>
 #include <QVariant>
+#include <QFileInfo>
+#include <QDir>
+#include <QStandardPaths>
 filemanager::filemanager( QString dir){
   file.setFileName(dir);
 }
@@ -15,17 +18,35 @@ filemanager::~filemanager(){
 
 
 void filemanager::read(){
-  if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
-    QTextStream stream(&file);
-    while (!stream.atEnd()){
-      status.append( QVariant(stream.readLine()).toBool() );
-    }
+  QFileInfo check(file.filesystemFileName());
+  if( !check.exists() or !check.isFile() ){
+    // file does not exist or is a dir
+    qDebug()<<"turnouts.txt file does not exist. It will be created when closing the program.";
   }
-  file.close();
-  qDebug() << "file reading finished";
+  else{
+    // file exists, read it
+    isExistent = true;
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
+      QTextStream stream(&file);
+      while (!stream.atEnd()){
+	status.append( QVariant(stream.readLine()).toBool() );
+      }
+    }
+    file.close();
+    qDebug() << "file reading finished";
+  }
 }
 
 void filemanager::write(){
+  if( !isExistent ){
+    QString home = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    QDir newdir;
+    newdir.mkdir(home + "/.config/StellwerkQt");
+    QFile file(home + "/.config/StellwerkQt/turnouts.txt");
+    file.open(QIODevice::WriteOnly);
+    file.close();
+    qDebug()<<"Automatically created turnouts.txt in $HOME/.config/StellwerkQt.";
+  }
   if(file.open( QIODevice::WriteOnly | QIODevice::Text) ){
     // We're going to streaming text to the file
     QTextStream stream(&file);
@@ -38,7 +59,12 @@ void filemanager::write(){
 }
 
 bool filemanager::passstate(int position){
-  return status.at(position-1);
+  if( isExistent ){
+    return status.at(position-1);
+  }
+  else{
+    return false;
+  }
 }
 
 void filemanager::add( bool newstate ){

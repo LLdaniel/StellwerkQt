@@ -121,7 +121,6 @@ int main( int argc , char *argv[] ){
   // create a filemanager and read turnout state from previous session
   //**************************************************************************
   QString filepath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-  qDebug()<<filepath;
   qDebug()<<filepath+"/.config/StellwerkQt/turnouts.txt";
   filemanager fmngr(filepath + "/.config/StellwerkQt/turnouts.txt");
   fmngr.read();

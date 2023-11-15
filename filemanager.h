@@ -28,6 +28,6 @@ public:
   QFile file;                                            //txt file with all status information turnouts
   QList<bool> status;                                    //list of the tunrout states (start program)
   QList<bool> weichen;                                   //list of all turnout states (end program)
-  
+  bool isExistent = false;                               //flag, if file exists (true) or not (false)
 };
 #endif
