@@ -9,26 +9,28 @@
 #define CONNECTOR_H
 #include <QObject>
 #include <QString>
+#include "Configuration.h"
 class Connector : public QObject{
   Q_OBJECT
- public:
-  Connector( QString name);
+public:
+  Connector( QString name, Configuration *config);
   //
   QString getID(){ return id; }
- public slots:
+public slots:
   void recieveCall(bool state);
   //
   //+++ GPIO +++
   //
   void setGpio( int pinGerade, int pinAbknickend);
   int getGpio( bool linksrechts );
- private:
-   QString id;
-   int pin0 = -1;
-   int pin1 = -1;
-   bool turnout1;
-   bool turnout2;
-   int counter = 0;
+private:
+  QString id;
+  int pin0 = -1;
+  int pin1 = -1;
+  bool turnout1;
+  bool turnout2;
+  int counter = 0;
+  Configuration *configuration;
   //
   //+++ GPIO +++
   //

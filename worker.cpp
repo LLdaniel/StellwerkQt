@@ -5,15 +5,15 @@
 #include "worker.h"
 #include <QDebug>
 
-worker::worker( QList<Block*> allBlocks, QList<Weiche*> allWeichen ){
+worker::worker( QList<Block*> allBlocks, QList<Weiche*> allWeichen, Configuration *config ){
   blocklist = allBlocks;
   weichenlist = allWeichen;
+  configuration = config;
   t->callOnTimeout(this, &worker::updateBelegt);
 }
 
 
 worker::~worker(){
-
 }
 
 void worker::showBlocks(){
@@ -60,11 +60,13 @@ void worker::updateBelegt(){
   int maxindex = 0;
   //
   // which list is greater?
-  if( blocklist.size() >= weichenlist.size() ){
-  maxindex = blocklist.size();
-  }
-  if( weichenlist.size() > blocklist.size() ){
-    maxindex = weichenlist.size();
+  if( configuration->getWithHardware() ){//leave max index with =0
+    if( blocklist.size() >= weichenlist.size() ){
+      maxindex = blocklist.size();
+    }
+    if( weichenlist.size() > blocklist.size() ){
+      maxindex = weichenlist.size();
+    }
   }
   //
   // check, if there are pins für weichen oder blocks at all  

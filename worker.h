@@ -12,12 +12,13 @@
 #include <Weiche.h>
 #include <QList>
 #include <QTimer>
+#include "Configuration.h"
 
 class worker : public QObject{                        //after https://mayaposch.wordpress.com/2011/11/01/how-to-really-truly-use-qthreads-the-full-explanation/
   Q_OBJECT
 public:
-  worker( QList<Block*> allBlocks, QList<Weiche*> allWeichen );
-  worker(){t->callOnTimeout(this, &worker::updateBelegt);}
+  worker( QList<Block*> allBlocks, QList<Weiche*> allWeichen, Configuration *config );
+  worker( Configuration *config ){t->callOnTimeout(this, &worker::updateBelegt);}
   ~worker();
   void showBlocks();
   void addBlocks(Block* bl);
@@ -33,6 +34,7 @@ private:
   bool update = true;                                 //update wanted yes = true || no = false
   QList<Block*> blocklist;                            //all segments which must be updated
   QList<Weiche*> weichenlist;                         //alle turnout occupations which must be updated
+  Configuration *configuration;
   QTimer *t = new QTimer(this);
   
 };

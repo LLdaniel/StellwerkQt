@@ -14,10 +14,11 @@ extern "C"{
 }
 #endif
 //
-Weiche::Weiche (int name, bool state/*=true*/, bool kreuz/*=false*/){
+Weiche::Weiche (int name, bool state/*=true*/, bool kreuz/*=false*/, Configuration *config){
   setW_id( name );
   w_status = state;
   kreuzung = kreuz;
+  configuration = config;
 }
 
 void Weiche::setBelegung( bool newbelegung ){
@@ -126,21 +127,23 @@ void Weiche::setGpio(int pinGerade, int pinAbknickend){
 }
 
 void Weiche::switchWeiche(bool linksrechts){
-  if(pin0 > 0 and pin1 > 0){                                 //connect to hadware command only when there are two directions set
-    if(linksrechts){
-      //qDebug()<<"Stelle weiche "<<w_id<<" auf true";
-      digitalWrite(pin0, HIGH);
-      delay(35);//[ms]
-      digitalWrite(pin0, LOW);
+  if( configuration->getWithHardware() ){
+    if(pin0 > 0 and pin1 > 0){                                 //connect to hadware command only when there are two directions set
+      if(linksrechts){
+	//qDebug()<<"Stelle weiche "<<w_id<<" auf true";
+	digitalWrite(pin0, HIGH);
+	delay(35);//[ms]
+	digitalWrite(pin0, LOW);
+      }
+      if(!linksrechts){
+	//qDebug()<<"Stelle weiche "<<w_id<<" auf false";
+	digitalWrite(pin1, HIGH);
+	delay(35);//[ms]
+	digitalWrite(pin1, LOW);
+      }
     }
-    if(!linksrechts){
-      //qDebug()<<"Stelle weiche "<<w_id<<" auf false";
-      digitalWrite(pin1, HIGH);
-      delay(35);//[ms]
-      digitalWrite(pin1, LOW);
+    else{
+      qDebug()<<"Weiche mit Kennung "<<getW_id()<<" ist nicht als pin initialisiert";
     }
-  }
-  else{
-    qDebug()<<"Weiche mit Kennung "<<getW_id()<<" ist nicht als pin initialisiert";
   }
 }

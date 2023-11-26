@@ -9,9 +9,10 @@
 #define BU_H
 #include <QString>
 #include <QGraphicsRectItem>
+#include "Configuration.h"
 class BU{
  public:
-  BU( int name );
+  BU( int name, Configuration *config );
   //
   void setName( int name );
   QString getName(){ return buname; }
@@ -32,7 +33,8 @@ class BU{
   ~BU();
  private:
   QString buname;                                           //BU naming convention BU01, BU56
-  bool bu_status = true;//true:=open ; false:=closed
+  bool bu_status = true;                                    //true:=open ; false:=closed
+  Configuration *configuration;
   //
   //+++ GUI +++
   //

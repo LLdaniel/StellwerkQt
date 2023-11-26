@@ -8,9 +8,10 @@
 #include <wiringPi.h>
 #include <mcp23017.h>
 
-Block::Block(QString name , Stellwerkstechnik *signaltechnik){
+Block::Block(QString name , Stellwerkstechnik *signaltechnik, Configuration *config){
   setName( name );
   technik = signaltechnik;
+  configuration = config;
 }
 
 void Block::setName( QString name ){
@@ -141,7 +142,10 @@ int Block::getGpio(){
 }
 
 int Block::readBlock(){
-  return digitalRead(pin);
+  if( configuration->getWithHardware()){
+    return digitalRead(pin);
+  }
+  else return 1;
 }
 
 Block::~Block(){

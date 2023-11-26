@@ -12,8 +12,9 @@ extern "C"{
 }
 #endif
 //
-Connector::Connector(QString name){
+Connector::Connector(QString name, Configuration *config){
   id = name;
+  configuration = config;
 }
 
 void Connector::recieveCall(bool state){
@@ -49,17 +50,19 @@ void Connector::act(){
     //calculate the physical state with not XOR
     bool changeit = turnout1 == turnout2;
     // changing hardware status
-    if(changeit){
-      digitalWrite(pin0, HIGH);
-      delay(25);//[ms]
-      digitalWrite(pin0, LOW);
-      //qDebug()<<"Hardware change Kreuzung: true";
-    }
-    else{
-      digitalWrite(pin1, HIGH);
-      delay(25);//[ms]
-      digitalWrite(pin1, LOW);
-      //qDebug()<<"Hardware change Kreuzung: false";
+    if( configuration->getWithHardware() ){
+      if(changeit){
+	digitalWrite(pin0, HIGH);
+	delay(25);//[ms]
+	digitalWrite(pin0, LOW);
+	//qDebug()<<"Hardware change Kreuzung: true";
+      }
+      else{
+	digitalWrite(pin1, HIGH);
+	delay(25);//[ms]
+	digitalWrite(pin1, LOW);
+	//qDebug()<<"Hardware change Kreuzung: false";
+      }
     }
   }
   else{

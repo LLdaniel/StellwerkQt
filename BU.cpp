@@ -13,8 +13,9 @@ extern "C"{
 }
 #endif
 //
-BU::BU( int name ){
+BU::BU( int name, Configuration *config ){
   setName( name );
+  configuration = config;
 }
 
 void BU::setName( int name ){
@@ -47,14 +48,18 @@ void BU::changeColor(){
 }
 
 void BU::close(){
-  if(pin > 0){
-    digitalWrite(pin, HIGH);
+  if( configuration->getWithHardware() ){
+    if(pin > 0){
+      digitalWrite(pin, HIGH);
+    }
   }
 }
 
 void BU::open(){
-  if(pin > 0){
-    digitalWrite(pin, LOW);
+  if( configuration->getWithHardware() ){
+    if(pin > 0){
+      digitalWrite(pin, LOW);
+    }
   }
 }
 

@@ -46,6 +46,7 @@
 #include <QtGlobal> // for QOverload
 #include <QStandardPaths>
 #include "clickmanager.h"
+#include "Configuration.h"
 #ifdef __cplusplus
 extern "C"{
 #endif
@@ -59,14 +60,15 @@ extern "C"{
 int main( int argc , char *argv[] ){
   //
   //command line arguments
-  //bool debug = false;
+  //
+  Configuration config = Configuration();
   printf("argc: %d\n", argc);
   for(int i=0; i < argc; i++) {
     printf("argv[%d]: %s\n", i, argv[i]);
     //-v debug option with different std's
     if( strcmp(argv[i],"-v") == 0 ){
-      qDebug() <<"__MAIN__: verbose output mode";
-      //debug = true;
+      //qDebug() <<"__MAIN__: verbose output mode";
+      config.setDebug(true);
     }
     if(strcmp(argv[i],"--help") == 0 ){
       qDebug()<<" #################################################";
@@ -77,6 +79,7 @@ int main( int argc , char *argv[] ){
       qDebug()<<" ### --help:        show this help             ###";
       qDebug()<<" ### -v:            verbose debug mode         ###";
       qDebug()<<" ### -d   :         shows test/debug menu      ###";
+      qDebug()<<" ### -n   :         mode without hardware      ###";
       qDebug()<<" #################################################";
       return 0;
     }
@@ -93,12 +96,17 @@ int main( int argc , char *argv[] ){
       qDebug()<<"     ...*nom*...";
       return 0;
     }
+    if(strcmp(argv[i],"-n") == 0 ){
+      config.setWithHardware(false);
+    }
   }
  
   // starting QT application
   //**************************************************************************
 
-  wiringPiSetupGpio(); // is needed by mainwindow already, therefore set it up now                                              
+  if( config.getWithHardware() ){
+    wiringPiSetupGpio(); // is needed by mainwindow already, therefore set it up now
+  }
   //pinMode(13,OUTPUT);  // power turnouts on/off with GPIO13                                                                          !!!!!!!!!!!!!!!!
   //digitalWrite(13,LOW);
   
@@ -130,114 +138,114 @@ int main( int argc , char *argv[] ){
   //
   //Stellwerkstechnik+Block aa as base
   Stellwerkstechnik *stellwerkstecptr = new Stellwerkstechnik();
-  Block *aaptr = new Block("aa", stellwerkstecptr);
+  Block *aaptr = new Block("aa", stellwerkstecptr, &config);
   //:::turnouts:::
-  Weiche *w1ptr = new Weiche(1,fmngr.passstate(1)); 
-  Weiche *w2ptr = new Weiche(2,fmngr.passstate(2));
-  Weiche *w3ptr = new Weiche(3,fmngr.passstate(3));
-  Weiche *w4ptr = new Weiche(4,fmngr.passstate(4));
-  Weiche *w5ptr = new Weiche(5,fmngr.passstate(5));
-  Weiche *w6ptr = new Weiche(6,fmngr.passstate(6));
-  Weiche *w7ptr = new Weiche(7,fmngr.passstate(7));
-  Weiche *w8ptr = new Weiche(8,fmngr.passstate(8));
-  Weiche *w9ptr = new Weiche(9,fmngr.passstate(9));
-  Weiche *w10ptr = new Weiche(10,fmngr.passstate(10));
-  Weiche *w11ptr = new Weiche(11,fmngr.passstate(11));
-  Weiche *w12ptr = new Weiche(12,fmngr.passstate(12));
-  Weiche *w13ptr = new Weiche(13,fmngr.passstate(13));
-  Weiche *w14ptr = new Weiche(14,fmngr.passstate(14),true);
-  Weiche *w15ptr = new Weiche(15,fmngr.passstate(15),true);
-  Weiche *w16ptr = new Weiche(16,fmngr.passstate(16));
-  Weiche *w17ptr = new Weiche(17,fmngr.passstate(17),true);
-  Weiche *w18ptr = new Weiche(18,fmngr.passstate(18),true);
-  Weiche *w19ptr = new Weiche(19,fmngr.passstate(19));
-  Weiche *w20ptr = new Weiche(20,fmngr.passstate(20));
-  Weiche *w21ptr = new Weiche(21,fmngr.passstate(21));
-  Weiche *w22ptr = new Weiche(22,fmngr.passstate(22));
-  Weiche *w23ptr = new Weiche(23,fmngr.passstate(23));
-  Weiche *w24ptr = new Weiche(24,fmngr.passstate(24));
-  Weiche *w25ptr = new Weiche(25,fmngr.passstate(25));
-  Weiche *w26ptr = new Weiche(26,fmngr.passstate(26));
-  Weiche *w27ptr = new Weiche(27,fmngr.passstate(27));
-  Weiche *w28ptr = new Weiche(28,fmngr.passstate(28));
-  Weiche *w29ptr = new Weiche(29,fmngr.passstate(29));
-  Weiche *w30ptr = new Weiche(30,fmngr.passstate(30));
-  Weiche *w31ptr = new Weiche(31,fmngr.passstate(31));
-  Weiche *w40ptr = new Weiche(40,fmngr.passstate(40));
-  Weiche *w41ptr = new Weiche(41,fmngr.passstate(41));
-  Weiche *w42ptr = new Weiche(42,fmngr.passstate(42));
-  Weiche *w43ptr = new Weiche(43,fmngr.passstate(43));
-  Weiche *w44ptr = new Weiche(44,fmngr.passstate(44));
-  Weiche *w45ptr = new Weiche(45,fmngr.passstate(45));
-  Weiche *w46ptr = new Weiche(46,fmngr.passstate(46));
-  Weiche *w47ptr = new Weiche(47,fmngr.passstate(47));
-  Weiche *w48ptr = new Weiche(48,fmngr.passstate(48));
-  Weiche *w49ptr = new Weiche(49,fmngr.passstate(49));
-  Weiche *w50ptr = new Weiche(50,fmngr.passstate(50));
-  Weiche *w51ptr = new Weiche(51,fmngr.passstate(51));
-  Weiche *w52ptr = new Weiche(52,fmngr.passstate(52));
-  Weiche *w53ptr = new Weiche(53,fmngr.passstate(53));
+  Weiche *w1ptr = new Weiche(1,fmngr.passstate(1), &config); 
+  Weiche *w2ptr = new Weiche(2,fmngr.passstate(2), &config);
+  Weiche *w3ptr = new Weiche(3,fmngr.passstate(3), &config);
+  Weiche *w4ptr = new Weiche(4,fmngr.passstate(4), &config);
+  Weiche *w5ptr = new Weiche(5,fmngr.passstate(5), &config);
+  Weiche *w6ptr = new Weiche(6,fmngr.passstate(6), &config);
+  Weiche *w7ptr = new Weiche(7,fmngr.passstate(7), &config);
+  Weiche *w8ptr = new Weiche(8,fmngr.passstate(8), &config);
+  Weiche *w9ptr = new Weiche(9,fmngr.passstate(9), &config);
+  Weiche *w10ptr = new Weiche(10,fmngr.passstate(10), &config);
+  Weiche *w11ptr = new Weiche(11,fmngr.passstate(11), &config);
+  Weiche *w12ptr = new Weiche(12,fmngr.passstate(12), &config);
+  Weiche *w13ptr = new Weiche(13,fmngr.passstate(13), &config);
+  Weiche *w14ptr = new Weiche(14,fmngr.passstate(14),true, &config);
+  Weiche *w15ptr = new Weiche(15,fmngr.passstate(15),true, &config);
+  Weiche *w16ptr = new Weiche(16,fmngr.passstate(16), &config);
+  Weiche *w17ptr = new Weiche(17,fmngr.passstate(17),true, &config);
+  Weiche *w18ptr = new Weiche(18,fmngr.passstate(18),true, &config);
+  Weiche *w19ptr = new Weiche(19,fmngr.passstate(19), &config);
+  Weiche *w20ptr = new Weiche(20,fmngr.passstate(20), &config);
+  Weiche *w21ptr = new Weiche(21,fmngr.passstate(21), &config);
+  Weiche *w22ptr = new Weiche(22,fmngr.passstate(22), &config);
+  Weiche *w23ptr = new Weiche(23,fmngr.passstate(23), &config);
+  Weiche *w24ptr = new Weiche(24,fmngr.passstate(24), &config);
+  Weiche *w25ptr = new Weiche(25,fmngr.passstate(25), &config);
+  Weiche *w26ptr = new Weiche(26,fmngr.passstate(26), &config);
+  Weiche *w27ptr = new Weiche(27,fmngr.passstate(27), &config);
+  Weiche *w28ptr = new Weiche(28,fmngr.passstate(28), &config);
+  Weiche *w29ptr = new Weiche(29,fmngr.passstate(29), &config);
+  Weiche *w30ptr = new Weiche(30,fmngr.passstate(30), &config);
+  Weiche *w31ptr = new Weiche(31,fmngr.passstate(31), &config);
+  Weiche *w40ptr = new Weiche(40,fmngr.passstate(40), &config);
+  Weiche *w41ptr = new Weiche(41,fmngr.passstate(41), &config);
+  Weiche *w42ptr = new Weiche(42,fmngr.passstate(42), &config);
+  Weiche *w43ptr = new Weiche(43,fmngr.passstate(43), &config);
+  Weiche *w44ptr = new Weiche(44,fmngr.passstate(44), &config);
+  Weiche *w45ptr = new Weiche(45,fmngr.passstate(45), &config);
+  Weiche *w46ptr = new Weiche(46,fmngr.passstate(46), &config);
+  Weiche *w47ptr = new Weiche(47,fmngr.passstate(47), &config);
+  Weiche *w48ptr = new Weiche(48,fmngr.passstate(48), &config);
+  Weiche *w49ptr = new Weiche(49,fmngr.passstate(49), &config);
+  Weiche *w50ptr = new Weiche(50,fmngr.passstate(50), &config);
+  Weiche *w51ptr = new Weiche(51,fmngr.passstate(51), &config);
+  Weiche *w52ptr = new Weiche(52,fmngr.passstate(52), &config);
+  Weiche *w53ptr = new Weiche(53,fmngr.passstate(53), &config);
   //:::double turnouts:::
-  Connector *connector1 = new Connector("014015");
-  Connector *connector2 = new Connector("017018");
+  Connector *connector1 = new Connector("014015", &config);
+  Connector *connector2 = new Connector("017018", &config);
   QObject::connect(w14ptr,&Weiche::kreuzungsweiche,connector1,&Connector::recieveCall);
   QObject::connect(w15ptr,&Weiche::kreuzungsweiche,connector1,&Connector::recieveCall);
   QObject::connect(w17ptr,&Weiche::kreuzungsweiche,connector2,&Connector::recieveCall);
   QObject::connect(w18ptr,&Weiche::kreuzungsweiche,connector2,&Connector::recieveCall);
   //:::segments:::
-  Block *abptr = new Block("ab", stellwerkstecptr);
-  Block *acptr = new Block("ac", stellwerkstecptr);
-  Block *adptr = new Block("ad", stellwerkstecptr);
-  Block *aeptr = new Block("ae", stellwerkstecptr);
-  Block *afptr = new Block("af", stellwerkstecptr);
-  Block *agptr = new Block("ag", stellwerkstecptr);
-  Block *ahptr = new Block("ah", stellwerkstecptr);
-  Block *aiptr = new Block("ai", stellwerkstecptr);
-  Block *ajptr = new Block("aj", stellwerkstecptr);
-  Block *akptr = new Block("ak", stellwerkstecptr);
-  Block *alptr = new Block("al", stellwerkstecptr);
-  Block *amptr = new Block("am", stellwerkstecptr);
-  Block *anptr = new Block("an", stellwerkstecptr);
-  Block *aoptr = new Block("ao", stellwerkstecptr);
-  Block *apptr = new Block("ap", stellwerkstecptr);
-  Block *aqptr = new Block("aq", stellwerkstecptr);
-  Block *arptr = new Block("ar", stellwerkstecptr);
-  Block *asptr = new Block("as", stellwerkstecptr);
-  Block *atptr = new Block("at", stellwerkstecptr);
-  Block *auptr = new Block("au", stellwerkstecptr);
-  Block *avptr = new Block("av", stellwerkstecptr);
-  Block *awptr = new Block("aw", stellwerkstecptr);
-  Block *axptr = new Block("ax", stellwerkstecptr);
-  Block *ayptr = new Block("ay", stellwerkstecptr);
-  Block *azptr = new Block("az", stellwerkstecptr);
-  Block *baptr = new Block("ba", stellwerkstecptr);
-  Block *bbptr = new Block("bb", stellwerkstecptr);
-  Block *bcptr = new Block("bc", stellwerkstecptr);
-  Block *bdptr = new Block("bd", stellwerkstecptr);
-  Block *beptr = new Block("be", stellwerkstecptr);
-  Block *bfptr = new Block("bf", stellwerkstecptr);
-  Block *bgptr = new Block("bg", stellwerkstecptr);
-  Block *bhptr = new Block("bh", stellwerkstecptr);
-  Block *biptr = new Block("bi", stellwerkstecptr);
-  Block *bjptr = new Block("bj", stellwerkstecptr);
-  Block *bkptr = new Block("bk", stellwerkstecptr);
-  Block *blptr = new Block("bl", stellwerkstecptr);
-  Block *bmptr = new Block("bm", stellwerkstecptr);
-  Block *bnptr = new Block("bn", stellwerkstecptr);
-  Block *boptr = new Block("bo", stellwerkstecptr);
-  Block *bpptr = new Block("bp", stellwerkstecptr);
-  Block *bqptr = new Block("bq", stellwerkstecptr);
-  Block *brptr = new Block("br", stellwerkstecptr);
-  Block *bsptr = new Block("bs", stellwerkstecptr);
-  Block *btptr = new Block("bt", stellwerkstecptr);
-  Block *buptr = new Block("bu", stellwerkstecptr);
-  Block *bvptr = new Block("bv", stellwerkstecptr);
-  Block *bwptr = new Block("bw", stellwerkstecptr);
-  Block *bxptr = new Block("bx", stellwerkstecptr);
-  Block *byptr = new Block("by", stellwerkstecptr);
-  Block *bzptr = new Block("bz", stellwerkstecptr);
-  Block *captr = new Block("ca", stellwerkstecptr);
-  Block *cbptr = new Block("cb", stellwerkstecptr);
+  Block *abptr = new Block("ab", stellwerkstecptr, &config);
+  Block *acptr = new Block("ac", stellwerkstecptr, &config);
+  Block *adptr = new Block("ad", stellwerkstecptr, &config);
+  Block *aeptr = new Block("ae", stellwerkstecptr, &config);
+  Block *afptr = new Block("af", stellwerkstecptr, &config);
+  Block *agptr = new Block("ag", stellwerkstecptr, &config);
+  Block *ahptr = new Block("ah", stellwerkstecptr, &config);
+  Block *aiptr = new Block("ai", stellwerkstecptr, &config);
+  Block *ajptr = new Block("aj", stellwerkstecptr, &config);
+  Block *akptr = new Block("ak", stellwerkstecptr, &config);
+  Block *alptr = new Block("al", stellwerkstecptr, &config);
+  Block *amptr = new Block("am", stellwerkstecptr, &config);
+  Block *anptr = new Block("an", stellwerkstecptr, &config);
+  Block *aoptr = new Block("ao", stellwerkstecptr, &config);
+  Block *apptr = new Block("ap", stellwerkstecptr, &config);
+  Block *aqptr = new Block("aq", stellwerkstecptr, &config);
+  Block *arptr = new Block("ar", stellwerkstecptr, &config);
+  Block *asptr = new Block("as", stellwerkstecptr, &config);
+  Block *atptr = new Block("at", stellwerkstecptr, &config);
+  Block *auptr = new Block("au", stellwerkstecptr, &config);
+  Block *avptr = new Block("av", stellwerkstecptr, &config);
+  Block *awptr = new Block("aw", stellwerkstecptr, &config);
+  Block *axptr = new Block("ax", stellwerkstecptr, &config);
+  Block *ayptr = new Block("ay", stellwerkstecptr, &config);
+  Block *azptr = new Block("az", stellwerkstecptr, &config);
+  Block *baptr = new Block("ba", stellwerkstecptr, &config);
+  Block *bbptr = new Block("bb", stellwerkstecptr, &config);
+  Block *bcptr = new Block("bc", stellwerkstecptr, &config);
+  Block *bdptr = new Block("bd", stellwerkstecptr, &config);
+  Block *beptr = new Block("be", stellwerkstecptr, &config);
+  Block *bfptr = new Block("bf", stellwerkstecptr, &config);
+  Block *bgptr = new Block("bg", stellwerkstecptr, &config);
+  Block *bhptr = new Block("bh", stellwerkstecptr, &config);
+  Block *biptr = new Block("bi", stellwerkstecptr, &config);
+  Block *bjptr = new Block("bj", stellwerkstecptr, &config);
+  Block *bkptr = new Block("bk", stellwerkstecptr, &config);
+  Block *blptr = new Block("bl", stellwerkstecptr, &config);
+  Block *bmptr = new Block("bm", stellwerkstecptr, &config);
+  Block *bnptr = new Block("bn", stellwerkstecptr, &config);
+  Block *boptr = new Block("bo", stellwerkstecptr, &config);
+  Block *bpptr = new Block("bp", stellwerkstecptr, &config);
+  Block *bqptr = new Block("bq", stellwerkstecptr, &config);
+  Block *brptr = new Block("br", stellwerkstecptr, &config);
+  Block *bsptr = new Block("bs", stellwerkstecptr, &config);
+  Block *btptr = new Block("bt", stellwerkstecptr, &config);
+  Block *buptr = new Block("bu", stellwerkstecptr, &config);
+  Block *bvptr = new Block("bv", stellwerkstecptr, &config);
+  Block *bwptr = new Block("bw", stellwerkstecptr, &config);
+  Block *bxptr = new Block("bx", stellwerkstecptr, &config);
+  Block *byptr = new Block("by", stellwerkstecptr, &config);
+  Block *bzptr = new Block("bz", stellwerkstecptr, &config);
+  Block *captr = new Block("ca", stellwerkstecptr, &config);
+  Block *cbptr = new Block("cb", stellwerkstecptr, &config);
   //:::distant signals:::
   VSignal *v1ptr = new VSignal(1);
   VSignal *v2ptr = new VSignal(2);
@@ -2807,7 +2815,7 @@ int main( int argc , char *argv[] ){
   stellwerkstecptr->add_Signal(ww43ptr->getV_id(),false);
 
   //BÜs
-  BU bu1(1);
+  BU bu1(1, &config);
   BU *bu1ptr = &bu1;
 
   QGraphicsRectItem *bue = new QGraphicsRectItem();
@@ -7808,7 +7816,7 @@ int main( int argc , char *argv[] ){
   // worker thread for segment/turnout updates = input
   //************************************************************************** 
   QThread* thread = new QThread;
-  worker* wrkr = new worker();
+  worker* wrkr = new worker(&config);
   wrkr->moveToThread(thread);
   QObject::connect(thread, &QThread::started, wrkr, &worker::timing); //thread start connection 
   QObject::connect(&a, &QApplication::aboutToQuit, wrkr, &worker::quit); // quit updateBelegt on aboutToQuit
@@ -7889,15 +7897,17 @@ int main( int argc , char *argv[] ){
   //************************************************************************** 
   //wiringPiSetupGpio(); cf beginning of program (also needed in mainwindow)
 
-  sr595Setup (100, 28, 9, 5, 11);                    //pin base, pin number = active, serial, clock, refresh                                      
-  sr595Setup (200, 30, 19, 6, 26); 
-  sr595Setup (300, 28, 17, 4, 27);
+  if( config.getWithHardware() ){
+    sr595Setup (100, 28, 9, 5, 11);                    //pin base, pin number = active, serial, clock, refresh                                      
+    sr595Setup (200, 30, 19, 6, 26); 
+    sr595Setup (300, 28, 17, 4, 27);
   
-  //do not rely on random state of shift register: set all to LOW=0
-  for(int pipin = 100; pipin < 132; pipin++){
-    digitalWrite(pipin,LOW);                                                                
-    digitalWrite(pipin+100,LOW);
-    digitalWrite(pipin+200,LOW);
+    //do not rely on random state of shift register: set all to LOW=0
+    for(int pipin = 100; pipin < 132; pipin++){
+      digitalWrite(pipin,LOW);                                                                
+      digitalWrite(pipin+100,LOW);
+      digitalWrite(pipin+200,LOW);
+    }
   }
 
   //initialize all turnouts with pins:
@@ -7951,19 +7961,21 @@ int main( int argc , char *argv[] ){
                             //327, 326, 325, 324 are spare pins --> see pinBase=28
   
   // setting all segments with pins:
-  mcp23017Setup (400, 0x20);
-  mcp23017Setup (500, 0x21);
-  mcp23017Setup (600, 0x22);
-  mcp23017Setup (700, 0x23);
-  for(int mcp = 0; mcp < 16; mcp++){
-    pinMode (400 + mcp, INPUT);
-    pinMode (500 + mcp, INPUT);
-    pinMode (600 + mcp, INPUT);
-    pinMode (700 + mcp, INPUT);
-    pullUpDnControl(400 + mcp, PUD_UP);
-    pullUpDnControl(500 + mcp, PUD_UP);
-    pullUpDnControl(600 + mcp, PUD_UP);
-    pullUpDnControl(700 + mcp, PUD_UP);
+  if( config.getWithHardware() ){
+    mcp23017Setup (400, 0x20);
+    mcp23017Setup (500, 0x21);
+    mcp23017Setup (600, 0x22);
+    mcp23017Setup (700, 0x23);
+    for(int mcp = 0; mcp < 16; mcp++){
+      pinMode (400 + mcp, INPUT);
+      pinMode (500 + mcp, INPUT);
+      pinMode (600 + mcp, INPUT);
+      pinMode (700 + mcp, INPUT);
+      pullUpDnControl(400 + mcp, PUD_UP);
+      pullUpDnControl(500 + mcp, PUD_UP);
+      pullUpDnControl(600 + mcp, PUD_UP);
+      pullUpDnControl(700 + mcp, PUD_UP);
+    }
   }
 
   // 0x20
@@ -8038,72 +8050,71 @@ int main( int argc , char *argv[] ){
   cbptr->setGpio(714);
   //->setGpio(715);
   
-  
-  
-  //give them to the worker
-  // 0x20
-  wrkr->addBlocks(abptr);
-  wrkr->addBlocks(ahptr);
-  wrkr->addBlocks(bxptr);
-  wrkr->addBlocks(byptr);
-  wrkr->addBlocks(bzptr);
-  wrkr->addBlocks(bpptr);
-  wrkr->addBlocks(bqptr);
-  wrkr->addBlocks(brptr);
-  wrkr->addBlocks(bsptr);
-  wrkr->addBlocks(btptr);
-  wrkr->addBlocks(buptr);
-  wrkr->addBlocks(bvptr);
-  wrkr->addBlocks(bwptr);
-  wrkr->addBlocks(apptr);
-  wrkr->addBlocks(aiptr);
-  wrkr->addBlocks(acptr);
+  if( config.getWithHardware() ){
+    //give them to the worker
+    // 0x20
+    wrkr->addBlocks(abptr);
+    wrkr->addBlocks(ahptr);
+    wrkr->addBlocks(bxptr);
+    wrkr->addBlocks(byptr);
+    wrkr->addBlocks(bzptr);
+    wrkr->addBlocks(bpptr);
+    wrkr->addBlocks(bqptr);
+    wrkr->addBlocks(brptr);
+    wrkr->addBlocks(bsptr);
+    wrkr->addBlocks(btptr);
+    wrkr->addBlocks(buptr);
+    wrkr->addBlocks(bvptr);
+    wrkr->addBlocks(bwptr);
+    wrkr->addBlocks(apptr);
+    wrkr->addBlocks(aiptr);
+    wrkr->addBlocks(acptr);
 
-  // 0x21
-  wrkr->addBlocks(aoptr);
-  wrkr->addBlocks(ajptr);
-  wrkr->addBlocks(akptr);
-  wrkr->addBlocks(amptr);
-  wrkr->addBlocks(afptr);
-  wrkr->addBlocks(agptr);
-  wrkr->addBlocks(adptr);
-  wrkr->addBlocks(avptr);
-  wrkr->addBlocks(alptr);
-  //wrkr->addBlocks();
-  wrkr->addBlocks(auptr);
-  wrkr->addBlocks(anptr);
-  wrkr->addBlocks(arptr);
-  wrkr->addBlocks(aqptr);
-  wrkr->addBlocks(aaptr);
-  wrkr->addBlocks(aeptr);
+    // 0x21
+    wrkr->addBlocks(aoptr);
+    wrkr->addBlocks(ajptr);
+    wrkr->addBlocks(akptr);
+    wrkr->addBlocks(amptr);
+    wrkr->addBlocks(afptr);
+    wrkr->addBlocks(agptr);
+    wrkr->addBlocks(adptr);
+    wrkr->addBlocks(avptr);
+    wrkr->addBlocks(alptr);
+    //wrkr->addBlocks();
+    wrkr->addBlocks(auptr);
+    wrkr->addBlocks(anptr);
+    wrkr->addBlocks(arptr);
+    wrkr->addBlocks(aqptr);
+    wrkr->addBlocks(aaptr);
+    wrkr->addBlocks(aeptr);
 
-  // 0x22
-  wrkr->addBlocks(bjptr);
-  wrkr->addBlocks(biptr);
-  wrkr->addBlocks(bhptr);
-  wrkr->addBlocks(bgptr);
-  wrkr->addBlocks(bfptr);
-  wrkr->addBlocks(beptr);
-  wrkr->addBlocks(bdptr);
-  wrkr->addBlocks(bcptr);
-  wrkr->addBlocks(asptr);
-  wrkr->addBlocks(atptr);
-  wrkr->addBlocks(awptr);
-  wrkr->addBlocks(axptr);
-  wrkr->addBlocks(ayptr);
-  wrkr->addBlocks(azptr);
-  wrkr->addBlocks(baptr);
-  wrkr->addBlocks(bbptr);
+    // 0x22
+    wrkr->addBlocks(bjptr);
+    wrkr->addBlocks(biptr);
+    wrkr->addBlocks(bhptr);
+    wrkr->addBlocks(bgptr);
+    wrkr->addBlocks(bfptr);
+    wrkr->addBlocks(beptr);
+    wrkr->addBlocks(bdptr);
+    wrkr->addBlocks(bcptr);
+    wrkr->addBlocks(asptr);
+    wrkr->addBlocks(atptr);
+    wrkr->addBlocks(awptr);
+    wrkr->addBlocks(axptr);
+    wrkr->addBlocks(ayptr);
+    wrkr->addBlocks(azptr);
+    wrkr->addBlocks(baptr);
+    wrkr->addBlocks(bbptr);
 
-  // 0x23
-  wrkr->addBlocks(bkptr);
-  wrkr->addBlocks(blptr);
-  wrkr->addBlocks(bmptr);
-  wrkr->addBlocks(bnptr);
-  wrkr->addBlocks(boptr);
-  wrkr->addBlocks(captr);
-  wrkr->addBlocks(cbptr);
-  
+    // 0x23
+    wrkr->addBlocks(bkptr);
+    wrkr->addBlocks(blptr);
+    wrkr->addBlocks(bmptr);
+    wrkr->addBlocks(bnptr);
+    wrkr->addBlocks(boptr);
+    wrkr->addBlocks(captr);
+    wrkr->addBlocks(cbptr);
+    }
   
   thread->start();
   

@@ -26,6 +26,7 @@ qt_add_executable(StellwerkQt MANUAL_FINALIZATION
   main.cpp
   mainwindow.cpp mainwindow.h mainwindow.ui
   worker.cpp worker.h
+  Configuration.h
   )
 
 

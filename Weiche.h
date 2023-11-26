@@ -7,10 +7,11 @@
 #include <QString>
 #include <QGraphicsRectItem>
 #include <QLabel>
+#include "Configuration.h"
 class Weiche : public QObject{
   Q_OBJECT
 public:
-  Weiche( int name, bool state = true, bool kreuz = false);                                    //name as int, will be converted to QString
+  Weiche( int name, bool state = true, bool kreuz = false, Configuration *config=0);                                    //name as int, will be converted to QString
   //
   void setBelegung( bool newbelegung );
   bool getBelegung(){ return belegung; }
@@ -42,6 +43,7 @@ private:
   bool belegung = true;                                //true:=unoccupied ; false:=occupied
   int counter = 0;                                     //counter for occupation cycles to determine unlock status
   bool kreuzung;                                       //part of a double turnout?
+  Configuration *configuration;
   //
   void evaluateVerriegelung();
   //
