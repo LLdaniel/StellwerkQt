@@ -765,8 +765,9 @@ int piGpioLayout (void)
     if (strncmp (line, "Hardware", 8) == 0)
       break ;
 
-  if (strncmp (line, "Hardware", 8) != 0)
-    piGpioLayoutOops ("No \"Hardware\" line") ;
+  // new /proc/cpuinfo in bookworm without hardware line, therefore commented out
+  //if (strncmp (line, "Hardware", 8) != 0)
+  //  piGpioLayoutOops ("No \"Hardware\" line") ;
 
   if (wiringPiDebug)
     printf ("piGpioLayout: Hardware: %s\n", line) ;
