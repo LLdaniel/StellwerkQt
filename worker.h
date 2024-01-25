@@ -18,7 +18,7 @@ class worker : public QObject{                        //after https://mayaposch.
   Q_OBJECT
 public:
   worker( QList<Block*> allBlocks, QList<Weiche*> allWeichen, Configuration *config );
-  worker( Configuration *config ){t->callOnTimeout(this, &worker::updateBelegt);}
+  worker( Configuration *config ){configuration = config; t->callOnTimeout(this, &worker::updateBelegt);}
   ~worker();
   void showBlocks();
   void addBlocks(Block* bl);

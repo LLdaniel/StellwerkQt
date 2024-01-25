@@ -70,7 +70,7 @@ void worker::updateBelegt(){
   }
   //
   // check, if there are pins für weichen oder blocks at all  
-  while( update and maxindex > 0){
+  while( update and maxindex > 0 ){
     //qDebug(" w o r k i n g");
     //
     //loop runs parallel for turnout and segments and stops for the smaller list earlier until the reset
