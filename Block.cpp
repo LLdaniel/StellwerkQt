@@ -5,6 +5,7 @@
 #include "Block.h"
 #include <QDebug>
 #include <QBrush>
+//#include <QTime>
 #include <wiringPi.h>
 #include <mcp23017.h>
 
@@ -27,11 +28,10 @@ void Block::setB_status( bool status ){
   b_status = status;                             //change status
 
   // close BU when occupying segments - comment in to change back to reservation
-  if( !status ){
-    for(  int i = 0 ; i < bus.size() ; i++ ){      //close/open BU 
-      bus.at(i)->setBU_status(false);
-    }
+  for(  int i = 0 ; i < bus.size() ; i++ ){      //close/open BU 
+    bus.at(i)->setBU_status(status);
   }
+  
   changeColor();
 }
 
@@ -73,9 +73,9 @@ bool Block::evaluateFreigabe(){
   if(counter == 2 && !b_status){
     freigabe = true;                              //here freigabe = true -->right cycle
     changeColor();
-    for(  int i = 0 ; i < bus.size() ; i++ ){     //changing status of BUs open/close
-      bus.at(i)->setBU_status(true);
-    }
+    //for(  int i = 0 ; i < bus.size() ; i++ ){     //changing status of BUs open/close
+    //  bus.at(i)->setBU_status(true);
+    //}
     return true;
   }
   return false;

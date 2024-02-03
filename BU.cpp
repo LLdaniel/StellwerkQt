@@ -31,12 +31,14 @@ void BU::setName( int name ){
 }
 
 void BU::setBU_status( bool status ){
-  bu_status = status;                                     //change state
-  changeColor();
-  if(status){
-    open();
+  if( getBU_status() != status ){                           //update only
+    bu_status = status;                                     //change state
+    changeColor();
+    if(status){
+      open();
+    }
+    else close();
   }
-  else close();
 }
 void BU::changeColor(){
     if(bu_status){

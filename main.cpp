@@ -2817,7 +2817,8 @@ int main( int argc , char *argv[] ){
   //BÜs
   BU bu1(1, &config);
   BU *bu1ptr = &bu1;
-
+  pinMode(24, OUTPUT);
+  
   QGraphicsRectItem *bue = new QGraphicsRectItem();
   bue->setRect(0,0,140,35);
   bue->setPos(QPointF(2310,200));
