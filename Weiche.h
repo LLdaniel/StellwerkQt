@@ -11,7 +11,7 @@
 class Weiche : public QObject{
   Q_OBJECT
 public:
-  Weiche( int name, bool state = true, bool kreuz = false, Configuration *config=0);                                    //name as int, will be converted to QString
+  Weiche( int name, Configuration *config, bool state = true, bool kreuz = false);                                    //name as int, will be converted to QString
   //
   void setBelegung( bool newbelegung );
   bool getBelegung(){ return belegung; }

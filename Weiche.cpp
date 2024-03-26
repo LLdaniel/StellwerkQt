@@ -14,7 +14,7 @@ extern "C"{
 }
 #endif
 //
-Weiche::Weiche (int name, bool state/*=true*/, bool kreuz/*=false*/, Configuration *config){
+Weiche::Weiche (int name, Configuration *config, bool state/*=true*/, bool kreuz/*=false*/){
   setW_id( name );
   w_status = state;
   kreuzung = kreuz;
@@ -48,7 +48,7 @@ void Weiche::setW_status( bool status ){
   }
   else{                                                      //ok, change status is permitted
     w_status = status;
-    //qDebug()<<"change turnout "<<w_id<<"permitted"; 
+    //qDebug()<<"change turnout "<<w_id<<"permitted";
     switchWeiche(status);
     if(kreuzung){emit kreuzungsweiche(status);}              //if part in double turnout: call to Connector
     changeColor();

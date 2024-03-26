@@ -4,6 +4,8 @@ project(StellwerkQt VERSION 1.0 LANGUAGES C CXX)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
+## set for debug
+#set(CMAKE_CXX_FLAGS "-g")
 
 find_package(QT NAMES Qt5 Qt6 REQUIRED COMPONENTS Core Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui Svg Widgets SvgWidgets)
