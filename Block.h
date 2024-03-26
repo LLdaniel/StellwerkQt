@@ -36,6 +36,7 @@ public:
   void addpassiert( QString grenzS, Block* prevBlock );  //needed for zugpassiert: which segments are in front of signals
   void deletepassiert();                                 //marking haspassiert as false und deletes all entries
   bool getHaspassiert(){ return haspassiert; }
+  void showPassiert();
   ~Block();
   //
   // +++ GUI +++

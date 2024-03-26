@@ -58,7 +58,7 @@ bool Block::evaluateFreigabe(){
 	  if(passiert.at(i).first.at(0) == 'S'){
 	    emit zugpassiert();                   //connected to HSignal::zugpassiert/WSignal::zugpassiert
 	    for(int e = 0; e < this->passiert.size(); e++){
-	      qDebug()<<this->getName()<<passiert.at(e).first<<passiert.at(e).second->getName();
+	      qDebug()<<"this:"<<this->getName()<<passiert.at(e).first<<passiert.at(e).second->getName();
 	    }
 	  }
 	  if(passiert.at(i).first.at(0) == 'W'){
@@ -116,6 +116,17 @@ void Block::addpassiert( QString grenzS, Block* prevBlock ){
 void Block::deletepassiert(){
   haspassiert = false;
   passiert.clear();
+}
+
+void Block::showPassiert(){
+  if(getHaspassiert()){
+    qInfo()<<"***************************************************************************";
+    qInfo()<<" passiert von "<<getName();
+    for( QPair pair : passiert ){
+      qInfo()<<"   "<<pair.first<<": -"<<pair.second->getName();
+    }
+    qInfo()<<"***************************************************************************";
+  }
 }
 
 void Block::changeColor(){
