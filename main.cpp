@@ -2829,9 +2829,9 @@ int main( int argc , char *argv[] ){
   scene->addItem(bue);
   bu1ptr->addBUrect(bue);
   bu1ptr->setGpio(24);
-  captr->addBus( bu1ptr );
-  //cbptr->addBus( bu1ptr );
-  
+  bu1ptr->addSegments(captr);
+  bu1ptr->addSegments(cbptr);
+    
   //signals and slots
   QObject::connect(s1ptr,&HSignal::refreshStellwerkstechnik,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(s2ptr,&HSignal::refreshStellwerkstechnik,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
@@ -7827,7 +7827,7 @@ int main( int argc , char *argv[] ){
   QObject::connect(&a, &QApplication::aboutToQuit, thread, &QThread::quit); // quit thread on aboutToQuit
   QObject::connect(wrkr, &worker::callGUIb, &w, &MainWindow::calledb); // connection worker<->GUI update Block
   QObject::connect(wrkr, &worker::callGUIw, &w, &MainWindow::calledw); // connection worker<->GUI update Weiche
-  //thread->start();
+  QObject::connect(wrkr, &worker::callGUIbu, &w, &MainWindow::calledbu); // connection worker<->GUI update BU
   //thread can be finished by calling wrkr.quit() -> updateBelegt() -> emit finished -> above slot
 
   // memory thread for route memory

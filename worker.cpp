@@ -5,9 +5,10 @@
 #include "worker.h"
 #include <QDebug>
 
-worker::worker( QList<Block*> allBlocks, QList<Weiche*> allWeichen, Configuration *config ){
+worker::worker( QList<Block*> allBlocks, QList<Weiche*> allWeichen, QList<BU*> allBUs, Configuration *config ){
   blocklist = allBlocks;
   weichenlist = allWeichen;
+  bulist = allBUs;
   configuration = config;
   t->callOnTimeout(this, &worker::updateBelegt);
 }
@@ -85,9 +86,14 @@ void worker::updateBelegt(){
 	//qDebug("false = belegt");
       }
     }
-    // #### copy above block for Weichen: __________
     //
-    //test more segments of the list otherwise start a new run -- maybe interrupt is the better variant
+    // in every run check BUs at the end (lesser prio is ok for longer time scales BU)
+    if( i == maxindex - 1){
+      for( int u = 0; u < bulist.size(); u++ ){
+	emit callGUIbu( bulist.at(u), bulist.at(u)->evaluateBU() );
+      }
+    }
+    
     timing();
     if( i < maxindex ){
       i++;

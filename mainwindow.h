@@ -14,6 +14,7 @@
 #include <QMessageBox>
 #include "Block.h"
 #include "Weiche.h"
+#include "BU.h"
 
 namespace Ui {
   class MainWindow;
@@ -42,6 +43,7 @@ private slots:
 public slots:
   void calledw(Weiche *callw, bool statew);
   void calledb(Block *callb, bool stateb);
+  void calledbu(BU *callbu, bool statebu);
 private:
   int powerturnouts = 13;
   void createActions();

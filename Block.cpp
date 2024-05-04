@@ -25,23 +25,13 @@ void Block::setB_status( bool status ){
   }
   counter++;                                     //every state change will be registered and counted
   evaluateFreigabe();                            //evaluation if segments can be unlocked or not
-  b_status = status;                             //change status
-
-  // close BU when occupying segments - comment in to change back to reservation
-  for(  int i = 0 ; i < bus.size() ; i++ ){      //close/open BU 
-    bus.at(i)->setBU_status(status);
-  }
-  
+  b_status = status;                             //change status 
   changeColor();
 }
 
 void Block::setFreigabe( bool free ){
   freigabe = free;
   changeColor();
-  /* closing BU when reserving segments - uncomment to change
-    for(  int i = 0 ; i < bus.size() ; i++ ){      //close/open BU 
-    bus.at(i)->setBU_status(free);
-    }*/
 }
 
 bool Block::evaluateFreigabe(){
@@ -73,38 +63,9 @@ bool Block::evaluateFreigabe(){
   if(counter == 2 && !b_status){
     freigabe = true;                              //here freigabe = true -->right cycle
     changeColor();
-    //for(  int i = 0 ; i < bus.size() ; i++ ){     //changing status of BUs open/close
-    //  bus.at(i)->setBU_status(true);
-    //}
     return true;
   }
   return false;
-}
-
-void Block::addBus( BU* bu ){
-  bus.push_back(bu);
-}
-
-void Block::showBus(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies sind die Bahnübergänge von Block      "<<getName()<<"        ***";
-  for(  int i = 0 ; i < bus.size() ; i++ ){//loop over all all BUs
-    qDebug()<<"***   "<<bus.at(i)->getName()<<"                                               ***";
-  }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
-}
-
-void Block::deleteBus( BU* todelete ){
-  int remember = -1;
-  for(  int i = 0 ; i < bus.size() ; i++ ){       //searching for BU to delete
-    if( bus.at(i)->getName().compare( todelete->getName() ) == 0 ){//found!: remember position
-      remember = i;
-    }
-  }
-  if( remember >= 0 ){                            //evaluate remembered value
-    bus.erase( bus.begin() + remember );          //delete
-  }
 }
 
 void Block::addpassiert( QString grenzS, Block* prevBlock ){

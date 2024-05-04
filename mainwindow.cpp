@@ -158,3 +158,7 @@ void MainWindow::calledw(Weiche *callw, bool statew){
 void MainWindow::calledb(Block *callb, bool stateb){
   callb->setB_status(stateb);
 }
+
+void MainWindow::calledbu(BU *callbu, bool statebu){
+  callbu->setBU_status(statebu);
+}

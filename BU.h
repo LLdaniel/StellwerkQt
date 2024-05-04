@@ -11,6 +11,7 @@
 #include <QGraphicsRectItem>
 #include <QTimer>
 #include "Configuration.h"
+#include "Block.h"
 class BU : public QObject{
   Q_OBJECT
  public:
@@ -20,6 +21,8 @@ class BU : public QObject{
   QString getName(){ return buname; }
   void setBU_status( bool status );
   bool getBU_status(){ return bu_status; }
+  void addSegments( Block *block ){ buSegments.push_back(block); }
+  bool evaluateBU();
   //
   //+++ GUI +++
   //
@@ -37,7 +40,7 @@ class BU : public QObject{
   QString buname;                                           //BU naming convention BU01, BU56
   bool bu_status = true;                                    //true:=open ; false:=closed
   Configuration *configuration;
-  QTimer *t = new QTimer(this);
+  QList<Block*> buSegments;
   //
   //+++ GUI +++
   //

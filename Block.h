@@ -15,7 +15,6 @@
 #include <QPair>
 #include <QGraphicsRectItem>
 #include <QString>
-#include "BU.h"
 #include "Stellwerkstechnik.h"
 #include "Configuration.h"
 class Block : public QObject{
@@ -29,10 +28,6 @@ public:
   void setFreigabe( bool free );                          //function for opening/closing BUs 
   bool getFreigabe(){ return freigabe; }
   int getCounter(){ return counter; }
-  void addBus( BU *bu );
-  QList<BU*> getBus(){ return bus; }
-  void showBus();
-  void deleteBus( BU* todelete );
   void addpassiert( QString grenzS, Block* prevBlock );  //needed for zugpassiert: which segments are in front of signals
   void deletepassiert();                                 //marking haspassiert as false und deletes all entries
   bool getHaspassiert(){ return haspassiert; }
@@ -59,7 +54,6 @@ private:
   bool b_status = true;                                  //true:=free ; false:=occupied
   bool freigabe = true;                                  //true:=unlocked ; false:=locked
   int counter = 0;                                       //counter for state cycles (occupied/free)
-  QList<BU*> bus;                                        //list of BUs integrated in this Block
   QList< QPair<QString,Block*> > passiert;               //list needed for zugpassiert: which segments are in front of signals (previous Block + this = precedessor Block, in between: signal)
   bool haspassiert = false;                              //flag if this=Block involved in zugpassiert procedure = true, else false
   Stellwerkstechnik *technik = 0;                        //Signaltechnik (list of all signals at neighbouring Blocks (in between) 

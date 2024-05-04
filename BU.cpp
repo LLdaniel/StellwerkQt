@@ -16,7 +16,6 @@ extern "C"{
 BU::BU( int name, Configuration *config ){
   setName( name );
   configuration = config;
-  t->start(3000);
 }
 
 void BU::setName( int name ){
@@ -32,16 +31,14 @@ void BU::setName( int name ){
 }
 
 void BU::setBU_status( bool status ){
-  //if( t->remainingTime() <= 0 ){                            //software realized smoothing function
-    qDebug()<<t->remainingTime();
+  if(bu_status != status){                                  //only update when different state
     bu_status = status;                                     //change state
     changeColor();
     if(status){
       open();
     }
     else close();
-    t->start(3000);                                         // restart timer for next iteration
-    //}
+  }
 }
 void BU::changeColor(){
     if(bu_status){
@@ -68,6 +65,16 @@ void BU::open(){
       qDebug()<<"open BU";
     }
   }
+}
+
+bool BU::evaluateBU(){
+  bool calculatedStatus = true;
+  if( configuration->getWithHardware() and  buSegments.size() > 0){
+    for( int i = 0; i < buSegments.size(); i++ ){
+      calculatedStatus = calculatedStatus and buSegments.at(i)->getB_status();
+    }
+  }
+  return calculatedStatus;
 }
 
 BU::~BU(){
