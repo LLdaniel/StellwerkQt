@@ -9,8 +9,10 @@
 #define BU_H
 #include <QString>
 #include <QGraphicsRectItem>
+#include <QTimer>
 #include "Configuration.h"
-class BU{
+class BU : public QObject{
+  Q_OBJECT
  public:
   BU( int name, Configuration *config );
   //
@@ -35,6 +37,7 @@ class BU{
   QString buname;                                           //BU naming convention BU01, BU56
   bool bu_status = true;                                    //true:=open ; false:=closed
   Configuration *configuration;
+  QTimer *t = new QTimer(this);
   //
   //+++ GUI +++
   //

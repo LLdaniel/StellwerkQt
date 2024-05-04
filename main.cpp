@@ -2830,7 +2830,7 @@ int main( int argc , char *argv[] ){
   bu1ptr->addBUrect(bue);
   bu1ptr->setGpio(24);
   captr->addBus( bu1ptr );
-  cbptr->addBus( bu1ptr );
+  //cbptr->addBus( bu1ptr );
   
   //signals and slots
   QObject::connect(s1ptr,&HSignal::refreshStellwerkstechnik,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
