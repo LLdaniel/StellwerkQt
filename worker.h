@@ -23,6 +23,7 @@ public:
   ~worker();
   void showBlocks();
   void addBlocks(Block* bl);
+  void addBUs(BU* bu);
   void showWeichen();
 public slots:
   void timing();               // intermediate step to solve blocked thread: step towards processSpeicher

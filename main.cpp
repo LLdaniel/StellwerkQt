@@ -2831,7 +2831,7 @@ int main( int argc , char *argv[] ){
   bu1ptr->setGpio(24);
   bu1ptr->addSegments(captr);
   bu1ptr->addSegments(cbptr);
-    
+
   //signals and slots
   QObject::connect(s1ptr,&HSignal::refreshStellwerkstechnik,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
   QObject::connect(s2ptr,&HSignal::refreshStellwerkstechnik,stellwerkstecptr,&Stellwerkstechnik::add_Signal);
@@ -8118,7 +8118,10 @@ int main( int argc , char *argv[] ){
     wrkr->addBlocks(boptr);
     wrkr->addBlocks(captr);
     wrkr->addBlocks(cbptr);
-    }
+
+    // BU
+    wrkr->addBUs(bu1ptr);
+  }
   
   thread->start();
   

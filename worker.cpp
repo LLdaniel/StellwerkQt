@@ -31,6 +31,10 @@ void worker::addBlocks(Block* bl){
   blocklist.push_back(bl);
 }
 
+void worker::addBUs(BU* bu){
+  bulist.push_back(bu);
+}
+
 void worker::showWeichen(){
   qDebug()<<"************************************************************";
   qDebug()<<"*** Dies sind die Weichen, die ständig überwacht werden  ***";
