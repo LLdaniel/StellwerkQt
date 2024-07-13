@@ -22,7 +22,7 @@ void HSignal::setS_id( int name ){
       s_id = "S" + suffix;
     }
   }
-  else qDebug()<<"HSignal:Falsche Benennung. Die Zahl muss dreistellig sein.";
+  else qInfo()<<"__HSignal__: Falsche Benennung. Die Zahl muss dreistellig sein.";
 }
 
 void HSignal::addWeichenstatus( HSignal *toZiel , QList<QPair<Weiche* , bool>> weichenpair ){
@@ -36,30 +36,30 @@ void HSignal::addWeichenstatusZuRangier( WSignal *toZiel , QList<QPair<Weiche* ,
 }
 
 void HSignal::showWeichenstatusALL(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies ist der Weichenstatus für Hauptsignal "<<getS_id()<<"      ***";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies ist der Weichenstatus für Hauptsignal "<<getS_id()<<"      ***";
   for(  int i = 0 ; i < weichenstatus.size() ; i++){
-    qDebug()<<"***   "<<weichenstatus.at(i).first<<" :                                             ***";
+    qInfo()<<"***   "<<weichenstatus.at(i).first<<" :                                             ***";
     for(  int j = 0 ; j < weichenstatus.at(i).second.size() ; j++ ){//hier sind die Weichenstatuspaarungen
-      qDebug()<<"***               "<<weichenstatus.at(i).second.at(j).first->getW_id()<<"   -->   "<<weichenstatus.at(i).second.at(j).second<<"                          ***";
+      qInfo()<<"***               "<<weichenstatus.at(i).second.at(j).first->getW_id()<<"   -->   "<<weichenstatus.at(i).second.at(j).second<<"                          ***";
     }
   }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
+  qInfo()<<"************************************************************";
+  qInfo()<<"";
 }
 
 void HSignal::showWeichenstatus( HSignal *whichZiel ){
   for(  int i = 0 ; i < weichenstatus.size() ; i++){
     if( weichenstatus.at(i).first.compare( whichZiel->getS_id() ) == 0 ){
-      qDebug()<<"";
-      qDebug()<<"************************************************************";
-      qDebug()<<"*** Dies ist der Weichenstatus für Hauptsignal "<<getS_id()<<"      ***";
-      qDebug()<<"***   "<<weichenstatus.at(i).first<<" :                                             ***";
+      qInfo()<<"";
+      qInfo()<<"************************************************************";
+      qInfo()<<"*** Dies ist der Weichenstatus für Hauptsignal "<<getS_id()<<"      ***";
+      qInfo()<<"***   "<<weichenstatus.at(i).first<<" :                                             ***";
       for(  int j = 0 ; j < weichenstatus.at(i).second.size() ; j++ ){
-	qDebug()<<"***               "<<weichenstatus.at(i).second.at(j).first->getW_id()<<"   -->   "<<weichenstatus.at(i).second.at(j).second<<"                          ***";
+	qInfo()<<"***               "<<weichenstatus.at(i).second.at(j).first->getW_id()<<"   -->   "<<weichenstatus.at(i).second.at(j).second<<"                          ***";
       }
-      qDebug()<<"************************************************************";
-      qDebug()<<"";
+      qInfo()<<"************************************************************";
+      qInfo()<<"";
     }
   }
 }
@@ -80,30 +80,30 @@ void HSignal::addBlockZuRangier( WSignal *toZiel , QList<Block*> inputBlock ){
 void HSignal::showBlock( HSignal *whichZiel ){
   for(  int i = 0 ; i < block.size() ; i++){
     if( block.at(i).first.compare( whichZiel->getS_id() ) == 0){
-      qDebug()<<"";
-      qDebug()<<"************************************************************";
-      qDebug()<<"*** Dies sind die Blöcke für Hauptsignal "<<getS_id()<<"            ***";
-      qDebug()<<"***   "<<block.at(i).first<<" :                                             ***";
+      qInfo()<<"";
+      qInfo()<<"************************************************************";
+      qInfo()<<"*** Dies sind die Blöcke für Hauptsignal "<<getS_id()<<"            ***";
+      qInfo()<<"***   "<<block.at(i).first<<" :                                             ***";
       for(  int j = 0 ; j < block.at(i).second.size() ; j++ ){//hier sind die Blöcke
-	qDebug()<<"***               "<<block.at(i).second.at(j)->getName()<<"                                     ***";
+	qInfo()<<"***               "<<block.at(i).second.at(j)->getName()<<"                                     ***";
       }
-      qDebug()<<"************************************************************";
-      qDebug()<<"";
+      qInfo()<<"************************************************************";
+      qInfo()<<"";
     }
   }
 }
 
 void HSignal::showBlockALL(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies sind die Blöcke für Hauptsignal "<<getS_id()<<"            ***";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies sind die Blöcke für Hauptsignal "<<getS_id()<<"            ***";
   for(  int i = 0 ; i < block.size() ; i++){
-    qDebug()<<"***   "<<block.at(i).first<<" :                                             ***";
+    qInfo()<<"***   "<<block.at(i).first<<" :                                             ***";
     for(  int j = 0 ; j < block.at(i).second.size() ; j++ ){
-      qDebug()<<"***               "<<block.at(i).second.at(j)->getName()<<"                                     ***";
+      qInfo()<<"***               "<<block.at(i).second.at(j)->getName()<<"                                     ***";
     }
   }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
+  qInfo()<<"************************************************************";
+  qInfo()<<"";
 }
 
 void HSignal::deleteNachbar( HSignal *todelete ){
@@ -141,60 +141,59 @@ void HSignal::addVSignal( VSignal *vs , QString param){
     vorsignalR.push_back(vs);
   }
   if( param.compare("v")!=0 && param.compare("r")!=0  ){
-    qDebug()<<"Die Parameterübergabe ist ungültig: V/v oder R/r erwünscht!";
+    qWarning()<<"__HSignal__: Die Parameterübergabe ist ungültig: V/v oder R/r erwünscht!";
   }
 }
 
 void HSignal::showVSignalR(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies sind die Vorsignale für Hauptsignal [rück]"<<getS_id()<<"  ***";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies sind die Vorsignale für Hauptsignal [rück]"<<getS_id()<<"  ***";
   for(  int i = 0 ; i < vorsignalR.size() ; i++){
-    qDebug()<<"***   --> "<<vorsignalR.at(i)->getV_id()<<"                                           ***";
+    qInfo()<<"***   --> "<<vorsignalR.at(i)->getV_id()<<"                                           ***";
   }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
+  qInfo()<<"************************************************************";
+  qInfo()<<"";
 }
 
 void HSignal::showVSignalV(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies sind die Vorsignale für Hauptsignal [vor]"<<getS_id()<<"   ***";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies sind die Vorsignale für Hauptsignal [vor]"<<getS_id()<<"   ***";
   for(  int i = 0 ; i < vorsignalV.size() ; i++){
-    qDebug()<<"***   --> "<<vorsignalV.at(i)->getV_id()<<"                                           ***";
+    qInfo()<<"***   --> "<<vorsignalV.at(i)->getV_id()<<"                                           ***";
   }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
+  qInfo()<<"************************************************************";
+  qInfo()<<"";
 }
 
 void HSignal::addWSignal(WSignal *wsig, QString param){
   if( param.compare("v") == 0 ){                        //parameter v looks forwards
     wsignaleV.push_back(wsig);
-    //qDebug()<<"I";//DEBUG
   }
   if( param.compare("r") == 0 ){                        //parameter r looks backwards
     wsignaleR.push_back(wsig);
   }
   if( param.compare("v")!=0 && param.compare("r")!=0  ){
-    qDebug()<<"Die Parameterübergabe ist ungültig: v oder r erwünscht!";
+    qWarning()<<"__HSignal__: Die Parameterübergabe ist ungültig: v oder r erwünscht!";
   }
 }
 void HSignal::showWSignalR(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies sind die Rangiersignale für Hauptsignal[rück]"<<getS_id()<<"***";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies sind die Rangiersignale für Hauptsignal[rück]"<<getS_id()<<"***";
   for(  int i = 0 ; i < wsignaleR.size() ; i++){
-    qDebug()<<"***   --> "<<wsignaleR.at(i)->getV_id()<<"                                           ***";
+    qInfo()<<"***   --> "<<wsignaleR.at(i)->getV_id()<<"                                           ***";
   }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
+  qInfo()<<"************************************************************";
+  qInfo()<<"";
 }
 
 void HSignal::showWSignalV(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies sind die Rangiersignale für Hauptsignal[vor]"<<getS_id()<<"***";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies sind die Rangiersignale für Hauptsignal[vor]"<<getS_id()<<"***";
   for(  int i = 0 ; i < wsignaleV.size() ; i++){
-    qDebug()<<"***   --> "<<wsignaleV.at(i)->getV_id()<<"                                           ***";
+    qInfo()<<"***   --> "<<wsignaleV.at(i)->getV_id()<<"                                           ***";
   }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
+  qInfo()<<"************************************************************";
+  qInfo()<<"";
 }
 
 void HSignal::deleteVS( VSignal *todelete , QString param){
@@ -491,7 +490,7 @@ void HSignal::zugpassiert(){
   hasWSZiel = false;
   changeColor();
   emit refreshStellwerkstechnik( getS_id() , false );          //update list in Stellwerkstechnik
-  qDebug()<<"zugpassiert:"<<getS_id();
+  qDebug()<<"__HSignal__: Emit zugpassiert:"<<getS_id();
   //
   //VSIGNALE - change all distant signals to "expect stop" [backwards], also inFS should be deleted
   for(  int i = 0 ; i < vorsignalR.size() ; i++ ){             //find exact that distant signal, which is inFS and has the current direction 

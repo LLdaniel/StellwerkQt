@@ -21,7 +21,7 @@ Configuration::Configuration(){
 
 void Configuration::setLogLevel(QString loglevel){
   logLevel = loglevel;
-  qWarning()<<"loglevel="<<loglevel;
+  qDebug()<<"__Configuration__: loglevel = "<<loglevel;
   QLoggingCategory category("StellwerkQt");
   if(loglevel == "critical"){
     category.setFilterRules("*.debug=false\n"
@@ -41,5 +41,5 @@ void Configuration::setLogLevel(QString loglevel){
 }
 
 Configuration::~Configuration(){
-  fclose(f);
+  //fclose(f);
 }

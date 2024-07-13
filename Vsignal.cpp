@@ -21,7 +21,7 @@ void VSignal::setV_id( int name ){
       v_id = "V" + suffix;
     }
   }
-  else qDebug()<<"VSignal:Falsche Benennung. Die Zahl muss dreistellig sein.";
+  else qInfo()<<"__VSignal__: Falsche Benennung. Die Zahl muss dreistellig sein.";
 }
 
 void VSignal::setinFS( bool in , QString start , QString ziel ){
@@ -63,13 +63,13 @@ bool VSignal::isAktFS( QString fsziel ){                              //current 
 }
 
 void VSignal::showRichtung(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies ist sind die Richtungen von Vorsignal "<<getV_id()<<"      ***";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies ist sind die Richtungen von Vorsignal "<<getV_id()<<"      ***";
   for(  int i = 0 ; i < richtung.size() ; i++){
-    qDebug()<<"***   "<<richtung.at(i).first<<" -->   "<<richtung.at(i).second<<"                                    ***";
+    qInfo()<<"***   "<<richtung.at(i).first<<" -->   "<<richtung.at(i).second<<"                                    ***";
   }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
+  qInfo()<<"************************************************************";
+  qInfo()<<"";
 }
 
 void VSignal::deleteRichtung( QString todeleteStart, QString todeleteZiel ){

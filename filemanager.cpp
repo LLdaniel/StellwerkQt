@@ -21,7 +21,7 @@ void filemanager::read(){
   QFileInfo check(file.filesystemFileName());
   if( !check.exists() or !check.isFile() ){
     // file does not exist or is a dir
-    qDebug()<<"turnouts.txt file does not exist. It will be created when closing the program.";
+    qInfo()<<"__filemanager__: File turnouts.txt does not exist. It will be created when closing the program.";
   }
   else{
     // file exists, read it
@@ -33,7 +33,7 @@ void filemanager::read(){
       }
     }
     file.close();
-    qDebug() << "file reading finished";
+    qDebug() << "__filemanager__: Reading file done.";
   }
 }
 
@@ -45,7 +45,7 @@ void filemanager::write(){
     QFile file(home + "/.config/StellwerkQt/turnouts.txt");
     file.open(QIODevice::WriteOnly);
     file.close();
-    qDebug()<<"Automatically created turnouts.txt in $HOME/.config/StellwerkQt.";
+    qInfo()<<"__filemanager__: Automatically created turnouts.txt in $HOME/.config/StellwerkQt.";
   }
   if(file.open( QIODevice::WriteOnly | QIODevice::Text) ){
     // We're going to streaming text to the file
@@ -54,7 +54,7 @@ void filemanager::write(){
       stream << weichen.at(writer) <<'\n';
     }
     file.close();
-    qDebug() << "file writing finished";
+    qDebug() << "__filenamager__: Writing file done.";
   }
 }
 

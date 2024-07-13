@@ -18,7 +18,7 @@ void WSignal::setV_id( int name ){
       v_id = "W" + suffix;
     }
   }
-  else qDebug()<<"WSignal:Falsche Benennung. Die Zahl muss dreistellig sein.";
+  else qWarning()<<"__WSignal__: Falsche Benennung. Die Zahl muss dreistellig sein.";
 }
 
 void WSignal::setFahrt( WSignal *toZiel ){
@@ -346,30 +346,30 @@ void WSignal::addWeichenstatusZuH( QString toZiel , QList<QPair<Weiche* , bool>>
 }
 
 void WSignal::showWeichenstatusALL(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies ist der Weichenstatus für Rangiersignal"<<getV_id()<<"     ***";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies ist der Weichenstatus für Rangiersignal"<<getV_id()<<"     ***";
   for(  int i = 0 ; i < weichenstatus.size() ; i++){
-    qDebug()<<"***   "<<weichenstatus.at(i).first<<" :                                             ***";
+    qInfo()<<"***   "<<weichenstatus.at(i).first<<" :                                             ***";
     for(  int j = 0 ; j < weichenstatus.at(i).second.size() ; j++ ){
-      qDebug()<<"***               "<<weichenstatus.at(i).second.at(j).first->getW_id()<<"   -->   "<<weichenstatus.at(i).second.at(j).second<<"                          ***";
+      qInfo()<<"***               "<<weichenstatus.at(i).second.at(j).first->getW_id()<<"   -->   "<<weichenstatus.at(i).second.at(j).second<<"                          ***";
     }
   }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
+  qInfo()<<"************************************************************";
+  qInfo()<<"";
 }
 
 void WSignal::showWeichenstatus( WSignal *whichZiel ){
   for(  int i = 0 ; i < weichenstatus.size() ; i++){
     if( weichenstatus.at(i).first.compare( whichZiel->getV_id() ) == 0 ){
-      qDebug()<<"";
-      qDebug()<<"************************************************************";
-      qDebug()<<"*** Dies ist der Weichenstatus für Rangiersignal"<<getV_id()<<"      ***";
-      qDebug()<<"***   "<<weichenstatus.at(i).first<<" :                                             ***";
+      qInfo()<<"";
+      qInfo()<<"************************************************************";
+      qInfo()<<"*** Dies ist der Weichenstatus für Rangiersignal"<<getV_id()<<"      ***";
+      qInfo()<<"***   "<<weichenstatus.at(i).first<<" :                                             ***";
       for(  int j = 0 ; j < weichenstatus.at(i).second.size() ; j++ ){
-	qDebug()<<"***               "<<weichenstatus.at(i).second.at(j).first->getW_id()<<"   -->   "<<weichenstatus.at(i).second.at(j).second<<"                          ***";
+	qInfo()<<"***               "<<weichenstatus.at(i).second.at(j).first->getW_id()<<"   -->   "<<weichenstatus.at(i).second.at(j).second<<"                          ***";
       }
-      qDebug()<<"************************************************************";
-      qDebug()<<"";
+      qInfo()<<"************************************************************";
+      qInfo()<<"";
     }
   }
 }
@@ -388,30 +388,30 @@ void WSignal::addBlockZuH(QString toZiel, QList<Block *> inputBlock)
 void WSignal::showBlock( WSignal *whichZiel ){
   for(  int i = 0 ; i < block.size() ; i++){
     if( block.at(i).first.compare( whichZiel->getV_id() ) == 0){
-      qDebug()<<"";
-      qDebug()<<"************************************************************";
-      qDebug()<<"*** Dies sind die Blöcke für Hauptsignal "<<getV_id()<<"            ***";
-      qDebug()<<"***   "<<block.at(i).first<<" :                                             ***";
+      qInfo()<<"";
+      qInfo()<<"************************************************************";
+      qInfo()<<"*** Dies sind die Blöcke für Hauptsignal "<<getV_id()<<"            ***";
+      qInfo()<<"***   "<<block.at(i).first<<" :                                             ***";
       for(  int j = 0 ; j < block.at(i).second.size() ; j++ ){//hier sind die Blöcke
-	qDebug()<<"***               "<<block.at(i).second.at(j)->getName()<<"                                     ***";
+	qInfo()<<"***               "<<block.at(i).second.at(j)->getName()<<"                                     ***";
       }
-      qDebug()<<"************************************************************";
-      qDebug()<<"";
+      qInfo()<<"************************************************************";
+      qInfo()<<"";
     }
   }
 }
 
 void WSignal::showBlockALL(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies sind die Blöcke für Hauptsignal "<<getV_id()<<"            ***";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies sind die Blöcke für Hauptsignal "<<getV_id()<<"            ***";
   for(  int i = 0 ; i < block.size() ; i++){
-    qDebug()<<"***   "<<block.at(i).first<<" :                                             ***";
+    qInfo()<<"***   "<<block.at(i).first<<" :                                             ***";
     for(  int j = 0 ; j < block.at(i).second.size() ; j++ ){
-      qDebug()<<"***               "<<block.at(i).second.at(j)->getName()<<"                                     ***";
+      qInfo()<<"***               "<<block.at(i).second.at(j)->getName()<<"                                     ***";
     }
   }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
+  qInfo()<<"************************************************************";
+  qInfo()<<"";
 }
 
 

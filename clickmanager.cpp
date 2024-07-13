@@ -15,8 +15,8 @@ void clickmanager::recieveFS(HSignal *toFS){
     counterForHW++;//                                                                           |
     if(counterForHW == 3){ counterForHW = 1; }//reset counter for HS->WS
     if(counterForHW == 1){
-      qDebug()<<"<HS,WS>";
-      qDebug()<<"<X,>";
+      qDebug("__clickmanager__: <HS,WS>");
+      qDebug("__clickmanager__: <X,>");
       clickListHW.first = toFS;
       toW = true;                             //flag, this could be a transition from HS to WS 
     }//                                                                                         |
@@ -25,8 +25,8 @@ void clickmanager::recieveFS(HSignal *toFS){
     counterForWH++;//                                                                       |
     if(counterForWH == 3){ counterForWH = 2; }//reset counters for WS->HS
     if(counterForWH == 2 && toH){             // =2, because reciveFS(WSignal*) has set it to =1 
-      qDebug()<<"<WS,HS>";
-      qDebug()<<"<X,X>";
+      qDebug("__clickmanager__: <WS,HS>");
+      qDebug("__clickmanager__: <X,X>");
       clickListWH.second = toFS;
       clickListWH.first->setFahrt(clickListWH.second->getS_id());
       //
@@ -41,12 +41,12 @@ void clickmanager::recieveFS(HSignal *toFS){
     //
     //reset all counter:
     reset();
-    qDebug()<<"<HS,HS>";
-    qDebug()<<"<X,X>";
+    qDebug("__clickmanager__: <HS,HS>");
+    qDebug("__clickmanager__: <X,X>");
     if(clickList.first->getS_id().compare(clickList.second->getS_id()) == 0){//double click?-->delete FS
       if(clickList.first->getS_status() == true){//If there is a route deleteFS, but only then otherwise deleteFS will fail
-	qDebug()<<"<HS,HS>";
-	qDebug()<<"<X_same,X_same>";
+	qDebug("__clickmanager__: <HS,HS>");
+	qDebug("__clickmanager__: <X_same,X_same>");
 	clickList.first->deleteFS();
 	//
 	//reset all counter:
@@ -57,21 +57,20 @@ void clickmanager::recieveFS(HSignal *toFS){
 }
 
 void clickmanager::recieveFS(WSignal *toFS){
-  //qDebug()<<"recived Click from WSIgnal";
   counterForW++;
   if( counterForW == 3){//reset step at first
     counterForW = 1;
   }
   if(counterForW == 1){
     clickListW.first = toFS;//save first entry and wait for the second one
-    qDebug()<<"<WS,WS>";
-    qDebug()<<"<X,>";
+    qDebug("__clickmanager__: <WS,WS>");
+    qDebug("__clickmanager__: <X,>");
     //::: HS->WS registered------------------------------------------------------------------
     counterForHW++;//                                                                       |
     if(counterForHW == 3){ counterForHW = 2; }//reset counters for HS->WS
     if(counterForHW == 2 && toW){// =2, because reciveFS(HSignal*) set it to =1 
-      qDebug()<<"<HS,WS>";
-      qDebug()<<"<X,X>";
+      qDebug("__clickmanager__: <HS,WS>");
+      qDebug("__clickmanager__: <X,X>");
       clickListHW.second = toFS;
       clickListHW.first->setFahrt(clickListHW.second);
       //reset all counter:
@@ -82,8 +81,8 @@ void clickmanager::recieveFS(WSignal *toFS){
     counterForWH++;//                                                                           |
     if(counterForWH == 3){ counterForWH = 1; }//reset counter für WS->HS
     if(counterForWH == 1){
-      qDebug()<<"<WS,HS>";
-      qDebug()<<"<X,>";
+      qDebug("__clickmanager__: <WS,HS>");
+      qDebug("__clickmanager__: <X,>");
       clickListWH.first = toFS;
       toH = true;//flag, this could be a transition from WS to HS
     }//                                                                                         |
@@ -94,13 +93,13 @@ void clickmanager::recieveFS(WSignal *toFS){
     clickListW.first->setFahrt(clickListW.second);
     //reset all counter
     reset();
-    qDebug()<<"<WS,WS>";
-    qDebug()<<"<X,X>";
+    qDebug("__clickmanager__: <WS,WS>");
+    qDebug("__clickmanager__: <X,X>");
     if(clickListW.first->getV_id().compare(clickListW.second->getV_id()) == 0){//double click?-->deleteFS
       if(clickListW.first->getV_status() == true){//if there exists a route, delete it, only then. Otherwise delete FS will fail
 	clickListW.first->deleteFS();
-	qDebug()<<"<WS,WS>";
-	qDebug()<<"<X_same,X_same>";
+	qDebug("__clickmanager__: <WS,WS>");
+	qDebug("__clickmanager__: <X_same,X_same>");
 	//reset all counter:
 	reset();
       }

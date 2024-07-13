@@ -18,13 +18,13 @@ worker::~worker(){
 }
 
 void worker::showBlocks(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies sind die Blöcke, die ständig überwacht werden   ***";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies sind die Blöcke, die ständig überwacht werden   ***";
   for(  int i = 0 ; i < blocklist.size() ; i++ ){//Durchläuft alle update Blocks
-    qDebug()<<"***   "<<blocklist.at(i)->getGpio()<<" -> "<<blocklist.at(i)->getName()<<"                                           ***";
+    qInfo()<<"***   "<<blocklist.at(i)->getGpio()<<" -> "<<blocklist.at(i)->getName()<<"                                           ***";
   }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
+  qInfo()<<"************************************************************";
+  qInfo()<<"";
 }
 
 void worker::addBlocks(Block* bl){
@@ -36,20 +36,20 @@ void worker::addBUs(BU* bu){
 }
 
 void worker::showWeichen(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies sind die Weichen, die ständig überwacht werden  ***";
-  for(  int i = 0 ; i < weichenlist.size() ; i++ ){//Durchläuft alle update Blocks
-    // qDebug()<<"***   "<<weichenlist.at(i)->getGpio()<<" -> "<<weichenlist.at(i)->getW_id()<<"                                           ***";
-  }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies sind die Weichen, die ständig überwacht werden  ***";
+  //for(  int i = 0 ; i < weichenlist.size() ; i++ ){//Durchläuft alle update Blocks
+  //  qDebug()<<"***   "<<weichenlist.at(i)->getGpio()<<" -> "<<weichenlist.at(i)->getW_id()<<"                                           ***";
+  //}
+  qInfo()<<"************************************************************";
+  qInfo()<<"";
 }
 
 void worker::timing(){                                        //this is a hack: thread connected with processSpeicher directly only executes processSpeicher, but cannot insert updates, therefore timer with 0ms which calls it also repeatedly, but there thread has chance to process event loop and new events see https://github.com/LLdaniel/QThreadExample
   if( update ) t->start();
   if(!update ){
     delete t;
-    qDebug()<<" F I N I S H E D: Worker ";
+    qDebug()<<"__worker__: Worker has finished!";
   }
 }
 
@@ -58,7 +58,7 @@ void worker::quit(){
 }
 
 void worker::updateBelegt(){
-  qDebug(" ich mach dann mal was");
+  qDebug("__worker__: Updated occupation state...");
   int i = 0;
   int aktuellBlock = -1;
   //int aktuellWeiche = -1;
@@ -76,18 +76,16 @@ void worker::updateBelegt(){
   //
   // check, if there are pins für weichen oder blocks at all  
   while( update and maxindex > 0 ){
-    //qDebug(" w o r k i n g");
+    qDebug("__worker__: Worker started...");
     //
     //loop runs parallel for turnout and segments and stops for the smaller list earlier until the reset
     if( i < blocklist.size() ){
       aktuellBlock = blocklist.at(i)->readBlock();
       if( aktuellBlock == 0 ){                                      //read pins false = belegt || true = frei dagegen ist 0 = LOW , 1 = HIGH
 	emit callGUIb(blocklist.at(i), false);
-	//qDebug("true = frei");
       }
       if( aktuellBlock == 1 ){                                      //read pins
 	emit callGUIb(blocklist.at(i), true);
-	//qDebug("false = belegt");
       }
     }
     //
@@ -106,5 +104,5 @@ void worker::updateBelegt(){
   }
   //
   //end of loop either there are no entries or quit call: finish worker
-  qDebug()<<"                           F E R T I S C H worker";
+  qDebug("__worker__: Worker finished!");
 }

@@ -67,29 +67,29 @@ int main( int argc , char *argv[] ){
       config->setLogLevel("debug");
     }
     if(strcmp(argv[i],"--help") == 0 ){
-      qDebug()<<" #################################################";
-      qDebug()<<" ###              StellwerkQt Help             ###";
-      qDebug()<<" ### ----------------------------------------- ###";
-      qDebug()<<" ### usage: StellwerkQt -[option]              ###";
-      qDebug()<<" ### -platform xcb: use when problems with gl  ###";
-      qDebug()<<" ### --help:        show this help             ###";
-      qDebug()<<" ### -v:            verbose debug mode         ###";
-      qDebug()<<" ### -d   :         shows test/debug menu      ###";
-      qDebug()<<" ### -n   :         mode without hardware      ###";
-      qDebug()<<" #################################################";
+      qInfo()<<" #################################################";
+      qInfo()<<" ###              StellwerkQt Help             ###";
+      qInfo()<<" ### ----------------------------------------- ###";
+      qInfo()<<" ### usage: StellwerkQt -[option]              ###";
+      qInfo()<<" ### -platform xcb: use when problems with gl  ###";
+      qInfo()<<" ### --help:        show this help             ###";
+      qInfo()<<" ### -v:            verbose debug mode         ###";
+      qInfo()<<" ### -d   :         shows test/debug menu      ###";
+      qInfo()<<" ### -n   :         mode without hardware      ###";
+      qInfo()<<" #################################################";
       return 0;
     }
     if(strcmp(argv[i],"-d") == 0 ){
       
     }
     if(strcmp(argv[i],"akito") == 0 ){
-      qDebug()<<"";
-      qDebug()<<"    /)/)";
-      qDebug()<<"    (^.^)  ";
-      qDebug()<<"   C(\")(\")  >o¤»";
-      qDebug()<<"";
-      qDebug()<<"";
-      qDebug()<<"     ...*nom*...";
+      qInfo()<<"";
+      qInfo()<<"    /)/)";
+      qInfo()<<"    (^.^)  ";
+      qInfo()<<"   C(\")(\")  >o¤»";
+      qInfo()<<"";
+      qInfo()<<"";
+      qInfo()<<"     ...*nom*...";
       return 0;
     }
     if(strcmp(argv[i],"-n") == 0 ){
@@ -125,7 +125,6 @@ int main( int argc , char *argv[] ){
   // create a filemanager and read turnout state from previous session
   //**************************************************************************
   QString filepath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-  qDebug()<<filepath+"/.config/StellwerkQt/turnouts.txt";
   filemanager fmngr(filepath + "/.config/StellwerkQt/turnouts.txt");
   fmngr.read();
   
@@ -8124,7 +8123,7 @@ int main( int argc , char *argv[] ){
   //************************************************************************** 
   // all classes with parents are deleted through this chain, addItem, addWidget takes ownership, the rest is left for the programmer:
   int eofprogram = a.exec();
-  qDebug() <<"endofprogram";
+  qDebug() <<"__main__: end of event loop";
 
   // add turnouts to filemanager and write the states to the txt file
   fmngr.add(w1ptr->getW_status()); fmngr.add(w2ptr->getW_status()); fmngr.add(w3ptr->getW_status()); fmngr.add(w4ptr->getW_status()); fmngr.add(w5ptr->getW_status()); fmngr.add(w6ptr->getW_status()); fmngr.add(w7ptr->getW_status());  fmngr.add(w8ptr->getW_status()); fmngr.add(w9ptr->getW_status()); fmngr.add(w10ptr->getW_status()); fmngr.add(w11ptr->getW_status()); fmngr.add(w12ptr->getW_status()); fmngr.add(w13ptr->getW_status()); fmngr.add(w14ptr->getW_status());  fmngr.add(w15ptr->getW_status()); fmngr.add(w16ptr->getW_status()); fmngr.add(w17ptr->getW_status()); fmngr.add(w18ptr->getW_status()); fmngr.add(w19ptr->getW_status()); fmngr.add(w20ptr->getW_status()); fmngr.add(w21ptr->getW_status());  fmngr.add(w22ptr->getW_status()); fmngr.add(w23ptr->getW_status()); fmngr.add(w24ptr->getW_status()); fmngr.add(w25ptr->getW_status()); fmngr.add(w26ptr->getW_status()); fmngr.add(w27ptr->getW_status()); fmngr.add(w28ptr->getW_status());  fmngr.add(w29ptr->getW_status()); fmngr.add(w30ptr->getW_status()); fmngr.add(w31ptr->getW_status());

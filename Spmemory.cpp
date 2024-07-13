@@ -11,13 +11,13 @@ void Spmemory::addFS( HSignal *SPstart, HSignal *SPziel){        // buffer the r
 }
 
 void Spmemory::showSP(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies sind die gespeicherten Fahrstraßen:             ***";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies sind die gespeicherten Fahrstraßen:             ***";
   for( int i = 0 ; i < speicherlist.size() ; i++ ){//Durchläuft die gesamte Speicherlist
-    qDebug()<<"***   "<<speicherlist.at(i).first->getS_id()<<" -> "<<speicherlist.at(i).second->getS_id()<<"                                           ***";
+    qInfo()<<"***   "<<speicherlist.at(i).first->getS_id()<<" -> "<<speicherlist.at(i).second->getS_id()<<"                                           ***";
   }
-  qDebug()<<"************************************************************";
-  qDebug()<<"";
+  qInfo()<<"************************************************************";
+  qInfo()<<"";
 }
 
 void Spmemory::quit(){
@@ -28,7 +28,7 @@ void Spmemory::timing(){                                        //this is a hack
   if( trySP ) t->start();
   if(!trySP ){
     delete t;
-    qDebug()<<" F I N I S H E D # 2 ";
+    qDebug()<<"__Spmemory__: Timing function finished!";
   }
 }
 
@@ -53,7 +53,7 @@ void Spmemory::processSpeicher(){                              //try to set the 
     // ::::::
   }
   if(!buffer.isEmpty() ){                                     //3) 
-    //qDebug()<<" load buffer ...";
+    qDebug()<<"__Spmemory__: Loading buffer ...";
     speicherlist.append(buffer);      
     buffer.clear();               
   }

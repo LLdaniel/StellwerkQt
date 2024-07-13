@@ -134,12 +134,12 @@ void MainWindow::downscale(){
 }
 
 void MainWindow::powerOffTurnouts(){
-  qDebug()<<"Weichen off";
+  qInfo()<<"__mainwindow__: Turnouts off!";
   //digitalWrite(powerturnouts,LOW);
 }
 
 void MainWindow::powerOnTurnouts(){
-  qDebug()<<"Weichen on";
+  qDebug()<<"__mainwindow__: Turnouts on!";
   //digitalWrite(powerturnouts,HIGH);
 }
 

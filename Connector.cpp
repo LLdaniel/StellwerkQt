@@ -55,17 +55,17 @@ void Connector::act(){
 	digitalWrite(pin0, HIGH);
 	delay(25);//[ms]
 	digitalWrite(pin0, LOW);
-	//qDebug()<<"Hardware change Kreuzung: true";
+	qDebug()<<"__Connector__: Turnout connector change: true";
       }
       else{
 	digitalWrite(pin1, HIGH);
 	delay(25);//[ms]
 	digitalWrite(pin1, LOW);
-	//qDebug()<<"Hardware change Kreuzung: false";
+	qDebug()<<"__Connector__: Turnout connector change: false";
       }
     }
   }
   else{
-    qDebug()<<"Kreuzungsweiche mit Kennung "<<getID()<<" ist nicht als pin initialisiert";
+    qInfo()<<"__Connector__: Kreuzungsweiche mit Kennung "<<getID()<<" ist nicht als pin initialisiert";
   }
 }

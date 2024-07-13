@@ -26,7 +26,7 @@ void BU::setName( int name ){
     else buname = "BU" + QString::number( name );//eles no 0 is needed before
   }
   else{
-    qDebug()<<"BU::Falsche Benennung: Eine zweistellige Zahl ist nötig.";
+    qWarning()<<"__BU__: Falsche Benennung: Eine zweistellige Zahl ist nötig.";
   }
 }
 
@@ -53,7 +53,6 @@ void BU::close(){
   if( configuration->getWithHardware() ){
     if(pin > 0){
       digitalWrite(pin, HIGH);
-      qDebug()<<"close BU";
     }
   }
 }
@@ -62,7 +61,6 @@ void BU::open(){
   if( configuration->getWithHardware() ){
     if(pin > 0){
       digitalWrite(pin, LOW);
-      qDebug()<<"open BU";
     }
   }
 }

@@ -44,11 +44,11 @@ void Weiche::setW_id( int name ){
 
 void Weiche::setW_status( bool status ){
   if( verriegelung || !belegung ){                           //turnout locked, no change in status possible 
-    qDebug()<<"Weiche::Diese Weiche ist verriegelt!";
+    qDebug()<<"__Weiche__: Turnout is locked.";
   }
   else{                                                      //ok, change status is permitted
     w_status = status;
-    //qDebug()<<"change turnout "<<w_id<<"permitted";
+    qDebug()<<"__Weiche__: Change turnout "<<w_id<<" is permitted.";
     switchWeiche(status);
     if(kreuzung){emit kreuzungsweiche(status);}              //if part in double turnout: call to Connector
     changeColor();
@@ -130,20 +130,18 @@ void Weiche::switchWeiche(bool linksrechts){
   if( configuration->getWithHardware() ){
     if(pin0 > 0 and pin1 > 0){                                 //connect to hadware command only when there are two directions set
       if(linksrechts){
-	//qDebug()<<"Stelle weiche "<<w_id<<" auf true";
 	digitalWrite(pin0, HIGH);
 	delay(35);//[ms]
 	digitalWrite(pin0, LOW);
       }
       if(!linksrechts){
-	//qDebug()<<"Stelle weiche "<<w_id<<" auf false";
 	digitalWrite(pin1, HIGH);
 	delay(35);//[ms]
 	digitalWrite(pin1, LOW);
       }
     }
     else{
-      qDebug()<<"Weiche mit Kennung "<<getW_id()<<" ist nicht als pin initialisiert";
+      qInfo()<<"Weiche mit Kennung "<<getW_id()<<" ist nicht als pin initialisiert";
     }
   }
 }

@@ -64,16 +64,16 @@ void Stellwerkstechnik::delete_HSignal(QString strtodelete ){
 }
 
 void Stellwerkstechnik::show_Signal(){
-  qDebug()<<"************************************************************";
-  qDebug()<<"*** Dies sind alle HSignale in Stellwerkstechnik         ***";
+  qInfo()<<"************************************************************";
+  qInfo()<<"*** Dies sind alle HSignale in Stellwerkstechnik         ***";
   for(  int i = 0 ; i < hsignale.size() ; i++){
-    qDebug()<<"***   "<<hsignale[i].first<<"    =    "<<" "<<hsignale[i].second<<"                                       ***";//alle IDs der HSignale
+    qInfo()<<"***   "<<hsignale[i].first<<"    =    "<<" "<<hsignale[i].second<<"                                       ***";//alle IDs der HSignale
   }
-  qDebug()<<"*** Dies sind alle WSignale in Stellwerkstechnik         ***";
+  qInfo()<<"*** Dies sind alle WSignale in Stellwerkstechnik         ***";
   for(  int j = 0 ; j < wsignale.size() ; j++){
-    qDebug()<<"***   "<<hsignale.at(j).first<<"    =    "<<" "<<wsignale.at(j).second<<"                                       ***";//alle IDs der WSignale
+    qInfo()<<"***   "<<hsignale.at(j).first<<"    =    "<<" "<<wsignale.at(j).second<<"                                       ***";//alle IDs der WSignale
   }
-  qDebug()<<"************************************************************";
+  qInfo()<<"************************************************************";
 }
     
 bool Stellwerkstechnik::getS_pass_status( QString statusvonSignal ){

@@ -48,7 +48,7 @@ bool Block::evaluateFreigabe(){
 	  if(passiert.at(i).first.at(0) == 'S'){
 	    emit zugpassiert();                   //connected to HSignal::zugpassiert/WSignal::zugpassiert
 	    for(int e = 0; e < this->passiert.size(); e++){
-	      qDebug()<<"this:"<<this->getName()<<passiert.at(e).first<<passiert.at(e).second->getName();
+	      qDebug()<<"__Block__: Zugpassiert of this: "<<this->getName()<<passiert.at(e).first<<passiert.at(e).second->getName();
 	    }
 	  }
 	  if(passiert.at(i).first.at(0) == 'W'){
