@@ -62,13 +62,9 @@ int main( int argc , char *argv[] ){
   //command line arguments
   //
   Configuration *config = new Configuration();
-  printf("argc: %d\n", argc);
   for(int i=0; i < argc; i++) {
-    printf("argv[%d]: %s\n", i, argv[i]);
-    //-v debug option with different std's
     if( strcmp(argv[i],"-v") == 0 ){
-      //qDebug() <<"__MAIN__: verbose output mode";
-      config->setDebug(true);
+      config->setLogLevel("debug");
     }
     if(strcmp(argv[i],"--help") == 0 ){
       qDebug()<<" #################################################";
@@ -104,10 +100,9 @@ int main( int argc , char *argv[] ){
   // starting QT application
   //**************************************************************************
 
-  if( config->getWithHardware() ){
-    wiringPiSetupGpio(); // is needed by mainwindow already, therefore set it up now
-    qDebug()<<"setting up wiringPi";
-  }
+  wiringPiSetupGpio(); // is needed by mainwindow already, therefore set it up now
+  qDebug()<<"__main__: Setting up wiringPi...";
+ 
   //pinMode(13,OUTPUT);  // power turnouts on/off with GPIO13                                                                          !!!!!!!!!!!!!!!!
   //digitalWrite(13,LOW);
   
