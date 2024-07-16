@@ -75,8 +75,8 @@ void worker::updateBelegt(){
   }
   //
   // check, if there are pins für weichen oder blocks at all  
+  qDebug("__worker__: Starting worker...");
   while( update and maxindex > 0 ){
-    qDebug("__worker__: Worker started...");
     //
     //loop runs parallel for turnout and segments and stops for the smaller list earlier until the reset
     if( i < blocklist.size() ){

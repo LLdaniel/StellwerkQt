@@ -63,8 +63,8 @@ int main( int argc , char *argv[] ){
   //
   Configuration *config = new Configuration();
   for(int i=0; i < argc; i++) {
-    if( strcmp(argv[i],"-v") == 0 ){
-      config->setLogLevel("debug");
+    if( strcmp(argv[i],"-w") == 0 ){
+      config->setLogLevel("warning");
     }
     if(strcmp(argv[i],"--help") == 0 ){
       qInfo()<<" #################################################";
@@ -73,14 +73,14 @@ int main( int argc , char *argv[] ){
       qInfo()<<" ### usage: StellwerkQt -[option]              ###";
       qInfo()<<" ### -platform xcb: use when problems with gl  ###";
       qInfo()<<" ### --help:        show this help             ###";
-      qInfo()<<" ### -v:            verbose debug mode         ###";
-      qInfo()<<" ### -d   :         shows test/debug menu      ###";
+      qInfo()<<" ### -w   :         verbose debug mode         ###";
+      qInfo()<<" ### -d   :         enable debug log level     ###";
       qInfo()<<" ### -n   :         mode without hardware      ###";
       qInfo()<<" #################################################";
       return 0;
     }
     if(strcmp(argv[i],"-d") == 0 ){
-      
+      config->setLogLevel("debug");
     }
     if(strcmp(argv[i],"akito") == 0 ){
       qInfo()<<"";

@@ -14,7 +14,7 @@ static void logToFile(QtMsgType type, const QMessageLogContext &context, const Q
 
 Configuration::Configuration(){
   msgHandler = qInstallMessageHandler(logToFile);
-  setLogLevel("warning");
+  setLogLevel("info");
   const QString STELLWERK_LOG_PATTERN="[%{time yyyy-MM-dd h:mm:ss.zzz ttt} %{if-debug}   DEBUG%{endif}%{if-info}    INFO%{endif}%{if-warning} WARNING%{endif}%{if-critical}CRITICAL%{endif}%{if-fatal}   FATAL%{endif}] %{message}";
   qSetMessagePattern(STELLWERK_LOG_PATTERN);
 }
