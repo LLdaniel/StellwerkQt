@@ -6,7 +6,14 @@
 #include <QMenu>
 StellwerkQPushButton::StellwerkQPushButton(QWidget *parent) : QPushButton(parent){
   menu = new QMenu(this);
-  menu->setStyleSheet("QMenu::item { background-color: #8282fc; }");
+  menu->setStyleSheet("QMenu { background-color: #8282fc;"
+		      "        border: 2px solid #4F4F4F;"
+		      "        border-radius: 4px;"
+		      "      },"
+		      "QMenu::item:selected { font-weight: bold;"
+		      "                    background-color: yellow;"
+		      "      }"
+		      );
 }
 
 void StellwerkQPushButton::mousePressEvent(QMouseEvent *mouseEvent){

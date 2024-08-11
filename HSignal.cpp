@@ -161,7 +161,7 @@ void HSignal::addVSignal( VSignal *vs , QString param){
 }
 
 void HSignal::showVSignalR(){
-  QString message = "************************************************************";
+  QString message = "************************************************************\n";
   qInfo()<<"************************************************************";
   message += "    Dies sind die Vorsignale für Hauptsignal [rück] " + getS_id() + "\n";
   qInfo()<<"*** Dies sind die Vorsignale für Hauptsignal [rück] "<<getS_id()<<"  ***";
@@ -180,7 +180,7 @@ void HSignal::showVSignalV(){
   QString message = "************************************************************\n";
   qInfo()<<"************************************************************";
   qInfo()<<"*** Dies sind die Vorsignale für Hauptsignal [vor] "<<getS_id()<<"   ***";
-  message += "    Dies sind die Vorsignale für Hauptsignal [vor]" + getS_id() + "\n";
+  message += "    Dies sind die Vorsignale für Hauptsignal [vor] " + getS_id() + "\n";
   for(  int i = 0 ; i < vorsignalV.size() ; i++){
     qInfo()<<"***   --> "<<vorsignalV.at(i)->getV_id()<<"                                           ***";
     message += "      --> " + vorsignalV.at(i)->getV_id() + "\n";
