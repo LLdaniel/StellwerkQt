@@ -4,6 +4,7 @@
  */
 #include "HSignal.h"
 #include <QDebug>
+#include <QMenu>
 
 HSignal::HSignal(int name){
   setS_id( name );
@@ -730,7 +731,7 @@ void HSignal::darkenSpeicher( int position ){
   }
 }
 
-void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *itemhalt, QGraphicsSvgItem *itemrangier, QLabel *la, QPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront){
+void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *itemhalt, QGraphicsSvgItem *itemrangier, QLabel *la, HSignalQPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront){
   fahrt = itemfahrt;
   halt = itemhalt;
   rangier = itemrangier;
@@ -745,13 +746,21 @@ void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *item
   but->setFixedHeight(20);
   but->setFixedWidth(20);
   but->setStyleSheet("background-color: blue");
-  QObject::connect(push, &QPushButton::clicked, this, &HSignal::listenToFS);
+  QObject::connect(push, &HSignalQPushButton::clicked, this, &HSignal::listenToFS);
+  QObject::connect(push, &HSignalQPushButton::rightClicked, this, &HSignal::showShowContexts);
+  //but->setContextMenuPolicy(Qt::CustomContextMenu);
+  //QObject::connect(push, &HSignalQPushButton::customContextMenuRequested, this, &HSignal::showShowContexts);
   //Speicher Anzeiger
   speicherback->setBrush(Qt::darkBlue);
   speicherfront->setBrush(Qt::darkBlue);
   speicheritems.first = speicherfront;
   speicheritems.second = speicherback;
 
+}
+
+void HSignal::showShowContexts(){
+  this->push->getMenu()->popup(QCursor::pos());
+  this->push->raise();
 }
 
 HSignal::~HSignal(){

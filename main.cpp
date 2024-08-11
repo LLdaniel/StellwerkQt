@@ -3578,7 +3578,7 @@ int main( int argc , char *argv[] ){
   s4item1->setRotation(-90);
   s4item2->setRotation(-90);
   s4item3->setRotation(-90);
-  QPushButton *s4push = new QPushButton();
+  HSignalQPushButton *s4push = new HSignalQPushButton();
   scene->addWidget(s4push);
   QLabel *s4label = new QLabel();
   scene->addWidget(s4label);
@@ -3612,7 +3612,7 @@ int main( int argc , char *argv[] ){
   s5item1->setRotation(-90);
   s5item2->setRotation(-90);
   s5item3->setRotation(-90);
-  QPushButton *s5push = new QPushButton();
+  HSignalQPushButton *s5push = new HSignalQPushButton();
   scene->addWidget(s5push);
   QLabel *s5label = new QLabel();
   scene->addWidget(s5label);
@@ -3646,7 +3646,7 @@ int main( int argc , char *argv[] ){
   s2item1->setRotation(90);
   s2item2->setRotation(90);
   s2item3->setRotation(90);
-  QPushButton *s2push = new QPushButton();
+  HSignalQPushButton *s2push = new HSignalQPushButton();
   scene->addWidget(s2push);
   QLabel *s2label = new QLabel();
   scene->addWidget(s2label);
@@ -3680,7 +3680,7 @@ int main( int argc , char *argv[] ){
   s3item1->setRotation(90);
   s3item2->setRotation(90);
   s3item3->setRotation(90);
-  QPushButton *s3push = new QPushButton();
+  HSignalQPushButton *s3push = new HSignalQPushButton();
   scene->addWidget(s3push);
   QLabel *s3label = new QLabel();
   scene->addWidget(s3label);
@@ -3726,7 +3726,7 @@ int main( int argc , char *argv[] ){
   s13item1->setRotation(90);
   s13item2->setRotation(90);
   s13item3->setRotation(90);
-  QPushButton *s13push = new QPushButton();
+  HSignalQPushButton *s13push = new HSignalQPushButton();
   scene->addWidget(s13push);
   QLabel *s13label = new QLabel();
   scene->addWidget(s13label);
@@ -3772,7 +3772,7 @@ int main( int argc , char *argv[] ){
   s1item1->setRotation(-90);
   s1item2->setRotation(-90);
   s1item3->setRotation(-90);
-  QPushButton *s1push = new QPushButton();
+  HSignalQPushButton *s1push = new HSignalQPushButton();
   scene->addWidget(s1push);
   QLabel *s1label = new QLabel();
   scene->addWidget(s1label);
@@ -3793,13 +3793,13 @@ int main( int argc , char *argv[] ){
   
   /////////////NOCH VON WSIGNAL
   //soll on top of scene sein...
-  QPushButton *ww1push = new QPushButton();
+  WSignalQPushButton *ww1push = new WSignalQPushButton();
   scene->addWidget(ww1push);
   ww1ptr->addButtonAndLabel(ww1label,ww1push);
   ww1ptr->moveButton(-900,875);
   ww1ptr->moveLabel(-940,900);
   // und NR 2 W
-  QPushButton *ww2push = new QPushButton();
+  WSignalQPushButton *ww2push = new WSignalQPushButton();
   scene->addWidget(ww2push);
   ww2ptr->addButtonAndLabel(ww2label,ww2push);
   ww2ptr->moveButton(-980,265);
@@ -3887,7 +3887,7 @@ int main( int argc , char *argv[] ){
   s9item1->setRotation(-90);
   s9item2->setRotation(-90);
   s9item3->setRotation(-90);
-  QPushButton *s9push = new QPushButton();
+  HSignalQPushButton *s9push = new HSignalQPushButton();
   scene->addWidget(s9push);
   QLabel *s9label = new QLabel();
   scene->addWidget(s9label);
@@ -3921,7 +3921,7 @@ int main( int argc , char *argv[] ){
   s11item1->setRotation(-90);
   s11item2->setRotation(-90);
   s11item3->setRotation(-90);
-  QPushButton *s11push = new QPushButton();
+  HSignalQPushButton *s11push = new HSignalQPushButton();
   scene->addWidget(s11push);
   QLabel *s11label = new QLabel();
   scene->addWidget(s11label);
@@ -3955,7 +3955,7 @@ int main( int argc , char *argv[] ){
   s49item1->setRotation(-90);
   s49item2->setRotation(-90);
   s49item3->setRotation(-90);
-  QPushButton *s49push = new QPushButton();
+  HSignalQPushButton *s49push = new HSignalQPushButton();
   scene->addWidget(s49push);
   QLabel *s49label = new QLabel();
   scene->addWidget(s49label);
@@ -3989,7 +3989,7 @@ int main( int argc , char *argv[] ){
   s10item1->setRotation(90);
   s10item2->setRotation(90);
   s10item3->setRotation(90);
-  QPushButton *s10push = new QPushButton();
+  HSignalQPushButton *s10push = new HSignalQPushButton();
   scene->addWidget(s10push);
   QLabel *s10label = new QLabel();
   scene->addWidget(s10label);
@@ -4023,7 +4023,7 @@ int main( int argc , char *argv[] ){
   s50item1->setRotation(90);
   s50item2->setRotation(90);
   s50item3->setRotation(90);
-  QPushButton *s50push = new QPushButton();
+  HSignalQPushButton *s50push = new HSignalQPushButton();
   scene->addWidget(s50push);
   QLabel *s50label = new QLabel();
   scene->addWidget(s50label);
@@ -4057,7 +4057,7 @@ int main( int argc , char *argv[] ){
   s12item1->setRotation(90);
   s12item2->setRotation(90);
   s12item3->setRotation(90);
-  QPushButton *s12push = new QPushButton();
+  HSignalQPushButton *s12push = new HSignalQPushButton();
   scene->addWidget(s12push);
   QLabel *s12label = new QLabel();
   scene->addWidget(s12label);
@@ -4103,7 +4103,7 @@ int main( int argc , char *argv[] ){
   s7item1->setRotation(90);
   s7item2->setRotation(90);
   s7item3->setRotation(90);
-  QPushButton *s7push = new QPushButton();
+  HSignalQPushButton *s7push = new HSignalQPushButton();
   scene->addWidget(s7push);
   QLabel *s7label = new QLabel();
   scene->addWidget(s7label);
@@ -4149,7 +4149,7 @@ int main( int argc , char *argv[] ){
   s6item1->setRotation(45);
   s6item2->setRotation(45);
   s6item3->setRotation(45);
-  QPushButton *s6push = new QPushButton();
+  HSignalQPushButton *s6push = new HSignalQPushButton();
   scene->addWidget(s6push);
   QLabel *s6label = new QLabel();
   scene->addWidget(s6label);
@@ -4185,7 +4185,7 @@ int main( int argc , char *argv[] ){
   s8item1->setRotation(-90);
   s8item2->setRotation(-90);
   s8item3->setRotation(-90);
-  QPushButton *s8push = new QPushButton();
+  HSignalQPushButton *s8push = new HSignalQPushButton();
   scene->addWidget(s8push);
   QLabel *s8label = new QLabel();
   scene->addWidget(s8label);
@@ -4204,13 +4204,13 @@ int main( int argc , char *argv[] ){
   s8ptr->moveButton(-115,560);
   s8ptr->moveLabel(-70,545);
 
-  QPushButton *ww42push = new QPushButton();
+  WSignalQPushButton *ww42push = new WSignalQPushButton();
   scene->addWidget(ww42push);
   ww42ptr->addButtonAndLabel(ww42label,ww42push);
   ww42ptr->moveButton(145,115);
   ww42ptr->moveLabel(180,95);
 
-  QPushButton *ww43push = new QPushButton();
+  WSignalQPushButton *ww43push = new WSignalQPushButton();
   scene->addWidget(ww43push);
   ww43ptr->addButtonAndLabel(ww43label,ww43push);
   ww43ptr->moveButton(-1000,195);
@@ -4548,109 +4548,109 @@ int main( int argc , char *argv[] ){
   byptr->addBlockitems(byrect4);
   scene->addItem(byrect4);
 
-  QPushButton *ww24push = new QPushButton();
+  WSignalQPushButton *ww24push = new WSignalQPushButton();
   scene->addWidget(ww24push);
   ww24ptr->addButtonAndLabel(ww24label,ww24push);
   ww24ptr->moveButton(-865,1785);
   ww24ptr->moveLabel(-835,1770);
 
-  QPushButton *ww25push = new QPushButton();
+  WSignalQPushButton *ww25push = new WSignalQPushButton();
   scene->addWidget(ww25push);
   ww25ptr->addButtonAndLabel(ww25label,ww25push);
   ww25ptr->moveButton(-815,1715);
   ww25ptr->moveLabel(-785,1700);
 
-  QPushButton *ww26push = new QPushButton();
+  WSignalQPushButton *ww26push = new WSignalQPushButton();
   scene->addWidget(ww26push);
   ww26ptr->addButtonAndLabel(ww26label,ww26push);
   ww26ptr->moveButton(-745,1645);
   ww26ptr->moveLabel(-715,1630);
 
-  QPushButton *ww27push = new QPushButton();
+  WSignalQPushButton *ww27push = new WSignalQPushButton();
   scene->addWidget(ww27push);
   ww27ptr->addButtonAndLabel(ww27label,ww27push);
   ww27ptr->moveButton(-675,1575);
   ww27ptr->moveLabel(-645,1560);
 
-  QPushButton *ww28push = new QPushButton();
+  WSignalQPushButton *ww28push = new WSignalQPushButton();
   scene->addWidget(ww28push);
   ww28ptr->addButtonAndLabel(ww28label,ww28push);
   ww28ptr->moveButton(-605,1505);
   ww28ptr->moveLabel(-575,1490);
 
-  QPushButton *ww29push = new QPushButton();
+  WSignalQPushButton *ww29push = new WSignalQPushButton();
   scene->addWidget(ww29push);
   ww29ptr->addButtonAndLabel(ww29label,ww29push);
   ww29ptr->moveButton(-535,1435);
   ww29ptr->moveLabel(-505,1420);
 
-  QPushButton *ww30push = new QPushButton();
+  WSignalQPushButton *ww30push = new WSignalQPushButton();
   scene->addWidget(ww30push);
   ww30ptr->addButtonAndLabel(ww30label,ww30push);
   ww30ptr->moveButton(-465,1365);
   ww30ptr->moveLabel(-435,1350);
 
-  QPushButton *ww31push = new QPushButton();
+  WSignalQPushButton *ww31push = new WSignalQPushButton();
   scene->addWidget(ww31push);
   ww31ptr->addButtonAndLabel(ww31label,ww31push);
   ww31ptr->moveButton(-445,1295);
   ww31ptr->moveLabel(-415,1280);
 
-  QPushButton *ww39push = new QPushButton();
+  WSignalQPushButton *ww39push = new WSignalQPushButton();
   scene->addWidget(ww39push);
   ww39ptr->addButtonAndLabel(ww39label,ww39push);
   ww39ptr->moveButton(-1005,1785);
   ww39ptr->moveLabel(-1045,1810);
 
-  QPushButton *ww40push = new QPushButton();
+  WSignalQPushButton *ww40push = new WSignalQPushButton();
   scene->addWidget(ww40push);
   ww40ptr->addButtonAndLabel(ww40label,ww40push);
   ww40ptr->moveButton(410,1250);
   ww40ptr->moveLabel(391,1219);
 
-  QPushButton *ww41push = new QPushButton();
+  WSignalQPushButton *ww41push = new WSignalQPushButton();
   scene->addWidget(ww41push);
   ww41ptr->addButtonAndLabel(ww41label,ww41push);
   ww41ptr->moveButton(-135,1785);
   ww41ptr->moveLabel(-180,1810);
 
-  QPushButton *ww38push = new QPushButton();
+  WSignalQPushButton *ww38push = new WSignalQPushButton();
   scene->addWidget(ww38push);
   ww38ptr->addButtonAndLabel(ww38label,ww38push);
   ww38ptr->moveButton(-115,1715);
   ww38ptr->moveLabel(-160,1740);
 
-  QPushButton *ww37push = new QPushButton();
+  WSignalQPushButton *ww37push = new WSignalQPushButton();
   scene->addWidget(ww37push);
   ww37ptr->addButtonAndLabel(ww37label,ww37push);
   ww37ptr->moveButton(-45,1645);
   ww37ptr->moveLabel(-90,1670);
 
-  QPushButton *ww36push = new QPushButton();
+  WSignalQPushButton *ww36push = new WSignalQPushButton();
   scene->addWidget(ww36push);
   ww36ptr->addButtonAndLabel(ww36label,ww36push);
   ww36ptr->moveButton(25,1575);
   ww36ptr->moveLabel(-20,1600);
 
-  QPushButton *ww35push = new QPushButton();
+  WSignalQPushButton *ww35push = new WSignalQPushButton();
   scene->addWidget(ww35push);
   ww35ptr->addButtonAndLabel(ww35label,ww35push);
   ww35ptr->moveButton(95,1505);
   ww35ptr->moveLabel(50,1530);
 
-  QPushButton *ww34push = new QPushButton();
+  WSignalQPushButton *ww34push = new WSignalQPushButton();
   scene->addWidget(ww34push);
   ww34ptr->addButtonAndLabel(ww34label,ww34push);
   ww34ptr->moveButton(165,1435);
   ww34ptr->moveLabel(120,1460);
 
-  QPushButton *ww33push = new QPushButton();
+  WSignalQPushButton *ww33push = new WSignalQPushButton();
   scene->addWidget(ww33push);
   ww33ptr->addButtonAndLabel(ww33label,ww33push);
   ww33ptr->moveButton(235,1365);
   ww33ptr->moveLabel(190,1390);
 
-  QPushButton *ww32push = new QPushButton();
+  WSignalQPushButton *ww32push = new WSignalQPushButton();
   scene->addWidget(ww32push);
   ww32ptr->addButtonAndLabel(ww32label,ww32push);
   ww32ptr->moveButton(290,1295);
@@ -4683,7 +4683,7 @@ int main( int argc , char *argv[] ){
   s52item1->setRotation(-90);
   s52item2->setRotation(-90);
   s52item3->setRotation(-90);
-  QPushButton *s52push = new QPushButton();
+  HSignalQPushButton *s52push = new HSignalQPushButton();
   scene->addWidget(s52push);
   QLabel *s52label = new QLabel();
   scene->addWidget(s52label);
@@ -4729,7 +4729,7 @@ int main( int argc , char *argv[] ){
   s51item1->setRotation(45);
   s51item2->setRotation(45);
   s51item3->setRotation(45);
-  QPushButton *s51push = new QPushButton();
+  HSignalQPushButton *s51push = new HSignalQPushButton();
   scene->addWidget(s51push);
   QLabel *s51label = new QLabel();
   scene->addWidget(s51label);
@@ -5512,7 +5512,7 @@ int main( int argc , char *argv[] ){
   s14item1->setRotation(90);
   s14item2->setRotation(90);
   s14item3->setRotation(90);
-  QPushButton *s14push = new QPushButton();
+  HSignalQPushButton *s14push = new HSignalQPushButton();
   scene->addWidget(s14push);
   QLabel *s14label = new QLabel();
   scene->addWidget(s14label);
@@ -5546,7 +5546,7 @@ int main( int argc , char *argv[] ){
   s15item1->setRotation(90);
   s15item2->setRotation(90);
   s15item3->setRotation(90);
-  QPushButton *s15push = new QPushButton();
+  HSignalQPushButton *s15push = new HSignalQPushButton();
   scene->addWidget(s15push);
   QLabel *s15label = new QLabel();
   scene->addWidget(s15label);
@@ -5592,7 +5592,7 @@ int main( int argc , char *argv[] ){
   s18item1->setRotation(90);
   s18item2->setRotation(90);
   s18item3->setRotation(90);
-  QPushButton *s18push = new QPushButton();
+  HSignalQPushButton *s18push = new HSignalQPushButton();
   scene->addWidget(s18push);
   QLabel *s18label = new QLabel();
   scene->addWidget(s18label);
@@ -5626,7 +5626,7 @@ int main( int argc , char *argv[] ){
   s17item1->setRotation(90);
   s17item2->setRotation(90);
   s17item3->setRotation(90);
-  QPushButton *s17push = new QPushButton();
+  HSignalQPushButton *s17push = new HSignalQPushButton();
   scene->addWidget(s17push);
   QLabel *s17label = new QLabel();
   scene->addWidget(s17label);
@@ -5660,7 +5660,7 @@ int main( int argc , char *argv[] ){
   s16item1->setRotation(90);
   s16item2->setRotation(90);
   s16item3->setRotation(90);
-  QPushButton *s16push = new QPushButton();
+  HSignalQPushButton *s16push = new HSignalQPushButton();
   scene->addWidget(s16push);
   QLabel *s16label = new QLabel();
   scene->addWidget(s16label);
@@ -5706,7 +5706,7 @@ int main( int argc , char *argv[] ){
   s22item1->setRotation(90);
   s22item2->setRotation(90);
   s22item3->setRotation(90);
-  QPushButton *s22push = new QPushButton();
+  HSignalQPushButton *s22push = new HSignalQPushButton();
   scene->addWidget(s22push);
   QLabel *s22label = new QLabel();
   scene->addWidget(s22label);
@@ -5752,7 +5752,7 @@ int main( int argc , char *argv[] ){
   s21item1->setRotation(-90);
   s21item2->setRotation(-90);
   s21item3->setRotation(-90);
-  QPushButton *s21push = new QPushButton();
+  HSignalQPushButton *s21push = new HSignalQPushButton();
   scene->addWidget(s21push);
   QLabel *s21label = new QLabel();
   scene->addWidget(s21label);
@@ -5798,7 +5798,7 @@ int main( int argc , char *argv[] ){
   s20item1->setRotation(-90);
   s20item2->setRotation(-90);
   s20item3->setRotation(-90);
-  QPushButton *s20push = new QPushButton();
+  HSignalQPushButton *s20push = new HSignalQPushButton();
   scene->addWidget(s20push);
   QLabel *s20label = new QLabel();
   scene->addWidget(s20label);
@@ -5845,7 +5845,7 @@ int main( int argc , char *argv[] ){
   s19item1->setRotation(-90);
   s19item2->setRotation(-90);
   s19item3->setRotation(-90);
-  QPushButton *s19push = new QPushButton();
+  HSignalQPushButton *s19push = new HSignalQPushButton();
   scene->addWidget(s19push);
   QLabel *s19label = new QLabel();
   scene->addWidget(s19label);
@@ -5891,7 +5891,7 @@ int main( int argc , char *argv[] ){
   s23item1->setRotation(135);
   s23item2->setRotation(135);
   s23item3->setRotation(135);
-  QPushButton *s23push = new QPushButton();
+  HSignalQPushButton *s23push = new HSignalQPushButton();
   scene->addWidget(s23push);
   QLabel *s23label = new QLabel();
   scene->addWidget(s23label);
@@ -5913,55 +5913,55 @@ int main( int argc , char *argv[] ){
   s23ptr->moveLabel(-865,-240);
 
   //WS
-  QPushButton *ww4push = new QPushButton();
+  WSignalQPushButton *ww4push = new WSignalQPushButton();
   scene->addWidget(ww4push);
   ww4ptr->addButtonAndLabel(ww4label,ww4push);
   ww4ptr->moveButton(320,-615);
   ww4ptr->moveLabel(350,-630);
 
-  QPushButton *ww9push = new QPushButton();
+  WSignalQPushButton *ww9push = new WSignalQPushButton();
   scene->addWidget(ww9push);
   ww9ptr->addButtonAndLabel(ww9label,ww9push);
   ww9ptr->moveButton(-30,-245);
   ww9ptr->moveLabel(0,-280);
 
-  QPushButton *ww6push = new QPushButton();
+  WSignalQPushButton *ww6push = new WSignalQPushButton();
   scene->addWidget(ww6push);
   ww6ptr->addButtonAndLabel(ww6label,ww6push);
   ww6ptr->moveButton(280,-165);
   ww6ptr->moveLabel(310,-200);
 
-  QPushButton *ww11push = new QPushButton();
+  WSignalQPushButton *ww11push = new WSignalQPushButton();
   scene->addWidget(ww11push);
   ww11ptr->addButtonAndLabel(ww11label,ww11push);
   ww11ptr->moveButton(-900,-165);
   ww11ptr->moveLabel(-850,-155);
 
-  QPushButton *ww10push = new QPushButton();
+  WSignalQPushButton *ww10push = new WSignalQPushButton();
   scene->addWidget(ww10push);
   ww10ptr->addButtonAndLabel(ww10label,ww10push);
   ww10ptr->moveButton(-710,-80);
   ww10ptr->moveLabel(-740,-60);
 
-  QPushButton *ww7push = new QPushButton();
+  WSignalQPushButton *ww7push = new WSignalQPushButton();
   scene->addWidget(ww7push);
   ww7ptr->addButtonAndLabel(ww7label,ww7push);
   ww7ptr->moveButton(380,-165);
   ww7ptr->moveLabel(335,-140);
 
-  QPushButton *ww5push = new QPushButton();
+  WSignalQPushButton *ww5push = new WSignalQPushButton();
   scene->addWidget(ww5push);
   ww5ptr->addButtonAndLabel(ww5label,ww5push);
   ww5ptr->moveButton(410,-135);
   ww5ptr->moveLabel(375,-210);
 
-  QPushButton *ww8push = new QPushButton();
+  WSignalQPushButton *ww8push = new WSignalQPushButton();
   scene->addWidget(ww8push);
   ww8ptr->addButtonAndLabel(ww8label,ww8push);
   ww8ptr->moveButton(190,-205);
   ww8ptr->moveLabel(135,-210);
 
-  QPushButton *ww3push = new QPushButton();
+  WSignalQPushButton *ww3push = new WSignalQPushButton();
   scene->addWidget(ww3push);
   ww3ptr->addButtonAndLabel(ww3label,ww3push);
   ww3ptr->moveButton(240,265);
@@ -6487,7 +6487,7 @@ int main( int argc , char *argv[] ){
   bnptr->addBlockitems(bnrect3);
   scene->addItem(bnrect3);
 
-  QPushButton *ww12push = new QPushButton();
+  WSignalQPushButton *ww12push = new WSignalQPushButton();
   scene->addWidget(ww12push);
   ww12ptr->addButtonAndLabel(ww12label,ww12push);
   ww12ptr->moveButton(595,220);
@@ -6505,7 +6505,7 @@ int main( int argc , char *argv[] ){
   s24item1->setScale(0.1);
   s24item2->setScale(0.1);
   s24item3->setScale(0.1);
-  QPushButton *s24push = new QPushButton();
+  HSignalQPushButton *s24push = new HSignalQPushButton();
   scene->addWidget(s24push);
   QLabel *s24label = new QLabel();
   scene->addWidget(s24label);
@@ -6574,7 +6574,7 @@ int main( int argc , char *argv[] ){
   s25item1->setRotation(180);
   s25item2->setRotation(180);
   s25item3->setRotation(180);
-  QPushButton *s25push = new QPushButton();
+  HSignalQPushButton *s25push = new HSignalQPushButton();
   scene->addWidget(s25push);
   QLabel *s25label = new QLabel();
   scene->addWidget(s25label);
@@ -6642,7 +6642,7 @@ int main( int argc , char *argv[] ){
   s27item1->setRotation(90);
   s27item2->setRotation(90);
   s27item3->setRotation(90);
-  QPushButton *s27push = new QPushButton();
+  HSignalQPushButton *s27push = new HSignalQPushButton();
   scene->addWidget(s27push);
   QLabel *s27label = new QLabel();
   scene->addWidget(s27label);
@@ -6688,7 +6688,7 @@ int main( int argc , char *argv[] ){
   s28item1->setRotation(90);
   s28item2->setRotation(90);
   s28item3->setRotation(90);
-  QPushButton *s28push = new QPushButton();
+  HSignalQPushButton *s28push = new HSignalQPushButton();
   scene->addWidget(s28push);
   QLabel *s28label = new QLabel();
   scene->addWidget(s28label);
@@ -6722,7 +6722,7 @@ int main( int argc , char *argv[] ){
   s29item1->setRotation(-90);
   s29item2->setRotation(-90);
   s29item3->setRotation(-90);
-  QPushButton *s29push = new QPushButton();
+  HSignalQPushButton *s29push = new HSignalQPushButton();
   scene->addWidget(s29push);
   QLabel *s29label = new QLabel();
   scene->addWidget(s29label);
@@ -6756,7 +6756,7 @@ int main( int argc , char *argv[] ){
   s30item1->setRotation(-90);
   s30item2->setRotation(-90);
   s30item3->setRotation(-90);
-  QPushButton *s30push = new QPushButton();
+  HSignalQPushButton *s30push = new HSignalQPushButton();
   scene->addWidget(s30push);
   QLabel *s30label = new QLabel();
   scene->addWidget(s30label);
@@ -6802,7 +6802,7 @@ int main( int argc , char *argv[] ){
   s39item1->setRotation(90);
   s39item2->setRotation(90);
   s39item3->setRotation(90);
-  QPushButton *s39push = new QPushButton();
+  HSignalQPushButton *s39push = new HSignalQPushButton();
   scene->addWidget(s39push);
   QLabel *s39label = new QLabel();
   scene->addWidget(s39label);
@@ -6848,7 +6848,7 @@ int main( int argc , char *argv[] ){
   s41item1->setRotation(-90);
   s41item2->setRotation(-90);
   s41item3->setRotation(-90);
-  QPushButton *s41push = new QPushButton();
+  HSignalQPushButton *s41push = new HSignalQPushButton();
   scene->addWidget(s41push);
   QLabel *s41label = new QLabel();
   scene->addWidget(s41label);
@@ -6894,7 +6894,7 @@ int main( int argc , char *argv[] ){
   s40item1->setRotation(-90);
   s40item2->setRotation(-90);
   s40item3->setRotation(-90);
-  QPushButton *s40push = new QPushButton();
+  HSignalQPushButton *s40push = new HSignalQPushButton();
   scene->addWidget(s40push);
   QLabel *s40label = new QLabel();
   scene->addWidget(s40label);
@@ -6952,7 +6952,7 @@ int main( int argc , char *argv[] ){
   s48item1->setRotation(-90);
   s48item2->setRotation(-90);
   s48item3->setRotation(-90);
-  QPushButton *s48push = new QPushButton();
+  HSignalQPushButton *s48push = new HSignalQPushButton();
   scene->addWidget(s48push);
   QLabel *s48label = new QLabel();
   scene->addWidget(s48label);
@@ -6998,7 +6998,7 @@ int main( int argc , char *argv[] ){
   s46item1->setRotation(-90);
   s46item2->setRotation(-90);
   s46item3->setRotation(-90);
-  QPushButton *s46push = new QPushButton();
+  HSignalQPushButton *s46push = new HSignalQPushButton();
   scene->addWidget(s46push);
   QLabel *s46label = new QLabel();
   scene->addWidget(s46label);
@@ -7044,7 +7044,7 @@ int main( int argc , char *argv[] ){
   s47item1->setRotation(90);
   s47item2->setRotation(90);
   s47item3->setRotation(90);
-  QPushButton *s47push = new QPushButton();
+  HSignalQPushButton *s47push = new HSignalQPushButton();
   scene->addWidget(s47push);
   QLabel *s47label = new QLabel();
   scene->addWidget(s47label);
@@ -7090,7 +7090,7 @@ int main( int argc , char *argv[] ){
   s45item1->setRotation(90);
   s45item2->setRotation(90);
   s45item3->setRotation(90);
-  QPushButton *s45push = new QPushButton();
+  HSignalQPushButton *s45push = new HSignalQPushButton();
   scene->addWidget(s45push);
   QLabel *s45label = new QLabel();
   scene->addWidget(s45label);
@@ -7136,7 +7136,7 @@ int main( int argc , char *argv[] ){
   s38item1->setRotation(90);
   s38item2->setRotation(90);
   s38item3->setRotation(90);
-  QPushButton *s38push = new QPushButton();
+  HSignalQPushButton *s38push = new HSignalQPushButton();
   scene->addWidget(s38push);
   QLabel *s38label = new QLabel();
   scene->addWidget(s38label);
@@ -7177,7 +7177,7 @@ int main( int argc , char *argv[] ){
   s26item1->setScale(0.1);
   s26item2->setScale(0.1);
   s26item3->setScale(0.1);
-  QPushButton *s26push = new QPushButton();
+  HSignalQPushButton *s26push = new HSignalQPushButton();
   scene->addWidget(s26push);
   QLabel *s26label = new QLabel();
   scene->addWidget(s26label);
@@ -7223,7 +7223,7 @@ int main( int argc , char *argv[] ){
   s42item1->setRotation(-90);
   s42item2->setRotation(-90);
   s42item3->setRotation(-90);
-  QPushButton *s42push = new QPushButton();
+  HSignalQPushButton *s42push = new HSignalQPushButton();
   scene->addWidget(s42push);
   QLabel *s42label = new QLabel();
   scene->addWidget(s42label);
@@ -7257,7 +7257,7 @@ int main( int argc , char *argv[] ){
   s37item1->setRotation(90);
   s37item2->setRotation(90);
   s37item3->setRotation(90);
-  QPushButton *s37push = new QPushButton();
+  HSignalQPushButton *s37push = new HSignalQPushButton();
   scene->addWidget(s37push);
   QLabel *s37label = new QLabel();
   scene->addWidget(s37label);
@@ -7291,7 +7291,7 @@ int main( int argc , char *argv[] ){
   s36item1->setRotation(90);
   s36item2->setRotation(90);
   s36item3->setRotation(90);
-  QPushButton *s36push = new QPushButton();
+  HSignalQPushButton *s36push = new HSignalQPushButton();
   scene->addWidget(s36push);
   QLabel *s36label = new QLabel();
   scene->addWidget(s36label);
@@ -7325,7 +7325,7 @@ int main( int argc , char *argv[] ){
   s35item1->setRotation(90);
   s35item2->setRotation(90);
   s35item3->setRotation(90);
-  QPushButton *s35push = new QPushButton();
+  HSignalQPushButton *s35push = new HSignalQPushButton();
   scene->addWidget(s35push);
   QLabel *s35label = new QLabel();
   scene->addWidget(s35label);
@@ -7359,7 +7359,7 @@ int main( int argc , char *argv[] ){
   s43item1->setRotation(90);
   s43item2->setRotation(90);
   s43item3->setRotation(90);
-  QPushButton *s43push = new QPushButton();
+  HSignalQPushButton *s43push = new HSignalQPushButton();
   scene->addWidget(s43push);
   QLabel *s43label = new QLabel();
   scene->addWidget(s43label);
@@ -7405,7 +7405,7 @@ int main( int argc , char *argv[] ){
   s34item1->setRotation(-90);
   s34item2->setRotation(-90);
   s34item3->setRotation(-90);
-  QPushButton *s34push = new QPushButton();
+  HSignalQPushButton *s34push = new HSignalQPushButton();
   scene->addWidget(s34push);
   QLabel *s34label = new QLabel();
   scene->addWidget(s34label);
@@ -7451,7 +7451,7 @@ int main( int argc , char *argv[] ){
   s33item1->setRotation(-90);
   s33item2->setRotation(-90);
   s33item3->setRotation(-90);
-  QPushButton *s33push = new QPushButton();
+  HSignalQPushButton *s33push = new HSignalQPushButton();
   scene->addWidget(s33push);
   QLabel *s33label = new QLabel();
   scene->addWidget(s33label);
@@ -7497,7 +7497,7 @@ int main( int argc , char *argv[] ){
   s31item1->setRotation(-90);
   s31item2->setRotation(-90);
   s31item3->setRotation(-90);
-  QPushButton *s31push = new QPushButton();
+  HSignalQPushButton *s31push = new HSignalQPushButton();
   scene->addWidget(s31push);
   QLabel *s31label = new QLabel();
   scene->addWidget(s31label);
@@ -7543,7 +7543,7 @@ int main( int argc , char *argv[] ){
   s32item1->setRotation(-90);
   s32item2->setRotation(-90);
   s32item3->setRotation(-90);
-  QPushButton *s32push = new QPushButton();
+  HSignalQPushButton *s32push = new HSignalQPushButton();
   scene->addWidget(s32push);
   QLabel *s32label = new QLabel();
   scene->addWidget(s32label);
@@ -7623,7 +7623,7 @@ int main( int argc , char *argv[] ){
   s44item1->setRotation(180);
   s44item2->setRotation(180);
   s44item3->setRotation(180);
-  QPushButton *s44push = new QPushButton();
+  HSignalQPushButton *s44push = new HSignalQPushButton();
   scene->addWidget(s44push);
   QLabel *s44label = new QLabel();
   scene->addWidget(s44label);
@@ -7642,67 +7642,67 @@ int main( int argc , char *argv[] ){
   s44ptr->moveButton(1785,530);
   s44ptr->moveLabel(1750,465);
 
-  QPushButton *ww13push = new QPushButton();
+  WSignalQPushButton *ww13push = new WSignalQPushButton();
   scene->addWidget(ww13push);
   ww13ptr->addButtonAndLabel(ww13label,ww13push);
   ww13ptr->moveButton(1040,-370);
   ww13ptr->moveLabel(1005,-345);
 
-  QPushButton *ww14push = new QPushButton();
+  WSignalQPushButton *ww14push = new WSignalQPushButton();
   scene->addWidget(ww14push);
   ww14ptr->addButtonAndLabel(ww14label,ww14push);
   ww14ptr->moveButton(935,-225);
   ww14ptr->moveLabel(975,-245);
 
-  QPushButton *ww15push = new QPushButton();
+  WSignalQPushButton *ww15push = new WSignalQPushButton();
   scene->addWidget(ww15push);
   ww15ptr->addButtonAndLabel(ww15label,ww15push);
   ww15ptr->moveButton(1125,-225);
   ww15ptr->moveLabel(1085,-200);
 
-  QPushButton *ww16push = new QPushButton();
+  WSignalQPushButton *ww16push = new WSignalQPushButton();
   scene->addWidget(ww16push);
   ww16ptr->addButtonAndLabel(ww16label,ww16push);
   ww16ptr->moveButton(2085,-225);
   ww16ptr->moveLabel(2095,-240);
 
-  QPushButton *ww17push = new QPushButton();
+  WSignalQPushButton *ww17push = new WSignalQPushButton();
   scene->addWidget(ww17push);
   ww17ptr->addButtonAndLabel(ww17label,ww17push);
   ww17ptr->moveButton(2375,-225);
   ww17ptr->moveLabel(2335,-200);
 
-  QPushButton *ww18push = new QPushButton();
+  WSignalQPushButton *ww18push = new WSignalQPushButton();
   scene->addWidget(ww18push);
   ww18ptr->addButtonAndLabel(ww18label,ww18push);
   ww18ptr->moveButton(2045,-185);
   ww18ptr->moveLabel(2080,-175);
 
-  QPushButton *ww19push = new QPushButton();
+  WSignalQPushButton *ww19push = new WSignalQPushButton();
   scene->addWidget(ww19push);
   ww19ptr->addButtonAndLabel(ww19label,ww19push);
   ww19ptr->moveButton(2250,25);
   ww19ptr->moveLabel(2200,20);
 
-  QPushButton *ww20push = new QPushButton();
+  WSignalQPushButton *ww20push = new WSignalQPushButton();
   scene->addWidget(ww20push);
   ww20ptr->addButtonAndLabel(ww20label,ww20push);
   ww20ptr->moveButton(2410,-300);
   ww20ptr->moveLabel(2370,-275);
 
-  QPushButton *ww21push = new QPushButton();
+  WSignalQPushButton *ww21push = new WSignalQPushButton();
   scene->addWidget(ww21push);
   ww21ptr->addButtonAndLabel(ww21label,ww21push);
   ww21ptr->moveButton(2210,-300);
   ww21ptr->moveLabel(2230,-315);
 
-  QPushButton *ww22push = new QPushButton();
+  WSignalQPushButton *ww22push = new WSignalQPushButton();
   scene->addWidget(ww22push);
   ww22ptr->addButtonAndLabel(ww22label,ww22push);
   ww22ptr->moveButton(2210,-370);
   ww22ptr->moveLabel(2240,-390);
 
-  QPushButton *ww23push = new QPushButton();
+  WSignalQPushButton *ww23push = new WSignalQPushButton();
   scene->addWidget(ww23push);
   ww23ptr->addButtonAndLabel(ww23label,ww23push);
   ww23ptr->moveButton(1815,225);

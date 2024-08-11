@@ -29,6 +29,9 @@ qt_add_executable(StellwerkQt MANUAL_FINALIZATION
   mainwindow.cpp mainwindow.h mainwindow.ui
   worker.cpp worker.h
   Configuration.cpp Configuration.h
+  StellwerkQPushButton.cpp StellwerkQPushButton.h
+  HSignalQPushButton.cpp HSignalQPushButton.h
+  WSignalQPushButton.cpp WSignalQPushButton.h
   )
 
 

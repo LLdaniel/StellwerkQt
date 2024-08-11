@@ -4,6 +4,7 @@
  */
 #include "WSignal.h"
 #include <QDebug>
+#include <QMenu>
 
 void WSignal::setV_id( int name ){
   QString suffix = QString::number( name );                                                 //name convert to QString
@@ -463,7 +464,7 @@ void WSignal::deleteNachbar( WSignal *todelete ){
   }
 }
 
-void WSignal::addButtonAndLabel(QLabel *lab, QPushButton *but){
+void WSignal::addButtonAndLabel(QLabel *lab, WSignalQPushButton *but){
   //Label
   beschriftung = lab;
   QString qname = v_id;
@@ -475,7 +476,8 @@ void WSignal::addButtonAndLabel(QLabel *lab, QPushButton *but){
   but->setFixedHeight(20);
   but->setFixedWidth(20);
   but->setStyleSheet("background-color: blue");
-  QObject::connect(push,&QPushButton::clicked,this,&WSignal::listenToFS);
+  QObject::connect(push,&WSignalQPushButton::clicked,this,&WSignal::listenToFS);
+  QObject::connect(push,&WSignalQPushButton::rightClicked,this,&WSignal::showShowContexts);
 }
 
 void WSignal::listenToFS(){
@@ -501,6 +503,11 @@ void WSignal::setZiel(QString zziel){
     hasWSZiel = true;
     ziel = zziel;
   }
+}
+
+void WSignal::showShowContexts(){
+  this->push->getMenu()->popup(QCursor::pos());
+  this->push->raise();
 }
 
 WSignal::~WSignal(){

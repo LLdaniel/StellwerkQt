@@ -10,7 +10,7 @@
 #define WSIGNAL_H
 #include "VSignal.h"
 #include <QLabel>
-#include <QPushButton>
+#include "WSignalQPushButton.h"
 #include <QObject>
 #include <Block.h>
 #include <Weiche.h>
@@ -42,7 +42,7 @@ public:
   //
   //+++ GUI +++
   //
-  void addButtonAndLabel(QLabel *lab, QPushButton *but);
+  void addButtonAndLabel(QLabel *lab, WSignalQPushButton *but);
   void moveLabel( int x , int y ){ beschriftung->move(x,y); }
   void moveButton( int x, int y ){ push->move(x,y); }
 
@@ -52,6 +52,7 @@ signals:
 public slots:
   void listenToFS();                                         //look for clicks, which will be conerted to route commands from clickmanager
   void zugpassiertW();                                       //zugpassiert for routes of character WS->WS FS
+  void showShowContexts();
   //void zugpassiert()                                       //zugpassiert from routes of character HS->HS with WS as VS: WS inherits from VS and inherits therefore VS`s zugpassiert
 private:
   QString ziel;                                              //save end signal 
@@ -63,6 +64,6 @@ private:
   QList<QPair<QString, QList<Block*>> > blockZuH;                         // involved segments in specific routes to HS       
   //+++GUI+++
   QLabel *beschriftung = new QLabel();
-  QPushButton *push = new QPushButton();
+  WSignalQPushButton *push = new WSignalQPushButton();
 };
 #endif

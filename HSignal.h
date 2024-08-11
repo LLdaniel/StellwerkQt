@@ -16,7 +16,7 @@
 #include "VSignal.h"
 #include <QLabel>
 #include <QGraphicsSvgItem>
-#include <QPushButton>
+#include "HSignalQPushButton.h"
 #include "WSignal.h"
 class HSignal : public QObject{
     Q_OBJECT
@@ -58,7 +58,7 @@ class HSignal : public QObject{
   //
   //+++ GUI +++
   //
-  void addHSignalitem(QGraphicsSvgItem *itemfahrt , QGraphicsSvgItem *itemhalt , QGraphicsSvgItem *itemrangier, QLabel *la, QPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront);
+  void addHSignalitem(QGraphicsSvgItem *itemfahrt , QGraphicsSvgItem *itemhalt , QGraphicsSvgItem *itemrangier, QLabel *la, HSignalQPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront);
   void moveLabel( int x , int y ){ beschriftung->move(x,y); }
   void moveButton( int x, int y ){ push->move(x,y); }
 
@@ -72,6 +72,7 @@ public slots:
   void listenToFS();                                     //waiting for click events, which will be converted in setFahrt commands (cf clickmanager)
   void recieveSpeicher(bool sp, QString str);
   //void processSpeicher();
+  void showShowContexts();
  protected:
   QString s_id;                                          //ID of main signal i.e. S002, S511
   bool s_status = false;                                 //status main signals: true:=go false:=stop
@@ -98,7 +99,7 @@ public slots:
   QGraphicsSvgItem *rangier;                            //shows signal "shunting"
   QPair<QGraphicsRectItem*,QGraphicsRectItem*> speicheritems;//display if memory is active: small squares
   QLabel *beschriftung = new QLabel();                  //singal label
-  QPushButton *push = new QPushButton();
+  HSignalQPushButton *push = new HSignalQPushButton();
   void changeColor();                                   //changes signal on plan
   void darkenSpeicher( int position );                  //delete memory items (squares) if memory goes inactive here it is relevant for the start signal
 };
