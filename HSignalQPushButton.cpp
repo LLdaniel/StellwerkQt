@@ -4,12 +4,17 @@
  */
 #include "HSignalQPushButton.h"
 #include <QMenu>
-HSignalQPushButton::HSignalQPushButton(QWidget *parent) : StellwerkQPushButton(parent) {
-  menu->addAction(new QAction("Show turnout status", this));
-  menu->addAction(new QAction("Show segements", this));
-  menu->addAction(new QAction("Show all segments", this));
-  menu->addAction(new QAction("Show pre-signal backwards", this));
-  menu->addAction(new QAction("Show pre-signal forwards", this));
-  menu->addAction(new QAction("Show shunt signal backwards", this));
-  menu->addAction(new QAction("Show shunt signal forwards", this));
+HSignalQPushButton::HSignalQPushButton(QWidget *parent) : StellwerkQPushButton(parent),
+							  sato(new QAction("Show all turnout status", this)),
+							  sas(new QAction("Show all segment status", this)),
+							  savr(new QAction("Show all VSignal status (backwards)", this)),
+							  savv(new QAction("Show all VSignal status (forwards)", this)),
+							  sawr(new QAction("Show all WSignal status (backwards)", this)),
+							  sawv(new QAction("Show all WSignal status (forwards)", this)){
+  menu->addAction(sato);
+  menu->addAction(sas);
+  menu->addAction(savr);
+  menu->addAction(savv);
+  menu->addAction(sawr);
+  menu->addAction(sawv);
 }

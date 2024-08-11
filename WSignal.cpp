@@ -347,16 +347,23 @@ void WSignal::addWeichenstatusZuH( QString toZiel , QList<QPair<Weiche* , bool>>
 }
 
 void WSignal::showWeichenstatusALL(){
+  QString message = "************************************************************\n";
   qInfo()<<"************************************************************";
   qInfo()<<"*** Dies ist der Weichenstatus für Rangiersignal"<<getV_id()<<"     ***";
+  message  += "    Dies ist der Weichenstatus für Rangiersignal" + getV_id() + "\n";
   for(  int i = 0 ; i < weichenstatus.size() ; i++){
     qInfo()<<"***   "<<weichenstatus.at(i).first<<" :                                             ***";
+    message += "      " + weichenstatus.at(i).first + "\n";
     for(  int j = 0 ; j < weichenstatus.at(i).second.size() ; j++ ){
       qInfo()<<"***               "<<weichenstatus.at(i).second.at(j).first->getW_id()<<"   -->   "<<weichenstatus.at(i).second.at(j).second<<"                          ***";
+      message += "                  " + weichenstatus.at(i).second.at(j).first->getW_id() + "   -->   " + QString::number(weichenstatus.at(i).second.at(j).second) + "\n";
     }
   }
   qInfo()<<"************************************************************";
+  message += "************************************************************\n";
   qInfo()<<"";
+  this->showBox->setText(message);
+  this->showBox->open();
 }
 
 void WSignal::showWeichenstatus( WSignal *whichZiel ){
@@ -403,16 +410,24 @@ void WSignal::showBlock( WSignal *whichZiel ){
 }
 
 void WSignal::showBlockALL(){
+  QString message = "************************************************************\n";
+  message += "   Dies sind die Blöcke für Hauptsignal "+ getV_id() + "\n";
   qInfo()<<"************************************************************";
   qInfo()<<"*** Dies sind die Blöcke für Hauptsignal "<<getV_id()<<"            ***";
   for(  int i = 0 ; i < block.size() ; i++){
+    message += "      " + block.at(i).first + "\n";
     qInfo()<<"***   "<<block.at(i).first<<" :                                             ***";
     for(  int j = 0 ; j < block.at(i).second.size() ; j++ ){
+      message += "                  " + block.at(i).second.at(j)->getName() + "\n";
       qInfo()<<"***               "<<block.at(i).second.at(j)->getName()<<"                                     ***";
     }
   }
+  message += "************************************************************\n";
   qInfo()<<"************************************************************";
   qInfo()<<"";
+  this->showBox->setText(message);
+  this->showBox->open();
+  
 }
 
 
@@ -478,6 +493,8 @@ void WSignal::addButtonAndLabel(QLabel *lab, WSignalQPushButton *but){
   but->setStyleSheet("background-color: blue");
   QObject::connect(push,&WSignalQPushButton::clicked,this,&WSignal::listenToFS);
   QObject::connect(push,&WSignalQPushButton::rightClicked,this,&WSignal::showShowContexts);
+  QObject::connect(push->sato,&QAction::triggered,this,&WSignal::showWeichenstatusALL);
+  QObject::connect(push->sas,&QAction::triggered,this,&WSignal::showBlockALL);
 }
 
 void WSignal::listenToFS(){

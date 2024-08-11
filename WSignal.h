@@ -17,6 +17,7 @@
 #include <QString>
 #include <QList>
 #include <QPair>
+#include <QMessageBox>
 class WSignal : public QObject,public VSignal{                 //WSignal inherits from VSignal
   Q_OBJECT
 public:
@@ -27,12 +28,12 @@ public:
   QString getZiel(){ return ziel; }
   void addWeichenstatus( WSignal *toZiel , QList<QPair<Weiche* , bool>> weichenpair );
   void addWeichenstatusZuH( QString toZiel , QList<QPair<Weiche* , bool>> weichenpair );
-  void showWeichenstatusALL();
+  //void showWeichenstatusALL();
   void showWeichenstatus( WSignal *whichZiel );
   void addBlock( WSignal *toZiel , QList<Block*> inputBlock );
   void addBlockZuH( QString toZiel , QList<Block*> inputBlock );
   void showBlock( WSignal *whichZiel );
-  void showBlockALL();
+  //void showBlockALL();
   void deleteNachbar( WSignal *todelete );
   void setZiel( QString zziel );
   void deleteFS();
@@ -53,6 +54,8 @@ public slots:
   void listenToFS();                                         //look for clicks, which will be conerted to route commands from clickmanager
   void zugpassiertW();                                       //zugpassiert for routes of character WS->WS FS
   void showShowContexts();
+  void showWeichenstatusALL();
+  void showBlockALL();
   //void zugpassiert()                                       //zugpassiert from routes of character HS->HS with WS as VS: WS inherits from VS and inherits therefore VS`s zugpassiert
 private:
   QString ziel;                                              //save end signal 
@@ -65,5 +68,6 @@ private:
   //+++GUI+++
   QLabel *beschriftung = new QLabel();
   WSignalQPushButton *push = new WSignalQPushButton();
+  QMessageBox *showBox = new QMessageBox();
 };
 #endif

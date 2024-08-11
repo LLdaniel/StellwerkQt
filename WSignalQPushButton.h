@@ -7,10 +7,13 @@
 #ifndef WSIGNALQPUSHBUTTON_H
 #define WSIGNALQPUSHBUTTON_H
 #include <QObject>
+#include <QAction>
 #include "StellwerkQPushButton.h"
 class WSignalQPushButton : public StellwerkQPushButton {
   Q_OBJECT
 public:
-  WSignalQPushButton(QWidget *parent = 0);  
+  WSignalQPushButton(QWidget *parent = 0);
+  QAction *sato;
+  QAction *sas;
 };
 #endif

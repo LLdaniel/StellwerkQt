@@ -11,6 +11,12 @@
 class HSignalQPushButton : public StellwerkQPushButton {
   Q_OBJECT
  public:
-  HSignalQPushButton(QWidget *parent = 0);  
+  HSignalQPushButton(QWidget *parent = 0);
+  QAction *sato;
+  QAction *sas;
+  QAction *savr;
+  QAction *savv;
+  QAction *sawr;
+  QAction *sawv;
 };
 #endif
