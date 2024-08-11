@@ -40,6 +40,9 @@ private slots:
   void powerOffTurnouts();
   void powerOnTurnouts();
   void screen();
+  void setMinimalistic(){}
+  void setBasic(){}
+  void setDetailed(){}
 public slots:
   void calledw(Weiche *callw, bool statew);
   void calledb(Block *callb, bool stateb);
@@ -53,6 +56,7 @@ private:
   QMenu *piMenu;
   QMenu *viewMenu;
   QMenu *aboutMenu;
+  QMenu *subMenuSignals;
   QAction *shutdownAct;
   QAction *poweronTurnouts;
   QAction *poweroffTurnouts;
@@ -64,6 +68,9 @@ private:
   QMessageBox aboutBox;
   QAction *helpAct;
   QMessageBox helpBox;
+  QAction *minimalisticAct;
+  QAction *basicAct;
+  QAction *detailedAct;
 };
 
 #endif // MAINWINDOW_H

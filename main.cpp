@@ -555,8 +555,8 @@ int main( int argc , char *argv[] ){
   s2ptr->addWSignal(ww1ptr,"r");
   s3ptr->addWSignal(ww1ptr,"r");
   //
-  QGraphicsSvgItem *item3 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *item4 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *item3 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *item4 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(item3);
   scene->addItem(item4);
   item3->setPos(QPointF(-870,895));
@@ -579,8 +579,8 @@ int main( int argc , char *argv[] ){
   s50ptr->addWSignal(ww2ptr,"r");
   s12ptr->addWSignal(ww2ptr,"r");
   //
-  QGraphicsSvgItem *item5 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *item6 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *item5 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *item6 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(item5);
   scene->addItem(item6);
   item5->setPos(QPointF(-950,285));
@@ -600,8 +600,8 @@ int main( int argc , char *argv[] ){
   s9ptr->addWSignal(ww3ptr,"r");
   s11ptr->addWSignal(ww3ptr,"r");
   //
-  QGraphicsSvgItem *itemw3 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw32 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw3 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw32 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw3);
   scene->addItem(itemw32);
   itemw3->setPos(QPointF(240,265));
@@ -632,8 +632,8 @@ int main( int argc , char *argv[] ){
   s6ptr->addWSignal(ww4ptr,"r");
   s2ptr->addWSignal(ww4ptr,"r");
   //
-  QGraphicsSvgItem *itemw4 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw42 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw4 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw42 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw4);
   scene->addItem(itemw42);
   itemw4->setPos(QPointF(320,-615));
@@ -659,8 +659,8 @@ int main( int argc , char *argv[] ){
   s21ptr->addWSignal(ww5ptr,"r");
   s19ptr->addWSignal(ww5ptr,"r");  
   //
-  QGraphicsSvgItem *itemw5 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw52 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw5 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw52 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw5);
   scene->addItem(itemw52);
   itemw5->setPos(QPointF(410,-165));
@@ -675,8 +675,8 @@ int main( int argc , char *argv[] ){
   
   WSignal *ww6ptr = new WSignal(6);
   //
-  QGraphicsSvgItem *itemw6 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw62 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw6 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw62 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw6);
   scene->addItem(itemw62);
   itemw6->setPos(QPointF(280,-165));
@@ -691,8 +691,8 @@ int main( int argc , char *argv[] ){
   
   WSignal *ww7ptr = new WSignal(7);
   //
-  QGraphicsSvgItem *itemw7 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw72 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw7 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw72 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw7);
   scene->addItem(itemw72);
   itemw7->setPos(QPointF(400,-145));
@@ -707,8 +707,8 @@ int main( int argc , char *argv[] ){
   
   WSignal *ww8ptr = new WSignal(8);
   //
-  QGraphicsSvgItem *itemw8 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw82 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw8 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw82 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw8);
   scene->addItem(itemw82);
   itemw8->setPos(QPointF(180,-165));
@@ -723,8 +723,8 @@ int main( int argc , char *argv[] ){
   
   WSignal *ww9ptr = new WSignal(9);
   //
-  QGraphicsSvgItem *itemw9 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw92 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw9 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw92 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw9);
   scene->addItem(itemw92);
   itemw9->setPos(QPointF(-30,-245));
@@ -739,8 +739,8 @@ int main( int argc , char *argv[] ){
   
   WSignal *ww10ptr = new WSignal(10);
   //
-  QGraphicsSvgItem *itemw10 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw102 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw10 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw102 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw10);
   scene->addItem(itemw102);
   itemw10->setPos(QPointF(-670,-60));
@@ -755,8 +755,8 @@ int main( int argc , char *argv[] ){
   
   WSignal *ww11ptr = new WSignal(11);
   //
-  QGraphicsSvgItem *itemw11 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw112 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw11 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw112 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw11);
   scene->addItem(itemw112);
   itemw11->setPos(QPointF(-880,-165));
@@ -776,8 +776,8 @@ int main( int argc , char *argv[] ){
   s12ptr->addWSignal(ww12ptr,"v");
   s28ptr->addWSignal(ww12ptr,"r"); 
   //
-  QGraphicsSvgItem *itemw12 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw122 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw12 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw122 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw12);
   scene->addItem(itemw122);
   itemw12->setPos(QPointF(620,220));
@@ -797,8 +797,8 @@ int main( int argc , char *argv[] ){
   s36ptr->addWSignal(ww13ptr,"r");
   s37ptr->addWSignal(ww13ptr,"r");
   //
-  QGraphicsSvgItem *itemw13 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw132 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw13 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw132 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw13);
   scene->addItem(itemw132);
   itemw13->setPos(QPointF(1065,-345));
@@ -813,8 +813,8 @@ int main( int argc , char *argv[] ){
   
   WSignal *ww14ptr = new WSignal(14);
   //
-  QGraphicsSvgItem *itemw14 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw142 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw14 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw142 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw14);
   scene->addItem(itemw142);
   itemw14->setPos(QPointF(945,-230));
@@ -829,8 +829,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww15ptr = new WSignal(15);
   //
-  QGraphicsSvgItem *itemw15 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw152 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw15 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw152 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw15);
   scene->addItem(itemw152);
   itemw15->setPos(QPointF(1145,-200));
@@ -845,8 +845,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww16ptr = new WSignal(16);
   //
-  QGraphicsSvgItem *itemw16 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw162 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw16 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw162 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw16);
   scene->addItem(itemw162);
   itemw16->setPos(QPointF(2065,-225));
@@ -861,8 +861,8 @@ int main( int argc , char *argv[] ){
   
   WSignal *ww17ptr = new WSignal(17);
   //
-  QGraphicsSvgItem *itemw17 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw172 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw17 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw172 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw17);
   scene->addItem(itemw172);
   itemw17->setPos(QPointF(2395,-200));
@@ -877,8 +877,8 @@ int main( int argc , char *argv[] ){
   
   WSignal *ww18ptr = new WSignal(18);
   //
-  QGraphicsSvgItem *itemw18 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw182 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw18 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw182 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw18);
   scene->addItem(itemw182);
   itemw18->setPos(QPointF(2055,-190));
@@ -893,8 +893,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww19ptr = new WSignal(19);
   //
-  QGraphicsSvgItem *itemw19 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw192 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw19 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw192 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw19);
   scene->addItem(itemw192);
   itemw19->setPos(QPointF(2262,50));
@@ -909,8 +909,8 @@ int main( int argc , char *argv[] ){
   
   WSignal *ww20ptr = new WSignal(20);
   //
-  QGraphicsSvgItem *itemw20 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw202 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw20 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw202 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw20);
   scene->addItem(itemw202);
   itemw20->setPos(QPointF(2430,-275));
@@ -925,8 +925,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww21ptr = new WSignal(21);
   //
-  QGraphicsSvgItem *itemw21 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw212 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw21 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw212 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw21);
   scene->addItem(itemw212);
   itemw21->setPos(QPointF(2200,-305));
@@ -948,8 +948,8 @@ int main( int argc , char *argv[] ){
   s33ptr->addWSignal(ww22ptr,"r");
   s32ptr->addWSignal(ww22ptr,"r");
   //
-  QGraphicsSvgItem *itemw22 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw222 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw22 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw222 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw22);
   scene->addItem(itemw222);
   itemw22->setPos(QPointF(2210,-375));
@@ -972,8 +972,8 @@ int main( int argc , char *argv[] ){
   s1ptr->addWSignal(ww23ptr,"r");
   s26ptr->addWSignal(ww23ptr,"r");
   //
-  QGraphicsSvgItem *itemw23 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw232 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw23 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw232 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw23);
   scene->addItem(itemw232);
   itemw23->setPos(QPointF(1825,220));
@@ -988,8 +988,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww24ptr = new WSignal(24);
   //
-  QGraphicsSvgItem *itemw24 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw242 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw24 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw242 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw24);
   scene->addItem(itemw242);
   itemw24->setPos(QPointF(-865,1785));
@@ -1004,8 +1004,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww25ptr = new WSignal(25);
   //
-  QGraphicsSvgItem *itemw25 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw252 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw25 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw252 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw25);
   scene->addItem(itemw252);
   itemw25->setPos(QPointF(-815,1715));
@@ -1020,8 +1020,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww26ptr = new WSignal(26);
   //
-  QGraphicsSvgItem *itemw26 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw262 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw26 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw262 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw26);
   scene->addItem(itemw262);
   itemw26->setPos(QPointF(-745,1645));
@@ -1036,8 +1036,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww27ptr = new WSignal(27);
   //
-  QGraphicsSvgItem *itemw27 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw272 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw27 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw272 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw27);
   scene->addItem(itemw272);
   itemw27->setPos(QPointF(-675,1575));
@@ -1052,8 +1052,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww28ptr = new WSignal(28);
   //
-  QGraphicsSvgItem *itemw28 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw282 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw28 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw282 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw28);
   scene->addItem(itemw282);
   itemw28->setPos(QPointF(-605,1505));
@@ -1068,8 +1068,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww29ptr = new WSignal(29);
   //
-  QGraphicsSvgItem *itemw29 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw292 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw29 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw292 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw29);
   scene->addItem(itemw292);
   itemw29->setPos(QPointF(-535,1435));
@@ -1084,8 +1084,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww30ptr = new WSignal(30);
   //
-  QGraphicsSvgItem *itemw30 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw302 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw30 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw302 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw30);
   scene->addItem(itemw302);
   itemw30->setPos(QPointF(-465,1365));
@@ -1100,8 +1100,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww31ptr = new WSignal(31);
   //
-  QGraphicsSvgItem *itemw311 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw312 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw311 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw312 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw311);
   scene->addItem(itemw312);
   itemw311->setPos(QPointF(-445,1295));
@@ -1116,8 +1116,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww32ptr = new WSignal(32);
   //
-  QGraphicsSvgItem *itemw321 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw322 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw321 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw322 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw321);
   scene->addItem(itemw322);
   itemw321->setPos(QPointF(310,1315));
@@ -1132,8 +1132,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww33ptr = new WSignal(33);
   //
-  QGraphicsSvgItem *itemw33 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw332 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw33 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw332 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw33);
   scene->addItem(itemw332);
   itemw33->setPos(QPointF(255,1385));
@@ -1148,8 +1148,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww34ptr = new WSignal(34);
   //
-  QGraphicsSvgItem *itemw34 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw342 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw34 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw342 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw34);
   scene->addItem(itemw342);
   itemw34->setPos(QPointF(185,1455));
@@ -1164,8 +1164,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww35ptr = new WSignal(35);
   //
-  QGraphicsSvgItem *itemw35 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw352 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw35 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw352 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw35);
   scene->addItem(itemw352);
   itemw35->setPos(QPointF(115,1525));
@@ -1180,8 +1180,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww36ptr = new WSignal(36);
   //
-  QGraphicsSvgItem *itemw36 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw362 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw36 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw362 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw36);
   scene->addItem(itemw362);
   itemw36->setPos(QPointF(45,1595));
@@ -1196,8 +1196,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww37ptr = new WSignal(37);
   //
-  QGraphicsSvgItem *itemw37 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw372 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw37 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw372 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw37);
   scene->addItem(itemw372);
   itemw37->setPos(QPointF(-25,1665));
@@ -1212,8 +1212,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww38ptr = new WSignal(38);
   //
-  QGraphicsSvgItem *itemw38 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw382 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw38 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw382 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw38);
   scene->addItem(itemw382);
   itemw38->setPos(QPointF(-95,1735));
@@ -1228,8 +1228,8 @@ int main( int argc , char *argv[] ){
   
   WSignal *ww39ptr = new WSignal(39);
   //
-  QGraphicsSvgItem *itemw39 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw392 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw39 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw392 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw39);
   scene->addItem(itemw392);
   itemw39->setPos(QPointF(-975,1805));
@@ -1244,8 +1244,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww40ptr = new WSignal(40);
   //
-  QGraphicsSvgItem *itemw40 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw402 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw40 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw402 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw40);
   scene->addItem(itemw402);
   itemw40->setPos(QPointF(391,1269));
@@ -1260,8 +1260,8 @@ int main( int argc , char *argv[] ){
 
   WSignal *ww41ptr = new WSignal(41);
   //
-  QGraphicsSvgItem *itemw41 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw412 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw41 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw412 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw41);
   scene->addItem(itemw412);
   itemw41->setPos(QPointF(-115,1805));
@@ -1280,8 +1280,8 @@ int main( int argc , char *argv[] ){
   s51ptr->addWSignal(ww42ptr,"v");
   s49ptr->addWSignal(ww42ptr,"r");
   //
-  QGraphicsSvgItem *itemw421 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw422 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw421 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw422 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw421);
   scene->addItem(itemw422);
   itemw421->setPos(QPointF(145,115));
@@ -1300,8 +1300,8 @@ int main( int argc , char *argv[] ){
   s52ptr->addWSignal(ww43ptr,"v");
   s10ptr->addWSignal(ww43ptr,"r");
   //
-  QGraphicsSvgItem *itemw431 = new QGraphicsSvgItem(":/resources/WSfahrt.svg");
-  QGraphicsSvgItem *itemw432 = new QGraphicsSvgItem(":/resources/WShalt.svg");
+  QGraphicsSvgItem *itemw431 = new QGraphicsSvgItem(":/resources/WSfahrt_min.svg");
+  QGraphicsSvgItem *itemw432 = new QGraphicsSvgItem(":/resources/WShalt_min.svg");
   scene->addItem(itemw431);
   scene->addItem(itemw432);
   itemw431->setPos(QPointF(-980,220));
@@ -3563,9 +3563,9 @@ int main( int argc , char *argv[] ){
   w8ptr->addWeichenitem(w8rectab,w8rectge,w8label);
   w8ptr->moveLabel(-180,555);
 
-  QGraphicsSvgItem *s4item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s4item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s4item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s4item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s4item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s4item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s4item1);
   scene->addItem(s4item3);
   scene->addItem(s4item2);
@@ -3597,9 +3597,9 @@ int main( int argc , char *argv[] ){
   s4ptr->moveButton(-775,805);
   s4ptr->moveLabel(-700,785);
 
-  QGraphicsSvgItem *s5item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s5item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s5item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s5item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s5item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s5item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s5item1);
   scene->addItem(s5item3);
   scene->addItem(s5item2);
@@ -3631,9 +3631,9 @@ int main( int argc , char *argv[] ){
   s5ptr->moveButton(-775,875);
   s5ptr->moveLabel(-700,855);
 
-  QGraphicsSvgItem *s2item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s2item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s2item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s2item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s2item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s2item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s2item1);
   scene->addItem(s2item3);
   scene->addItem(s2item2);
@@ -3665,9 +3665,9 @@ int main( int argc , char *argv[] ){
   s2ptr->moveButton(405,805);
   s2ptr->moveLabel(318,830);
 
-  QGraphicsSvgItem *s3item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s3item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s3item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s3item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s3item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s3item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s3item1);
   scene->addItem(s3item3);
   scene->addItem(s3item2);
@@ -3699,8 +3699,8 @@ int main( int argc , char *argv[] ){
   s3ptr->moveButton(405,875);
   s3ptr->moveLabel(318,900);
 
-  QGraphicsSvgItem *item1 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *item2 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *item1 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *item2 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(item1);
   scene->addItem(item2);
   item1->setPos(QPointF(-965,825));
@@ -3711,9 +3711,9 @@ int main( int argc , char *argv[] ){
   item2->setRotation(90);
   v2ptr->addVSignalitems(item1, item2);
   
-  QGraphicsSvgItem *s13item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s13item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s13item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s13item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s13item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s13item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s13item1);
   scene->addItem(s13item3);
   scene->addItem(s13item2);
@@ -3745,8 +3745,8 @@ int main( int argc , char *argv[] ){
   s13ptr->moveButton(-945,805);
   s13ptr->moveLabel(-1037,830);
 
-  QGraphicsSvgItem *itemv11 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv12 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv11 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv12 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv11);
   scene->addItem(itemv12);
   itemv11->setPos(QPointF(515,805));
@@ -3757,9 +3757,9 @@ int main( int argc , char *argv[] ){
   itemv12->setRotation(-90);
   v1ptr->addVSignalitems(itemv11, itemv12);
 
-  QGraphicsSvgItem *s1item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s1item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s1item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s1item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s1item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s1item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s1item1);
   scene->addItem(s1item3);
   scene->addItem(s1item2);
@@ -3806,8 +3806,8 @@ int main( int argc , char *argv[] ){
   ww2ptr->moveLabel(-1015,285);
   ///////////////////////////
 
-  QGraphicsSvgItem *itemv31 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv32 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv31 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv32 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv31);
   scene->addItem(itemv32);
   itemv31->setPos(QPointF(-900,600));
@@ -3816,8 +3816,8 @@ int main( int argc , char *argv[] ){
   itemv32->setScale(0.1);
   v3ptr->addVSignalitems(itemv31, itemv32);
 
-  QGraphicsSvgItem *itemv51 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv52 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv51 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv52 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv51);
   scene->addItem(itemv52);
   itemv51->setPos(QPointF(-980,600));
@@ -3826,8 +3826,8 @@ int main( int argc , char *argv[] ){
   itemv52->setScale(0.1);
   v5ptr->addVSignalitems(itemv51, itemv52);
 
-  QGraphicsSvgItem *itemv61 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv62 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv61 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv62 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv61);
   scene->addItem(itemv62);
   itemv61->setPos(QPointF(-1060,600));
@@ -3836,8 +3836,8 @@ int main( int argc , char *argv[] ){
   itemv62->setScale(0.1);
   v6ptr->addVSignalitems(itemv61, itemv62);
 
-  QGraphicsSvgItem *itemv71 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv72 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv71 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv72 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv71);
   scene->addItem(itemv72);
   itemv71->setPos(QPointF(-1080,700));
@@ -3848,8 +3848,8 @@ int main( int argc , char *argv[] ){
   itemv72->setRotation(180);
   v7ptr->addVSignalitems(itemv71, itemv72);
 
-  QGraphicsSvgItem *itemv101 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv102 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv101 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv102 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv101);
   scene->addItem(itemv102);
   itemv101->setPos(QPointF(0,-615));
@@ -3860,8 +3860,8 @@ int main( int argc , char *argv[] ){
   itemv102->setRotation(-90);
   v10ptr->addVSignalitems(itemv101, itemv102);
 
-  QGraphicsSvgItem *itemv41 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv42 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv41 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv42 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv41);
   scene->addItem(itemv42);
   itemv41->setPos(QPointF(-920,700));
@@ -3872,9 +3872,9 @@ int main( int argc , char *argv[] ){
   itemv42->setRotation(180);
   v4ptr->addVSignalitems(itemv41, itemv42);
 
-  QGraphicsSvgItem *s9item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s9item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s9item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s9item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s9item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s9item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s9item1);
   scene->addItem(s9item3);
   scene->addItem(s9item2);
@@ -3906,9 +3906,9 @@ int main( int argc , char *argv[] ){
   s9ptr->moveButton(-975,195);
   s9ptr->moveLabel(-905,170);
 
-  QGraphicsSvgItem *s11item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s11item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s11item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s11item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s11item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s11item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s11item1);
   scene->addItem(s11item3);
   scene->addItem(s11item2);
@@ -3940,9 +3940,9 @@ int main( int argc , char *argv[] ){
   s11ptr->moveButton(-860,265);
   s11ptr->moveLabel(-790,240);
 
-  QGraphicsSvgItem *s49item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s49item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s49item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s49item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s49item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s49item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s49item1);
   scene->addItem(s49item3);
   scene->addItem(s49item2);
@@ -3974,9 +3974,9 @@ int main( int argc , char *argv[] ){
   s49ptr->moveButton(-785,115);
   s49ptr->moveLabel(-715,90);
 
-  QGraphicsSvgItem *s10item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s10item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s10item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s10item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s10item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s10item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s10item1);
   scene->addItem(s10item3);
   scene->addItem(s10item2);
@@ -4008,9 +4008,9 @@ int main( int argc , char *argv[] ){
   s10ptr->moveButton(120,195);
   s10ptr->moveLabel(45,220);
 
-  QGraphicsSvgItem *s50item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s50item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s50item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s50item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s50item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s50item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s50item1);
   scene->addItem(s50item3);
   scene->addItem(s50item2);
@@ -4042,9 +4042,9 @@ int main( int argc , char *argv[] ){
   s50ptr->moveButton(120,115);
   s50ptr->moveLabel(45,140);
 
-  QGraphicsSvgItem *s12item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s12item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s12item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s12item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s12item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s12item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s12item1);
   scene->addItem(s12item3);
   scene->addItem(s12item2);
@@ -4076,8 +4076,8 @@ int main( int argc , char *argv[] ){
   s12ptr->moveButton(120,265);
   s12ptr->moveLabel(45,290);
   
-  QGraphicsSvgItem *itemv81 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv82 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv81 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv82 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv81);
   scene->addItem(itemv82);
   itemv81->setPos(QPointF(-215,580));
@@ -4088,9 +4088,9 @@ int main( int argc , char *argv[] ){
   itemv82->setRotation(90);
   v8ptr->addVSignalitems(itemv81, itemv82);
   
-  QGraphicsSvgItem *s7item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s7item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s7item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s7item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s7item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s7item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s7item1);
   scene->addItem(s7item3);
   scene->addItem(s7item2);
@@ -4122,8 +4122,8 @@ int main( int argc , char *argv[] ){
   s7ptr->moveButton(-205,560);
   s7ptr->moveLabel(-290,590);
 
-  QGraphicsSvgItem *itemv91 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv92 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv91 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv92 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv91);
   scene->addItem(itemv92);
   itemv91->setPos(QPointF(-185,645));
@@ -4134,9 +4134,9 @@ int main( int argc , char *argv[] ){
   itemv92->setRotation(45);
   v9ptr->addVSignalitems(itemv91, itemv92);
   
-  QGraphicsSvgItem *s6item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s6item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s6item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s6item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s6item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s6item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s6item1);
   scene->addItem(s6item3);
   scene->addItem(s6item2);
@@ -4170,9 +4170,9 @@ int main( int argc , char *argv[] ){
   s6ptr->moveButton(-180,605);
   s6ptr->moveLabel(-240,695);
 
-  QGraphicsSvgItem *s8item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s8item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s8item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s8item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s8item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s8item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s8item1);
   scene->addItem(s8item3);
   scene->addItem(s8item2);
@@ -4656,8 +4656,8 @@ int main( int argc , char *argv[] ){
   ww32ptr->moveButton(290,1295);
   ww32ptr->moveLabel(245,1320);
 
-  QGraphicsSvgItem *itemv44 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv442 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv44 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv442 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv44);
   scene->addItem(itemv442);
   itemv44->setPos(QPointF(-1000,1785));
@@ -4668,9 +4668,9 @@ int main( int argc , char *argv[] ){
   itemv442->setRotation(-90);
   v44ptr->addVSignalitems(itemv44, itemv442);
 
-  QGraphicsSvgItem *s52item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s52item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s52item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s52item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s52item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s52item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s52item1);
   scene->addItem(s52item3);
   scene->addItem(s52item2);
@@ -4702,8 +4702,8 @@ int main( int argc , char *argv[] ){
   s52ptr->moveButton(-985,1785);
   s52ptr->moveLabel(-950,1765);
 
-  QGraphicsSvgItem *itemv431 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv432 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv431 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv432 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv431);
   scene->addItem(itemv432);
   itemv431->setPos(QPointF(439,1275));
@@ -4714,9 +4714,9 @@ int main( int argc , char *argv[] ){
   itemv432->setRotation(45);
   v43ptr->addVSignalitems(itemv431, itemv432);
   
-  QGraphicsSvgItem *s51item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s51item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s51item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s51item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s51item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s51item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s51item1);
   scene->addItem(s51item3);
   scene->addItem(s51item2);
@@ -5497,9 +5497,9 @@ int main( int argc , char *argv[] ){
   aqptr->addBlockitems(aqrect2);
   scene->addItem(aqrect2);
 
-  QGraphicsSvgItem *s14item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s14item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s14item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s14item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s14item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s14item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s14item1);
   scene->addItem(s14item3);
   scene->addItem(s14item2);
@@ -5531,9 +5531,9 @@ int main( int argc , char *argv[] ){
   s14ptr->moveButton(200,-615);
   s14ptr->moveLabel(120,-590);
 
-  QGraphicsSvgItem *s15item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s15item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s15item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s15item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s15item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s15item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s15item1);
   scene->addItem(s15item3);
   scene->addItem(s15item2);
@@ -5565,8 +5565,8 @@ int main( int argc , char *argv[] ){
   s15ptr->moveButton(200,-545);
   s15ptr->moveLabel(120,-520);
 
-  QGraphicsSvgItem *itemv111 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv112 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv111 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv112 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv111);
   scene->addItem(itemv112);
   itemv111->setPos(QPointF(405,-350));
@@ -5577,9 +5577,9 @@ int main( int argc , char *argv[] ){
   itemv112->setRotation(180);
   v11ptr->addVSignalitems(itemv111, itemv112);
 
-  QGraphicsSvgItem *s18item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s18item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s18item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s18item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s18item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s18item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s18item1);
   scene->addItem(s18item3);
   scene->addItem(s18item2);
@@ -5611,9 +5611,9 @@ int main( int argc , char *argv[] ){
   s18ptr->moveButton(170,-165);
   s18ptr->moveLabel(110,-140);
 
-  QGraphicsSvgItem *s17item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s17item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s17item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s17item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s17item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s17item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s17item1);
   scene->addItem(s17item3);
   scene->addItem(s17item2);
@@ -5645,9 +5645,9 @@ int main( int argc , char *argv[] ){
   s17ptr->moveButton(235,-80);
   s17ptr->moveLabel(155,-55);
 
-  QGraphicsSvgItem *s16item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s16item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s16item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s16item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s16item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s16item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s16item1);
   scene->addItem(s16item3);
   scene->addItem(s16item2);
@@ -5679,8 +5679,8 @@ int main( int argc , char *argv[] ){
   s16ptr->moveButton(390,-5);
   s16ptr->moveLabel(310,30);
 
-  QGraphicsSvgItem *item141 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *item142 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *item141 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *item142 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(item141);
   scene->addItem(item142);
   item141->setPos(QPointF(-660,20));
@@ -5691,9 +5691,9 @@ int main( int argc , char *argv[] ){
   item142->setRotation(90);
   v14ptr->addVSignalitems(item141, item142);
   
-  QGraphicsSvgItem *s22item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s22item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s22item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s22item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s22item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s22item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s22item1);
   scene->addItem(s22item3);
   scene->addItem(s22item2);
@@ -5725,8 +5725,8 @@ int main( int argc , char *argv[] ){
   s22ptr->moveButton(-650,-5);
   s22ptr->moveLabel(-730,30);
 
-  QGraphicsSvgItem *itemv151 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv152 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv151 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv152 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv151);
   scene->addItem(itemv152);
   itemv151->setPos(QPointF(-545,-5));
@@ -5737,9 +5737,9 @@ int main( int argc , char *argv[] ){
   itemv152->setRotation(-90);
   v15ptr->addVSignalitems(itemv151, itemv152);
   
-  QGraphicsSvgItem *s21item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s21item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s21item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s21item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s21item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s21item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s21item1);
   scene->addItem(s21item3);
   scene->addItem(s21item2);
@@ -5771,8 +5771,8 @@ int main( int argc , char *argv[] ){
   s21ptr->moveButton(-570,-5);
   s21ptr->moveLabel(-490,-25);
 
-  QGraphicsSvgItem *itemv131 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv132 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv131 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv132 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv131);
   scene->addItem(itemv132);
   itemv131->setPos(QPointF(-585,-80));
@@ -5783,9 +5783,9 @@ int main( int argc , char *argv[] ){
   itemv132->setRotation(-90);
   v13ptr->addVSignalitems(itemv131, itemv132);
   
-  QGraphicsSvgItem *s20item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s20item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s20item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s20item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s20item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s20item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s20item1);
   scene->addItem(s20item3);
   scene->addItem(s20item2);
@@ -5818,8 +5818,8 @@ int main( int argc , char *argv[] ){
   s20ptr->moveLabel(-530,-100);
 
   
-  QGraphicsSvgItem *itemv121 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv122 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv121 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv122 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv121);
   scene->addItem(itemv122);
   itemv121->setPos(QPointF(-665,-165));
@@ -5830,9 +5830,9 @@ int main( int argc , char *argv[] ){
   itemv122->setRotation(-90);
   v12ptr->addVSignalitems(itemv121, itemv122);
   
-  QGraphicsSvgItem *s19item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s19item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s19item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s19item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s19item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s19item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s19item1);
   scene->addItem(s19item3);
   scene->addItem(s19item2);
@@ -5864,8 +5864,8 @@ int main( int argc , char *argv[] ){
   s19ptr->moveButton(-690,-165);
   s19ptr->moveLabel(-610,-185);
 
-  QGraphicsSvgItem *itemv161 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv162 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv161 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv162 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv161);
   scene->addItem(itemv162);
   itemv161->setPos(QPointF(-800,-200));
@@ -5876,9 +5876,9 @@ int main( int argc , char *argv[] ){
   itemv162->setRotation(135);
   v16ptr->addVSignalitems(itemv161, itemv162);
   
-  QGraphicsSvgItem *s23item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s23item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s23item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s23item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s23item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s23item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s23item1);
   scene->addItem(s23item3);
   scene->addItem(s23item2);
@@ -6493,9 +6493,9 @@ int main( int argc , char *argv[] ){
   ww12ptr->moveButton(595,220);
   ww12ptr->moveLabel(620,250);
 
-  QGraphicsSvgItem *s24item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s24item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s24item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s24item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s24item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s24item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s24item1);
   scene->addItem(s24item3);
   scene->addItem(s24item2);
@@ -6525,8 +6525,8 @@ int main( int argc , char *argv[] ){
   s24ptr->moveLabel(690,320);
 
 
-  QGraphicsSvgItem *itemv201 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv202 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv201 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv202 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv201);
   scene->addItem(itemv202);
   itemv201->setPos(QPointF(690,90));
@@ -6535,8 +6535,8 @@ int main( int argc , char *argv[] ){
   itemv202->setScale(0.1);
   v20ptr->addVSignalitems(itemv201, itemv202);
 
-  QGraphicsSvgItem *itemv181 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv182 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv181 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv182 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv181);
   scene->addItem(itemv182);
   itemv181->setPos(QPointF(660,190));
@@ -6547,8 +6547,8 @@ int main( int argc , char *argv[] ){
   itemv182->setRotation(180);
   v18ptr->addVSignalitems(itemv181, itemv182);
 
-  QGraphicsSvgItem *itemv171 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv172 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv171 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv172 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv171);
   scene->addItem(itemv172);
   itemv171->setPos(QPointF(595,240));
@@ -6559,9 +6559,9 @@ int main( int argc , char *argv[] ){
   itemv172->setRotation(180);
   v17ptr->addVSignalitems(itemv171, itemv172);
 
-  QGraphicsSvgItem *s25item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s25item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s25item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s25item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s25item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s25item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s25item1);
   scene->addItem(s25item3);
   scene->addItem(s25item2);
@@ -6593,8 +6593,8 @@ int main( int argc , char *argv[] ){
   s25ptr->moveButton(595,90);
   s25ptr->moveLabel(560,20);
 
-  QGraphicsSvgItem *itemv191 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv192 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv191 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv192 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv191);
   scene->addItem(itemv192);
   itemv191->setPos(QPointF(620,60));
@@ -6603,8 +6603,8 @@ int main( int argc , char *argv[] ){
   itemv192->setScale(0.1);
   v19ptr->addVSignalitems(itemv191, itemv192);
 
-  QGraphicsSvgItem *itemv211 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv212 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv211 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv212 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv211);
   scene->addItem(itemv212);
   itemv211->setPos(QPointF(595,-500));
@@ -6615,8 +6615,8 @@ int main( int argc , char *argv[] ){
   itemv212->setRotation(180);
   v21ptr->addVSignalitems(itemv211, itemv212);
 
-  QGraphicsSvgItem *itemv221 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv222 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv221 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv222 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv221);
   scene->addItem(itemv222);
   itemv221->setPos(QPointF(820,-525));
@@ -6627,9 +6627,9 @@ int main( int argc , char *argv[] ){
   itemv222->setRotation(90);
   v22ptr->addVSignalitems(itemv221, itemv222);
 
-  QGraphicsSvgItem *s27item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s27item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s27item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s27item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s27item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s27item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s27item1);
   scene->addItem(s27item3);
   scene->addItem(s27item2);
@@ -6661,8 +6661,8 @@ int main( int argc , char *argv[] ){
   s27ptr->moveButton(830,-545);
   s27ptr->moveLabel(748,-520);
 
-  QGraphicsSvgItem *itemv231 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv232 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv231 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv232 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv231);
   scene->addItem(itemv232);
   itemv231->setPos(QPointF(820,-595));
@@ -6673,9 +6673,9 @@ int main( int argc , char *argv[] ){
   itemv232->setRotation(90);
   v23ptr->addVSignalitems(itemv231, itemv232);
 
-  QGraphicsSvgItem *s28item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s28item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s28item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s28item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s28item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s28item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s28item1);
   scene->addItem(s28item3);
   scene->addItem(s28item2);
@@ -6707,9 +6707,9 @@ int main( int argc , char *argv[] ){
   s28ptr->moveButton(830,-615);
   s28ptr->moveLabel(748,-590);
 
-  QGraphicsSvgItem *s29item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s29item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s29item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s29item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s29item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s29item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s29item1);
   scene->addItem(s29item3);
   scene->addItem(s29item2);
@@ -6741,9 +6741,9 @@ int main( int argc , char *argv[] ){
   s29ptr->moveButton(920,-615);
   s29ptr->moveLabel(965,-630);
 
-  QGraphicsSvgItem *s30item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s30item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s30item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s30item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s30item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s30item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s30item1);
   scene->addItem(s30item3);
   scene->addItem(s30item2);
@@ -6775,8 +6775,8 @@ int main( int argc , char *argv[] ){
   s30ptr->moveButton(930,-545);
   s30ptr->moveLabel(985,-560);
 
-  QGraphicsSvgItem *itemv311 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv312 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv311 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv312 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv311);
   scene->addItem(itemv312);
   itemv311->setPos(QPointF(2480,-525));
@@ -6787,9 +6787,9 @@ int main( int argc , char *argv[] ){
   itemv312->setRotation(90);
   v31ptr->addVSignalitems(itemv311, itemv312);
 
-  QGraphicsSvgItem *s39item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s39item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s39item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s39item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s39item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s39item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s39item1);
   scene->addItem(s39item3);
   scene->addItem(s39item2);
@@ -6821,8 +6821,8 @@ int main( int argc , char *argv[] ){
   s39ptr->moveButton(2490,-545);
   s39ptr->moveLabel(2408,-520);
 
-  QGraphicsSvgItem *itemv301 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv302 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv301 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv302 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv301);
   scene->addItem(itemv302);
   itemv301->setPos(QPointF(2595,-545));
@@ -6833,9 +6833,9 @@ int main( int argc , char *argv[] ){
   itemv302->setRotation(-90);
   v30ptr->addVSignalitems(itemv301, itemv302);
   
-  QGraphicsSvgItem *s41item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s41item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s41item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s41item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s41item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s41item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s41item1);
   scene->addItem(s41item3);
   scene->addItem(s41item2);
@@ -6867,8 +6867,8 @@ int main( int argc , char *argv[] ){
   s41ptr->moveButton(2580,-545);
   s41ptr->moveLabel(2645,-560);
 
-  QGraphicsSvgItem *itemv291 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv292 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv291 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv292 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv291);
   scene->addItem(itemv292);
   itemv291->setPos(QPointF(2595,-615));
@@ -6879,9 +6879,9 @@ int main( int argc , char *argv[] ){
   itemv292->setRotation(-90);
   v29ptr->addVSignalitems(itemv291, itemv292);
   
-  QGraphicsSvgItem *s40item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s40item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s40item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s40item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s40item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s40item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s40item1);
   scene->addItem(s40item3);
   scene->addItem(s40item2);
@@ -6913,8 +6913,8 @@ int main( int argc , char *argv[] ){
   s40ptr->moveButton(2580,-615);
   s40ptr->moveLabel(2645,-630);
 
-  QGraphicsSvgItem *itemv351 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv352 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv351 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv352 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv351);
   scene->addItem(itemv352);
   itemv351->setPos(QPointF(2720,-50));
@@ -6925,8 +6925,8 @@ int main( int argc , char *argv[] ){
   itemv352->setRotation(180);
   v35ptr->addVSignalitems(itemv351, itemv352);
 
-  QGraphicsSvgItem *itemv381 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv382 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv381 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv382 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv381);
   scene->addItem(itemv382);
   itemv381->setPos(QPointF(1395,375));
@@ -6937,9 +6937,9 @@ int main( int argc , char *argv[] ){
   itemv382->setRotation(-90);
   v38ptr->addVSignalitems(itemv381, itemv382);
   
-  QGraphicsSvgItem *s48item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s48item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s48item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s48item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s48item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s48item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s48item1);
   scene->addItem(s48item3);
   scene->addItem(s48item2);
@@ -6971,8 +6971,8 @@ int main( int argc , char *argv[] ){
   s48ptr->moveButton(1380,375);
   s48ptr->moveLabel(1445,360);
 
-  QGraphicsSvgItem *itemv401 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv402 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv401 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv402 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv401);
   scene->addItem(itemv402);
   itemv401->setPos(QPointF(1405,445));
@@ -6983,9 +6983,9 @@ int main( int argc , char *argv[] ){
   itemv402->setRotation(-90);
   v40ptr->addVSignalitems(itemv401, itemv402);
   
-  QGraphicsSvgItem *s46item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s46item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s46item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s46item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s46item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s46item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s46item1);
   scene->addItem(s46item3);
   scene->addItem(s46item2);
@@ -7017,8 +7017,8 @@ int main( int argc , char *argv[] ){
   s46ptr->moveButton(1380,445);
   s46ptr->moveLabel(1445,430);
 
-  QGraphicsSvgItem *itemv391 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv392 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv391 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv392 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv391);
   scene->addItem(itemv392);
   itemv391->setPos(QPointF(1335,395));
@@ -7029,9 +7029,9 @@ int main( int argc , char *argv[] ){
   itemv392->setRotation(90);
   v39ptr->addVSignalitems(itemv391, itemv392);
   
-  QGraphicsSvgItem *s47item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s47item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s47item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s47item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s47item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s47item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s47item1);
   scene->addItem(s47item3);
   scene->addItem(s47item2);
@@ -7063,8 +7063,8 @@ int main( int argc , char *argv[] ){
   s47ptr->moveButton(1360,375);
   s47ptr->moveLabel(1260,400);
 
-  QGraphicsSvgItem *itemv411 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv412 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv411 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv412 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv411);
   scene->addItem(itemv412);
   itemv411->setPos(QPointF(1335,465));
@@ -7075,9 +7075,9 @@ int main( int argc , char *argv[] ){
   itemv412->setRotation(90);
   v41ptr->addVSignalitems(itemv411, itemv412);
   
-  QGraphicsSvgItem *s45item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s45item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s45item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s45item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s45item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s45item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s45item1);
   scene->addItem(s45item3);
   scene->addItem(s45item2);
@@ -7109,8 +7109,8 @@ int main( int argc , char *argv[] ){
   s45ptr->moveButton(1360,445);
   s45ptr->moveLabel(1260,470);
 
-  QGraphicsSvgItem *itemv331 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv332 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv331 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv332 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv331);
   scene->addItem(itemv332);
   itemv331->setPos(QPointF(2445,-420));
@@ -7121,9 +7121,9 @@ int main( int argc , char *argv[] ){
   itemv332->setRotation(90);
   v33ptr->addVSignalitems(itemv331, itemv332);
 
-  QGraphicsSvgItem *s38item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s38item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s38item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s38item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s38item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s38item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s38item1);
   scene->addItem(s38item3);
   scene->addItem(s38item2);
@@ -7155,8 +7155,8 @@ int main( int argc , char *argv[] ){
   s38ptr->moveButton(2455,-440);
   s38ptr->moveLabel(2373,-415);
 
-  QGraphicsSvgItem *itemv281 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv282 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv281 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv282 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv281);
   scene->addItem(itemv282);
   itemv281->setPos(QPointF(765,-375));
@@ -7165,9 +7165,9 @@ int main( int argc , char *argv[] ){
   itemv282->setScale(0.1);
   v28ptr->addVSignalitems(itemv281, itemv282);
   
-  QGraphicsSvgItem *s26item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s26item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s26item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s26item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s26item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s26item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s26item1);
   scene->addItem(s26item3);
   scene->addItem(s26item2);
@@ -7196,8 +7196,8 @@ int main( int argc , char *argv[] ){
   s26ptr->moveButton(745,-405);
   s26ptr->moveLabel(770,-300);
 
-  QGraphicsSvgItem *itemv321 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv322 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv321 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv322 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv321);
   scene->addItem(itemv322);
   itemv321->setPos(QPointF(2560,-440));
@@ -7208,9 +7208,9 @@ int main( int argc , char *argv[] ){
   itemv322->setRotation(-90);
   v32ptr->addVSignalitems(itemv321, itemv322);
   
-  QGraphicsSvgItem *s42item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s42item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s42item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s42item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s42item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s42item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s42item1);
   scene->addItem(s42item3);
   scene->addItem(s42item2);
@@ -7242,9 +7242,9 @@ int main( int argc , char *argv[] ){
   s42ptr->moveButton(2540,-440);
   s42ptr->moveLabel(2580,-440);
 
-  QGraphicsSvgItem *s37item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s37item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s37item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s37item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s37item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s37item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s37item1);
   scene->addItem(s37item3);
   scene->addItem(s37item2);
@@ -7276,9 +7276,9 @@ int main( int argc , char *argv[] ){
   s37ptr->moveButton(2115,-370);
   s37ptr->moveLabel(2033,-345);
 
-  QGraphicsSvgItem *s36item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s36item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s36item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s36item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s36item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s36item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s36item1);
   scene->addItem(s36item3);
   scene->addItem(s36item2);
@@ -7310,9 +7310,9 @@ int main( int argc , char *argv[] ){
   s36ptr->moveButton(2115,-300);
   s36ptr->moveLabel(2033,-275);
 
-  QGraphicsSvgItem *s35item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s35item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s35item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s35item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s35item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s35item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s35item1);
   scene->addItem(s35item3);
   scene->addItem(s35item2);
@@ -7344,9 +7344,9 @@ int main( int argc , char *argv[] ){
   s35ptr->moveButton(1995,-225);
   s35ptr->moveLabel(1903,-205);
 
-  QGraphicsSvgItem *s43item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s43item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s43item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s43item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s43item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s43item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s43item1);
   scene->addItem(s43item3);
   scene->addItem(s43item2);
@@ -7378,8 +7378,8 @@ int main( int argc , char *argv[] ){
   s43ptr->moveButton(1655,225);
   s43ptr->moveLabel(1583,245);
 
-  QGraphicsSvgItem *itemv271 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv272 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv271 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv272 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv271);
   scene->addItem(itemv272);
   itemv271->setPos(QPointF(1245,-225));
@@ -7390,9 +7390,9 @@ int main( int argc , char *argv[] ){
   itemv272->setRotation(-90);
   v27ptr->addVSignalitems(itemv271, itemv272);
   
-  QGraphicsSvgItem *s34item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s34item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s34item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s34item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s34item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s34item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s34item1);
   scene->addItem(s34item3);
   scene->addItem(s34item2);
@@ -7424,8 +7424,8 @@ int main( int argc , char *argv[] ){
   s34ptr->moveButton(1210,-225);
   s34ptr->moveLabel(1295,-240);
 
-  QGraphicsSvgItem *itemv261 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv262 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv261 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv262 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv261);
   scene->addItem(itemv262);
   itemv261->setPos(QPointF(1245,-300));
@@ -7436,9 +7436,9 @@ int main( int argc , char *argv[] ){
   itemv262->setRotation(-90);
   v26ptr->addVSignalitems(itemv261, itemv262);
   
-  QGraphicsSvgItem *s33item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s33item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s33item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s33item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s33item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s33item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s33item1);
   scene->addItem(s33item3);
   scene->addItem(s33item2);
@@ -7470,8 +7470,8 @@ int main( int argc , char *argv[] ){
   s33ptr->moveButton(1210,-300);
   s33ptr->moveLabel(1295,-315);
 
-  QGraphicsSvgItem *itemv241 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv242 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv241 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv242 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv241);
   scene->addItem(itemv242);
   itemv241->setPos(QPointF(910,-440));
@@ -7482,9 +7482,9 @@ int main( int argc , char *argv[] ){
   itemv242->setRotation(-90);
   v24ptr->addVSignalitems(itemv241, itemv242);
   
-  QGraphicsSvgItem *s31item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s31item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s31item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s31item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s31item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s31item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s31item1);
   scene->addItem(s31item3);
   scene->addItem(s31item2);
@@ -7516,8 +7516,8 @@ int main( int argc , char *argv[] ){
   s31ptr->moveButton(870,-440);
   s31ptr->moveLabel(980,-495);
   
-  QGraphicsSvgItem *itemv251 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv252 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv251 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv252 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv251);
   scene->addItem(itemv252);
   itemv251->setPos(QPointF(1170,-370));
@@ -7528,9 +7528,9 @@ int main( int argc , char *argv[] ){
   itemv252->setRotation(-90);
   v25ptr->addVSignalitems(itemv251, itemv252);
   
-  QGraphicsSvgItem *s32item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s32item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s32item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s32item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s32item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s32item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s32item1);
   scene->addItem(s32item3);
   scene->addItem(s32item2);
@@ -7562,8 +7562,8 @@ int main( int argc , char *argv[] ){
   s32ptr->moveButton(1115,-370);
   s32ptr->moveLabel(1220,-385);
 
-  QGraphicsSvgItem *itemv361 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv362 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv361 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv362 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv361);
   scene->addItem(itemv362);
   itemv361->setPos(QPointF(1755,220));
@@ -7574,8 +7574,8 @@ int main( int argc , char *argv[] ){
   itemv362->setRotation(-90);
   v36ptr->addVSignalitems(itemv361, itemv362);
 
-  QGraphicsSvgItem *itemv341 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv342 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv341 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv342 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv341);
   scene->addItem(itemv342);
   itemv341->setPos(QPointF(2490,-355));
@@ -7584,8 +7584,8 @@ int main( int argc , char *argv[] ){
   itemv342->setScale(0.1);
   v34ptr->addVSignalitems(itemv341, itemv342);
 
-  QGraphicsSvgItem *itemv371 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv372 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv371 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv372 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv371);
   scene->addItem(itemv372);
   itemv371->setPos(QPointF(1920,320));
@@ -7596,8 +7596,8 @@ int main( int argc , char *argv[] ){
   itemv372->setRotation(90);
   v37ptr->addVSignalitems(itemv371, itemv372);
 
-  QGraphicsSvgItem *itemv421 = new QGraphicsSvgItem(":/resources/VSfahrt.svg");
-  QGraphicsSvgItem *itemv422 = new QGraphicsSvgItem(":/resources/VShalt.svg");
+  QGraphicsSvgItem *itemv421 = new QGraphicsSvgItem(":/resources/VSfahrt_min.svg");
+  QGraphicsSvgItem *itemv422 = new QGraphicsSvgItem(":/resources/VShalt_min.svg");
   scene->addItem(itemv421);
   scene->addItem(itemv422);
   itemv421->setPos(QPointF(1785,525));
@@ -7608,9 +7608,9 @@ int main( int argc , char *argv[] ){
   itemv422->setRotation(180);
   v42ptr->addVSignalitems(itemv421, itemv422);
 
-  QGraphicsSvgItem *s44item1 = new QGraphicsSvgItem(":/resources/HSfahrt.svg");
-  QGraphicsSvgItem *s44item2 = new QGraphicsSvgItem(":/resources/HShalt.svg");
-  QGraphicsSvgItem *s44item3 = new QGraphicsSvgItem(":/resources/HSrangier.svg");
+  QGraphicsSvgItem *s44item1 = new QGraphicsSvgItem(":/resources/HSfahrt_min.svg");
+  QGraphicsSvgItem *s44item2 = new QGraphicsSvgItem(":/resources/HShalt_min.svg");
+  QGraphicsSvgItem *s44item3 = new QGraphicsSvgItem(":/resources/HSrangier_min.svg");
   scene->addItem(s44item1);
   scene->addItem(s44item3);
   scene->addItem(s44item2);

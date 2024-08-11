@@ -54,6 +54,11 @@ void MainWindow::createMenus(){
   viewMenu->addAction(downscaleAct);
   viewMenu->addAction(fullscreenAct);
 
+  subMenuSignals = viewMenu->addMenu(tr("&Display signals"));
+  subMenuSignals->addAction(minimalisticAct);
+  subMenuSignals->addAction(basicAct);
+  subMenuSignals->addAction(detailedAct);
+
   aboutMenu = menuBar()->addMenu(tr("&About"));
   aboutMenu->addAction(aboutAct);
   aboutBox.setText("<b>About the ControlCenter </b><br>This is an Electronic Signalling Control Center. It is modeled on <i>german 'ESTW'</i> control center of DB.<br><br>It is possible to signal the tracks as well as switching turnouts and processing feedback from monitored track segments.<br><br>For further information please see https://github.com/LLdaniel/StellwerkQt/wiki.");
@@ -107,6 +112,30 @@ void MainWindow::createActions(){
   fullscreenAct->setShortcuts(scSeq);
   fullscreenAct->setStatusTip(tr("Enable/Disable Fullscreen"));
   QObject::connect(fullscreenAct, &QAction::triggered, this, &MainWindow::screen);
+
+  minimalisticAct = new QAction(tr("&minimalistic"), this);
+  QKeySequence min(Qt::ControlModifier | Qt::Key_M);
+  QList<QKeySequence> minSeq;
+  minSeq.append(min);
+  minimalisticAct->setShortcuts(minSeq);
+  minimalisticAct->setStatusTip(tr("Enable minimalistic signals view"));
+  QObject::connect(minimalisticAct, &QAction::triggered, this, &MainWindow::setMinimalistic);
+
+  basicAct = new QAction(tr("&basic"), this);
+  QKeySequence base(Qt::ControlModifier | Qt::Key_B);
+  QList<QKeySequence> baseSeq;
+  baseSeq.append(base);
+  basicAct->setShortcuts(baseSeq);
+  basicAct->setStatusTip(tr("Enable basic signals view"));
+  QObject::connect(basicAct, &QAction::triggered, this, &MainWindow::setBasic);
+
+  detailedAct = new QAction(tr("&detailed"), this);
+  QKeySequence det(Qt::ControlModifier | Qt::Key_D);
+  QList<QKeySequence> detSeq;
+  detSeq.append(det);
+  detailedAct->setShortcuts(detSeq);
+  detailedAct->setStatusTip(tr("Enable detailed signals view"));
+  QObject::connect(detailedAct, &QAction::triggered, this, &MainWindow::setDetailed);
   
   aboutAct = new QAction(tr("&About ControlCenter..."), this);
   aboutAct->setStatusTip(tr("More information about ControlCenter"));
