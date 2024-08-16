@@ -2709,9 +2709,6 @@ int main( int argc , char *argv[] ){
   ww22tos32b.push_back(bdptr);
   ww22ptr->addBlockZuH(s32ptr->getS_id(),ww22tos32b);
 
-  s1ptr->showBlock(s4ptr);
-  
-  
   // first initalization for stellwekstechnik, necessary! ----------------------------
   stellwerkstecptr->add_Signal(s1ptr->getS_id(),false);
   stellwerkstecptr->add_Signal(s2ptr->getS_id(),false);
@@ -3202,8 +3199,6 @@ int main( int argc , char *argv[] ){
   bpptr->addpassiert(ww40ptr->getV_id(),byptr);
   bxptr->addpassiert(ww42ptr->getV_id(),byptr);
   ahptr->addpassiert(ww43ptr->getV_id(),bzptr);
-  
-  aaptr->showPassiert();
   
   //
   //GUI attributes
