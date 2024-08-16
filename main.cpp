@@ -115,6 +115,8 @@ int main( int argc , char *argv[] ){
   //
   //connect for quiting program
   QObject::connect(&w,&MainWindow::shutdown,&a,QApplication::quit);
+  //connect for refreshing signal symbols
+  QObject::connect(&w,&MainWindow::changeSignalSymbols,&Configuration::changeSignalSymbols);
   //
   //create view
   QGraphicsView *view = new QGraphicsView(scene);

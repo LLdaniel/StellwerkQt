@@ -31,6 +31,7 @@ public:
 signals:
   void shutdown();
   void reset();
+  void changeSignalSymbols(QString mode);
   
 private slots:
   void showAboutDialog();
@@ -40,9 +41,9 @@ private slots:
   void powerOffTurnouts();
   void powerOnTurnouts();
   void screen();
-  void setMinimalistic(){}
-  void setBasic(){}
-  void setDetailed(){}
+  void setMinimalistic();
+  void setBasic();
+  void setDetailed();
 public slots:
   void calledw(Weiche *callw, bool statew);
   void calledb(Block *callb, bool stateb);

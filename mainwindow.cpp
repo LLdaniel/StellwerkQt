@@ -191,3 +191,15 @@ void MainWindow::calledb(Block *callb, bool stateb){
 void MainWindow::calledbu(BU *callbu, bool statebu){
   callbu->setBU_status(statebu);
 }
+
+void MainWindow::setMinimalistic(){
+  emit changeSignalSymbols("minimalistic");
+}
+
+void MainWindow::setBasic(){
+  emit changeSignalSymbols("basic");
+}
+
+void MainWindow::setDetailed(){
+  emit changeSignalSymbols("detailed");
+}
