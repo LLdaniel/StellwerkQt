@@ -10,13 +10,14 @@
 #define WSIGNAL_H
 #include "VSignal.h"
 #include <QLabel>
-#include <QPushButton>
+#include "WSignalQPushButton.h"
 #include <QObject>
 #include <Block.h>
 #include <Weiche.h>
 #include <QString>
 #include <QList>
 #include <QPair>
+#include <QMessageBox>
 class WSignal : public QObject,public VSignal{                 //WSignal inherits from VSignal
   Q_OBJECT
 public:
@@ -27,12 +28,12 @@ public:
   QString getZiel(){ return ziel; }
   void addWeichenstatus( WSignal *toZiel , QList<QPair<Weiche* , bool>> weichenpair );
   void addWeichenstatusZuH( QString toZiel , QList<QPair<Weiche* , bool>> weichenpair );
-  void showWeichenstatusALL();
+  //void showWeichenstatusALL();
   void showWeichenstatus( WSignal *whichZiel );
   void addBlock( WSignal *toZiel , QList<Block*> inputBlock );
   void addBlockZuH( QString toZiel , QList<Block*> inputBlock );
   void showBlock( WSignal *whichZiel );
-  void showBlockALL();
+  //void showBlockALL();
   void deleteNachbar( WSignal *todelete );
   void setZiel( QString zziel );
   void deleteFS();
@@ -42,7 +43,7 @@ public:
   //
   //+++ GUI +++
   //
-  void addButtonAndLabel(QLabel *lab, QPushButton *but);
+  void addButtonAndLabel(QLabel *lab, WSignalQPushButton *but);
   void moveLabel( int x , int y ){ beschriftung->move(x,y); }
   void moveButton( int x, int y ){ push->move(x,y); }
 
@@ -52,6 +53,9 @@ signals:
 public slots:
   void listenToFS();                                         //look for clicks, which will be conerted to route commands from clickmanager
   void zugpassiertW();                                       //zugpassiert for routes of character WS->WS FS
+  void showShowContexts();
+  void showWeichenstatusALL();
+  void showBlockALL();
   //void zugpassiert()                                       //zugpassiert from routes of character HS->HS with WS as VS: WS inherits from VS and inherits therefore VS`s zugpassiert
 private:
   QString ziel;                                              //save end signal 
@@ -63,6 +67,7 @@ private:
   QList<QPair<QString, QList<Block*>> > blockZuH;                         // involved segments in specific routes to HS       
   //+++GUI+++
   QLabel *beschriftung = new QLabel();
-  QPushButton *push = new QPushButton();
+  WSignalQPushButton *push = new WSignalQPushButton();
+  QMessageBox *showBox = new QMessageBox();
 };
 #endif

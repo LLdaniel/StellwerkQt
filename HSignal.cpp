@@ -4,6 +4,7 @@
  */
 #include "HSignal.h"
 #include <QDebug>
+#include <QMenu>
 
 HSignal::HSignal(int name){
   setS_id( name );
@@ -36,16 +37,23 @@ void HSignal::addWeichenstatusZuRangier( WSignal *toZiel , QList<QPair<Weiche* ,
 }
 
 void HSignal::showWeichenstatusALL(){
+  QString message = "************************************************************\n";
   qInfo()<<"************************************************************";
   qInfo()<<"*** Dies ist der Weichenstatus für Hauptsignal "<<getS_id()<<"      ***";
+  message += "    Dies ist der Weichenstatus für Hauptsignal " + getS_id() + "\n";
   for(  int i = 0 ; i < weichenstatus.size() ; i++){
     qInfo()<<"***   "<<weichenstatus.at(i).first<<" :                                             ***";
+    message += "      " + weichenstatus.at(i).first + " :\n";
     for(  int j = 0 ; j < weichenstatus.at(i).second.size() ; j++ ){//hier sind die Weichenstatuspaarungen
       qInfo()<<"***               "<<weichenstatus.at(i).second.at(j).first->getW_id()<<"   -->   "<<weichenstatus.at(i).second.at(j).second<<"                          ***";
+      message += "                  " + weichenstatus.at(i).second.at(j).first->getW_id() + "   -->   " + QString::number(weichenstatus.at(i).second.at(j).second) + "\n";
     }
   }
   qInfo()<<"************************************************************";
+  message += "************************************************************\n";
   qInfo()<<"";
+  this->showBox->setText(message);
+  this->showBox->open();
 }
 
 void HSignal::showWeichenstatus( HSignal *whichZiel ){
@@ -94,16 +102,23 @@ void HSignal::showBlock( HSignal *whichZiel ){
 }
 
 void HSignal::showBlockALL(){
+  QString message = "************************************************************\n";
   qInfo()<<"************************************************************";
   qInfo()<<"*** Dies sind die Blöcke für Hauptsignal "<<getS_id()<<"            ***";
+  message += "    Dies sind die Blöcke für Hauptsignal " + getS_id() + "\n";
   for(  int i = 0 ; i < block.size() ; i++){
     qInfo()<<"***   "<<block.at(i).first<<" :                                             ***";
+    message += "      " + block.at(i).first + " :\n";
     for(  int j = 0 ; j < block.at(i).second.size() ; j++ ){
       qInfo()<<"***               "<<block.at(i).second.at(j)->getName()<<"                                     ***";
+      message += "                  " + block.at(i).second.at(j)->getName() + "\n";
     }
   }
   qInfo()<<"************************************************************";
   qInfo()<<"";
+  message += "************************************************************\n";
+  this->showBox->setText(message);
+  this->showBox->open();
 }
 
 void HSignal::deleteNachbar( HSignal *todelete ){
@@ -146,23 +161,35 @@ void HSignal::addVSignal( VSignal *vs , QString param){
 }
 
 void HSignal::showVSignalR(){
+  QString message = "************************************************************\n";
   qInfo()<<"************************************************************";
-  qInfo()<<"*** Dies sind die Vorsignale für Hauptsignal [rück]"<<getS_id()<<"  ***";
+  message += "    Dies sind die Vorsignale für Hauptsignal [rück] " + getS_id() + "\n";
+  qInfo()<<"*** Dies sind die Vorsignale für Hauptsignal [rück] "<<getS_id()<<"  ***";
   for(  int i = 0 ; i < vorsignalR.size() ; i++){
     qInfo()<<"***   --> "<<vorsignalR.at(i)->getV_id()<<"                                           ***";
+    message += "      --> " + vorsignalR.at(i)->getV_id() + "\n";
   }
   qInfo()<<"************************************************************";
   qInfo()<<"";
+  message += "************************************************************\n";
+  this->showBox->setText(message);
+  this->showBox->open();
 }
 
 void HSignal::showVSignalV(){
+  QString message = "************************************************************\n";
   qInfo()<<"************************************************************";
-  qInfo()<<"*** Dies sind die Vorsignale für Hauptsignal [vor]"<<getS_id()<<"   ***";
+  qInfo()<<"*** Dies sind die Vorsignale für Hauptsignal [vor] "<<getS_id()<<"   ***";
+  message += "    Dies sind die Vorsignale für Hauptsignal [vor] " + getS_id() + "\n";
   for(  int i = 0 ; i < vorsignalV.size() ; i++){
     qInfo()<<"***   --> "<<vorsignalV.at(i)->getV_id()<<"                                           ***";
+    message += "      --> " + vorsignalV.at(i)->getV_id() + "\n";
   }
   qInfo()<<"************************************************************";
   qInfo()<<"";
+  message += "************************************************************\n";
+  this->showBox->setText(message);
+  this->showBox->open();
 }
 
 void HSignal::addWSignal(WSignal *wsig, QString param){
@@ -177,23 +204,35 @@ void HSignal::addWSignal(WSignal *wsig, QString param){
   }
 }
 void HSignal::showWSignalR(){
+  QString message = "************************************************************\n";
   qInfo()<<"************************************************************";
-  qInfo()<<"*** Dies sind die Rangiersignale für Hauptsignal[rück]"<<getS_id()<<"***";
+  qInfo()<<"*** Dies sind die Rangiersignale für Hauptsignal[rück]" <<getS_id()<<"***";
+  message += "    Dies sind die Rangiersignale für Hauptsignal[rück] " + getS_id() + "\n";
   for(  int i = 0 ; i < wsignaleR.size() ; i++){
     qInfo()<<"***   --> "<<wsignaleR.at(i)->getV_id()<<"                                           ***";
+    message += "      --> " + wsignaleR.at(i)->getV_id() + "\n";
   }
   qInfo()<<"************************************************************";
   qInfo()<<"";
+  message += "************************************************************\n";
+  this->showBox->setText(message);
+  this->showBox->open();
 }
 
 void HSignal::showWSignalV(){
+  QString message = "************************************************************\n";
   qInfo()<<"************************************************************";
-  qInfo()<<"*** Dies sind die Rangiersignale für Hauptsignal[vor]"<<getS_id()<<"***";
+  qInfo()<<"*** Dies sind die Rangiersignale für Hauptsignal[vor] "<<getS_id()<<"***";
+  message += "    Dies sind die Rangiersignale für Hauptsignal[vor] " + getS_id() + "\n";
   for(  int i = 0 ; i < wsignaleV.size() ; i++){
     qInfo()<<"***   --> "<<wsignaleV.at(i)->getV_id()<<"                                           ***";
+    message += "      --> " + wsignaleV.at(i)->getV_id() + "\n";
   }
   qInfo()<<"************************************************************";
   qInfo()<<"";
+  message += "************************************************************\n";
+  this->showBox->setText(message);
+  this->showBox->open();
 }
 
 void HSignal::deleteVS( VSignal *todelete , QString param){
@@ -730,7 +769,7 @@ void HSignal::darkenSpeicher( int position ){
   }
 }
 
-void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *itemhalt, QGraphicsSvgItem *itemrangier, QLabel *la, QPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront){
+void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *itemhalt, QGraphicsSvgItem *itemrangier, QLabel *la, HSignalQPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront){
   fahrt = itemfahrt;
   halt = itemhalt;
   rangier = itemrangier;
@@ -745,13 +784,25 @@ void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *item
   but->setFixedHeight(20);
   but->setFixedWidth(20);
   but->setStyleSheet("background-color: blue");
-  QObject::connect(push, &QPushButton::clicked, this, &HSignal::listenToFS);
+  QObject::connect(push, &HSignalQPushButton::clicked, this, &HSignal::listenToFS);
+  QObject::connect(push, &HSignalQPushButton::rightClicked, this, &HSignal::showShowContexts);
+  QObject::connect(push->sato,&QAction::triggered,this,&HSignal::showWeichenstatusALL);
+  QObject::connect(push->sas,&QAction::triggered,this,&HSignal::showBlockALL);
+  QObject::connect(push->savr,&QAction::triggered,this,&HSignal::showVSignalR);
+  QObject::connect(push->savv,&QAction::triggered,this,&HSignal::showVSignalV);
+  QObject::connect(push->sawr,&QAction::triggered,this,&HSignal::showWSignalR);
+  QObject::connect(push->sawv,&QAction::triggered,this,&HSignal::showWSignalV);
   //Speicher Anzeiger
   speicherback->setBrush(Qt::darkBlue);
   speicherfront->setBrush(Qt::darkBlue);
   speicheritems.first = speicherfront;
   speicheritems.second = speicherback;
 
+}
+
+void HSignal::showShowContexts(){
+  this->push->getMenu()->popup(QCursor::pos());
+  this->push->raise();
 }
 
 HSignal::~HSignal(){

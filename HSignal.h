@@ -16,7 +16,7 @@
 #include "VSignal.h"
 #include <QLabel>
 #include <QGraphicsSvgItem>
-#include <QPushButton>
+#include "HSignalQPushButton.h"
 #include "WSignal.h"
 class HSignal : public QObject{
     Q_OBJECT
@@ -29,20 +29,20 @@ class HSignal : public QObject{
   bool getS_status(){ return s_status; }
   QString getZiel(){ return ziel; }
   void addWeichenstatus( HSignal *toZiel , QList<QPair<Weiche* , bool>> weichenpair );
-  void showWeichenstatusALL();                           //full list
+  //void showWeichenstatusALL();                           //full list
   void showWeichenstatus( HSignal *whichZiel );          //list with special end signal
   void addWeichenstatusZuRangier( WSignal *toZiel , QList<QPair<Weiche* , bool>> weichenpair );
   void addBlock( HSignal *toZiel , QList<Block*> inputBlock );
   void showBlock( HSignal *whichZiel );
-  void showBlockALL();
+  //void showBlockALL();
   void addBlockZuRangier( WSignal *toZiel , QList<Block*> inputBlock );
   void deleteNachbar( HSignal *todelete );               
   void addVSignal( VSignal *vs , QString param );
-  void showVSignalR();
-  void showVSignalV();
+  //void showVSignalR();
+  //void showVSignalV();
   void addWSignal( WSignal *wsig, QString param );
-  void showWSignalR();
-  void showWSignalV();
+  //void showWSignalR();
+  //void showWSignalV();
   void deleteVS( VSignal *todelete , QString param );
   void deleteWS( WSignal *todelete , QString param );
   void setSpeicher( bool sp ){ speicher = sp; emit illuminateSpeicher(sp, this->getSpeicherziel()->getS_id() );}
@@ -58,7 +58,7 @@ class HSignal : public QObject{
   //
   //+++ GUI +++
   //
-  void addHSignalitem(QGraphicsSvgItem *itemfahrt , QGraphicsSvgItem *itemhalt , QGraphicsSvgItem *itemrangier, QLabel *la, QPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront);
+  void addHSignalitem(QGraphicsSvgItem *itemfahrt , QGraphicsSvgItem *itemhalt , QGraphicsSvgItem *itemrangier, QLabel *la, HSignalQPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront);
   void moveLabel( int x , int y ){ beschriftung->move(x,y); }
   void moveButton( int x, int y ){ push->move(x,y); }
 
@@ -72,7 +72,14 @@ public slots:
   void listenToFS();                                     //waiting for click events, which will be converted in setFahrt commands (cf clickmanager)
   void recieveSpeicher(bool sp, QString str);
   //void processSpeicher();
- protected:
+  void showShowContexts();
+  void showWeichenstatusALL();                           //full list
+  void showBlockALL();
+  void showVSignalR();
+  void showVSignalV();
+  void showWSignalR();
+  void showWSignalV();
+protected:
   QString s_id;                                          //ID of main signal i.e. S002, S511
   bool s_status = false;                                 //status main signals: true:=go false:=stop
   QString ziel;                                          //current end signal
@@ -98,7 +105,8 @@ public slots:
   QGraphicsSvgItem *rangier;                            //shows signal "shunting"
   QPair<QGraphicsRectItem*,QGraphicsRectItem*> speicheritems;//display if memory is active: small squares
   QLabel *beschriftung = new QLabel();                  //singal label
-  QPushButton *push = new QPushButton();
+  HSignalQPushButton *push = new HSignalQPushButton();
+  QMessageBox *showBox = new QMessageBox();
   void changeColor();                                   //changes signal on plan
   void darkenSpeicher( int position );                  //delete memory items (squares) if memory goes inactive here it is relevant for the start signal
 };
