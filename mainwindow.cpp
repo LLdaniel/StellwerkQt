@@ -7,6 +7,8 @@
 #include <QDebug>
 #include <QKeySequence>
 #include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QGraphicsSvgItem>
 #ifdef __cplusplus
 extern "C"{
 #endif
@@ -192,14 +194,38 @@ void MainWindow::calledbu(BU *callbu, bool statebu){
   callbu->setBU_status(statebu);
 }
 
+void MainWindow::setSignalStyle(QString mode){
+  // https://github.com/qt/qtsvg/blob/dev/src/svgwidgets/qgraphicssvgitem.h:47: QGraphicsSvgItem::Type == 13
+  for(QGraphicsItem *o : this->getScene()->items()){
+    if(o->type() == 13){
+      QGraphicsSvgItem* s = (QGraphicsSvgItem*) o;
+      //s->setSharedRenderer(rendererHSignal);
+      s->setElementId(mode);
+      qDebug(qUtf8Printable( "__mainwindow__: QGraphicsItem type: " + QString::number(o->type()) + " now using mode: " + mode + " elementId: " + s->elementId() ));
+    }
+  }
+}
+
 void MainWindow::setMinimalistic(){
-  emit changeSignalSymbols("minimalistic");
+  this->setSignalStyle("minimalistic");
 }
 
 void MainWindow::setBasic(){
-  emit changeSignalSymbols("basic");
+  this->setSignalStyle("basic");
 }
 
 void MainWindow::setDetailed(){
-  emit changeSignalSymbols("detailed");
+  this->setSignalStyle("detailed");
+}
+
+QGraphicsScene* MainWindow::getScene(){
+  QGraphicsScene *scene;
+  for(QObject *o : this->children()){
+    if( QLatin1String(o->metaObject()->className()) == "QGraphicsScene"){
+      scene = (QGraphicsScene*) o;
+      qDebug("__mainwindow__: Found child item: QGraphicsScene");
+      break;
+    }
+  }
+  return scene;
 }

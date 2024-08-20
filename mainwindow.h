@@ -12,6 +12,7 @@
 #include <QKeyEvent>
 #include <QAction>
 #include <QMessageBox>
+#include <QSvgRenderer>
 #include "Block.h"
 #include "Weiche.h"
 #include "BU.h"
@@ -28,11 +29,10 @@ public:
   ~MainWindow();
   void mousePressEvent(QMouseEvent *event);
   void keyPressEvent(QKeyEvent *event);
+  QGraphicsScene* getScene();
 signals:
   void shutdown();
   void reset();
-  void changeSignalSymbols(QString mode);
-  
 private slots:
   void showAboutDialog();
   void showHelpDialog();
@@ -44,6 +44,7 @@ private slots:
   void setMinimalistic();
   void setBasic();
   void setDetailed();
+  void setSignalStyle(QString mode);
 public slots:
   void calledw(Weiche *callw, bool statew);
   void calledb(Block *callb, bool stateb);

@@ -12,9 +12,7 @@
 #include <QtLogging>
 #include <QLoggingCategory>
 #include <QString>
-#include "VSignal.h"
-class Configuration : public QObject{
-  Q_OBJECT
+class Configuration {
   Q_DECLARE_LOGGING_CATEGORY(StellwerkQt)
  public:
   Configuration();
@@ -23,14 +21,10 @@ class Configuration : public QObject{
   QString getLogLevel(){ return logLevel; }
   void setWithHardware( bool withHardware){ this->withHardware = withHardware;}
   bool getWithHardware(){ return withHardware; }
-  void addVSignals(VSignal *vsignal);
   QtMessageHandler msgHandler;
   ~Configuration();
-public slots:
-  void changeSignalSymbols(QString mode);
  private:
   QString logLevel = "warning";
   bool withHardware = true;       // mode where real hardware is connected I2C, MCP, shift register...
-  QList<VSignal*> *vsignals = new QList<VSignal*>();
 };
 #endif

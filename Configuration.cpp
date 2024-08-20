@@ -40,10 +40,6 @@ void Configuration::setLogLevel(QString loglevel){
   }
 }
 
-void Configuration::addVSignals(VSignal *vsignal){
-  this->vsignals->append(vsignal);
-}
-
 Configuration::~Configuration(){
   //fclose(f);
 }

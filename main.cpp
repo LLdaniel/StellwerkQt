@@ -115,8 +115,6 @@ int main( int argc , char *argv[] ){
   //
   //connect for quiting program
   QObject::connect(&w,&MainWindow::shutdown,&a,QApplication::quit);
-  //connect for refreshing signal symbols
-  QObject::connect(&w,&MainWindow::changeSignalSymbols,&Configuration::changeSignalSymbols);
   //
   //create view
   QGraphicsView *view = new QGraphicsView(scene);
@@ -7898,7 +7896,7 @@ int main( int argc , char *argv[] ){
   //wiringPiSetupGpio(); cf beginning of program (also needed in mainwindow)
 
   if( config->getWithHardware() ){
-    sr595Setup (100, 28, 9, 5, 11);                    //pin base, pin number = active, serial, clock, refresh                                      
+    sr595Setup (100, 28, 9, 5, 11);                    //pin base, pin number = active, serial, clock, refresh
     sr595Setup (200, 30, 19, 6, 26); 
     sr595Setup (300, 28, 17, 4, 27);
   
