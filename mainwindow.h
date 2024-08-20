@@ -12,6 +12,7 @@
 #include <QKeyEvent>
 #include <QAction>
 #include <QMessageBox>
+#include <QSvgRenderer>
 #include "Block.h"
 #include "Weiche.h"
 #include "BU.h"
@@ -28,10 +29,10 @@ public:
   ~MainWindow();
   void mousePressEvent(QMouseEvent *event);
   void keyPressEvent(QKeyEvent *event);
+  QGraphicsScene* getScene();
 signals:
   void shutdown();
   void reset();
-  
 private slots:
   void showAboutDialog();
   void showHelpDialog();
@@ -40,6 +41,10 @@ private slots:
   void powerOffTurnouts();
   void powerOnTurnouts();
   void screen();
+  void setMinimalistic();
+  void setBasic();
+  void setDetailed();
+  void setSignalStyle(QString mode);
 public slots:
   void calledw(Weiche *callw, bool statew);
   void calledb(Block *callb, bool stateb);
@@ -53,6 +58,7 @@ private:
   QMenu *piMenu;
   QMenu *viewMenu;
   QMenu *aboutMenu;
+  QMenu *subMenuSignals;
   QAction *shutdownAct;
   QAction *poweronTurnouts;
   QAction *poweroffTurnouts;
@@ -64,6 +70,9 @@ private:
   QMessageBox aboutBox;
   QAction *helpAct;
   QMessageBox helpBox;
+  QAction *minimalisticAct;
+  QAction *basicAct;
+  QAction *detailedAct;
 };
 
 #endif // MAINWINDOW_H

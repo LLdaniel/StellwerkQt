@@ -8,10 +8,11 @@
  */
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
+#include <QObject>
 #include <QtLogging>
 #include <QLoggingCategory>
 #include <QString>
-class Configuration{
+class Configuration {
   Q_DECLARE_LOGGING_CATEGORY(StellwerkQt)
  public:
   Configuration();
@@ -22,7 +23,6 @@ class Configuration{
   bool getWithHardware(){ return withHardware; }
   QtMessageHandler msgHandler;
   ~Configuration();
-
  private:
   QString logLevel = "warning";
   bool withHardware = true;       // mode where real hardware is connected I2C, MCP, shift register...

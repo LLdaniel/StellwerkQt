@@ -7,6 +7,8 @@
 #include <QDebug>
 #include <QKeySequence>
 #include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QGraphicsSvgItem>
 #ifdef __cplusplus
 extern "C"{
 #endif
@@ -53,6 +55,11 @@ void MainWindow::createMenus(){
   viewMenu->addAction(upscaleAct);
   viewMenu->addAction(downscaleAct);
   viewMenu->addAction(fullscreenAct);
+
+  subMenuSignals = viewMenu->addMenu(tr("&Display signals"));
+  subMenuSignals->addAction(minimalisticAct);
+  subMenuSignals->addAction(basicAct);
+  //subMenuSignals->addAction(detailedAct); tbd
 
   aboutMenu = menuBar()->addMenu(tr("&About"));
   aboutMenu->addAction(aboutAct);
@@ -107,6 +114,30 @@ void MainWindow::createActions(){
   fullscreenAct->setShortcuts(scSeq);
   fullscreenAct->setStatusTip(tr("Enable/Disable Fullscreen"));
   QObject::connect(fullscreenAct, &QAction::triggered, this, &MainWindow::screen);
+
+  minimalisticAct = new QAction(tr("&minimalistic"), this);
+  QKeySequence min(Qt::ControlModifier | Qt::Key_M);
+  QList<QKeySequence> minSeq;
+  minSeq.append(min);
+  minimalisticAct->setShortcuts(minSeq);
+  minimalisticAct->setStatusTip(tr("Enable minimalistic signals view"));
+  QObject::connect(minimalisticAct, &QAction::triggered, this, &MainWindow::setMinimalistic);
+
+  basicAct = new QAction(tr("&basic"), this);
+  QKeySequence base(Qt::ControlModifier | Qt::Key_B);
+  QList<QKeySequence> baseSeq;
+  baseSeq.append(base);
+  basicAct->setShortcuts(baseSeq);
+  basicAct->setStatusTip(tr("Enable basic signals view"));
+  QObject::connect(basicAct, &QAction::triggered, this, &MainWindow::setBasic);
+
+  detailedAct = new QAction(tr("&detailed"), this);
+  QKeySequence det(Qt::ControlModifier | Qt::Key_D);
+  QList<QKeySequence> detSeq;
+  detSeq.append(det);
+  detailedAct->setShortcuts(detSeq);
+  detailedAct->setStatusTip(tr("Enable detailed signals view"));
+  QObject::connect(detailedAct, &QAction::triggered, this, &MainWindow::setDetailed);
   
   aboutAct = new QAction(tr("&About ControlCenter..."), this);
   aboutAct->setStatusTip(tr("More information about ControlCenter"));
@@ -161,4 +192,40 @@ void MainWindow::calledb(Block *callb, bool stateb){
 
 void MainWindow::calledbu(BU *callbu, bool statebu){
   callbu->setBU_status(statebu);
+}
+
+void MainWindow::setSignalStyle(QString mode){
+  // https://github.com/qt/qtsvg/blob/dev/src/svgwidgets/qgraphicssvgitem.h:47: QGraphicsSvgItem::Type == 13
+  for(QGraphicsItem *o : this->getScene()->items()){
+    if(o->type() == 13){
+      QGraphicsSvgItem* s = (QGraphicsSvgItem*) o;
+      //s->setSharedRenderer(rendererHSignal);
+      s->setElementId(mode);
+      qDebug(qUtf8Printable( "__mainwindow__: QGraphicsItem type: " + QString::number(o->type()) + " now using mode: " + mode + " elementId: " + s->elementId() ));
+    }
+  }
+}
+
+void MainWindow::setMinimalistic(){
+  this->setSignalStyle("minimalistic");
+}
+
+void MainWindow::setBasic(){
+  this->setSignalStyle("basic");
+}
+
+void MainWindow::setDetailed(){
+  this->setSignalStyle("detailed");
+}
+
+QGraphicsScene* MainWindow::getScene(){
+  QGraphicsScene *scene;
+  for(QObject *o : this->children()){
+    if( QLatin1String(o->metaObject()->className()) == "QGraphicsScene"){
+      scene = (QGraphicsScene*) o;
+      qDebug("__mainwindow__: Found child item: QGraphicsScene");
+      break;
+    }
+  }
+  return scene;
 }
