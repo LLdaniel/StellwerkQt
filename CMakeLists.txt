@@ -76,17 +76,6 @@ set(resources_resource_files
   "resources/WS.svg"
   "resources/WSfahrt.svg"
   "resources/WShalt.svg"
-  # min
-  "resources/HSrangier_min.svg"
-  "resources/HSVSfahrtfahrt_min.svg"
-  "resources/HSVSfahrthalt_min.svg"
-  "resources/HSVShalthalt_min.svg"
-  "resources/HSfahrt_min.svg"
-  "resources/HShalt_min.svg"
-  "resources/VSfahrt_min.svg"
-  "resources/VShalt_min.svg"
-  "resources/WSfahrt_min.svg"
-  "resources/WShalt_min.svg"
   )
 
 qt_add_resources(StellwerkQt "resources"

@@ -59,7 +59,7 @@ void MainWindow::createMenus(){
   subMenuSignals = viewMenu->addMenu(tr("&Display signals"));
   subMenuSignals->addAction(minimalisticAct);
   subMenuSignals->addAction(basicAct);
-  subMenuSignals->addAction(detailedAct);
+  //subMenuSignals->addAction(detailedAct); tbd
 
   aboutMenu = menuBar()->addMenu(tr("&About"));
   aboutMenu->addAction(aboutAct);
