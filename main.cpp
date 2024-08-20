@@ -4292,7 +4292,7 @@ int main( int argc , char *argv[] ){
   s6item1->setElementId("basic");
   s6item2->setElementId("basic");
   s6item3->setElementId("basic");
-  HSignalQPushButton *s6push = new HSignalQPushButton();Q
+  HSignalQPushButton *s6push = new HSignalQPushButton();
   scene->addWidget(s6push);
   QLabel *s6label = new QLabel();
   scene->addWidget(s6label);
@@ -4331,7 +4331,7 @@ int main( int argc , char *argv[] ){
   s8item1->setElementId("basic");
   s8item2->setElementId("basic");
   s8item3->setElementId("basic");
-  HSignalQPushButton *s8push = new HSignalQPushButton()
+  HSignalQPushButton *s8push = new HSignalQPushButton();
   scene->addWidget(s8push);
   QLabel *s8label = new QLabel();
   scene->addWidget(s8label);
