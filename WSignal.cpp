@@ -504,11 +504,13 @@ void WSignal::listenToFS(){
 }
 
 void WSignal::zugpassiertW(){
-  v_status = false;
-  hasWSZiel = false;
-  hasHSZiel = false;
-  changeColor();
-  emit refreshStellwerkstechnikW(getV_id(),false);
+  if(this->getV_id() == addressedSignal){
+    v_status = false;
+    hasWSZiel = false;
+    hasHSZiel = false;
+    changeColor();
+    emit refreshStellwerkstechnikW(getV_id(),false);
+  }
 }
 
 void WSignal::setZiel(QString zziel){

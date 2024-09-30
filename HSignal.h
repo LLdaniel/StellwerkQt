@@ -68,7 +68,7 @@ class HSignal : public QObject{
   void illuminateSpeicher(bool sp, QString str);
   void callspmemory(HSignal *s1, HSignal *s2);           // connect to spmemory object slot						   
 public slots:
-  void zugpassiert();                                    //train passed signal and goes to Hp0
+  void zugpassiert(QString addressedSignal);             //train passed signal and goes to Hp0
   void listenToFS();                                     //waiting for click events, which will be converted in setFahrt commands (cf clickmanager)
   void recieveSpeicher(bool sp, QString str);
   //void processSpeicher();

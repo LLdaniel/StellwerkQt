@@ -52,7 +52,7 @@ signals:
   void refreshStellwerkstechnikW( QString sig , bool stat ); //update stellwerkstechnik
 public slots:
   void listenToFS();                                         //look for clicks, which will be conerted to route commands from clickmanager
-  void zugpassiertW();                                       //zugpassiert for routes of character WS->WS FS
+  void zugpassiertW(QString addressedSignal);                //zugpassiert for routes of character WS->WS FS
   void showShowContexts();
   void showWeichenstatusALL();
   void showBlockALL();

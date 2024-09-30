@@ -47,8 +47,8 @@ public:
 public slots:
   void setB_status( bool status );
 signals:
-  void zugpassiert();                                    //signal goes to slot HSignal::zugpassiert
-  void zugpassiertW();                                   //signal goes to slot WSignal::zugpassiert 
+  void zugpassiert(QString addressedSignal);             //signal goes to slot HSignal::zugpassiert
+  void zugpassiertW(QString adressedSignal);             //signal goes to slot WSignal::zugpassiert 
 private:
   QString blockname;                                     //Block naming convention: aa, ab, ac ... zz
   bool b_status = true;                                  //true:=free ; false:=occupied

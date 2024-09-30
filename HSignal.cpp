@@ -524,23 +524,25 @@ void HSignal::setFahrt( WSignal *toZiel ){
 }
 
 void HSignal::zugpassiert(){
-  s_status = false;                                            //passing main signal -->go tot "stop"
-  hasHSZiel = false;
-  hasWSZiel = false;
-  changeColor();
-  emit refreshStellwerkstechnik( getS_id() , false );          //update list in Stellwerkstechnik
-  qDebug()<<"__HSignal__: Emit zugpassiert:"<<getS_id();
-  //
-  //VSIGNALE - change all distant signals to "expect stop" [backwards], also inFS should be deleted
-  for(  int i = 0 ; i < vorsignalR.size() ; i++ ){             //find exact that distant signal, which is inFS and has the current direction 
-    if(vorsignalR.at(i)->getinFS() && vorsignalR.at(i)->isAktFS( getS_id() ) ){
-      vorsignalR.at(i)->zugpassiert();          //setinFS=false is in setV_status=false integrated-->cf. VSignal
+  if(this->getS_id() == addressedSignal){
+    s_status = false;                                            //passing main signal -->go tot "stop"
+    hasHSZiel = false;
+    hasWSZiel = false;
+    changeColor();
+    emit refreshStellwerkstechnik( getS_id() , false );          //update list in Stellwerkstechnik
+    qDebug()<<"__HSignal__: Emit zugpassiert:"<<getS_id();
+    //
+    //VSIGNALE - change all distant signals to "expect stop" [backwards], also inFS should be deleted
+    for(  int i = 0 ; i < vorsignalR.size() ; i++ ){             //find exact that distant signal, which is inFS and has the current direction 
+      if(vorsignalR.at(i)->getinFS() && vorsignalR.at(i)->isAktFS( getS_id() ) ){
+	vorsignalR.at(i)->zugpassiert();          //setinFS=false is in setV_status=false integrated-->cf. VSignal
+      }
     }
-  }
-  //WSIGNALE - change all shunt signals to "stop" [backwards] + delete inFS
-  for(  int i = 0 ; i < wsignaleR.size() ; i++ ){              //find shunt signal with the current direction and which is inFS
-    if(wsignaleR.at(i)->getinFS() && wsignaleR.at(i)->isAktFS( getS_id() ) ){
-      wsignaleR.at(i)->zugpassiert();//setinFS=false in setV_status=false integrated-->cf. VSignal
+    //WSIGNALE - change all shunt signals to "stop" [backwards] + delete inFS
+    for(  int i = 0 ; i < wsignaleR.size() ; i++ ){              //find shunt signal with the current direction and which is inFS
+      if(wsignaleR.at(i)->getinFS() && wsignaleR.at(i)->isAktFS( getS_id() ) ){
+	wsignaleR.at(i)->zugpassiert();//setinFS=false in setV_status=false integrated-->cf. VSignal
+      }
     }
   }
 }
