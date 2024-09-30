@@ -503,7 +503,7 @@ void WSignal::listenToFS(){
   emit listened(this);
 }
 
-void WSignal::zugpassiertW(){
+void WSignal::zugpassiertW(QString addressedSignal){
   if(this->getV_id() == addressedSignal){
     v_status = false;
     hasWSZiel = false;

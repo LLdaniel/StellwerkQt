@@ -523,7 +523,7 @@ void HSignal::setFahrt( WSignal *toZiel ){
   }
 }
 
-void HSignal::zugpassiert(){
+void HSignal::zugpassiert(QString addressedSignal){
   if(this->getS_id() == addressedSignal){
     s_status = false;                                            //passing main signal -->go tot "stop"
     hasHSZiel = false;
