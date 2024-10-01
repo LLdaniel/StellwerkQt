@@ -561,6 +561,7 @@ int main( int argc , char *argv[] ){
   item3->setRotation(90);
   item3->setScale(0.18);
   item3->setElementId("basic_sh0");
+  item3->setObjectName("basic_sh0");
   ww1ptr->addVSignalitems(item3);
   QLabel *ww1label = new QLabel();
   scene->addWidget(ww1label);
@@ -581,6 +582,7 @@ int main( int argc , char *argv[] ){
   item5->setRotation(90);
   item5->setScale(0.18);
   item5->setElementId("basic_sh0");
+  item5->setObjectName("basic_sh0");
   ww2ptr->addVSignalitems(item5);
   QLabel *ww2label = new QLabel();
   scene->addWidget(ww2label);
@@ -598,6 +600,7 @@ int main( int argc , char *argv[] ){
   itemw3->setRotation(-90);
   itemw3->setScale(0.18);
   itemw3->setElementId("basic_sh0");
+  itemw3->setObjectName("basic_sh0");
   ww3ptr->addVSignalitems(itemw3);
   QLabel *ww3label = new QLabel();
   scene->addWidget(ww3label);
@@ -626,6 +629,7 @@ int main( int argc , char *argv[] ){
   itemw4->setRotation(-90);
   itemw4->setScale(0.18);
   itemw4->setElementId("basic_sh0");
+  itemw4->setObjectName("basic_sh0");
   ww4ptr->addVSignalitems(itemw4);
   QLabel *ww4label = new QLabel();
   scene->addWidget(ww4label);
@@ -649,6 +653,7 @@ int main( int argc , char *argv[] ){
   itemw5->setRotation(180);
   itemw5->setScale(0.18);
   itemw5->setElementId("basic_sh0");
+  itemw5->setObjectName("basic_sh0");
   ww5ptr->addVSignalitems(itemw5);
   QLabel *ww5label = new QLabel();
   scene->addWidget(ww5label);
@@ -661,6 +666,7 @@ int main( int argc , char *argv[] ){
   itemw6->setRotation(-90);
   itemw6->setScale(0.18);
   itemw6->setElementId("basic_sh0");
+  itemw6->setObjectName("basic_sh0");
   ww6ptr->addVSignalitems(itemw6);
   QLabel *ww6label = new QLabel();
   scene->addWidget(ww6label);
@@ -673,6 +679,7 @@ int main( int argc , char *argv[] ){
   itemw7->setRotation(90);
   itemw7->setScale(0.18);
   itemw7->setElementId("basic_sh0");
+  itemw7->setObjectName("basic_sh0");
   ww7ptr->addVSignalitems(itemw7);
   QLabel *ww7label = new QLabel();
   scene->addWidget(ww7label);
@@ -685,6 +692,7 @@ int main( int argc , char *argv[] ){
   itemw8->setRotation(180);
   itemw8->setScale(0.18);
   itemw8->setElementId("basic_sh0");
+  itemw8->setObjectName("basic_sh0");
   ww8ptr->addVSignalitems(itemw8);
   QLabel *ww8label = new QLabel();
   scene->addWidget(ww8label);
@@ -697,6 +705,7 @@ int main( int argc , char *argv[] ){
   itemw9->setRotation(-90);
   itemw9->setScale(0.18);
   itemw9->setElementId("basic_sh0");
+  itemw9->setObjectName("basic_sh0");
   ww9ptr->addVSignalitems(itemw9);
   QLabel *ww9label = new QLabel();
   scene->addWidget(ww9label);
@@ -709,6 +718,7 @@ int main( int argc , char *argv[] ){
   itemw10->setRotation(90);
   itemw10->setScale(0.18);
   itemw10->setElementId("basic_sh0");
+  itemw10->setObjectName("basic_sh0");
   ww10ptr->addVSignalitems(itemw10);
   QLabel *ww10label = new QLabel();
   scene->addWidget(ww10label);
@@ -721,6 +731,7 @@ int main( int argc , char *argv[] ){
   itemw11->setRotation(-45);
   itemw11->setScale(0.18);
   itemw11->setElementId("basic_sh0");
+  itemw11->setObjectName("basic_sh0");
   ww11ptr->addVSignalitems(itemw11);
   QLabel *ww11label = new QLabel();
   scene->addWidget(ww11label);
@@ -737,6 +748,7 @@ int main( int argc , char *argv[] ){
   itemw12->setPos(QPointF(620,220));
   itemw12->setScale(0.18);
   itemw12->setElementId("basic_sh0");
+  itemw12->setObjectName("basic_sh0");
   ww12ptr->addVSignalitems(itemw12);
   QLabel *ww12label = new QLabel();
   scene->addWidget(ww12label);
@@ -756,6 +768,7 @@ int main( int argc , char *argv[] ){
   itemw13->setScale(0.18);
   itemw13->setRotation(90);
   itemw13->setElementId("basic_sh0");
+  itemw13->setObjectName("basic_sh0");
   ww13ptr->addVSignalitems(itemw13);
   QLabel *ww13label = new QLabel();
   scene->addWidget(ww13label);
@@ -768,6 +781,7 @@ int main( int argc , char *argv[] ){
   itemw14->setScale(0.18);
   itemw14->setRotation(-90);
   itemw14->setElementId("basic_sh0");
+  itemw14->setObjectName("basic_sh0");
   ww14ptr->addVSignalitems(itemw14);
   QLabel *ww14label = new QLabel();
   scene->addWidget(ww14label);
@@ -780,6 +794,7 @@ int main( int argc , char *argv[] ){
   itemw15->setScale(0.18);
   itemw15->setRotation(90);
   itemw15->setElementId("basic_sh0");
+  itemw15->setObjectName("basic_sh0");
   ww15ptr->addVSignalitems(itemw15);
   QLabel *ww15label = new QLabel();
   scene->addWidget(ww15label);
@@ -792,6 +807,7 @@ int main( int argc , char *argv[] ){
   itemw16->setScale(0.18);
   itemw16->setRotation(-90);
   itemw16->setElementId("basic_sh0");
+  itemw16->setObjectName("basic_sh0");
   ww16ptr->addVSignalitems(itemw16);
   QLabel *ww16label = new QLabel();
   scene->addWidget(ww16label);
@@ -804,6 +820,7 @@ int main( int argc , char *argv[] ){
   itemw17->setScale(0.18);
   itemw17->setRotation(90);
   itemw17->setElementId("basic_sh0");
+  itemw17->setObjectName("basic_sh0");
   ww17ptr->addVSignalitems(itemw17);
   QLabel *ww17label = new QLabel();
   scene->addWidget(ww17label);
@@ -816,6 +833,7 @@ int main( int argc , char *argv[] ){
   itemw18->setScale(0.18);
   itemw18->setRotation(-45);
   itemw18->setElementId("basic_sh0");
+  itemw18->setObjectName("basic_sh0");
   ww18ptr->addVSignalitems(itemw18);
   QLabel *ww18label = new QLabel();
   scene->addWidget(ww18label);
@@ -828,6 +846,7 @@ int main( int argc , char *argv[] ){
   itemw19->setScale(0.18);
   itemw19->setRotation(135);
   itemw19->setElementId("basic_sh0");
+  itemw19->setObjectName("basic_sh0");
   ww19ptr->addVSignalitems(itemw19);
   QLabel *ww19label = new QLabel();
   scene->addWidget(ww19label);
@@ -840,6 +859,7 @@ int main( int argc , char *argv[] ){
   itemw20->setScale(0.18);
   itemw20->setRotation(90);
   itemw20->setElementId("basic_sh0");
+  itemw20->setObjectName("basic_sh0");
   ww20ptr->addVSignalitems(itemw20);
   QLabel *ww20label = new QLabel();
   scene->addWidget(ww20label);
@@ -852,6 +872,7 @@ int main( int argc , char *argv[] ){
   itemw21->setScale(0.18);
   itemw21->setRotation(-90);
   itemw21->setElementId("basic_sh0");
+  itemw21->setObjectName("basic_sh0");
   ww21ptr->addVSignalitems(itemw21);
   QLabel *ww21label = new QLabel();
   scene->addWidget(ww21label);
@@ -871,6 +892,7 @@ int main( int argc , char *argv[] ){
   itemw22->setScale(0.18);
   itemw22->setRotation(-90);
   itemw22->setElementId("basic_sh0");
+  itemw22->setObjectName("basic_sh0");
   ww22ptr->addVSignalitems(itemw22);
   QLabel *ww22label = new QLabel();
   scene->addWidget(ww22label);
@@ -891,6 +913,7 @@ int main( int argc , char *argv[] ){
   itemw23->setScale(0.18);
   itemw23->setRotation(-90);
   itemw23->setElementId("basic_sh0");
+  itemw23->setObjectName("basic_sh0");
   ww23ptr->addVSignalitems(itemw23);
   QLabel *ww23label = new QLabel();
   scene->addWidget(ww23label);
@@ -903,6 +926,7 @@ int main( int argc , char *argv[] ){
   itemw24->setRotation(-90);
   itemw24->setScale(0.18);
   itemw24->setElementId("basic_sh0");
+  itemw24->setObjectName("basic_sh0");
   ww24ptr->addVSignalitems(itemw24);
   QLabel *ww24label = new QLabel();
   scene->addWidget(ww24label);
@@ -915,6 +939,7 @@ int main( int argc , char *argv[] ){
   itemw25->setRotation(-90);
   itemw25->setScale(0.18);
   itemw25->setElementId("basic_sh0");
+  itemw25->setObjectName("basic_sh0");
   ww25ptr->addVSignalitems(itemw25);
   QLabel *ww25label = new QLabel();
   scene->addWidget(ww25label);
@@ -927,6 +952,7 @@ int main( int argc , char *argv[] ){
   itemw26->setRotation(-90);
   itemw26->setScale(0.18);
   itemw26->setElementId("basic_sh0");
+  itemw26->setObjectName("basic_sh0");
   ww26ptr->addVSignalitems(itemw26);
   QLabel *ww26label = new QLabel();
   scene->addWidget(ww26label);
@@ -939,6 +965,7 @@ int main( int argc , char *argv[] ){
   itemw27->setRotation(-90);
   itemw27->setScale(0.18);
   itemw27->setElementId("basic_sh0");
+  itemw27->setObjectName("basic_sh0");
   ww27ptr->addVSignalitems(itemw27);
   QLabel *ww27label = new QLabel();
   scene->addWidget(ww27label);
@@ -951,6 +978,7 @@ int main( int argc , char *argv[] ){
   itemw28->setRotation(-90);
   itemw28->setScale(0.18);
   itemw28->setElementId("basic_sh0");
+  itemw28->setObjectName("basic_sh0");
   ww28ptr->addVSignalitems(itemw28);
   QLabel *ww28label = new QLabel();
   scene->addWidget(ww28label);
@@ -963,6 +991,7 @@ int main( int argc , char *argv[] ){
   itemw29->setRotation(-90);
   itemw29->setScale(0.18);
   itemw29->setElementId("basic_sh0");
+  itemw29->setObjectName("basic_sh0");
   ww29ptr->addVSignalitems(itemw29);
   QLabel *ww29label = new QLabel();
   scene->addWidget(ww29label);
@@ -975,6 +1004,7 @@ int main( int argc , char *argv[] ){
   itemw30->setRotation(-90);
   itemw30->setScale(0.18);
   itemw30->setElementId("basic_sh0");
+  itemw30->setObjectName("basic_sh0");
   ww30ptr->addVSignalitems(itemw30);
   QLabel *ww30label = new QLabel();
   scene->addWidget(ww30label);
@@ -987,6 +1017,7 @@ int main( int argc , char *argv[] ){
   itemw311->setRotation(-90);
   itemw311->setScale(0.18);
   itemw311->setElementId("basic_sh0");
+  itemw311->setObjectName("basic_sh0");
   ww31ptr->addVSignalitems(itemw311);
   QLabel *ww31label = new QLabel();
   scene->addWidget(ww31label);
@@ -999,6 +1030,7 @@ int main( int argc , char *argv[] ){
   itemw321->setRotation(90);
   itemw321->setScale(0.18);
   itemw321->setElementId("basic_sh0");
+  itemw321->setObjectName("basic_sh0");
   ww32ptr->addVSignalitems(itemw321);
   QLabel *ww32label = new QLabel();
   scene->addWidget(ww32label);
@@ -1011,6 +1043,7 @@ int main( int argc , char *argv[] ){
   itemw33->setRotation(90);
   itemw33->setScale(0.18);
   itemw33->setElementId("basic_sh0");
+  itemw33->setObjectName("basic_sh0");
   ww33ptr->addVSignalitems(itemw33);
   QLabel *ww33label = new QLabel();
   scene->addWidget(ww33label);
@@ -1023,6 +1056,7 @@ int main( int argc , char *argv[] ){
   itemw34->setRotation(90);
   itemw34->setScale(0.18);
   itemw34->setElementId("basic_sh0");
+  itemw34->setObjectName("basic_sh0");
   ww34ptr->addVSignalitems(itemw34);
   QLabel *ww34label = new QLabel();
   scene->addWidget(ww34label);
@@ -1035,6 +1069,7 @@ int main( int argc , char *argv[] ){
   itemw35->setRotation(90);
   itemw35->setScale(0.18);
   itemw35->setElementId("basic_sh0");
+  itemw35->setObjectName("basic_sh0");
   ww35ptr->addVSignalitems(itemw35);
   QLabel *ww35label = new QLabel();
   scene->addWidget(ww35label);
@@ -1047,6 +1082,7 @@ int main( int argc , char *argv[] ){
   itemw36->setRotation(90);
   itemw36->setScale(0.18);
   itemw36->setElementId("basic_sh0");
+  itemw36->setObjectName("basic_sh0");
   ww36ptr->addVSignalitems(itemw36);
   QLabel *ww36label = new QLabel();
   scene->addWidget(ww36label);
@@ -1059,6 +1095,7 @@ int main( int argc , char *argv[] ){
   itemw37->setRotation(90);
   itemw37->setScale(0.18);
   itemw37->setElementId("basic_sh0");
+  itemw37->setObjectName("basic_sh0");
   ww37ptr->addVSignalitems(itemw37);
   QLabel *ww37label = new QLabel();
   scene->addWidget(ww37label);
@@ -1071,6 +1108,7 @@ int main( int argc , char *argv[] ){
   itemw38->setRotation(90);
   itemw38->setScale(0.18);
   itemw38->setElementId("basic_sh0");
+  itemw38->setObjectName("basic_sh0");
   ww38ptr->addVSignalitems(itemw38);
   QLabel *ww38label = new QLabel();
   scene->addWidget(ww38label);
@@ -1083,6 +1121,7 @@ int main( int argc , char *argv[] ){
   itemw39->setRotation(90);
   itemw39->setScale(0.18);
   itemw39->setElementId("basic_sh0");
+  itemw39->setObjectName("basic_sh0");
   ww39ptr->addVSignalitems(itemw39);
   QLabel *ww39label = new QLabel();
   scene->addWidget(ww39label);
@@ -1095,6 +1134,7 @@ int main( int argc , char *argv[] ){
   itemw40->setRotation(-135);
   itemw40->setScale(0.18);
   itemw40->setElementId("basic_sh0");
+  itemw40->setObjectName("basic_sh0");
   ww40ptr->addVSignalitems(itemw40);
   QLabel *ww40label = new QLabel();
   scene->addWidget(ww40label);
@@ -1107,6 +1147,7 @@ int main( int argc , char *argv[] ){
   itemw41->setRotation(90);
   itemw41->setScale(0.18);
   itemw41->setElementId("basic_sh0");
+  itemw41->setObjectName("basic_sh0");
   ww41ptr->addVSignalitems(itemw41);
   QLabel *ww41label = new QLabel();
   scene->addWidget(ww41label);
@@ -1123,6 +1164,7 @@ int main( int argc , char *argv[] ){
   itemw421->setRotation(-90);
   itemw421->setScale(0.18);
   itemw421->setElementId("basic_sh0");
+  itemw421->setObjectName("basic_sh0");
   ww42ptr->addVSignalitems(itemw421);
   QLabel *ww42label = new QLabel();
   scene->addWidget(ww42label);
@@ -1139,6 +1181,7 @@ int main( int argc , char *argv[] ){
   itemw431->setRotation(90);
   itemw431->setScale(0.18);
   itemw431->setElementId("basic_sh0");
+  itemw431->setObjectName("basic_sh0");
   ww43ptr->addVSignalitems(itemw431);
   QLabel *ww43label = new QLabel();
   scene->addWidget(ww43label);

@@ -514,11 +514,13 @@ void WSignal::zugpassiertW(QString addressedSignal){
 }
 
 void WSignal::changeColor(){
+  //possible groups basic_sh0, basic_sh1, minimialistic_sh0, minimalistic_sh1
+  QString mode = svgItem->objectName().split("_").at(0);
   if(v_status){
-    svgItem->setElementId("basic_sh1");
+    svgItem->setElementId(mode + "_sh1");
   }
   if(!v_status){
-    svgItem->setElementId("basic_sh0");
+    svgItem->setElementId(mode + "_sh0");
   }
 }
 

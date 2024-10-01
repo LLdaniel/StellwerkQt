@@ -199,9 +199,31 @@ void MainWindow::setSignalStyle(QString mode){
   for(QGraphicsItem *o : this->getScene()->items()){
     if(o->type() == 13){
       QGraphicsSvgItem* s = (QGraphicsSvgItem*) o;
-      //s->setSharedRenderer(rendererHSignal);
-      s->setElementId(mode);
-      qDebug(qUtf8Printable( "__mainwindow__: QGraphicsItem type: " + QString::number(o->type()) + " now using mode: " + mode + " elementId: " + s->elementId() ));
+      if(mode == "minimalistic"){
+	//WS
+	if(s->objectName().startsWith("basic_sh")){
+	  QStringList splitted = s->objectName().split("_");
+	  s->setElementId("minimalistic_" + splitted.at(1));
+	  s->setObjectName("minimalistic_" + splitted.at(1));
+	}
+      }
+      if(mode == "basic"){
+	//WS
+	if(s->objectName().startsWith("minimalistic_sh")){
+	  QStringList splitted = s->objectName().split("_");
+	  s->setElementId("basic_" + splitted.at(1));
+	  s->setObjectName("basic_" + splitted.at(1));
+	}
+      }
+      if(mode == "realistic"){
+	//WS
+	if(s->objectName().startsWith("minimalistic_sh")){
+	  QStringList splitted = s->objectName().split("_");
+	  s->setElementId("basic_" + splitted.at(1));
+	  s->setObjectName("basic_" + splitted.at(1));
+	}
+      }
+      qDebug(qUtf8Printable( "__mainwindow__: QGraphicsItem type: " + QString::number(o->type()) + " now using mode: " + mode + " elementId: " + s->elementId() + " objectName: " + s->objectName() ));
     }
   }
 }
