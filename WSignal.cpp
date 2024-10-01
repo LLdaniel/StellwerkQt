@@ -513,6 +513,15 @@ void WSignal::zugpassiertW(QString addressedSignal){
   }
 }
 
+void WSignal::changeColor(){
+  if(v_status){
+    svgItem->setElementId("basic_sh1");
+  }
+  if(!v_status){
+    svgItem->setElementId("basic_sh0");
+  }
+}
+
 void WSignal::setZiel(QString zziel){
   if(zziel.at(0) == 'S'){                                //HS
     hasHSZiel = true;

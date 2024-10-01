@@ -66,19 +66,8 @@ target_link_libraries(StellwerkQt PRIVATE
 # Resources:
 set(resources_resource_files
   "resources/HS.svg"
-  "resources/HSVS.svg"
-  "resources/HSVSfahrtfahrt.svg"
-  "resources/HSVSfahrthalt.svg"
-  "resources/HSVShalthalt.svg"
-  "resources/HSfahrt.svg"
-  "resources/HShalt.svg"
-  "resources/HSrangier.svg"
   "resources/VS.svg"
-  "resources/VSfahrt.svg"
-  "resources/VShalt.svg"
   "resources/WS.svg"
-  "resources/WSfahrt.svg"
-  "resources/WShalt.svg"
   )
 
 qt_add_resources(StellwerkQt "resources"

@@ -34,7 +34,7 @@ class VSignal {
   //
   //+++ GUI +++
   //
-  void addVSignalitems(QGraphicsSvgItem *signalbild1, QGraphicsSvgItem *signalbild2){fahrt = signalbild1; halt = signalbild2;}
+  void addVSignalitems(QGraphicsSvgItem *signalbild1){svgItem = signalbild1;}
 protected:
   QString v_id;                                                              //name: V001, V068
   bool v_status = false;                                                     //false:= expect stop, true:= expect go
@@ -44,8 +44,7 @@ protected:
   //
   //+++ GUI +++
   //
-  QGraphicsSvgItem *fahrt; 
-  QGraphicsSvgItem *halt;
+  QGraphicsSvgItem *svgItem; 
   void changeColor();                                                        //change display on plan
 };
 #endif

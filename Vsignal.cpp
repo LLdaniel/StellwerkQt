@@ -88,17 +88,17 @@ void VSignal::zugpassiert(){
 void VSignal::changeColor(){
   //
   //keep in mind: WSignal inherits from VSignal
-  if(v_status){                     
-    halt->setVisible(false);
-    fahrt->setVisible(true);
+  if(v_status){
+    svgItem->setElementId("basic_vr1");
+    //halt->setVisible(false);
+    //fahrt->setVisible(true);
   }
   if(!v_status){
-    halt->setVisible(true);
-    fahrt->setVisible(false);
+    //halt->setVisible(true);
+    svgItem->setElementId("basic_vr0");
   }
 }
 
 VSignal::~VSignal(){
-  delete fahrt;
-  delete halt;
+  delete svgItem;
 }

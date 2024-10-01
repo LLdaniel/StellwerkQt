@@ -59,7 +59,7 @@ void MainWindow::createMenus(){
   subMenuSignals = viewMenu->addMenu(tr("&Display signals"));
   subMenuSignals->addAction(minimalisticAct);
   subMenuSignals->addAction(basicAct);
-  //subMenuSignals->addAction(detailedAct); tbd
+  subMenuSignals->addAction(detailedAct);
 
   aboutMenu = menuBar()->addMenu(tr("&About"));
   aboutMenu->addAction(aboutAct);
@@ -215,7 +215,7 @@ void MainWindow::setBasic(){
 }
 
 void MainWindow::setDetailed(){
-  this->setSignalStyle("detailed");
+  this->setSignalStyle("realistic");
 }
 
 QGraphicsScene* MainWindow::getScene(){

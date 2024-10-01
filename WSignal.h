@@ -39,6 +39,7 @@ public:
   void deleteFS();
   bool isNachbar(WSignal *toZiel);                            //check if end signal is neighbour
   bool isNachbar(QString toZiel);                             //check if end signal is neighbour overload
+  void changeColor();
   ~WSignal();
   //
   //+++ GUI +++

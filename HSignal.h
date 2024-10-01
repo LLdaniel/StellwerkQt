@@ -58,7 +58,7 @@ class HSignal : public QObject{
   //
   //+++ GUI +++
   //
-  void addHSignalitem(QGraphicsSvgItem *itemfahrt , QGraphicsSvgItem *itemhalt , QGraphicsSvgItem *itemrangier, QLabel *la, HSignalQPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront);
+  void addHSignalitem(QGraphicsSvgItem *itemfahrt, QLabel *la, HSignalQPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront);
   void moveLabel( int x , int y ){ beschriftung->move(x,y); }
   void moveButton( int x, int y ){ push->move(x,y); }
 
@@ -100,9 +100,7 @@ protected:
   //
   //+++ GUI +++
   //
-  QGraphicsSvgItem *fahrt;                              //shows signal "go"
-  QGraphicsSvgItem *halt;                               //shows signal "stop"
-  QGraphicsSvgItem *rangier;                            //shows signal "shunting"
+  QGraphicsSvgItem *svgItem;                              //shows signal "go"
   QPair<QGraphicsRectItem*,QGraphicsRectItem*> speicheritems;//display if memory is active: small squares
   QLabel *beschriftung = new QLabel();                  //singal label
   HSignalQPushButton *push = new HSignalQPushButton();

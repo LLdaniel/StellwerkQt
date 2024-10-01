@@ -550,20 +550,14 @@ void HSignal::zugpassiert(QString addressedSignal){
 void HSignal::changeColor(){
   if( getS_status() ){                                          //"go"
     if(!zuRangier){                                             //no transition to shunt signal
-      halt->setVisible(false);
-      rangier->setVisible(false);
-      fahrt->setVisible(true);
+      svgItem->setElementId("basic_hp1");
     }
     if(zuRangier){                                              //transition to shunt signal
-      halt->setVisible(false);
-      rangier->setVisible(true);
-      fahrt->setVisible(false);
+      svgItem->setElementId("basic_hp0sh1");
     }
   }
   if( !getS_status() ){                                         //"stop"
-    halt->setVisible(true);
-    rangier->setVisible(false);
-    fahrt->setVisible(false);
+    svgItem->setElementId("basic_hp0");
   }
 }
 
@@ -771,10 +765,8 @@ void HSignal::darkenSpeicher( int position ){
   }
 }
 
-void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QGraphicsSvgItem *itemhalt, QGraphicsSvgItem *itemrangier, QLabel *la, HSignalQPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront){
-  fahrt = itemfahrt;
-  halt = itemhalt;
-  rangier = itemrangier;
+void HSignal::addHSignalitem(QGraphicsSvgItem *itemfahrt, QLabel *la, HSignalQPushButton *but, QGraphicsRectItem *speicherback, QGraphicsRectItem *speicherfront){
+  svgItem = itemfahrt;
   //Label
   beschriftung = la;
   QString qname = s_id;
@@ -808,9 +800,7 @@ void HSignal::showShowContexts(){
 }
 
 HSignal::~HSignal(){
-  delete fahrt;
-  delete halt;
-  delete rangier;
+  delete svgItem;
   delete beschriftung;
   delete push;
 }
