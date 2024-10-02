@@ -3414,6 +3414,7 @@ int main( int argc , char *argv[] ){
   s4item1->setScale(0.36);
   s4item1->setRotation(-90);
   s4item1->setElementId("basic_hp0");
+  s4item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s4push = new HSignalQPushButton();
   scene->addWidget(s4push);
   QLabel *s4label = new QLabel();
@@ -3439,6 +3440,7 @@ int main( int argc , char *argv[] ){
   s5item1->setScale(0.36);
   s5item1->setRotation(-90);
   s5item1->setElementId("basic_hp0");
+  s5item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s5push = new HSignalQPushButton();
   scene->addWidget(s5push);
   QLabel *s5label = new QLabel();
@@ -3464,6 +3466,7 @@ int main( int argc , char *argv[] ){
   s2item1->setScale(0.36);
   s2item1->setRotation(90);
   s2item1->setElementId("basic_hp0");
+  s2item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s2push = new HSignalQPushButton();
   scene->addWidget(s2push);
   QLabel *s2label = new QLabel();
@@ -3489,6 +3492,7 @@ int main( int argc , char *argv[] ){
   s3item1->setScale(0.36);
   s3item1->setRotation(90);
   s3item1->setElementId("basic_hp0");
+  s3item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s3push = new HSignalQPushButton();
   scene->addWidget(s3push);
   QLabel *s3label = new QLabel();
@@ -3523,6 +3527,7 @@ int main( int argc , char *argv[] ){
   s13item1->setScale(0.36);
   s13item1->setRotation(90);
   s13item1->setElementId("basic_hp0");
+  s13item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s13push = new HSignalQPushButton();
   scene->addWidget(s13push);
   QLabel *s13label = new QLabel();
@@ -3557,6 +3562,7 @@ int main( int argc , char *argv[] ){
   s1item1->setScale(0.36);
   s1item1->setRotation(-90);
   s1item1->setElementId("basic_hp0");
+  s1item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s1push = new HSignalQPushButton();
   scene->addWidget(s1push);
   QLabel *s1label = new QLabel();
@@ -3648,6 +3654,7 @@ int main( int argc , char *argv[] ){
   s9item1->setScale(0.36);
   s9item1->setRotation(-90);
   s9item1->setElementId("basic_hp0");
+  s9item1->setObjectName("basic_hp0_ks");
   HSignalQPushButton *s9push = new HSignalQPushButton();
   scene->addWidget(s9push);
   QLabel *s9label = new QLabel();
@@ -3673,6 +3680,7 @@ int main( int argc , char *argv[] ){
   s11item1->setScale(0.36);
   s11item1->setRotation(-90);
   s11item1->setElementId("basic_vr0");
+  s11item1->setObjectName("basic_hp0_ks");
   HSignalQPushButton *s11push = new HSignalQPushButton();
   scene->addWidget(s11push);
   QLabel *s11label = new QLabel();
@@ -3698,6 +3706,7 @@ int main( int argc , char *argv[] ){
   s49item1->setScale(0.36);
   s49item1->setRotation(-90);
   s49item1->setElementId("basic_hp0");
+  s49item1->setObjectName("basic_hp0_ks");
   HSignalQPushButton *s49push = new HSignalQPushButton();
   scene->addWidget(s49push);
   QLabel *s49label = new QLabel();
@@ -3723,6 +3732,7 @@ int main( int argc , char *argv[] ){
   s10item1->setScale(0.36);
   s10item1->setRotation(90);
   s10item1->setElementId("basic_hp0");
+  s10item1->setObjectName("basic_hp0_ks");
   HSignalQPushButton *s10push = new HSignalQPushButton();
   scene->addWidget(s10push);
   QLabel *s10label = new QLabel();
@@ -3748,6 +3758,7 @@ int main( int argc , char *argv[] ){
   s50item1->setScale(0.36);
   s50item1->setRotation(90);
   s50item1->setElementId("basic_hp0");
+  s50item1->setObjectName("basic_hp0_ks");
   HSignalQPushButton *s50push = new HSignalQPushButton();
   scene->addWidget(s50push);
   QLabel *s50label = new QLabel();
@@ -3773,6 +3784,7 @@ int main( int argc , char *argv[] ){
   s12item1->setScale(0.36);
   s12item1->setRotation(90);
   s12item1->setElementId("basic_hp0");
+  s12item1->setObjectName("basic_hp0_ks");
   HSignalQPushButton *s12push = new HSignalQPushButton();
   scene->addWidget(s12push);
   QLabel *s12label = new QLabel();
@@ -3807,6 +3819,7 @@ int main( int argc , char *argv[] ){
   s7item1->setScale(0.36);
   s7item1->setRotation(90);
   s7item1->setElementId("basic_hp0");
+  s7item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s7push = new HSignalQPushButton();
   scene->addWidget(s7push);
   QLabel *s7label = new QLabel();
@@ -3841,6 +3854,7 @@ int main( int argc , char *argv[] ){
   s6item1->setScale(0.36);
   s6item1->setRotation(45);
   s6item1->setElementId("basic_hp0");
+  s6item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s6push = new HSignalQPushButton();
   scene->addWidget(s6push);
   QLabel *s6label = new QLabel();
@@ -3867,6 +3881,7 @@ int main( int argc , char *argv[] ){
   s8item1->setScale(0.36);
   s8item1->setRotation(-90);
   s8item1->setElementId("basic_hp0");
+  s8item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s8push = new HSignalQPushButton();
   scene->addWidget(s8push);
   QLabel *s8label = new QLabel();
@@ -4353,6 +4368,7 @@ int main( int argc , char *argv[] ){
   s52item1->setScale(0.36);
   s52item1->setRotation(-90);
   s52item1->setElementId("basic_hp0");
+  s52item1->setObjectName("basic_hp0");
   HSignalQPushButton *s52push = new HSignalQPushButton();
   scene->addWidget(s52push);
   QLabel *s52label = new QLabel();
@@ -4387,6 +4403,7 @@ int main( int argc , char *argv[] ){
   s51item1->setScale(0.36);
   s51item1->setRotation(45);
   s51item1->setElementId("basic_hp0");
+  s51item1->setObjectName("basic_hp0");
   HSignalQPushButton *s51push = new HSignalQPushButton();
   scene->addWidget(s51push);
   QLabel *s51label = new QLabel();
@@ -5160,6 +5177,7 @@ int main( int argc , char *argv[] ){
   s14item1->setScale(0.36);
   s14item1->setRotation(90);
   s14item1->setElementId("basic_hp0");
+  s14item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s14push = new HSignalQPushButton();
   scene->addWidget(s14push);
   QLabel *s14label = new QLabel();
@@ -5185,6 +5203,7 @@ int main( int argc , char *argv[] ){
   s15item1->setScale(0.36);
   s15item1->setRotation(90);
   s15item1->setElementId("basic_hp0");
+  s15item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s15push = new HSignalQPushButton();
   scene->addWidget(s15push);
   QLabel *s15label = new QLabel();
@@ -5219,6 +5238,7 @@ int main( int argc , char *argv[] ){
   s18item1->setScale(0.36);
   s18item1->setRotation(90);
   s18item1->setElementId("basic_hp0");
+  s18item1->setObjectName("basic_hp0");
   HSignalQPushButton *s18push = new HSignalQPushButton();
   scene->addWidget(s18push);
   QLabel *s18label = new QLabel();
@@ -5244,6 +5264,7 @@ int main( int argc , char *argv[] ){
   s17item1->setScale(0.36);
   s17item1->setRotation(90);
   s17item1->setElementId("basic_hp0");
+  s17item1->setObjectName("basic_hp0");
   HSignalQPushButton *s17push = new HSignalQPushButton();
   scene->addWidget(s17push);
   QLabel *s17label = new QLabel();
@@ -5269,6 +5290,7 @@ int main( int argc , char *argv[] ){
   s16item1->setScale(0.36);
   s16item1->setRotation(90);
   s16item1->setElementId("basic_hp0");
+  s16item1->setObjectName("basic_hp0");
   HSignalQPushButton *s16push = new HSignalQPushButton();
   scene->addWidget(s16push);
   QLabel *s16label = new QLabel();
@@ -5303,6 +5325,7 @@ int main( int argc , char *argv[] ){
   s22item1->setScale(0.36);
   s22item1->setRotation(90);
   s22item1->setElementId("basic_hp0");
+  s22item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s22push = new HSignalQPushButton();
   scene->addWidget(s22push);
   QLabel *s22label = new QLabel();
@@ -5337,6 +5360,7 @@ int main( int argc , char *argv[] ){
   s21item1->setScale(0.36);
   s21item1->setRotation(-90);
   s21item1->setElementId("basic_hp0");
+  s21item1->setObjectName("basic_hp0");
   HSignalQPushButton *s21push = new HSignalQPushButton();
   scene->addWidget(s21push);
   QLabel *s21label = new QLabel();
@@ -5371,6 +5395,7 @@ int main( int argc , char *argv[] ){
   s20item1->setScale(0.36);
   s20item1->setRotation(-90);
   s20item1->setElementId("basic_hp0");
+  s20item1->setObjectName("basic_hp0");
   HSignalQPushButton *s20push = new HSignalQPushButton();
   scene->addWidget(s20push);
   QLabel *s20label = new QLabel();
@@ -5406,6 +5431,7 @@ int main( int argc , char *argv[] ){
   s19item1->setScale(0.36);
   s19item1->setRotation(-90);
   s19item1->setElementId("basic_hp0");
+  s19item1->setObjectName("basic_hp0");
   HSignalQPushButton *s19push = new HSignalQPushButton();
   scene->addWidget(s19push);
   QLabel *s19label = new QLabel();
@@ -5440,6 +5466,7 @@ int main( int argc , char *argv[] ){
   s23item1->setScale(0.36);
   s23item1->setRotation(135);
   s23item1->setElementId("basic_hp0");
+  s23item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s23push = new HSignalQPushButton();
   scene->addWidget(s23push);
   QLabel *s23label = new QLabel();
@@ -6047,6 +6074,7 @@ int main( int argc , char *argv[] ){
   s24item1->setPos(QPointF(690,240));
   s24item1->setScale(0.36);
   s24item1->setElementId("basic_hp0");
+  s24item1->setObjectName("basic_hp0_Bks");
   HSignalQPushButton *s24push = new HSignalQPushButton();
   scene->addWidget(s24push);
   QLabel *s24label = new QLabel();
@@ -6099,6 +6127,7 @@ int main( int argc , char *argv[] ){
   s25item1->setScale(0.36);
   s25item1->setRotation(180);
   s25item1->setElementId("basic_hp0");
+  s25item1->setObjectName("basic_hp0_woSh");
   HSignalQPushButton *s25push = new HSignalQPushButton();
   scene->addWidget(s25push);
   QLabel *s25label = new QLabel();
@@ -6150,6 +6179,7 @@ int main( int argc , char *argv[] ){
   s27item1->setScale(0.36);
   s27item1->setRotation(90);
   s27item1->setElementId("basic_hp0");
+  s27item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s27push = new HSignalQPushButton();
   scene->addWidget(s27push);
   QLabel *s27label = new QLabel();
@@ -6184,6 +6214,7 @@ int main( int argc , char *argv[] ){
   s28item1->setScale(0.36);
   s28item1->setRotation(90);
   s28item1->setElementId("basic_hp0");
+  s28item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s28push = new HSignalQPushButton();
   scene->addWidget(s28push);
   QLabel *s28label = new QLabel();
@@ -6209,6 +6240,7 @@ int main( int argc , char *argv[] ){
   s29item1->setScale(0.36);
   s29item1->setRotation(-90);
   s29item1->setElementId("basic_hp0");
+  s29item1->setObjectName("basic_hp0_woSh");
   HSignalQPushButton *s29push = new HSignalQPushButton();
   scene->addWidget(s29push);
   QLabel *s29label = new QLabel();
@@ -6234,6 +6266,7 @@ int main( int argc , char *argv[] ){
   s30item1->setScale(0.36);
   s30item1->setRotation(-90);
   s30item1->setElementId("basic_hp0");
+  s30item1->setObjectName("basic_hp0_woSh");
   HSignalQPushButton *s30push = new HSignalQPushButton();
   scene->addWidget(s30push);
   QLabel *s30label = new QLabel();
@@ -6268,6 +6301,7 @@ int main( int argc , char *argv[] ){
   s39item1->setScale(0.36);
   s39item1->setRotation(90);
   s39item1->setElementId("basic_hp0");
+  s39item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s39push = new HSignalQPushButton();
   scene->addWidget(s39push);
   QLabel *s39label = new QLabel();
@@ -6302,6 +6336,7 @@ int main( int argc , char *argv[] ){
   s41item1->setScale(0.36);
   s41item1->setRotation(-90);
   s41item1->setElementId("basic_hp0");
+  s41item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s41push = new HSignalQPushButton();
   scene->addWidget(s41push);
   QLabel *s41label = new QLabel();
@@ -6336,6 +6371,7 @@ int main( int argc , char *argv[] ){
   s40item1->setScale(0.36);
   s40item1->setRotation(-90);
   s40item1->setElementId("basic_hp0");
+  s40item1->setObjectName("basic_hp0_Bks");
   HSignalQPushButton *s40push = new HSignalQPushButton();
   scene->addWidget(s40push);
   QLabel *s40label = new QLabel();
@@ -6379,6 +6415,7 @@ int main( int argc , char *argv[] ){
   s48item1->setScale(0.36);
   s48item1->setRotation(-90);
   s48item1->setElementId("basic_hp0");
+  s48item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s48push = new HSignalQPushButton();
   scene->addWidget(s48push);
   QLabel *s48label = new QLabel();
@@ -6413,6 +6450,7 @@ int main( int argc , char *argv[] ){
   s46item1->setScale(0.36);
   s46item1->setRotation(-90);
   s46item1->setElementId("basic_hp0");
+  s46item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s46push = new HSignalQPushButton();
   scene->addWidget(s46push);
   QLabel *s46label = new QLabel();
@@ -6447,6 +6485,7 @@ int main( int argc , char *argv[] ){
   s47item1->setScale(0.36);
   s47item1->setRotation(90);
   s47item1->setElementId("basic_hp0");
+  s47item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s47push = new HSignalQPushButton();
   scene->addWidget(s47push);
   QLabel *s47label = new QLabel();
@@ -6472,6 +6511,7 @@ int main( int argc , char *argv[] ){
   itemv411->setScale(0.36);
   itemv411->setRotation(90);
   itemv411->setElementId("basic_vr0");
+  itemv411->setObjectName("basic_vr0");
   v41ptr->addVSignalitems(itemv411);
   
   QGraphicsSvgItem *s45item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6480,6 +6520,7 @@ int main( int argc , char *argv[] ){
   s45item1->setScale(0.36);
   s45item1->setRotation(90);
   s45item1->setElementId("basic_hp0");
+  s45item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s45push = new HSignalQPushButton();
   scene->addWidget(s45push);
   QLabel *s45label = new QLabel();
@@ -6505,6 +6546,7 @@ int main( int argc , char *argv[] ){
   itemv331->setScale(0.36);
   itemv331->setRotation(90);
   itemv331->setElementId("basic_vr0");
+  itemv331->setObjectName("basic_vr0");
   v33ptr->addVSignalitems(itemv331);
 
   QGraphicsSvgItem *s38item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6513,6 +6555,7 @@ int main( int argc , char *argv[] ){
   s38item1->setScale(0.36);
   s38item1->setRotation(90);
   s38item1->setElementId("basic_hp0");
+  s38item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s38push = new HSignalQPushButton();
   scene->addWidget(s38push);
   QLabel *s38label = new QLabel();
@@ -6545,6 +6588,7 @@ int main( int argc , char *argv[] ){
   s26item1->setPos(QPointF(770,-415));
   s26item1->setScale(0.36);
   s26item1->setElementId("basic_hp0");
+  s26item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s26push = new HSignalQPushButton();
   scene->addWidget(s26push);
   QLabel *s26label = new QLabel();
@@ -6579,6 +6623,7 @@ int main( int argc , char *argv[] ){
   s42item1->setScale(0.36);
   s42item1->setRotation(-90);
   s42item1->setElementId("basic_hp0");
+  s42item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s42push = new HSignalQPushButton();
   scene->addWidget(s42push);
   QLabel *s42label = new QLabel();
@@ -6604,6 +6649,7 @@ int main( int argc , char *argv[] ){
   s37item1->setScale(0.36);
   s37item1->setRotation(90);
   s37item1->setElementId("basic_hp0");
+  s37item1->setObjectName("basic_hp0_ks");
   HSignalQPushButton *s37push = new HSignalQPushButton();
   scene->addWidget(s37push);
   QLabel *s37label = new QLabel();
@@ -6629,6 +6675,7 @@ int main( int argc , char *argv[] ){
   s36item1->setScale(0.36);
   s36item1->setRotation(90);
   s36item1->setElementId("basic_hp0");
+  s36item1->setObjectName("basic_hp0_ks");
   HSignalQPushButton *s36push = new HSignalQPushButton();
   scene->addWidget(s36push);
   QLabel *s36label = new QLabel();
@@ -6654,6 +6701,7 @@ int main( int argc , char *argv[] ){
   s35item1->setScale(0.36);
   s35item1->setRotation(90);
   s35item1->setElementId("basic_hp0");
+  s35item1->setObjectName("basic_hp0_ks");
   HSignalQPushButton *s35push = new HSignalQPushButton();
   scene->addWidget(s35push);
   QLabel *s35label = new QLabel();
@@ -6679,6 +6727,7 @@ int main( int argc , char *argv[] ){
   s43item1->setScale(0.36);
   s43item1->setRotation(90);
   s43item1->setElementId("basic_hp0");
+  s43item1->setObjectName("basic_hp0_woSh");
   HSignalQPushButton *s43push = new HSignalQPushButton();
   scene->addWidget(s43push);
   QLabel *s43label = new QLabel();
@@ -6713,6 +6762,7 @@ int main( int argc , char *argv[] ){
   s34item1->setScale(0.36);
   s34item1->setRotation(-90);
   s34item1->setElementId("basic_hp0");
+  s34item1->setObjectName("basic_hp0");
   HSignalQPushButton *s34push = new HSignalQPushButton();
   scene->addWidget(s34push);
   QLabel *s34label = new QLabel();
@@ -6747,6 +6797,7 @@ int main( int argc , char *argv[] ){
   s33item1->setScale(0.36);
   s33item1->setRotation(-90);
   s33item1->setElementId("basic_hp0");
+  s33item1->setObjectName("basic_hp0");
   HSignalQPushButton *s33push = new HSignalQPushButton();
   scene->addWidget(s33push);
   QLabel *s33label = new QLabel();
@@ -6781,6 +6832,7 @@ int main( int argc , char *argv[] ){
   s31item1->setScale(0.36);
   s31item1->setRotation(-90);
   s31item1->setElementId("basic_hp0");
+  s31item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s31push = new HSignalQPushButton();
   scene->addWidget(s31push);
   QLabel *s31label = new QLabel();
@@ -6815,6 +6867,7 @@ int main( int argc , char *argv[] ){
   s32item1->setScale(0.36);
   s32item1->setRotation(-90);
   s32item1->setElementId("basic_hp0");
+  s32item1->setObjectName("basic_hp0");
   HSignalQPushButton *s32push = new HSignalQPushButton();
   scene->addWidget(s32push);
   QLabel *s32label = new QLabel();
@@ -6875,6 +6928,7 @@ int main( int argc , char *argv[] ){
   s44item1->setScale(0.36);
   s44item1->setRotation(180);
   s44item1->setElementId("basic_hp0");
+  s44item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s44push = new HSignalQPushButton();
   scene->addWidget(s44push);
   QLabel *s44label = new QLabel();

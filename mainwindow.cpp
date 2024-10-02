@@ -215,6 +215,17 @@ void MainWindow::setSignalStyle(QString mode){
 	  }
 	  else s->setObjectName(mode + "_" + splitted.at(1));
 	}
+	//HS
+	if(s->objectName().contains("_hp") ){
+	  QStringList splitted = s->objectName().split("_");
+	  s->setElementId(mode + "_" + splitted.at(1));
+	  if(splitted.size() == 3){
+	    s->setObjectName(mode + "_" + splitted.at(1) + "_" + splitted.at(2));
+	  }
+	  else{
+	    s->setObjectName(mode + "_" + splitted.at(1));
+	  }
+	}
       }
       if(mode == "basic"){
 	//WS
@@ -232,6 +243,17 @@ void MainWindow::setSignalStyle(QString mode){
 	  }
 	  else s->setObjectName(mode + "_" + splitted.at(1));
 	}
+	//HS
+	if(s->objectName().contains("_hp") ){
+	  QStringList splitted = s->objectName().split("_");
+	  s->setElementId(mode + "_" + splitted.at(1));
+	  if(splitted.size() == 3){
+	    s->setObjectName(mode + "_" + splitted.at(1) + "_" + splitted.at(2));
+	  }
+	  else{
+	    s->setObjectName(mode + "_" + splitted.at(1));
+	  }
+	}
       }
       if(mode == "realistic"){
 	//WS
@@ -247,6 +269,18 @@ void MainWindow::setSignalStyle(QString mode){
 	  if(splitted.size() == 3){
 	    s->setElementId(mode + "_" + splitted.at(1));
 	    s->setObjectName(mode + "_" + splitted.at(1) + "_ks");
+	  }
+	  else{
+	    s->setElementId("basic_" + splitted.at(1));
+	    s->setObjectName("basic_" + splitted.at(1));
+	  }
+	}
+	//HS
+	if(s->objectName().contains("_hp") ){
+	  QStringList splitted = s->objectName().split("_");
+	  if(splitted.size() == 3){
+	    s->setElementId(mode + "_" + splitted.at(1) + "_" + splitted.at(2));
+	    s->setObjectName(mode + "_" + splitted.at(1) + "_" + splitted.at(2));
 	  }
 	  else{
 	    s->setElementId("basic_" + splitted.at(1));

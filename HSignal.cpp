@@ -548,16 +548,39 @@ void HSignal::zugpassiert(QString addressedSignal){
 }
 
 void HSignal::changeColor(){
+  //possible groups: basic_hp0, basic_hp1, basic_hp0sh1, minimialistic_hp0, minimalistic_hp1, minimalistic_hp0sh1, realistic_hp0, realistic_hp1, realistic_hp0sh1 with the following ending flags: no/woSh/Esig/Bks that will change in realistic
+  QStringList splitted = svgItem->objectName().split("_");
   if( getS_status() ){                                          //"go"
     if(!zuRangier){                                             //no transition to shunt signal
-      svgItem->setElementId("basic_hp1");
+      if(splitted.size() == 3){
+	svgItem->setElementId(splitted.at(0) + "_hp1_" + splitted.at(2));
+	svgItem->setObjectName(splitted.at(0) + "_hp1_" + splitted.at(2));
+      }
+      else{
+	svgItem->setElementId(splitted.at(0) + "_hp1");
+	svgItem->setObjectName(splitted.at(0) + "_hp1");
+      }
     }
     if(zuRangier){                                              //transition to shunt signal
-      svgItem->setElementId("basic_hp0sh1");
+      if(splitted.size() == 3){
+	svgItem->setElementId(splitted.at(0) + "_hp0sh1_" + splitted.at(2));
+	svgItem->setObjectName(splitted.at(0) + "_hp0sh1_" + splitted.at(2));
+      }
+      else{
+	svgItem->setElementId(splitted.at(0) + "_hp0sh1");
+	svgItem->setObjectName(splitted.at(0) + "_hp0sh1");
+      }
     }
   }
   if( !getS_status() ){                                         //"stop"
-    svgItem->setElementId("basic_hp0");
+    if(splitted.size() == 3){
+      svgItem->setElementId(splitted.at(0) + "_hp0_" + splitted.at(2));
+      svgItem->setObjectName(splitted.at(0) + "_hp0_" + splitted.at(2));
+    }
+    else{
+      svgItem->setElementId(splitted.at(0) + "_hp0");
+      svgItem->setObjectName(splitted.at(0) + "_hp0");
+    }
   }
 }
 
