@@ -5431,7 +5431,7 @@ int main( int argc , char *argv[] ){
   s19item1->setScale(0.36);
   s19item1->setRotation(-90);
   s19item1->setElementId("basic_hp0");
-  s19item1->setObjectName("basic_hp0");
+  s19item1->setObjectName("basic_hp0_Esig");
   HSignalQPushButton *s19push = new HSignalQPushButton();
   scene->addWidget(s19push);
   QLabel *s19label = new QLabel();
@@ -6161,7 +6161,7 @@ int main( int argc , char *argv[] ){
   itemv211->setScale(0.36);
   itemv211->setRotation(180);
   itemv211->setElementId("basic_vr0");
-  itemv211->setObjectName("basic_vr0");
+  itemv211->setObjectName("basic_vr0_ks");
   v21ptr->addVSignalitems(itemv211);
 
   QGraphicsSvgItem *itemv221 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -6205,7 +6205,7 @@ int main( int argc , char *argv[] ){
   itemv231->setScale(0.36);
   itemv231->setRotation(90);
   itemv231->setElementId("basic_vr0");
-  itemv231->setObjectName("basic_vr0_ks");
+  itemv231->setObjectName("basic_vr0");
   v23ptr->addVSignalitems(itemv231);
 
   QGraphicsSvgItem *s28item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6485,7 +6485,7 @@ int main( int argc , char *argv[] ){
   s47item1->setScale(0.36);
   s47item1->setRotation(90);
   s47item1->setElementId("basic_hp0");
-  s47item1->setObjectName("basic_hp0_Esig");
+  s47item1->setObjectName("basic_hp0_Bks");
   HSignalQPushButton *s47push = new HSignalQPushButton();
   scene->addWidget(s47push);
   QLabel *s47label = new QLabel();
@@ -6520,7 +6520,7 @@ int main( int argc , char *argv[] ){
   s45item1->setScale(0.36);
   s45item1->setRotation(90);
   s45item1->setElementId("basic_hp0");
-  s45item1->setObjectName("basic_hp0_Esig");
+  s45item1->setObjectName("basic_hp0_Bks");
   HSignalQPushButton *s45push = new HSignalQPushButton();
   scene->addWidget(s45push);
   QLabel *s45label = new QLabel();
