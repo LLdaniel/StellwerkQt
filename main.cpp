@@ -3514,6 +3514,7 @@ int main( int argc , char *argv[] ){
   item1->setScale(0.36);
   item1->setRotation(90);
   item1->setElementId("basic_vr0");
+  item1->setObjectName("basic_vr0");
   v2ptr->addVSignalitems(item1);
   
   QGraphicsSvgItem *s13item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -3547,6 +3548,7 @@ int main( int argc , char *argv[] ){
   itemv11->setScale(0.36);
   itemv11->setRotation(-90);
   itemv11->setElementId("basic_vr0");
+  itemv11->setObjectName("basic_vr0");
   v1ptr->addVSignalitems(itemv11);
 
   QGraphicsSvgItem *s1item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -3594,6 +3596,7 @@ int main( int argc , char *argv[] ){
   itemv31->setPos(QPointF(-900,600));
   itemv31->setScale(0.36);
   itemv31->setElementId("basic_vr0");
+  itemv31->setObjectName("basic_vr0");
   v3ptr->addVSignalitems(itemv31);
 
   QGraphicsSvgItem *itemv51 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -3601,6 +3604,7 @@ int main( int argc , char *argv[] ){
   itemv51->setPos(QPointF(-980,600));
   itemv51->setScale(0.36);
   itemv51->setElementId("basic_vr0");
+  itemv51->setObjectName("basic_vr0");
   v5ptr->addVSignalitems(itemv51);
 
   QGraphicsSvgItem *itemv61 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -3608,6 +3612,7 @@ int main( int argc , char *argv[] ){
   itemv61->setPos(QPointF(-1060,600));
   itemv61->setScale(0.36);
   itemv61->setElementId("basic_vr0");
+  itemv61->setObjectName("basic_vr0");
   v6ptr->addVSignalitems(itemv61);
 
   QGraphicsSvgItem *itemv71 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -3616,6 +3621,7 @@ int main( int argc , char *argv[] ){
   itemv71->setScale(0.36);
   itemv71->setRotation(180);
   itemv71->setElementId("basic_vr0");
+  itemv71->setObjectName("basic_vr0");
   v7ptr->addVSignalitems(itemv71);
 
   QGraphicsSvgItem *itemv101 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -3624,6 +3630,7 @@ int main( int argc , char *argv[] ){
   itemv101->setScale(0.36);
   itemv101->setRotation(-90);
   itemv101->setElementId("basic_vr0");
+  itemv101->setObjectName("basic_vr0");
   v10ptr->addVSignalitems(itemv101);
 
   QGraphicsSvgItem *itemv41 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -3632,6 +3639,7 @@ int main( int argc , char *argv[] ){
   itemv41->setScale(0.36);
   itemv41->setRotation(180);
   itemv41->setElementId("basic_vr0");
+  itemv41->setObjectName("basic_vr0");
   v4ptr->addVSignalitems(itemv41);
 
   QGraphicsSvgItem *s9item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -3790,6 +3798,7 @@ int main( int argc , char *argv[] ){
   itemv81->setScale(0.36);
   itemv81->setRotation(90);
   itemv81->setElementId("basic_vr0");
+  itemv81->setObjectName("basic_vr0");
   v8ptr->addVSignalitems(itemv81);
   
   QGraphicsSvgItem *s7item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -3823,6 +3832,7 @@ int main( int argc , char *argv[] ){
   itemv91->setScale(0.36);
   itemv91->setRotation(45);
   itemv91->setElementId("basic_vr0");
+  itemv91->setObjectName("basic_vr0");
   v9ptr->addVSignalitems(itemv91);
   
   QGraphicsSvgItem *s6item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -4334,6 +4344,7 @@ int main( int argc , char *argv[] ){
   itemv44->setScale(0.36);
   itemv44->setRotation(-90);
   itemv44->setElementId("basic_vr0");
+  itemv44->setObjectName("basic_vr0");
   v44ptr->addVSignalitems(itemv44);
 
   QGraphicsSvgItem *s52item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -4367,6 +4378,7 @@ int main( int argc , char *argv[] ){
   itemv431->setScale(0.36);
   itemv431->setRotation(45);
   itemv431->setElementId("basic_vr0");
+  itemv431->setObjectName("basic_vr0");
   v43ptr->addVSignalitems(itemv431);
   
   QGraphicsSvgItem *s51item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -5198,6 +5210,7 @@ int main( int argc , char *argv[] ){
   itemv111->setScale(0.36);
   itemv111->setRotation(180);
   itemv111->setElementId("basic_vr0");
+  itemv111->setObjectName("basic_vr0");
   v11ptr->addVSignalitems(itemv111);
 
   QGraphicsSvgItem *s18item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -5281,6 +5294,7 @@ int main( int argc , char *argv[] ){
   item141->setScale(0.36);
   item141->setRotation(90);
   item141->setElementId("basic_vr0");
+  item141->setObjectName("basic_vr0");
   v14ptr->addVSignalitems(item141);
   
   QGraphicsSvgItem *s22item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -5314,6 +5328,7 @@ int main( int argc , char *argv[] ){
   itemv151->setScale(0.36);
   itemv151->setRotation(-90);
   itemv151->setElementId("basic_vr0");
+  itemv151->setObjectName("basic_vr0");
   v15ptr->addVSignalitems(itemv151);
   
   QGraphicsSvgItem *s21item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -5347,6 +5362,7 @@ int main( int argc , char *argv[] ){
   itemv131->setScale(0.36);
   itemv131->setRotation(-90);
   itemv131->setElementId("basic_vr0");
+  itemv131->setObjectName("basic_vr0");
   v13ptr->addVSignalitems(itemv131);
   
   QGraphicsSvgItem *s20item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -5381,6 +5397,7 @@ int main( int argc , char *argv[] ){
   itemv121->setScale(0.36);
   itemv121->setRotation(-90);
   itemv121->setElementId("basic_vr0");
+  itemv121->setObjectName("basic_vr0");
   v12ptr->addVSignalitems(itemv121);
   
   QGraphicsSvgItem *s19item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -5414,6 +5431,7 @@ int main( int argc , char *argv[] ){
   itemv161->setScale(0.36);
   itemv161->setRotation(135);
   itemv161->setElementId("basic_vr0");
+  itemv161->setObjectName("basic_vr0");
   v16ptr->addVSignalitems(itemv161);
   
   QGraphicsSvgItem *s23item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6054,6 +6072,7 @@ int main( int argc , char *argv[] ){
   itemv201->setPos(QPointF(690,90));
   itemv201->setScale(0.36);
   itemv201->setElementId("basic_vr0");
+  itemv201->setObjectName("basic_vr0");
   v20ptr->addVSignalitems(itemv201);
 
   QGraphicsSvgItem *itemv181 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -6062,6 +6081,7 @@ int main( int argc , char *argv[] ){
   itemv181->setScale(0.36);
   itemv181->setRotation(180);
   itemv181->setElementId("basic_vr0");
+  itemv181->setObjectName("basic_vr0");
   v18ptr->addVSignalitems(itemv181);
 
   QGraphicsSvgItem *itemv171 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -6070,6 +6090,7 @@ int main( int argc , char *argv[] ){
   itemv171->setScale(0.36);
   itemv171->setRotation(180);
   itemv171->setElementId("basic_vr0");
+  itemv171->setObjectName("basic_vr0");
   v17ptr->addVSignalitems(itemv171);
 
   QGraphicsSvgItem *s25item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6102,6 +6123,7 @@ int main( int argc , char *argv[] ){
   itemv191->setPos(QPointF(620,60));
   itemv191->setScale(0.36);
   itemv191->setElementId("basic_vr0");
+  itemv191->setObjectName("basic_vr0");
   v19ptr->addVSignalitems(itemv191);
 
   QGraphicsSvgItem *itemv211 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -6110,6 +6132,7 @@ int main( int argc , char *argv[] ){
   itemv211->setScale(0.36);
   itemv211->setRotation(180);
   itemv211->setElementId("basic_vr0");
+  itemv211->setObjectName("basic_vr0");
   v21ptr->addVSignalitems(itemv211);
 
   QGraphicsSvgItem *itemv221 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -6118,6 +6141,7 @@ int main( int argc , char *argv[] ){
   itemv221->setScale(0.36);
   itemv221->setRotation(90);
   itemv221->setElementId("basic_vr0");
+  itemv221->setObjectName("basic_vr0");
   v22ptr->addVSignalitems(itemv221);
 
   QGraphicsSvgItem *s27item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6151,6 +6175,7 @@ int main( int argc , char *argv[] ){
   itemv231->setScale(0.36);
   itemv231->setRotation(90);
   itemv231->setElementId("basic_vr0");
+  itemv231->setObjectName("basic_vr0");
   v23ptr->addVSignalitems(itemv231);
 
   QGraphicsSvgItem *s28item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6234,6 +6259,7 @@ int main( int argc , char *argv[] ){
   itemv311->setScale(0.36);
   itemv311->setRotation(90);
   itemv311->setElementId("basic_vr0");
+  itemv311->setObjectName("basic_vr0");
   v31ptr->addVSignalitems(itemv311);
 
   QGraphicsSvgItem *s39item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6267,6 +6293,7 @@ int main( int argc , char *argv[] ){
   itemv301->setScale(0.36);
   itemv301->setRotation(-90);
   itemv301->setElementId("basic_vr0");
+  itemv301->setObjectName("basic_vr0");
   v30ptr->addVSignalitems(itemv301);
   
   QGraphicsSvgItem *s41item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6300,6 +6327,7 @@ int main( int argc , char *argv[] ){
   itemv291->setScale(0.36);
   itemv291->setRotation(-90);
   itemv291->setElementId("basic_vr0");
+  itemv291->setObjectName("basic_vr0");
   v29ptr->addVSignalitems(itemv291);
   
   QGraphicsSvgItem *s40item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6333,6 +6361,7 @@ int main( int argc , char *argv[] ){
   itemv351->setScale(0.36);
   itemv351->setRotation(180);
   itemv351->setElementId("basic_vr0");
+  itemv351->setObjectName("basic_vr0_ks");
   v35ptr->addVSignalitems(itemv351);
 
   QGraphicsSvgItem *itemv381 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -6341,6 +6370,7 @@ int main( int argc , char *argv[] ){
   itemv381->setScale(0.36);
   itemv381->setRotation(-90);
   itemv381->setElementId("basic_vr0");
+  itemv381->setObjectName("basic_vr0");
   v38ptr->addVSignalitems(itemv381);
   
   QGraphicsSvgItem *s48item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6374,6 +6404,7 @@ int main( int argc , char *argv[] ){
   itemv401->setScale(0.36);
   itemv401->setRotation(-90);
   itemv401->setElementId("basic_vr0");
+  itemv401->setObjectName("basic_vr0");
   v40ptr->addVSignalitems(itemv401);
   
   QGraphicsSvgItem *s46item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6407,6 +6438,7 @@ int main( int argc , char *argv[] ){
   itemv391->setScale(0.36);
   itemv391->setRotation(90);
   itemv391->setElementId("basic_vr0");
+  itemv391->setObjectName("basic_vr0");
   v39ptr->addVSignalitems(itemv391);
   
   QGraphicsSvgItem *s47item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6505,6 +6537,7 @@ int main( int argc , char *argv[] ){
   itemv281->setPos(QPointF(765,-375));
   itemv281->setScale(0.36);
   itemv281->setElementId("basic_vr0");
+  itemv281->setObjectName("basic_vr0");
   v28ptr->addVSignalitems(itemv281);
   
   QGraphicsSvgItem *s26item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6537,6 +6570,7 @@ int main( int argc , char *argv[] ){
   itemv321->setScale(0.36);
   itemv321->setRotation(-90);
   itemv321->setElementId("basic_vr0");
+  itemv321->setObjectName("basic_vr0");
   v32ptr->addVSignalitems(itemv321);
 
   QGraphicsSvgItem *s42item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6670,6 +6704,7 @@ int main( int argc , char *argv[] ){
   itemv271->setScale(0.36);
   itemv271->setRotation(-90);
   itemv271->setElementId("basic_vr0");
+  itemv271->setObjectName("basic_vr0");
   v27ptr->addVSignalitems(itemv271);
   
   QGraphicsSvgItem *s34item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6703,6 +6738,7 @@ int main( int argc , char *argv[] ){
   itemv261->setScale(0.36);
   itemv261->setRotation(-90);
   itemv261->setElementId("basic_vr0");
+  itemv261->setObjectName("basic_vr0");
   v26ptr->addVSignalitems(itemv261);
   
   QGraphicsSvgItem *s33item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6736,6 +6772,7 @@ int main( int argc , char *argv[] ){
   itemv241->setScale(0.36);
   itemv241->setRotation(-90);
   itemv241->setElementId("basic_vr0");
+  itemv241->setObjectName("basic_vr0");
   v24ptr->addVSignalitems(itemv241);
   
   QGraphicsSvgItem *s31item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6769,6 +6806,7 @@ int main( int argc , char *argv[] ){
   itemv251->setScale(0.36);
   itemv251->setRotation(-90);
   itemv251->setElementId("basic_vr0");
+  itemv251->setObjectName("basic_vr0");
   v25ptr->addVSignalitems(itemv251);
   
   QGraphicsSvgItem *s32item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6802,6 +6840,7 @@ int main( int argc , char *argv[] ){
   itemv361->setScale(0.36);
   itemv361->setRotation(-90);
   itemv361->setElementId("basic_vr0");
+  itemv361->setObjectName("basic_vr0_ks");
   v36ptr->addVSignalitems(itemv361);
 
   QGraphicsSvgItem *itemv341 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -6809,6 +6848,7 @@ int main( int argc , char *argv[] ){
   itemv341->setPos(QPointF(2490,-355));
   itemv341->setScale(0.36);
   itemv341->setElementId("basic_vr0");
+  itemv341->setObjectName("basic_vr0_ks");
   v34ptr->addVSignalitems(itemv341);
 
   QGraphicsSvgItem *itemv371 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -6817,6 +6857,7 @@ int main( int argc , char *argv[] ){
   itemv371->setScale(0.36);
   itemv371->setRotation(90);
   itemv371->setElementId("basic_vr0");
+  itemv371->setObjectName("basic_vr0_ks");
   v37ptr->addVSignalitems(itemv371);
 
   QGraphicsSvgItem *itemv421 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -6825,6 +6866,7 @@ int main( int argc , char *argv[] ){
   itemv421->setScale(0.36);
   itemv421->setRotation(180);
   itemv421->setElementId("basic_vr0");
+  itemv421->setObjectName("basic_vr0");
   v42ptr->addVSignalitems(itemv421);
 
   QGraphicsSvgItem *s44item1 = new QGraphicsSvgItem(":/resources/HS.svg");

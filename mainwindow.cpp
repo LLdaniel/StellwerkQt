@@ -203,16 +203,34 @@ void MainWindow::setSignalStyle(QString mode){
 	//WS
 	if(s->objectName().startsWith("basic_sh")){
 	  QStringList splitted = s->objectName().split("_");
-	  s->setElementId("minimalistic_" + splitted.at(1));
-	  s->setObjectName("minimalistic_" + splitted.at(1));
+	  s->setElementId(mode + "_" + splitted.at(1));
+	  s->setObjectName(mode + "_" + splitted.at(1));
+	}
+	//VS
+	if(s->objectName().contains("_vr") ){
+	  QStringList splitted = s->objectName().split("_");
+	  s->setElementId(mode + "_" + splitted.at(1));
+	  if(splitted.size() == 3){
+	    s->setObjectName(mode + "_" + splitted.at(1) + "_ks");
+	  }
+	  else s->setObjectName(mode + "_" + splitted.at(1));
 	}
       }
       if(mode == "basic"){
 	//WS
 	if(s->objectName().startsWith("minimalistic_sh")){
 	  QStringList splitted = s->objectName().split("_");
-	  s->setElementId("basic_" + splitted.at(1));
-	  s->setObjectName("basic_" + splitted.at(1));
+	  s->setElementId(mode + "_" + splitted.at(1));
+	  s->setObjectName(mode + "_" + splitted.at(1));
+	}
+	//VS
+	if(s->objectName().contains("_vr") ){
+	  QStringList splitted = s->objectName().split("_");
+	  s->setElementId(mode + "_" + splitted.at(1));
+	  if(splitted.size() == 3){
+	    s->setObjectName(mode + "_" + splitted.at(1) + "_ks");
+	  }
+	  else s->setObjectName(mode + "_" + splitted.at(1));
 	}
       }
       if(mode == "realistic"){
@@ -221,6 +239,19 @@ void MainWindow::setSignalStyle(QString mode){
 	  QStringList splitted = s->objectName().split("_");
 	  s->setElementId("basic_" + splitted.at(1));
 	  s->setObjectName("basic_" + splitted.at(1));
+	}
+	//VS
+	if(s->objectName().contains("_vr")){
+	  QStringList splitted = s->objectName().split("_");
+	  //s->setElementId(mode + "_" + splitted.at(1));
+	  if(splitted.size() == 3){
+	    s->setElementId(mode + "_" + splitted.at(1));
+	    s->setObjectName(mode + "_" + splitted.at(1) + "_ks");
+	  }
+	  else{
+	    s->setElementId("basic_" + splitted.at(1));
+	    s->setObjectName("basic_" + splitted.at(1));
+	  }
 	}
       }
       qDebug(qUtf8Printable( "__mainwindow__: QGraphicsItem type: " + QString::number(o->type()) + " now using mode: " + mode + " elementId: " + s->elementId() + " objectName: " + s->objectName() ));

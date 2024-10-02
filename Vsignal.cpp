@@ -88,14 +88,28 @@ void VSignal::zugpassiert(){
 void VSignal::changeColor(){
   //
   //keep in mind: WSignal inherits from VSignal
+  //possible groups basic_vr0, basic_vr1, minimialistic_vr0, minimalistic_vr1, realistic_vr0, realistic_vr0 with an ending flag "_ks" that it will change in realistic to a Ks signal
+  QStringList splitted = svgItem->objectName().split("_");
   if(v_status){
-    svgItem->setElementId("basic_vr1");
-    //halt->setVisible(false);
-    //fahrt->setVisible(true);
+    if(splitted.size() == 3){
+      svgItem->setElementId(splitted.at(0) + "_vr1");
+      svgItem->setObjectName(splitted.at(0) + "_vr1_" + splitted.at(2));
+    }
+    else{
+      svgItem->setElementId(splitted.at(0) + "_vr1");
+      svgItem->setObjectName(splitted.at(0) + "_vr1");
+    }
+  
   }
   if(!v_status){
-    //halt->setVisible(true);
-    svgItem->setElementId("basic_vr0");
+    if(splitted.size() == 3){
+      svgItem->setElementId(splitted.at(0) + "_vr0");
+      svgItem->setObjectName(splitted.at(0) + "_vr0_" + splitted.at(2));
+    }
+    else{
+      svgItem->setElementId(splitted.at(0) + "_vr0");
+      svgItem->setObjectName(splitted.at(0) + "_vr0");
+    }
   }
 }
 

@@ -518,9 +518,11 @@ void WSignal::changeColor(){
   QString mode = svgItem->objectName().split("_").at(0);
   if(v_status){
     svgItem->setElementId(mode + "_sh1");
+    svgItem->setObjectName(mode + "_sh1");
   }
   if(!v_status){
     svgItem->setElementId(mode + "_sh0");
+    svgItem->setObjectName(mode + "_sh0");
   }
 }
 
