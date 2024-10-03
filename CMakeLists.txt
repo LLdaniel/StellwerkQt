@@ -45,7 +45,8 @@ qt_add_executable(StellwerkQt MANUAL_FINALIZATION
 qt_set_finalizer_mode(StellwerkQt ENABLE MODES static_plugins)
 qt_finalize_target(StellwerkQt)
 
-target_include_directories(StellwerkQt PRIVATE
+# target_include_directories, but here only the wiringPi lib file:
+target_sources(StellwerkQt PRIVATE
   /home/daniel/raspi/sysroot/usr/lib/libwiringPi.so.2.70
   )
 
