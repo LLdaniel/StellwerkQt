@@ -8,8 +8,8 @@
 #ifdef __cplusplus
 extern "C"{
 #endif
-#include <wiringPi.h>
-#include <sr595.h>
+#include <WiringPi/wiringPi/wiringPi.h>
+#include <WiringPi/wiringPi/sr595.h>
 #ifdef __cplusplus
 }
 #endif

@@ -50,9 +50,9 @@
 #ifdef __cplusplus
 extern "C"{
 #endif
-#include <wiringPi.h>
-#include <sr595.h>
-#include <mcp23017.h>
+#include <WiringPi/wiringPi/wiringPi.h>
+#include <WiringPi/wiringPi/sr595.h>
+#include <WiringPi/wiringPi/mcp23017.h>
 #ifdef __cplusplus
 }
 #endif

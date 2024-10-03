@@ -12,7 +12,7 @@
 #ifdef __cplusplus
 extern "C"{
 #endif
-#include <wiringPi.h>
+#include <WiringPi/wiringPi/wiringPi.h>
 #ifdef __cplusplus
 }
 #endif

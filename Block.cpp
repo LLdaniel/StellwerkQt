@@ -6,8 +6,8 @@
 #include <QDebug>
 #include <QBrush>
 //#include <QTime>
-#include <wiringPi.h>
-#include <mcp23017.h>
+#include <WiringPi/wiringPi/wiringPi.h>
+#include <WiringPi/wiringPi/mcp23017.h>
 
 Block::Block(QString name , Stellwerkstechnik *signaltechnik, Configuration *config){
   setName( name );
