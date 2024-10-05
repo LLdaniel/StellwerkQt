@@ -29,6 +29,7 @@ void Spmemory::timing(){                                        //this is a hack
   if(!trySP ){
     delete t;
     qDebug()<<"__Spmemory__: Timing function finished!";
+    emit finished();
   }
 }
 

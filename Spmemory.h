@@ -26,6 +26,8 @@ public slots:
   void quit();
 public slots:
   void addFS( HSignal *SPstart, HSignal *SPziel);
+signals:
+  void finished();
 private:
   QList<QPair<HSignal*,HSignal*>> speicherlist;
   QList<QPair<HSignal*,HSignal*>> buffer;

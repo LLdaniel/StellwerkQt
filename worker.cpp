@@ -50,10 +50,12 @@ void worker::timing(){                                        //this is a hack: 
   if(!update ){
     delete t;
     qDebug()<<"__worker__: Worker has finished!";
+    emit finished();
   }
 }
 
 void worker::quit(){
+  qDebug("__worker__: quitting loop...");
   update = false;
 }
 
@@ -105,4 +107,5 @@ void worker::updateBelegt(){
   //
   //end of loop either there are no entries or quit call: finish worker
   qDebug("__worker__: Worker finished!");
+  emit finished();
 }

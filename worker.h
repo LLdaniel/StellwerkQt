@@ -33,6 +33,7 @@ signals:
   void callGUIw(Weiche *callw, bool statew);          // call main thread to do GUI update Weiche
   void callGUIb(Block* callb, bool stateb);           // call main thread to do GUI update Block
   void callGUIbu(BU* callbu, bool statebu);           // call main thread to do GUI update BU
+  void finished();
 private:
   bool update = true;                                 //update wanted yes = true || no = false
   QList<Block*> blocklist;                            //all segments which must be updated

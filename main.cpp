@@ -114,7 +114,7 @@ int main( int argc , char *argv[] ){
   scene->setBackgroundBrush(Qt::darkGray);
   //
   //connect for quiting program
-  QObject::connect(&w,&MainWindow::shutdown,&a,QApplication::quit);
+  QObject::connect(&w,&MainWindow::shutdown,&a,&QApplication::quit);
   //
   //create view
   QGraphicsView *view = new QGraphicsView(scene);
@@ -7122,9 +7122,15 @@ int main( int argc , char *argv[] ){
   QThread* thread = new QThread;
   worker* wrkr = new worker(config);
   wrkr->moveToThread(thread);
-  QObject::connect(thread, &QThread::started, wrkr, &worker::timing); //thread start connection 
-  QObject::connect(&a, &QApplication::aboutToQuit, wrkr, &worker::quit); // quit updateBelegt on aboutToQuit
-  QObject::connect(&a, &QApplication::aboutToQuit, thread, &QThread::quit); // quit thread on aboutToQuit
+  QObject::connect(thread, &QThread::started, wrkr, &worker::timing); //thread start connection
+  QObject::connect(&a, &QApplication::aboutToQuit, []() {
+    qDebug() << "__main__: Application is about to quit!";
+  });
+  qDebug()<<QObject::connect(&a, &QApplication::aboutToQuit, wrkr, &worker::quit, Qt::DirectConnection); // quit updateBelegt on aboutToQuit
+  QObject::connect(wrkr, &worker::finished, thread, &QThread::quit);
+  QObject::connect(thread, &QThread::finished, wrkr, &worker::deleteLater);
+  QObject::connect(thread, &QThread::finished, thread, &QThread::deleteLater);
+  //QObject::connect(a, &&QApplication::aboutToQuit, thread, &QThread::quit); // quit thread on aboutToQuit
   QObject::connect(wrkr, &worker::callGUIb, &w, &MainWindow::calledb); // connection worker<->GUI update Block
   QObject::connect(wrkr, &worker::callGUIw, &w, &MainWindow::calledw); // connection worker<->GUI update Weiche
   QObject::connect(wrkr, &worker::callGUIbu, &w, &MainWindow::calledbu); // connection worker<->GUI update BU
@@ -7137,7 +7143,10 @@ int main( int argc , char *argv[] ){
   mem->moveToThread(thread2);
   QObject::connect(thread2, &QThread::started, mem, &Spmemory::timing); //thread start connection 
   QObject::connect(&a, &QApplication::aboutToQuit, mem, &Spmemory::quit); // quit timing on aboutToQuit
-  QObject::connect(&a, &QApplication::aboutToQuit, thread2, &QThread::quit); // quit thread2 on aboutToQuit
+  QObject::connect(mem, &Spmemory::finished, thread2, &QThread::quit);
+  QObject::connect(thread2, &QThread::finished, mem, &Spmemory::deleteLater);
+  QObject::connect(thread2, &QThread::finished, thread2, &QThread::deleteLater);
+  //QObject::connect(a, &&QApplication::aboutToQuit, thread2, &QThread::quit); // quit thread2 on aboutToQuit
 
   //spmemory connection   
   QObject::connect(s1ptr, &HSignal::callspmemory,mem, &Spmemory::addFS);
@@ -7438,13 +7447,7 @@ int main( int argc , char *argv[] ){
   fmngr.add(w40ptr->getW_status()); fmngr.add(w41ptr->getW_status()); fmngr.add(w42ptr->getW_status()); fmngr.add(w43ptr->getW_status()); fmngr.add(w44ptr->getW_status()); fmngr.add(w45ptr->getW_status()); fmngr.add(w46ptr->getW_status()); fmngr.add(w47ptr->getW_status()); fmngr.add(w48ptr->getW_status()); fmngr.add(w49ptr->getW_status()); fmngr.add(w50ptr->getW_status()); fmngr.add(w51ptr->getW_status()); fmngr.add(w52ptr->getW_status()); fmngr.add(w53ptr->getW_status()); 
   fmngr.write();
   //
-  //delete in reverse order
-  delete mem;
-  delete thread2;
-     
-  delete wrkr;
-  delete thread;
-
+  //delete in reverse order (thread and thread2 with wrkr and mem are already deleted with signals and slots)
   delete c1;
    
   delete stellwerkstecptr;
