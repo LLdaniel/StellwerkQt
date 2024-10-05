@@ -450,9 +450,11 @@ int main( int argc , char *argv[] ){
   s8ptr->addVSignal(v18ptr,"r");
   s9ptr->addVSignal(v17ptr,"r");
   s10ptr->addVSignal(v6ptr,"r");
+  s10ptr->addVSignal(v19ptr,"v");
   s11ptr->addVSignal(v7ptr,"v");
   s11ptr->addVSignal(v17ptr,"r");
   s12ptr->addVSignal(v6ptr,"r");
+  s12ptr->addVSignal(v19ptr,"v");
   s13ptr->addVSignal(v2ptr,"v");
   s13ptr->addVSignal(v10ptr,"r");
   s14ptr->addVSignal(v5ptr,"r");
