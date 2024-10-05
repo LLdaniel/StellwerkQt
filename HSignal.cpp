@@ -553,8 +553,14 @@ void HSignal::changeColor(){
   if( getS_status() ){                                          //"go"
     if(!zuRangier){                                             //no transition to shunt signal
       if(splitted.size() == 3){
-	svgItem->setElementId(splitted.at(0) + "_hp1_" + splitted.at(2));
-	svgItem->setObjectName(splitted.at(0) + "_hp1_" + splitted.at(2));
+	if(splitted.at(0) == "minimalistic" || splitted.at(0) == "basic"){
+	  svgItem->setElementId(splitted.at(0) + "_hp1");
+	  svgItem->setObjectName(splitted.at(0) + "_hp1_" + splitted.at(2));
+	}
+	else{
+	  svgItem->setElementId(splitted.at(0) + "_hp1_" + splitted.at(2));
+	  svgItem->setObjectName(splitted.at(0) + "_hp1_" + splitted.at(2));
+	}
       }
       else{
 	svgItem->setElementId(splitted.at(0) + "_hp1");
@@ -563,8 +569,14 @@ void HSignal::changeColor(){
     }
     if(zuRangier){                                              //transition to shunt signal
       if(splitted.size() == 3){
-	svgItem->setElementId(splitted.at(0) + "_hp0sh1_" + splitted.at(2));
-	svgItem->setObjectName(splitted.at(0) + "_hp0sh1_" + splitted.at(2));
+	if(splitted.at(0) == "minimalistic" || splitted.at(0) == "basic"){
+	  svgItem->setElementId(splitted.at(0) + "_hp0sh1");
+	  svgItem->setObjectName(splitted.at(0) + "_hp0sh1_" + splitted.at(2));
+	}
+	else{
+	  svgItem->setElementId(splitted.at(0) + "_hp0sh1_" + splitted.at(2));
+	  svgItem->setObjectName(splitted.at(0) + "_hp0sh1_" + splitted.at(2));
+	}
       }
       else{
 	svgItem->setElementId(splitted.at(0) + "_hp0sh1");
@@ -574,8 +586,14 @@ void HSignal::changeColor(){
   }
   if( !getS_status() ){                                         //"stop"
     if(splitted.size() == 3){
-      svgItem->setElementId(splitted.at(0) + "_hp0_" + splitted.at(2));
-      svgItem->setObjectName(splitted.at(0) + "_hp0_" + splitted.at(2));
+      if(splitted.at(0) == "minimalistic" || splitted.at(0) == "basic"){
+	svgItem->setElementId(splitted.at(0) + "_hp0");
+	svgItem->setObjectName(splitted.at(0) + "_hp0_" + splitted.at(2));
+      }
+      else{
+	svgItem->setElementId(splitted.at(0) + "_hp0_" + splitted.at(2));
+	svgItem->setObjectName(splitted.at(0) + "_hp0_" + splitted.at(2));
+      }
     }
     else{
       svgItem->setElementId(splitted.at(0) + "_hp0");
