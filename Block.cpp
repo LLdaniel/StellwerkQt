@@ -46,19 +46,16 @@ bool Block::evaluateFreigabe(){
         if( technik->getS_pass_status( passiert.at(i).first ) && !passiert.at(i).second->getB_status() ){                //is signal green? (get method of Stellwerkstechnik) && previous Block occupied
 	  QString signalInQuestion = passiert.at(i).first;
 	  // WSignal or HSignal? trigger zugpassiertW or zugpassiert
-	  if(signalInQuestion == 'S'){
-	    //emit zugpassiert(passiert.at(i).first);                   //connected to HSignal::zugpassiert/WSignal::zugpassiert
-	    //QTimer::singleShot(1000, &myObject, &MyClass::mySlot);
-	    QTimer::singleShot(2000, [signalInQuestion, this]() {
+	  if(signalInQuestion.at(0) == 'S'){
+	    QTimer::singleShot(1700, [signalInQuestion, this]() {
 	      emit this->zugpassiert(signalInQuestion);
 	    });
 	    for(int e = 0; e < this->passiert.size(); e++){
 	      qDebug()<<"__Block__: Zugpassiert of this: "<<this->getName()<<passiert.at(e).first<<passiert.at(e).second->getName();
 	    }
 	  }
-	  if(passiert.at(i).first.at(0) == 'W'){
-	    //emit zugpassiertW(passiert.at(i).first);                  //connected to WSignal::zugpassiertW
-	    QTimer::singleShot(2000, [signalInQuestion, this]() {
+	  if(signalInQuestion.at(0) == 'W'){
+	    QTimer::singleShot(1700, [signalInQuestion, this]() {
 	      emit this->zugpassiertW(signalInQuestion);
 	    });
 	  }
