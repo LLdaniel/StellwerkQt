@@ -3054,6 +3054,47 @@ int main( int argc , char *argv[] ){
   
   //
   //GUI attributes
+
+  //markings
+  QGraphicsRectItem *acae = new QGraphicsRectItem();
+  acae->setRect(0,0,140,50);
+  acae->setPos(QPointF(-595,335));
+  acae->setBrush(QColor(183,84,64));
+  acae->setRotation(90);
+  scene->addItem(acae);
+
+  QGraphicsRectItem *acae2 = new QGraphicsRectItem();
+  acae2->setRect(0,0,140,50);
+  acae2->setPos(QPointF(-260,-640));
+  acae2->setBrush(QColor(183,84,64));
+  acae2->setRotation(90);
+  scene->addItem(acae2);
+  
+  QGraphicsRectItem *by = new QGraphicsRectItem();
+  by->setRect(0,0,50,50);
+  by->setPos(QPointF(322,155));
+  by->setBrush(QColor(64,104,183));
+  scene->addItem(by);
+
+  QGraphicsRectItem *by2 = new QGraphicsRectItem();
+  by2->setRect(0,0,50,50);
+  by2->setPos(QPointF(453,1033));
+  by2->setBrush(QColor(64,104,183));
+  scene->addItem(by2);
+
+  QGraphicsRectItem *bz = new QGraphicsRectItem();
+  bz->setRect(0,0,50,50);
+  bz->setPos(QPointF(-1095,180));
+  bz->setBrush(QColor(107,64,183));
+  scene->addItem(bz);
+  
+  QGraphicsRectItem *bz2 = new QGraphicsRectItem();
+  bz2->setRect(0,0,50,50);
+  bz2->setPos(QPointF(-1095,1033));
+  bz2->setBrush(QColor(107,64,183));
+  scene->addItem(bz2);
+  
+  
   QGraphicsRectItem *w1rectge = new QGraphicsRectItem();
   w1rectge->setRect(0,0,10,75);
   w1rectge->setPos(QPointF(500,880));
