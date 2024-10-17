@@ -8,6 +8,7 @@
 #include <QGraphicsRectItem>
 #include <QLabel>
 #include "Configuration.h"
+#include "WeicheQPushButton.h"
 class Weiche : public QObject{
   Q_OBJECT
 public:
@@ -19,6 +20,7 @@ public:
   void setW_id( int name );
   QString getW_id(){ return w_id; }
   void setW_status( bool status );
+  void manualSetW_status();
   bool getW_status(){ return w_status; }
   void setVerriegelung ( bool lock ){ verriegelung = lock; changeColor(); }
   bool getVerriegelung(){ return verriegelung; }
@@ -26,8 +28,9 @@ public:
   //
   //+++ GUI +++
   //
-  void addWeichenitem(QGraphicsRectItem *ab , QGraphicsRectItem *ge , QLabel *la);
+  void addWeichenitem(QGraphicsRectItem *ab , QGraphicsRectItem *ge , QLabel *la, WeicheQPushButton *pu);
   void moveLabel( int x , int y ){ beschriftung->move(x,y); }
+  void moveButton( int x, int y ){ but->move(x,y); }
   //
   //+++ GPIO +++
   //
@@ -52,6 +55,7 @@ private:
   QGraphicsRectItem *abknickend = new QGraphicsRectItem();
   QGraphicsRectItem *gerade = new QGraphicsRectItem();
   QLabel *beschriftung = new QLabel();
+  WeicheQPushButton *but = new WeicheQPushButton();
   //
   void changeColor();                                  //change appearance on plan
   //

@@ -55,7 +55,11 @@ void Weiche::setW_status( bool status ){
   }
 }
 
-void Weiche::addWeichenitem(QGraphicsRectItem *ab, QGraphicsRectItem *ge, QLabel *la)
+void Weiche::manualSetW_status(){
+  setW_status(!getW_status());
+}
+
+void Weiche::addWeichenitem(QGraphicsRectItem *ab, QGraphicsRectItem *ge, QLabel *la, WeicheQPushButton *pu)
 {
     abknickend = ab;
     gerade = ge;
@@ -64,6 +68,11 @@ void Weiche::addWeichenitem(QGraphicsRectItem *ab, QGraphicsRectItem *ge, QLabel
     beschriftung->setText(qname);
     QFont f( "Arial", 10, QFont::Bold);
     beschriftung->setFont(f);
+    but = pu;
+    but->setFixedHeight(20);
+    but->setFixedWidth(20);
+    but->setStyleSheet("background-color: #ce2a66");
+    QObject::connect(but, &WeicheQPushButton::clicked, this, &Weiche::manualSetW_status);
     changeColor();
 }
 

@@ -32,6 +32,7 @@ qt_add_executable(StellwerkQt MANUAL_FINALIZATION
   StellwerkQPushButton.cpp StellwerkQPushButton.h
   HSignalQPushButton.cpp HSignalQPushButton.h
   WSignalQPushButton.cpp WSignalQPushButton.h
+  WeicheQPushButton.cpp WeicheQPushButton.h
   )
 
 

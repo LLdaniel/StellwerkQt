@@ -31,6 +31,7 @@
 #include "Connector.h"
 #include "Spmemory.h"
 #include "filemanager.h"
+#include "WeicheQPushButton.h"
 #include <QString>
 #include <QPair>
 #include <QList>
@@ -3109,7 +3110,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w1rectab);
   QLabel *w1label = new QLabel();
   scene->addWidget(w1label);
-  w1ptr->addWeichenitem(w1rectab,w1rectge,w1label);
+  WeicheQPushButton *w1push = new WeicheQPushButton();
+  scene->addWidget(w1push);
+  w1ptr->addWeichenitem(w1rectab,w1rectge,w1label,w1push);
+  w1ptr->moveButton(480,875);
   w1ptr->moveLabel(480,890);
   
   QGraphicsRectItem *abrect = new QGraphicsRectItem();
@@ -3134,7 +3138,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w2rectab);
   QLabel *w2label = new QLabel();
   scene->addWidget(w2label);
-  w2ptr->addWeichenitem(w2rectab,w2rectge,w2label);
+  WeicheQPushButton *w2push = new WeicheQPushButton();
+  scene->addWidget(w2push);
+  w2ptr->addWeichenitem(w2rectab,w2rectge,w2label,w2push);
+  w2ptr->moveButton(425,805);
   w2ptr->moveLabel(435,795);
 
   QGraphicsRectItem *aarect = new QGraphicsRectItem();
@@ -3175,7 +3182,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w4rectab);
   QLabel *w4label = new QLabel();
   scene->addWidget(w4label);
-  w4ptr->addWeichenitem(w4rectab,w4rectge,w4label);
+  WeicheQPushButton *w4push = new WeicheQPushButton();
+  scene->addWidget(w4push);
+  w4ptr->addWeichenitem(w4rectab,w4rectge,w4label,w4push);
+  w4ptr->moveButton(-855,875);
   w4ptr->moveLabel(-845,890);
 
   QGraphicsRectItem *w3rectge = new QGraphicsRectItem();
@@ -3192,7 +3202,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w3rectab);
   QLabel *w3label = new QLabel();
   scene->addWidget(w3label);
-  w3ptr->addWeichenitem(w3rectab,w3rectge,w3label);
+  WeicheQPushButton *w3push = new WeicheQPushButton();
+  scene->addWidget(w3push);
+  w3ptr->addWeichenitem(w3rectab,w3rectge,w3label,w3push);
+  w3ptr->moveButton(-795,805);
   w3ptr->moveLabel(-795,795);
 
   QGraphicsRectItem *w5rectge = new QGraphicsRectItem();
@@ -3209,7 +3222,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w5rectab);
   QLabel *w5label = new QLabel();
   scene->addWidget(w5label);
-  w5ptr->addWeichenitem(w5rectab,w5rectge,w5label);
+  WeicheQPushButton *w5push = new WeicheQPushButton();
+  scene->addWidget(w5push);
+  w5ptr->addWeichenitem(w5rectab,w5rectge,w5label,w5push);
+  w5ptr->moveButton(-865,805);
   w5ptr->moveLabel(-855,795);
 
   QGraphicsRectItem *w6rectge = new QGraphicsRectItem();
@@ -3225,7 +3241,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w6rectab);
   QLabel *w6label = new QLabel();
   scene->addWidget(w6label);
-  w6ptr->addWeichenitem(w6rectab,w6rectge,w6label);
+  WeicheQPushButton *w6push = new WeicheQPushButton();
+  scene->addWidget(w6push);
+  w6ptr->addWeichenitem(w6rectab,w6rectge,w6label,w6push);
+  w6ptr->moveButton(-922,655);
   w6ptr->moveLabel(-938,658);
 
   QGraphicsRectItem *w7rectge = new QGraphicsRectItem();
@@ -3241,7 +3260,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w7rectab);
   QLabel *w7label = new QLabel();
   scene->addWidget(w7label);
-  w7ptr->addWeichenitem(w7rectab,w7rectge,w7label);
+  WeicheQPushButton *w7push = new WeicheQPushButton();
+  scene->addWidget(w7push);
+  w7ptr->addWeichenitem(w7rectab,w7rectge,w7label,w7push);
+  w7ptr->moveButton(-922,590);
   w7ptr->moveLabel(-938,588);
 
   QGraphicsRectItem *aerect = new QGraphicsRectItem();
@@ -3314,7 +3336,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w9rectab);
   QLabel *w9label = new QLabel();
   scene->addWidget(w9label);
-  w9ptr->addWeichenitem(w9rectab,w9rectge,w9label);
+  WeicheQPushButton *w9push = new WeicheQPushButton();
+  scene->addWidget(w9push);
+  w9ptr->addWeichenitem(w9rectab,w9rectge,w9label,w9push);
+  w9ptr->moveButton(-940,265);
   w9ptr->moveLabel(-935,280);
 
   QGraphicsRectItem *airect = new QGraphicsRectItem();
@@ -3400,7 +3425,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w10rectab);
   QLabel *w10label = new QLabel();
   scene->addWidget(w10label);
-  w10ptr->addWeichenitem(w10rectab,w10rectge,w10label);
+  WeicheQPushButton *w10push = new WeicheQPushButton();
+  scene->addWidget(w10push);
+  w10ptr->addWeichenitem(w10rectab,w10rectge,w10label,w10push);
+  w10ptr->moveButton(200,265);
   w10ptr->moveLabel(200,280);
 
   QGraphicsRectItem *afrect = new QGraphicsRectItem();
@@ -3448,7 +3476,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w8rectab);
   QLabel *w8label = new QLabel();
   scene->addWidget(w8label);
-  w8ptr->addWeichenitem(w8rectab,w8rectge,w8label);
+  WeicheQPushButton *w8push = new WeicheQPushButton();
+  scene->addWidget(w8push);
+  w8ptr->addWeichenitem(w8rectab,w8rectge,w8label,w8push);
+  w8ptr->moveButton(-135,560);
   w8ptr->moveLabel(-180,555);
 
   QGraphicsSvgItem *s4item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -3986,7 +4017,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w40rectab);
   QLabel *w40label = new QLabel();
   scene->addWidget(w40label);
-  w40ptr->addWeichenitem(w40rectab,w40rectge,w40label);
+  WeicheQPushButton *w40push = new WeicheQPushButton();
+  scene->addWidget(w40push);
+  w40ptr->addWeichenitem(w40rectab,w40rectge,w40label,w40push);
+  w40ptr->moveButton(-945,1785);
   w40ptr->moveLabel(-920,1805);
 
   QGraphicsRectItem *w42rectge = new QGraphicsRectItem();
@@ -4003,7 +4037,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w42rectab);
   QLabel *w42label = new QLabel();
   scene->addWidget(w42label);
-  w42ptr->addWeichenitem(w42rectab,w42rectge,w42label);
+  WeicheQPushButton *w42push = new WeicheQPushButton();
+  scene->addWidget(w42push);
+  w42ptr->addWeichenitem(w42rectab,w42rectge,w42label,w42push);
+  w42ptr->moveButton(-875,1715);
   w42ptr->moveLabel(-900,1705);
 
   QGraphicsRectItem *w44rectge = new QGraphicsRectItem();
@@ -4020,7 +4057,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w44rectab);
   QLabel *w44label = new QLabel();
   scene->addWidget(w44label);
-  w44ptr->addWeichenitem(w44rectab,w44rectge,w44label);
+  WeicheQPushButton *w44push = new WeicheQPushButton();
+  scene->addWidget(w44push);
+  w44ptr->addWeichenitem(w44rectab,w44rectge,w44label,w44push);
+  w44ptr->moveButton(-805,1645);
   w44ptr->moveLabel(-830,1635);
 
   QGraphicsRectItem *w46rectge = new QGraphicsRectItem();
@@ -4037,7 +4077,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w46rectab);
   QLabel *w46label = new QLabel();
   scene->addWidget(w46label);
-  w46ptr->addWeichenitem(w46rectab,w46rectge,w46label);
+  WeicheQPushButton *w46push = new WeicheQPushButton();
+  scene->addWidget(w46push);
+  w46ptr->addWeichenitem(w46rectab,w46rectge,w46label,w46push);
+  w46ptr->moveButton(-735,1575);
   w46ptr->moveLabel(-760,1565);
 
   QGraphicsRectItem *w48rectge = new QGraphicsRectItem();
@@ -4054,7 +4097,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w48rectab);
   QLabel *w48label = new QLabel();
   scene->addWidget(w48label);
-  w48ptr->addWeichenitem(w48rectab,w48rectge,w48label);
+  WeicheQPushButton *w48push = new WeicheQPushButton();
+  scene->addWidget(w48push);
+  w48ptr->addWeichenitem(w48rectab,w48rectge,w48label,w48push);
+  w48ptr->moveButton(-665,1505);
   w48ptr->moveLabel(-690,1495);
 
   QGraphicsRectItem *w50rectge = new QGraphicsRectItem();
@@ -4071,7 +4117,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w50rectab);
   QLabel *w50label = new QLabel();
   scene->addWidget(w50label);
-  w50ptr->addWeichenitem(w50rectab,w50rectge,w50label);
+  WeicheQPushButton *w50push = new WeicheQPushButton();
+  scene->addWidget(w50push);
+  w50ptr->addWeichenitem(w50rectab,w50rectge,w50label,w50push);
+  w50ptr->moveButton(-595,1435);
   w50ptr->moveLabel(-620,1425);
 
   QGraphicsRectItem *w52rectge = new QGraphicsRectItem();
@@ -4088,7 +4137,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w52rectab);
   QLabel *w52label = new QLabel();
   scene->addWidget(w52label);
-  w52ptr->addWeichenitem(w52rectab,w52rectge,w52label);
+  WeicheQPushButton *w52push = new WeicheQPushButton();
+  scene->addWidget(w52push);
+  w52ptr->addWeichenitem(w52rectab,w52rectge,w52label,w52push);
+  w52ptr->moveButton(-525,1365);
   w52ptr->moveLabel(-550,1355);
 
   QGraphicsRectItem *bwrect = new QGraphicsRectItem();
@@ -4169,7 +4221,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w53rectab);
   QLabel *w53label = new QLabel();
   scene->addWidget(w53label);
-  w53ptr->addWeichenitem(w53rectab,w53rectge,w53label);
+  WeicheQPushButton *w53push = new WeicheQPushButton();
+  scene->addWidget(w53push);
+  w53ptr->addWeichenitem(w53rectab,w53rectge,w53label,w53push);
+  w53ptr->moveButton(370,1295);
   w53ptr->moveLabel(350,1285);
 
   QGraphicsRectItem *w51rectge = new QGraphicsRectItem();
@@ -4186,7 +4241,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w51rectab);
   QLabel *w51label = new QLabel();
   scene->addWidget(w51label);
-  w51ptr->addWeichenitem(w51rectab,w51rectge,w51label);
+  WeicheQPushButton *w51push = new WeicheQPushButton();
+  scene->addWidget(w51push);
+  w51ptr->addWeichenitem(w51rectab,w51rectge,w51label,w51push);
+  w51ptr->moveButton(295,1365);
   w51ptr->moveLabel(320,1375);
 
   QGraphicsRectItem *w49rectge = new QGraphicsRectItem();
@@ -4203,7 +4261,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w49rectab);
   QLabel *w49label = new QLabel();
   scene->addWidget(w49label);
-  w49ptr->addWeichenitem(w49rectab,w49rectge,w49label);
+  WeicheQPushButton *w49push = new WeicheQPushButton();
+  scene->addWidget(w49push);
+  w49ptr->addWeichenitem(w49rectab,w49rectge,w49label,w49push);
+  w49ptr->moveButton(225,1435);
   w49ptr->moveLabel(250,1445);
 
   QGraphicsRectItem *w47rectge = new QGraphicsRectItem();
@@ -4220,7 +4281,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w47rectab);
   QLabel *w47label = new QLabel();
   scene->addWidget(w47label);
-  w47ptr->addWeichenitem(w47rectab,w47rectge,w47label);
+  WeicheQPushButton *w47push = new WeicheQPushButton();
+  scene->addWidget(w47push);
+  w47ptr->addWeichenitem(w47rectab,w47rectge,w47label,w47push);
+  w47ptr->moveButton(155,1505);
   w47ptr->moveLabel(180,1515);
 
   QGraphicsRectItem *w45rectge = new QGraphicsRectItem();
@@ -4237,7 +4301,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w45rectab);
   QLabel *w45label = new QLabel();
   scene->addWidget(w45label);
-  w45ptr->addWeichenitem(w45rectab,w45rectge,w45label);
+  WeicheQPushButton *w45push = new WeicheQPushButton();
+  scene->addWidget(w45push);
+  w45ptr->addWeichenitem(w45rectab,w45rectge,w45label,w45push);
+  w45ptr->moveButton(85,1575);
   w45ptr->moveLabel(110,1585);
 
   QGraphicsRectItem *w43rectge = new QGraphicsRectItem();
@@ -4254,7 +4321,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w43rectab);
   QLabel *w43label = new QLabel();
   scene->addWidget(w43label);
-  w43ptr->addWeichenitem(w43rectab,w43rectge,w43label);
+  WeicheQPushButton *w43push = new WeicheQPushButton();
+  scene->addWidget(w43push);
+  w43ptr->addWeichenitem(w43rectab,w43rectge,w43label,w43push);
+  w43ptr->moveButton(15,1645);
   w43ptr->moveLabel(40,1655);
 
   QGraphicsRectItem *w41rectge = new QGraphicsRectItem();
@@ -4271,7 +4341,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w41rectab);
   QLabel *w41label = new QLabel();
   scene->addWidget(w41label);
-  w41ptr->addWeichenitem(w41rectab,w41rectge,w41label);
+  WeicheQPushButton *w41push = new WeicheQPushButton();
+  scene->addWidget(w41push);
+  w41ptr->addWeichenitem(w41rectab,w41rectge,w41label,w41push);
+  w41ptr->moveButton(-55,1715);
   w41ptr->moveLabel(-20,1725);
 
   QGraphicsRectItem *byrect3 = new QGraphicsRectItem();
@@ -4948,7 +5021,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w12rectab);
   QLabel *w12label = new QLabel();
   scene->addWidget(w12label);
-  w12ptr->addWeichenitem(w12rectab,w12rectge,w12label);
+  WeicheQPushButton *w12push = new WeicheQPushButton();
+  scene->addWidget(w12push);
+  w12ptr->addWeichenitem(w12rectab,w12rectge,w12label,w12push);
+  w12ptr->moveButton(410,-130);
   w12ptr->moveLabel(425,-110);
 
   QGraphicsRectItem *ajrect = new QGraphicsRectItem();
@@ -4979,7 +5055,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w11rectab);
   QLabel *w11label = new QLabel();
   scene->addWidget(w11label);
-  w11ptr->addWeichenitem(w11rectab,w11rectge,w11label);
+  WeicheQPushButton *w11push = new WeicheQPushButton();
+  scene->addWidget(w11push);
+  w11ptr->addWeichenitem(w11rectab,w11rectge,w11label,w11push);
+  w11ptr->moveButton(280,-615);
   w11ptr->moveLabel(280,-625);
 
   QGraphicsRectItem *acrect4 = new QGraphicsRectItem();
@@ -5027,7 +5106,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w13rectab);
   QLabel *w13label = new QLabel();
   scene->addWidget(w13label);
-  w13ptr->addWeichenitem(w13rectab,w13rectge,w13label);
+  WeicheQPushButton *w13push = new WeicheQPushButton();
+  scene->addWidget(w13push);
+  w13ptr->addWeichenitem(w13rectab,w13rectge,w13label,w13push);
+  w13ptr->moveButton(310,-80);
   w13ptr->moveLabel(340,-90);
 
   QGraphicsRectItem *w14rectge = new QGraphicsRectItem();
@@ -5044,7 +5126,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w14rectab);
   QLabel *w14label = new QLabel();
   scene->addWidget(w14label);
-  w14ptr->addWeichenitem(w14rectab,w14rectge,w14label);
+  WeicheQPushButton *w14push = new WeicheQPushButton();
+  scene->addWidget(w14push);
+  w14ptr->addWeichenitem(w14rectab,w14rectge,w14label,w14push);
+  w14ptr->moveButton(230,-165);
   w14ptr->moveLabel(250,-150);
   
   QGraphicsRectItem *w15rectge = new QGraphicsRectItem();
@@ -5061,7 +5146,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(w15rectab);
   QLabel *w15label = new QLabel();
   scene->addWidget(w15label);
-  w15ptr->addWeichenitem(w15rectab,w15rectge,w15label);
+  w15ptr->addWeichenitem(w15rectab,w15rectge,w15label,w14push);
   w15ptr->moveLabel(240,-175); 
   
   QGraphicsRectItem *aorect = new QGraphicsRectItem();
@@ -5101,7 +5186,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w19rectab);
   QLabel *w19label = new QLabel();
   scene->addWidget(w19label);
-  w19ptr->addWeichenitem(w19rectab,w19rectge,w19label);
+  WeicheQPushButton *w19push = new WeicheQPushButton();
+  scene->addWidget(w19push);
+  w19ptr->addWeichenitem(w19rectab,w19rectge,w19label,w19push);
+  w19ptr->moveButton(-595,-5);
   w19ptr->moveLabel(-605,10);
 
   QGraphicsRectItem *w18rectge = new QGraphicsRectItem();
@@ -5118,7 +5206,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w18rectab);
   QLabel *w18label = new QLabel();
   scene->addWidget(w18label);
-  w18ptr->addWeichenitem(w18rectab,w18rectge,w18label);
+  WeicheQPushButton *w17push = new WeicheQPushButton();
+  scene->addWidget(w17push);
+  w18ptr->addWeichenitem(w18rectab,w18rectge,w18label,w17push);
+  w18ptr->moveButton(-670,-80);
   w18ptr->moveLabel(-620,-65);
 
   QGraphicsRectItem *amrect = new QGraphicsRectItem();
@@ -5151,7 +5242,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(w17rectab);
   QLabel *w17label = new QLabel();
   scene->addWidget(w17label);
-  w17ptr->addWeichenitem(w17rectab,w17rectge,w17label);
+  w17ptr->addWeichenitem(w17rectab,w17rectge,w17label,w17push);
   w17ptr->moveLabel(-700,-90);
 
   QGraphicsRectItem *w16rectge = new QGraphicsRectItem();
@@ -5168,7 +5259,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w16rectab);
   QLabel *w16label = new QLabel();
   scene->addWidget(w16label);
-  w16ptr->addWeichenitem(w16rectab,w16rectge,w16label);
+  WeicheQPushButton *w16push = new WeicheQPushButton();
+  scene->addWidget(w16push);
+  w16ptr->addWeichenitem(w16rectab,w16rectge,w16label,w16push);
+  w16ptr->moveButton(-750,-165);
   w16ptr->moveLabel(-765,-150);
 
   QGraphicsRectItem *arrect = new QGraphicsRectItem();
@@ -5571,7 +5665,7 @@ int main( int argc , char *argv[] ){
   WSignalQPushButton *ww5push = new WSignalQPushButton();
   scene->addWidget(ww5push);
   ww5ptr->addButtonAndLabel(ww5label,ww5push);
-  ww5ptr->moveButton(410,-135);
+  ww5ptr->moveButton(410,-150);
   ww5ptr->moveLabel(375,-210);
 
   WSignalQPushButton *ww8push = new WSignalQPushButton();
@@ -5646,7 +5740,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w20rectab);
   QLabel *w20label = new QLabel();
   scene->addWidget(w20label);
-  w20ptr->addWeichenitem(w20rectab,w20rectge,w20label);
+  WeicheQPushButton *w20push = new WeicheQPushButton();
+  scene->addWidget(w20push);
+  w20ptr->addWeichenitem(w20rectab,w20rectge,w20label,w20push);
+  w20ptr->moveButton(850,-615);
   w20ptr->moveLabel(850,-625);
 
   QGraphicsRectItem *w21rectge = new QGraphicsRectItem();
@@ -5663,7 +5760,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w21rectab);
   QLabel *w21label = new QLabel();
   scene->addWidget(w21label);
-  w21ptr->addWeichenitem(w21rectab,w21rectge,w21label);
+  WeicheQPushButton *w21push = new WeicheQPushButton();
+  scene->addWidget(w21push);
+  w21ptr->addWeichenitem(w21rectab,w21rectge,w21label,w21push);
+  w21ptr->moveButton(910,-545);
   w21ptr->moveLabel(880,-530);
   
   QGraphicsRectItem *awrect = new QGraphicsRectItem();
@@ -5704,7 +5804,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w23rectab);
   QLabel *w23label = new QLabel();
   scene->addWidget(w23label);
-  w23ptr->addWeichenitem(w23rectab,w23rectge,w23label);
+  WeicheQPushButton *w23push = new WeicheQPushButton();
+  scene->addWidget(w23push);
+  w23ptr->addWeichenitem(w23rectab,w23rectge,w23label,w23push);
+  w23ptr->moveButton(2560,-545);
   w23ptr->moveLabel(2520,-555);
 
   QGraphicsRectItem *azrect = new QGraphicsRectItem();
@@ -5751,7 +5854,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w22rectab);
   QLabel *w22label = new QLabel();
   scene->addWidget(w22label);
-  w22ptr->addWeichenitem(w22rectab,w22rectge,w22label);
+  WeicheQPushButton *w22push = new WeicheQPushButton();
+  scene->addWidget(w22push);
+  w22ptr->addWeichenitem(w22rectab,w22rectge,w22label,w22push);
+  w22ptr->moveButton(860,-440);
   w22ptr->moveLabel(800,-450);
 
   QGraphicsRectItem *bcrect = new QGraphicsRectItem();
@@ -5776,7 +5882,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w24rectab);
   QLabel *w24label = new QLabel();
   scene->addWidget(w24label);
-  w24ptr->addWeichenitem(w24rectab,w24rectge,w24label);
+  WeicheQPushButton *w24push = new WeicheQPushButton();
+  scene->addWidget(w24push);
+  w24ptr->addWeichenitem(w24rectab,w24rectge,w24label,w24push);
+  w24ptr->moveButton(2465,-440);
   w24ptr->moveLabel(2475,-425);
 
   QGraphicsRectItem *blrect = new QGraphicsRectItem();
@@ -5884,7 +5993,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w30rectab);
   QLabel *w30label = new QLabel();
   scene->addWidget(w30label);
-  w30ptr->addWeichenitem(w30rectab,w30rectge,w30label);
+  WeicheQPushButton *w30push = new WeicheQPushButton();
+  scene->addWidget(w30push);
+  w30ptr->addWeichenitem(w30rectab,w30rectge,w30label,w30push);
+  w30ptr->moveButton(1060,-370);
   w30ptr->moveLabel(1060,-385);
 
   QGraphicsRectItem *w29rectge = new QGraphicsRectItem();
@@ -5901,7 +6013,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w29rectab);
   QLabel *w29label = new QLabel();
   scene->addWidget(w29label);
-  w29ptr->addWeichenitem(w29rectab,w29rectge,w29label);
+  WeicheQPushButton *w29push = new WeicheQPushButton();
+  scene->addWidget(w29push);
+  w29ptr->addWeichenitem(w29rectab,w29rectge,w29label,w29push);
+  w29ptr->moveButton(1120,-300);
   w29ptr->moveLabel(1150,-310);
 
   QGraphicsRectItem *w28rectge = new QGraphicsRectItem();
@@ -5918,7 +6033,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w28rectab);
   QLabel *w28label = new QLabel();
   scene->addWidget(w28label);
-  w28ptr->addWeichenitem(w28rectab,w28rectge,w28label);
+  WeicheQPushButton *w28push = new WeicheQPushButton();
+  scene->addWidget(w28push);
+  w28ptr->addWeichenitem(w28rectab,w28rectge,w28label,w28push);
+  w28ptr->moveButton(1200,-225);
   w28ptr->moveLabel(1170,-210);
 
   QGraphicsRectItem *bgrect = new QGraphicsRectItem();
@@ -5967,7 +6085,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w25rectab);
   QLabel *w25label = new QLabel();
   scene->addWidget(w25label);
-  w25ptr->addWeichenitem(w25rectab,w25rectge,w25label);
+  WeicheQPushButton *w25push = new WeicheQPushButton();
+  scene->addWidget(w25push);
+  w25ptr->addWeichenitem(w25rectab,w25rectge,w25label,w25push);
+  w25ptr->moveButton(2200,-370);
   w25ptr->moveLabel(2160,-385);
 
   QGraphicsRectItem *w26rectge = new QGraphicsRectItem();
@@ -5984,7 +6105,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w26rectab);
   QLabel *w26label = new QLabel();
   scene->addWidget(w26label);
-  w26ptr->addWeichenitem(w26rectab,w26rectge,w26label);
+  WeicheQPushButton *w26push = new WeicheQPushButton();
+  scene->addWidget(w26push);
+  w26ptr->addWeichenitem(w26rectab,w26rectge,w26label,w26push);
+  w26ptr->moveButton(2135,-300);
   w26ptr->moveLabel(2120,-310);
 
   QGraphicsRectItem *bjrect = new QGraphicsRectItem();
@@ -6039,7 +6163,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w27rectab);
   QLabel *w27label = new QLabel();
   scene->addWidget(w27label);
-  w27ptr->addWeichenitem(w27rectab,w27rectge,w27label);
+  WeicheQPushButton *w27push = new WeicheQPushButton();
+  scene->addWidget(w27push);
+  w27ptr->addWeichenitem(w27rectab,w27rectge,w27label,w27push);
+  w27ptr->moveButton(2005,-225);
   w27ptr->moveLabel(1990,-235);
 
   QGraphicsRectItem *birect = new QGraphicsRectItem();
@@ -6072,7 +6199,10 @@ int main( int argc , char *argv[] ){
   scene->addItem(w31rectab);
   QLabel *w31label = new QLabel();
   scene->addWidget(w31label);
-  w31ptr->addWeichenitem(w31rectab,w31rectge,w31label);
+  WeicheQPushButton *w31push = new WeicheQPushButton();
+  scene->addWidget(w31push);
+  w31ptr->addWeichenitem(w31rectab,w31rectge,w31label,w31push);
+  w31ptr->moveButton(1730,225);
   w31ptr->moveLabel(1720,215);
 
   QGraphicsRectItem *borect2 = new QGraphicsRectItem();
@@ -6615,7 +6745,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(spweg38);
   scene->addItem(sphin38);
   s38ptr->addHSignalitem(s38item1, s38label,s38push,spweg38,sphin38);
-  s38ptr->moveButton(2455,-440);
+  s38ptr->moveButton(2445,-440);
   s38ptr->moveLabel(2373,-415);
 
   QGraphicsSvgItem *itemv281 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -6761,7 +6891,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(spweg35);
   scene->addItem(sphin35);
   s35ptr->addHSignalitem(s35item1, s35label,s35push,spweg35,sphin35);
-  s35ptr->moveButton(1995,-225);
+  s35ptr->moveButton(1985,-225);
   s35ptr->moveLabel(1903,-205);
 
   QGraphicsSvgItem *s43item1 = new QGraphicsSvgItem(":/resources/HS.svg");
@@ -6822,7 +6952,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(spweg34);
   scene->addItem(sphin34);
   s34ptr->addHSignalitem(s34item1, s34label,s34push,spweg34,sphin34);
-  s34ptr->moveButton(1210,-225);
+  s34ptr->moveButton(1220,-225);
   s34ptr->moveLabel(1295,-240);
 
   QGraphicsSvgItem *itemv261 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -6892,7 +7022,7 @@ int main( int argc , char *argv[] ){
   scene->addItem(spweg31);
   scene->addItem(sphin31);
   s31ptr->addHSignalitem(s31item1, s31label,s31push,spweg31,sphin31);
-  s31ptr->moveButton(870,-440);
+  s31ptr->moveButton(880,-440);
   s31ptr->moveLabel(980,-495);
   
   QGraphicsSvgItem *itemv251 = new QGraphicsSvgItem(":/resources/VS.svg");
@@ -7048,7 +7178,7 @@ int main( int argc , char *argv[] ){
   WSignalQPushButton *ww22push = new WSignalQPushButton();
   scene->addWidget(ww22push);
   ww22ptr->addButtonAndLabel(ww22label,ww22push);
-  ww22ptr->moveButton(2210,-370);
+  ww22ptr->moveButton(2220,-370);
   ww22ptr->moveLabel(2240,-390);
 
   WSignalQPushButton *ww23push = new WSignalQPushButton();
