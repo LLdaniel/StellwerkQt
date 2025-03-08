@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=StellwerkQt
+Comment=Start StellwerkQt
+Categories=Simulation
+Terminal=false
+Exec=bash -c $HOME/./StellwerkQt.sh
+Icon=/usr/share/icons/hicolor/512x512/apps/StellwerkQt.png
