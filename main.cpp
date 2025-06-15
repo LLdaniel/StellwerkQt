@@ -3182,11 +3182,6 @@ int main( int argc , char *argv[] ){
   scene->addItem(w4rectab);
   QLabel *w4label = new QLabel();
   scene->addWidget(w4label);
-  WeicheQPushButton *w4push = new WeicheQPushButton();
-  scene->addWidget(w4push);
-  w4ptr->addWeichenitem(w4rectab,w4rectge,w4label,w4push);
-  w4ptr->moveButton(-855,875);
-  w4ptr->moveLabel(-845,890);
 
   QGraphicsRectItem *w3rectge = new QGraphicsRectItem();
   w3rectge->setRect(0,0,10,75);
@@ -3322,6 +3317,12 @@ int main( int argc , char *argv[] ){
   adptr->addBlockitems(adrect3);
   scene->addItem(adrect3);
 
+  WeicheQPushButton *w4push = new WeicheQPushButton();
+  scene->addWidget(w4push);
+  w4ptr->addWeichenitem(w4rectab,w4rectge,w4label,w4push);
+  w4ptr->moveButton(-855,875);
+  w4ptr->moveLabel(-845,890);
+  
   QGraphicsRectItem *w9rectge = new QGraphicsRectItem();
   w9rectge->setRect(0,0,10,75);
   w9rectge->setPos(QPointF(-935,280));
@@ -4207,6 +4208,14 @@ int main( int argc , char *argv[] ){
   bpptr->addBlockitems(bprect);
   scene->addItem(bprect);
 
+  QGraphicsRectItem *bgrect = new QGraphicsRectItem();
+  bgrect->setRect(0,0,10,200);
+  bgrect->setPos(QPointF(1135,-220));
+  bgrect->setBrush(QColor(79,79,79));
+  bgrect->setRotation(90);
+  bgptr->addBlockitems(bgrect);
+  scene->addItem(bgrect);
+
   QGraphicsRectItem *w53rectge = new QGraphicsRectItem();
   w53rectge->setRect(0,0,10,75);
   w53rectge->setPos(QPointF(375,1300));
@@ -5021,11 +5030,6 @@ int main( int argc , char *argv[] ){
   scene->addItem(w12rectab);
   QLabel *w12label = new QLabel();
   scene->addWidget(w12label);
-  WeicheQPushButton *w12push = new WeicheQPushButton();
-  scene->addWidget(w12push);
-  w12ptr->addWeichenitem(w12rectab,w12rectge,w12label,w12push);
-  w12ptr->moveButton(410,-130);
-  w12ptr->moveLabel(425,-110);
 
   QGraphicsRectItem *ajrect = new QGraphicsRectItem();
   ajrect->setRect(0,0,10,500);
@@ -5040,6 +5044,12 @@ int main( int argc , char *argv[] ){
   ajrect2->setRotation(90);
   ajptr->addBlockitems(ajrect2);
   scene->addItem(ajrect2);
+
+  WeicheQPushButton *w12push = new WeicheQPushButton();
+  scene->addWidget(w12push);
+  w12ptr->addWeichenitem(w12rectab,w12rectge,w12label,w12push);
+  w12ptr->moveButton(410,-130);
+  w12ptr->moveLabel(425,-110);
   
   QGraphicsRectItem *w11rectge = new QGraphicsRectItem();
   w11rectge->setRect(0,0,10,75);
@@ -5126,11 +5136,6 @@ int main( int argc , char *argv[] ){
   scene->addItem(w14rectab);
   QLabel *w14label = new QLabel();
   scene->addWidget(w14label);
-  WeicheQPushButton *w14push = new WeicheQPushButton();
-  scene->addWidget(w14push);
-  w14ptr->addWeichenitem(w14rectab,w14rectge,w14label,w14push);
-  w14ptr->moveButton(230,-165);
-  w14ptr->moveLabel(250,-150);
   
   QGraphicsRectItem *w15rectge = new QGraphicsRectItem();
   w15rectge->setRect(0,0,10,75);
@@ -5146,8 +5151,14 @@ int main( int argc , char *argv[] ){
   scene->addItem(w15rectab);
   QLabel *w15label = new QLabel();
   scene->addWidget(w15label);
+  WeicheQPushButton *w14push = new WeicheQPushButton();
+  w14ptr->addWeichenitem(w14rectab,w14rectge,w14label,w14push);
+  w14ptr->moveButton(230,-165);
+  w14ptr->moveLabel(250,-150);
   w15ptr->addWeichenitem(w15rectab,w15rectge,w15label,w14push);
-  w15ptr->moveLabel(240,-175); 
+  w15ptr->moveLabel(240,-175);
+
+  scene->addWidget(w14push);
   
   QGraphicsRectItem *aorect = new QGraphicsRectItem();
   aorect->setRect(0,0,10,90);
@@ -5206,11 +5217,6 @@ int main( int argc , char *argv[] ){
   scene->addItem(w18rectab);
   QLabel *w18label = new QLabel();
   scene->addWidget(w18label);
-  WeicheQPushButton *w17push = new WeicheQPushButton();
-  scene->addWidget(w17push);
-  w18ptr->addWeichenitem(w18rectab,w18rectge,w18label,w17push);
-  w18ptr->moveButton(-670,-80);
-  w18ptr->moveLabel(-620,-65);
 
   QGraphicsRectItem *amrect = new QGraphicsRectItem();
   amrect->setRect(0,0,10,855);
@@ -5240,30 +5246,15 @@ int main( int argc , char *argv[] ){
   w17rectab->setBrush(QColor(79,79,79));
   w17rectab->setRotation(90);
   scene->addItem(w17rectab);
+  WeicheQPushButton *w17push = new WeicheQPushButton();
+  scene->addWidget(w17push);
+  w18ptr->addWeichenitem(w18rectab,w18rectge,w18label,w17push);
+  w18ptr->moveButton(-670,-80);
+  w18ptr->moveLabel(-620,-65);
   QLabel *w17label = new QLabel();
   scene->addWidget(w17label);
   w17ptr->addWeichenitem(w17rectab,w17rectge,w17label,w17push);
   w17ptr->moveLabel(-700,-90);
-
-  QGraphicsRectItem *w16rectge = new QGraphicsRectItem();
-  w16rectge->setRect(0,0,10,55);
-  w16rectge->setPos(QPointF(-743,-150));
-  w16rectge->setBrush(QColor(79,79,79));
-  w16rectge->setRotation(-45);
-  scene->addItem(w16rectge);
-  QGraphicsRectItem *w16rectab = new QGraphicsRectItem();
-  w16rectab->setRect(0,0,10,50);
-  w16rectab->setPos(QPointF(-743,-150));
-  w16rectab->setBrush(QColor(79,79,79));
-  w16rectab->setRotation(-90);
-  scene->addItem(w16rectab);
-  QLabel *w16label = new QLabel();
-  scene->addWidget(w16label);
-  WeicheQPushButton *w16push = new WeicheQPushButton();
-  scene->addWidget(w16push);
-  w16ptr->addWeichenitem(w16rectab,w16rectge,w16label,w16push);
-  w16ptr->moveButton(-750,-165);
-  w16ptr->moveLabel(-765,-150);
 
   QGraphicsRectItem *arrect = new QGraphicsRectItem();
   arrect->setRect(0,0,10,430);
@@ -5292,6 +5283,26 @@ int main( int argc , char *argv[] ){
   arrect4->setRotation(90);
   arptr->addBlockitems(arrect4);
   scene->addItem(arrect4);
+
+  QGraphicsRectItem *w16rectge = new QGraphicsRectItem();
+  w16rectge->setRect(0,0,10,55);
+  w16rectge->setPos(QPointF(-743,-150));
+  w16rectge->setBrush(QColor(79,79,79));
+  w16rectge->setRotation(-45);
+  scene->addItem(w16rectge);
+  QGraphicsRectItem *w16rectab = new QGraphicsRectItem();
+  w16rectab->setRect(0,0,10,50);
+  w16rectab->setPos(QPointF(-743,-150));
+  w16rectab->setBrush(QColor(79,79,79));
+  w16rectab->setRotation(-90);
+  scene->addItem(w16rectab);
+  QLabel *w16label = new QLabel();
+  scene->addWidget(w16label);
+  WeicheQPushButton *w16push = new WeicheQPushButton();
+  scene->addWidget(w16push);
+  w16ptr->addWeichenitem(w16rectab,w16rectge,w16label,w16push);
+  w16ptr->moveButton(-750,-165);
+  w16ptr->moveLabel(-765,-150);
 
   QGraphicsRectItem *aqrect = new QGraphicsRectItem();
   aqrect->setRect(0,0,10,120);
@@ -5726,6 +5737,14 @@ int main( int argc , char *argv[] ){
   avptr->addBlockitems(avrect2);
   scene->addItem(avrect2);
 
+  QGraphicsRectItem *axrect = new QGraphicsRectItem();
+  axrect->setRect(0,0,10,1585);
+  axrect->setPos(QPointF(2505,-540));
+  axrect->setBrush(QColor(79,79,79));
+  axrect->setRotation(90);
+  axptr->addBlockitems(axrect);
+  scene->addItem(axrect);
+
   QGraphicsRectItem *w20rectge = new QGraphicsRectItem();
   w20rectge->setRect(0,0,10,75);
   w20rectge->setPos(QPointF(925,-610));
@@ -5782,14 +5801,6 @@ int main( int argc , char *argv[] ){
   ayptr->addBlockitems(ayrect);
   scene->addItem(ayrect);
 
-  QGraphicsRectItem *axrect = new QGraphicsRectItem();
-  axrect->setRect(0,0,10,1585);
-  axrect->setPos(QPointF(2505,-540));
-  axrect->setBrush(QColor(79,79,79));
-  axrect->setRotation(90);
-  axptr->addBlockitems(axrect);
-  scene->addItem(axrect);
-
   QGraphicsRectItem *w23rectge = new QGraphicsRectItem();
   w23rectge->setRect(0,0,10,75);
   w23rectge->setPos(QPointF(2580,-540));
@@ -5840,6 +5851,14 @@ int main( int argc , char *argv[] ){
   boptr->addBlockitems(borect);
   scene->addItem(borect);
 
+  QGraphicsRectItem *bcrect = new QGraphicsRectItem();
+  bcrect->setRect(0,0,10,1640);
+  bcrect->setPos(QPointF(2505,-435));
+  bcrect->setBrush(QColor(79,79,79));
+  bcrect->setRotation(90);
+  bcptr->addBlockitems(bcrect);
+  scene->addItem(bcrect);
+
   QGraphicsRectItem *w22rectge = new QGraphicsRectItem();
   w22rectge->setRect(0,0,10,75);
   w22rectge->setPos(QPointF(865,-435));
@@ -5859,14 +5878,6 @@ int main( int argc , char *argv[] ){
   w22ptr->addWeichenitem(w22rectab,w22rectge,w22label,w22push);
   w22ptr->moveButton(860,-440);
   w22ptr->moveLabel(800,-450);
-
-  QGraphicsRectItem *bcrect = new QGraphicsRectItem();
-  bcrect->setRect(0,0,10,1640);
-  bcrect->setPos(QPointF(2505,-435));
-  bcrect->setBrush(QColor(79,79,79));
-  bcrect->setRotation(90);
-  bcptr->addBlockitems(bcrect);
-  scene->addItem(bcrect);
 
   QGraphicsRectItem *w24rectge = new QGraphicsRectItem();
   w24rectge->setRect(0,0,10,75);
@@ -5979,6 +5990,14 @@ int main( int argc , char *argv[] ){
   baptr->addBlockitems(barect3);
   scene->addItem(barect3);
 
+  QGraphicsRectItem *bfrect = new QGraphicsRectItem();
+  bfrect->setRect(0,0,10,800);
+  bfrect->setPos(QPointF(2010,-220));
+  bfrect->setBrush(QColor(79,79,79));
+  bfrect->setRotation(90);
+  bfptr->addBlockitems(bfrect);
+  scene->addItem(bfrect);
+
   QGraphicsRectItem *w30rectge = new QGraphicsRectItem();
   w30rectge->setRect(0,0,10,75);
   w30rectge->setPos(QPointF(1135,-365));
@@ -6039,14 +6058,6 @@ int main( int argc , char *argv[] ){
   w28ptr->moveButton(1200,-225);
   w28ptr->moveLabel(1170,-210);
 
-  QGraphicsRectItem *bgrect = new QGraphicsRectItem();
-  bgrect->setRect(0,0,10,200);
-  bgrect->setPos(QPointF(1135,-220));
-  bgrect->setBrush(QColor(79,79,79));
-  bgrect->setRotation(90);
-  bgptr->addBlockitems(bgrect);
-  scene->addItem(bgrect);
-
   QGraphicsRectItem *bdrect = new QGraphicsRectItem();
   bdrect->setRect(0,0,10,1000);
   bdrect->setPos(QPointF(2135,-365));
@@ -6063,13 +6074,20 @@ int main( int argc , char *argv[] ){
   beptr->addBlockitems(berect);
   scene->addItem(berect);
 
-  QGraphicsRectItem *bfrect = new QGraphicsRectItem();
-  bfrect->setRect(0,0,10,800);
-  bfrect->setPos(QPointF(2010,-220));
-  bfrect->setBrush(QColor(79,79,79));
-  bfrect->setRotation(90);
-  bfptr->addBlockitems(bfrect);
-  scene->addItem(bfrect);
+  QGraphicsRectItem *bkrect = new QGraphicsRectItem();
+  bkrect->setRect(0,0,10,270);
+  bkrect->setPos(QPointF(2480,-365));
+  bkrect->setBrush(QColor(79,79,79));
+  bkrect->setRotation(90);
+  bkptr->addBlockitems(bkrect);
+  scene->addItem(bkrect);
+
+  QGraphicsRectItem *bkrect2 = new QGraphicsRectItem();
+  bkrect2->setRect(0,0,10,595);
+  bkrect2->setPos(QPointF(2470,-355));
+  bkrect2->setBrush(QColor(79,79,79));
+  bkptr->addBlockitems(bkrect2);
+  scene->addItem(bkrect2);
 
   QGraphicsRectItem *w25rectge = new QGraphicsRectItem();
   w25rectge->setRect(0,0,10,75);
@@ -6118,21 +6136,6 @@ int main( int argc , char *argv[] ){
   bjrect->setRotation(90);
   bjptr->addBlockitems(bjrect);
   scene->addItem(bjrect);
-
-  QGraphicsRectItem *bkrect = new QGraphicsRectItem();
-  bkrect->setRect(0,0,10,270);
-  bkrect->setPos(QPointF(2480,-365));
-  bkrect->setBrush(QColor(79,79,79));
-  bkrect->setRotation(90);
-  bkptr->addBlockitems(bkrect);
-  scene->addItem(bkrect);
-
-  QGraphicsRectItem *bkrect2 = new QGraphicsRectItem();
-  bkrect2->setRect(0,0,10,595);
-  bkrect2->setPos(QPointF(2470,-355));
-  bkrect2->setBrush(QColor(79,79,79));
-  bkptr->addBlockitems(bkrect2);
-  scene->addItem(bkrect2);
 
   QGraphicsRectItem *carect = new QGraphicsRectItem();
   carect->setRect(0,0,10,725);
