@@ -48,7 +48,7 @@ qt_finalize_target(StellwerkQt)
 
 # target_include_directories, but here only the wiringPi lib file:
 target_sources(StellwerkQt PRIVATE
-  /home/daniel/raspi/sysroot/usr/lib/libwiringPi.so.2.70
+  /home/daniel/raspi/sysroot/usr/lib/libwiringPi.so
   )
 
 target_compile_definitions(StellwerkQt PRIVATE
@@ -56,7 +56,7 @@ target_compile_definitions(StellwerkQt PRIVATE
   )
 
 target_link_libraries(StellwerkQt PRIVATE
-  :libwiringPi.so.2.70
+  :libwiringPi.so
   Qt::Core
   Qt::Gui
   Qt::Widgets
