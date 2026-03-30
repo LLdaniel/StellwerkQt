@@ -54,6 +54,7 @@ extern "C"{
 #include <WiringPi/wiringPi/wiringPi.h>
 #include <WiringPi/wiringPi/sr595.h>
 #include <WiringPi/wiringPi/mcp23017.h>
+#include <WiringPi/wiringPi/wiringPiSPI.h>
 #ifdef __cplusplus
 }
 #endif
@@ -102,6 +103,7 @@ int main( int argc , char *argv[] ){
   //**************************************************************************
 
   wiringPiSetupGpio(); // is needed by mainwindow already, therefore set it up now
+  wiringPiSPISetup(0, 250000);
   qDebug()<<"__main__: Setting up wiringPi...";
  
   //pinMode(13,OUTPUT);  // power turnouts on/off with GPIO13                                                                          !!!!!!!!!!!!!!!!
@@ -7637,7 +7639,8 @@ int main( int argc , char *argv[] ){
   delete w1ptr; delete w2ptr; delete w3ptr; delete w4ptr; delete w5ptr; delete w6ptr; delete w7ptr; delete w8ptr; delete w9ptr; delete w10ptr; delete w11ptr; delete w12ptr; delete w13ptr; delete w14ptr; delete w15ptr; delete w16ptr; delete w17ptr; delete w18ptr; delete w19ptr; delete w20ptr; delete w21ptr; delete w22ptr; delete w23ptr; delete w24ptr; delete w25ptr; delete w26ptr; delete w27ptr; delete w28ptr; delete w29ptr; delete w30ptr; delete w31ptr; delete w40ptr; delete w41ptr; delete w42ptr; delete w43ptr; delete w44ptr; delete w45ptr; delete w46ptr; delete w47ptr; delete w48ptr; delete w49ptr; delete w50ptr; delete w51ptr; delete w52ptr; delete w53ptr;
   
   delete s1ptr; delete s2ptr; delete s3ptr; delete s4ptr; delete s5ptr; delete s6ptr; delete s7ptr; delete s8ptr; delete s9ptr; delete s10ptr; delete s11ptr; delete s12ptr; delete s13ptr; delete s14ptr; delete s15ptr; delete s16ptr; delete s17ptr; delete s18ptr; delete s19ptr; delete s20ptr; delete s21ptr; delete s22ptr; delete s23ptr; delete s24ptr; delete s25ptr; delete s26ptr; delete s27ptr; delete s28ptr; delete s29ptr; delete s30ptr; delete s31ptr; delete s32ptr; delete s33ptr; delete s34ptr; delete s35ptr; delete s36ptr; delete s37ptr; delete s38ptr; delete s39ptr; delete s40ptr; delete s41ptr; delete s42ptr; delete s43ptr; delete s44ptr; delete s45ptr; delete s46ptr; delete s47ptr; delete s48ptr; delete s49ptr; delete s50ptr; delete s51ptr; delete s52ptr;
-  
+
+  //wiringPiSPIClose(0);
   return eofprogram;
 
 }
