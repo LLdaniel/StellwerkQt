@@ -5,15 +5,16 @@
 #include "Configuration.h"
 #include <QLoggingCategory>
 
-static void logToFile(QtMsgType type, const QMessageLogContext &context, const QString &msg){
+static void logToFileAndTerminal(QtMsgType type, const QMessageLogContext &context, const QString &msg){
   QString message = qFormatLogMessage(type, context, msg);
   static FILE *f = fopen("StellwerkQt.log", "a");
   fprintf(f, "%s\n", qPrintable(message));
   fflush(f);
+  fprintf(stderr, "%s\n", qPrintable(message));
 }
 
 Configuration::Configuration(){
-  msgHandler = qInstallMessageHandler(logToFile);
+  msgHandler = qInstallMessageHandler(logToFileAndTerminal);
   setLogLevel("info");
   const QString STELLWERK_LOG_PATTERN="[%{time yyyy-MM-dd h:mm:ss.zzz ttt} %{if-debug}   DEBUG%{endif}%{if-info}    INFO%{endif}%{if-warning} WARNING%{endif}%{if-critical}CRITICAL%{endif}%{if-fatal}   FATAL%{endif}] %{message}";
   qSetMessagePattern(STELLWERK_LOG_PATTERN);
